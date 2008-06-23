@@ -20,6 +20,8 @@ NSString* signInURL = @"http://live.xbox.com/en-US/default.aspx";
 	if (![super init])
 	return nil;
 	
+	//here is a change
+	toDoAfterNextLoadCompletes = @"buttrhle";
 
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkConnectionAndLogin:) name:@"FriendsListConnectionError" object:nil];
 	
