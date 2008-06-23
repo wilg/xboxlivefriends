@@ -1,2 +1,0 @@
-In file included from /Users/wil/Documents/Xcode Projects/XLF 360 ƒ/Xbox Live Friends/MAAttachedWindowNonActivating.m:9:
-/Users/wil/Documents/Xcode Projects/XLF 360 ƒ/Xbox Live Friends/MAAttachedWindowNonActivating.h:12: error: cannot find interface declaration for 'MAAttachedWindow', superclass of 'MAAttachedWindowNonActivating'

@@ -1,3 +1,0 @@
-/Users/wil/Documents/Xcode Projects/XLF 360 ƒ/Xbox Live Friends/SendMessage.m:37: warning: incomplete implementation of class 'SendMessage'
-/Users/wil/Documents/Xcode Projects/XLF 360 ƒ/Xbox Live Friends/SendMessage.m:37: warning: method definition for '+sendMessageAndGetURL:to:usingWebView:' not found
-/Users/wil/Documents/Xcode Projects/XLF 360 ƒ/Xbox Live Friends/SendMessage.m:37: warning: method definition for '+sendMessage:to:' not found
