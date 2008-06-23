@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'Xbox Live Friends' target in the 'Xbox Live Friends' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif

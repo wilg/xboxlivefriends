@@ -1,0 +1,37 @@
+		<a name="anchor_$game_id" />
+		<div class="game $even_or_odd" id="game_$row_number" onClick="load_details('$game_id', '$row_number');">
+			<table><tr>
+				
+	            <td class="game_icon">
+					<img src="$tile_url" width="48" height="48">
+				</td>
+	            <td class="game_name">
+					<div class="title">$game_title</div>
+				</td>
+
+	            <td class="their_score"> 
+					<div class="progress_bar">
+						<img src="greenbar.png" style="width:$their_percentage%" height="16">
+					</div>
+					<div class="game_score">$their_gamerscore</div>
+	            </td>
+
+				<td class="your_score"> 
+					<div class="progress_bar">
+						<img src="greenbar.png" style="width:$your_percentage%" height="16">
+					</div>
+					<div class="game_score">$your_gamerscore</div>
+	            </td>
+				
+				<td class="disclosure">
+					<img src="disclosure.png" width="29" height="31">
+				</td>
+				
+				<td class="disclosure disclosure_up" style="display:none;">
+					<img src="disclosure_up.png" width="29" height="31">
+				</td>
+
+
+	        </tr></table>
+		</div>
+		<div class="details" id="details_$row_number" style="display:none"></div>

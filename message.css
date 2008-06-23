@@ -1,0 +1,71 @@
+body {
+	font-family: "Helvetica", "Lucida Grande", sans-serif;
+	font-size: 12px;
+	margin: 0;
+}
+
+.gametitle {
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.achievementNum {
+	font-size: 12px;
+	text-align: center;
+	color: gray;
+}
+
+#header {
+	padding: 10px;
+	height: 58px;
+	color: #000000;
+}
+
+hr {
+	height: 1px;
+	background-color: #dedede;
+	color: #dedede;
+	border: none;
+	margin: 0 auto;
+	width: 98%;
+}
+
+.headerkey {
+	font-size: 12px;
+	font-weight: bold;
+	color: #7f7f7f;
+	width: 60px;
+	text-align: right;
+	float: left;
+	margin-right: 6px;
+}
+
+.headervalue {
+	font-size: 12px;
+	text-align: left;
+	float: left;
+}
+
+.progress {
+	height: 16px;
+	width: 50px;
+	margin-right: 5px;
+}
+
+.message {
+	padding: 10px;
+	padding-top: 0;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+.clearfix {
+    display: inline-block;
+}

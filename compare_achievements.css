@@ -1,0 +1,256 @@
+body {
+	font-family: "Lucida Grande", sans-serif;
+	margin: 0;
+	cursor: default;
+}
+
+::selection {
+	background: transparent;
+}
+
+div.closer {
+	text-align:right;
+	padding: 6px;
+	background: #505050 url(close_bar.png) repeat-x;
+}
+
+div.closer:active {
+	background-color: #303030;
+	background-image: none;
+}
+
+.header {
+	background-image: url(compare_header.png);
+	padding: 0;
+	margin: 0;
+	position: fixed;
+	height: 20px;
+	width: 100%;
+	text-align: left;
+	z-index: 99;
+}
+
+.header table {
+	padding: 0;
+	margin: 0;
+	border-spacing: 0;
+	width: 100%;
+}
+
+.header table .padding {
+	padding-left: 5px;
+}
+
+.header table .padding2 {
+	width: 29px;
+}
+
+.header table .padding3 {
+	padding-left: 5px;
+	width: 48px;
+}
+
+.header .me_label {
+	width: 20%;
+	margin-right: 5px;
+	font-size: 11px;
+	padding: 2px;
+	text-align: center;
+}
+
+.header .them_label {
+	width: 20%;
+	font-size: 11px;
+	padding: 2px;
+	margin-right: 7px;
+	padding-left: 4px;
+	text-align: center;
+	height: 20px;
+	text-overflow:ellipsis;
+	overflow:hidden;
+	white-space:nowrap;
+}
+
+.header_space {
+	height: 20px;
+}
+
+.games {
+	padding: 0;
+	margin: 0;
+}
+
+.game {
+
+}
+
+.details {
+
+}
+
+.game.even {
+	background-color: white;
+}
+
+.game.odd {
+	background-color: #edf3fe;
+}
+
+
+.game.even:active, .game.odd:active {
+	background-color: #c6c6c6;
+	background-image: none;
+}
+
+.game table, .game tr {
+	padding: 0;
+	margin: 0;
+	height: 64px;
+	border-spacing: 0;
+	width: 100%;
+}
+
+.game .title {
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.game .title span.pc {
+	background-color: #505050;
+	color: white;
+	padding: 0 4px;
+	-webkit-border-radius: 3px;
+}
+
+.game .progress_bar {
+	width: 100%;
+	background-image: url(graybar.png);
+	text-align: left;
+	margin: 10px auto 3px;
+	-webkit-box-shadow: rgba(0,0,0,0.1) 1px 1px 2px;
+}
+
+.game td {
+	text-align: center;
+	height: 64px;
+}
+
+td.game_icon {
+	padding-left: 5px;
+	text-align: left;
+	width: 48px;
+}
+
+td.game_icon img {
+	width:48px;
+	height:48px;
+	background: url(loading_tile.png);
+}
+
+td.game_name {
+	padding-left: 5px;
+	text-align: left;
+}
+
+td.their_score {
+	text-align: center;
+	padding-right: 15px;
+	border-right: 1px solid #e5e5e5;
+	padding-left: 5px;
+	width: 20%;
+}
+
+td.your_score {
+	text-align: center;
+	padding-right: 5px;
+	padding-left: 10px;
+	width: 20%;
+}
+
+td.disclosure {
+	width: 29px;
+	text-align: center;
+	padding-right: 5px;
+}
+
+.game .game_score {
+	font-size: 10px;
+	text-align: center;
+	color: gray;
+}
+
+.progress {
+	height: 16px;
+	width: 75px;
+	margin-right: 5px;
+}
+
+.achievements_open {
+	background-color: #505050 !important;
+	color: white !important;
+}
+
+.achievements_open .title,
+.achievements_open .game_score {
+	color: white !important;
+}
+
+.achievements_open .title span.pc {
+	background-color: white !important;
+	color: #505050 !important;
+}
+
+.achievements_open .their_score {
+	border-color: #303030 !important;
+}
+
+.achievement {
+	background-color: #e7e7e7;
+	border-bottom: 1px solid #b7b7b7;
+}
+
+.achievement .their_score {
+	border-color: #c0c0c0 !important;
+}
+
+.achievement_disabled {
+	background-color: #a9a9a9;
+	border-bottom: 1px solid #828282;
+}
+
+.achievement_disabled .their_score {
+	borderer-color: #828282 !important;
+}
+
+.achievement_value {
+	color: #535353;
+}
+
+.gamerscore {
+	height: .92em;
+	width: .92em;
+	margin-left: 1px;
+	position: relative;
+	top: 1px;
+}
+
+.subtitle {
+	font-weight: normal;
+	font-size: 11px;
+}
+
+/* @group Clearfix */
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.clearfix {
+	display: inline-block;
+}
+
+/* @end */

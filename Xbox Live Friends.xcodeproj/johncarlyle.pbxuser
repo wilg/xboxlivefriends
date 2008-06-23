@@ -1,0 +1,182 @@
+// !$*UTF8*$!
+{
+	073674870A4506D800792C64 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "warning: 'FriendsList' may not respond to '-createRecord:'";
+		fRef = 3B91BE4B099D2633008EB5D4 /* FriendsList.m */;
+		rLen = 1;
+		rLoc = 55;
+		rType = 1;
+	};
+	073674940A45072300792C64 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3B91BE4B099D2633008EB5D4 /* FriendsList.m */;
+		name = "FriendsList.m: 56";
+		rLen = 0;
+		rLoc = 1396;
+		rType = 0;
+		vrLen = 1152;
+		vrLoc = 286;
+	};
+	07F879AC09A7EFD900E77895 /* Xbox Live Friends */ = {
+		isa = PBXExecutable;
+		activeArgIndex = 2147483647;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = "Xbox Live Friends";
+		savedGlobals = {
+		};
+		sourceDirectories = (
+		);
+	};
+	07F879BA09A7EFDA00E77895 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+		scmType = "";
+	};
+	07F879BB09A7EFDA00E77895 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeBuildStyle = 073674690A45050600792C64 /* Development */;
+		activeExecutable = 07F879AC09A7EFD900E77895 /* Xbox Live Friends */;
+		activeTarget = 8D1107260486CEB800E47090 /* Xbox Live Friends */;
+		codeSenseManager = 07F879BB09A7EFDA00E77895 /* Code sense */;
+		executables = (
+			07F879AC09A7EFD900E77895 /* Xbox Live Friends */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					243,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 172295430;
+			PBXWorkspaceStateSaveDate = 172295430;
+		};
+		perUserProjectItems = {
+			073674870A4506D800792C64 /* PBXTextBookmark */ = 073674870A4506D800792C64 /* PBXTextBookmark */;
+			073674940A45072300792C64 /* PBXTextBookmark */ = 073674940A45072300792C64 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 07F879BA09A7EFDA00E77895 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	3B3A93DE0A159FA3004CC19C /* PolishedWindow.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {948, 3052}}";
+			sepNavSelRange = "{4512, 0}";
+			sepNavVisRect = "{{0, 1229}, {948, 609}}";
+			sepNavWindowFrame = "{{15, 3}, {987, 738}}";
+		};
+	};
+	3B91BE48099D2633008EB5D4 /* hello.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {711, 429}}";
+			sepNavSelRange = "{135, 0}";
+			sepNavVisRect = "{{0, 0}, {711, 429}}";
+			sepNavWindowFrame = "{{84, 120}, {750, 558}}";
+		};
+	};
+	3B91BE49099D2633008EB5D4 /* hello.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {711, 672}}";
+			sepNavSelRange = "{136, 0}";
+			sepNavVisRect = "{{0, 0}, {711, 429}}";
+			sepNavWindowFrame = "{{107, 99}, {750, 558}}";
+		};
+	};
+	3B91BE4A099D2633008EB5D4 /* FriendsList.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {711, 429}}";
+			sepNavSelRange = "{122, 0}";
+			sepNavVisRect = "{{0, 0}, {711, 429}}";
+			sepNavWindowFrame = "{{61, 141}, {750, 558}}";
+		};
+	};
+	3B91BE4B099D2633008EB5D4 /* FriendsList.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {968, 1638}}";
+			sepNavSelRange = "{1396, 0}";
+			sepNavVisRect = "{{0, 222}, {968, 606}}";
+			sepNavWindowFrame = "{{0, 5}, {1007, 735}}";
+		};
+	};
+	3B91BE5E099D26E7008EB5D4 /* appicon.icns */ = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{15, 3}, {987, 738}}";
+		};
+	};
+	3B91BE6A099D288E008EB5D4 /* warning.png */ = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{153, 57}, {750, 558}}";
+		};
+	};
+	3BE1632109A7D81400D2E3F2 /* FLParser.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {848, 2002}}";
+			sepNavSelRange = "{389, 0}";
+			sepNavVisRect = "{{0, 213}, {711, 429}}";
+			sepNavWindowFrame = "{{38, 162}, {750, 558}}";
+		};
+	};
+	3BE1632209A7D81400D2E3F2 /* FLParser.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {711, 429}}";
+			sepNavSelRange = "{274, 0}";
+			sepNavVisRect = "{{0, 0}, {711, 429}}";
+			sepNavWindowFrame = "{{15, 183}, {750, 558}}";
+		};
+	};
+	8D1107260486CEB800E47090 /* Xbox Live Friends */ = {
+		activeExec = 0;
+		executables = (
+			07F879AC09A7EFD900E77895 /* Xbox Live Friends */,
+		);
+	};
+	8D1107310486CEB800E47090 /* Info.plist */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {711, 429}}";
+			sepNavSelRange = "{431, 0}";
+			sepNavVisRect = "{{0, 0}, {711, 429}}";
+			sepNavWindowFrame = "{{176, 36}, {750, 558}}";
+		};
+	};
+}

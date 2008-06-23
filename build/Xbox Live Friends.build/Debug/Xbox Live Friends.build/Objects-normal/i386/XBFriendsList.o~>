@@ -1,0 +1,7 @@
+/Users/wil/Documents/Xcode Projects/XLF 360 ƒ/Xbox Live Friends/XBFriendsList.m:8:30: error: FriendsListParser.h: No such file or directory
+/Users/wil/Documents/Xcode Projects/XLF 360 ƒ/Xbox Live Friends/XBFriendsList.m:16: warning: cannot find interface declaration for 'FriendsListParser'
+/Users/wil/Documents/Xcode Projects/XLF 360 ƒ/Xbox Live Friends/XBFriendsList.m: In function '+[FriendsListParser friends]':
+/Users/wil/Documents/Xcode Projects/XLF 360 ƒ/Xbox Live Friends/XBFriendsList.m:35: warning: 'FriendsListParser' may not respond to '+friendsWithSource:'
+/Users/wil/Documents/Xcode Projects/XLF 360 ƒ/Xbox Live Friends/XBFriendsList.m:35: warning: (Messages without a matching method signature
+/Users/wil/Documents/Xcode Projects/XLF 360 ƒ/Xbox Live Friends/XBFriendsList.m:35: warning: will be assumed to return 'id' and accept
+/Users/wil/Documents/Xcode Projects/XLF 360 ƒ/Xbox Live Friends/XBFriendsList.m:35: warning: '...' as arguments.)
