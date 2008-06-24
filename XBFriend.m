@@ -147,11 +147,8 @@ NSString *halo2StatsURL = @"http://www.bungie.net/Stats/PlayerStats.aspx?player=
 	return gamertag;
 }
 
-- (NSString *)urlEscapedGamertag
-{
-	NSMutableString *mutableGamerTag = [[[self gamertag] mutableCopy] autorelease];
-	[mutableGamerTag replaceOccurrencesOfString:@" " withString:@"+" options:0 range:NSMakeRange(0, [mutableGamerTag length])];
-	return [[mutableGamerTag copy] autorelease];
+- (NSString *)urlEscapedGamertag {
+	return [[self gamertag] replace:@" " with:@"+"];
 }
 
 
@@ -253,17 +250,18 @@ NSString *halo2StatsURL = @"http://www.bungie.net/Stats/PlayerStats.aspx?player=
 	return type;
 }
 
-- (NSString *)info
-{
+- (NSString *)info {
 	NSString *myStatus = [self status];
-	NSMutableString *myInfo = [info mutableCopy];
+	NSString *myInfo = [[info copy] autorelease];
 
 	if ([myStatus isEqual:@"Busy"]){
-		if ([myInfo rangeOfString:@"ago"].location != NSNotFound ) {
-			[myInfo replaceOccurrencesOfString:@" minutes ago" withString:@"min)" options:0 range:NSMakeRange(0, [myInfo length])];
-			[myInfo replaceOccurrencesOfString:@" minute ago" withString:@"min)" options:0 range:NSMakeRange(0, [myInfo length])];
-			[myInfo replaceOccurrencesOfString:@" hours ago" withString:@"hrs)" options:0 range:NSMakeRange(0, [myInfo length])];
-			[myInfo replaceOccurrencesOfString:@" hour ago" withString:@"hr)" options:0 range:NSMakeRange(0, [myInfo length])];
+		if ([myInfo contains:@"ago"]) {
+		
+			myInfo = [myInfo replace:@" minutes ago" with:@"min)"];
+			myInfo = [myInfo replace:@" minute ago" with:@"min)"];
+			myInfo = [myInfo replace:@" hours ago" with:@"hrs)"];
+			myInfo = [myInfo replace:@" hour ago" with:@"hrs)"];
+
 			myInfo = [NSString stringWithFormat:@"%@%@", @"Busy (", myInfo];
 		}
 		else {
@@ -272,11 +270,13 @@ NSString *halo2StatsURL = @"http://www.bungie.net/Stats/PlayerStats.aspx?player=
 	}
 	
 	if ([myStatus isEqual:@"Away"]) {
-		if ([myInfo rangeOfString:@"ago"].location != NSNotFound ) {
-			[myInfo replaceOccurrencesOfString:@" minutes ago" withString:@"min)" options:0 range:NSMakeRange(0, [myInfo length])];
-			[myInfo replaceOccurrencesOfString:@" minute ago" withString:@"min)" options:0 range:NSMakeRange(0, [myInfo length])];
-			[myInfo replaceOccurrencesOfString:@" hours ago" withString:@"hrs)" options:0 range:NSMakeRange(0, [myInfo length])];
-			[myInfo replaceOccurrencesOfString:@" hour ago" withString:@"hr)" options:0 range:NSMakeRange(0, [myInfo length])];
+		if ([myInfo contains:@"ago"] ) {
+		
+			myInfo = [myInfo replace:@" minutes ago" with:@"min)"];
+			myInfo = [myInfo replace:@" minute ago" with:@"min)"];
+			myInfo = [myInfo replace:@" hours ago" with:@"hrs)"];
+			myInfo = [myInfo replace:@" hour ago" with:@"hrs)"];
+
 			myInfo = [NSString stringWithFormat:@"%@%@", @"Away (", myInfo];
 		}
 		else {
@@ -290,7 +290,7 @@ NSString *halo2StatsURL = @"http://www.bungie.net/Stats/PlayerStats.aspx?player=
 	else if ([self requestType] == XBYouSentFriendRequestType)
 		myInfo = @"Friend Request Sent";
 	
-	return [NSString stringWithFormat:@"%@%@", @"", [[myInfo copy] autorelease]];
+	return myInfo;
 
 }
 

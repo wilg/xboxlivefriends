@@ -8,13 +8,14 @@
 		<string key="IBDocument.HIToolboxVersion">352.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="2"/>
-			<integer value="3713"/>
-			<integer value="3528"/>
 			<integer value="3579"/>
-			<integer value="734"/>
+			<integer value="3445"/>
+			<integer value="3713"/>
 			<integer value="3630"/>
-			<integer value="326"/>
+			<integer value="3528"/>
+			<integer value="327"/>
+			<integer value="2"/>
+			<integer value="734"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -3631,7 +3632,7 @@ A</bytes>
 				<nil key="NSViewClass"/>
 				<string key="NSWindowContentMaxSize">{3.40282e+38, 3.40282e+38}</string>
 				<object class="NSView" key="NSWindowView" id="643832154">
-					<nil key="NSNextResponder"/>
+					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -3860,6 +3861,7 @@ A</bytes>
 						</object>
 					</object>
 					<string key="NSFrameSize">{328, 191}</string>
+					<reference key="NSSuperview"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
 				<string key="NSMaxSize">{3.40282e+38, 3.40282e+38}</string>
@@ -4764,6 +4766,12 @@ AAAAAAAAAAB0ZXh0AAAAAENvcHlyaWdodCBBcHBsZSwgSW5jLiwgMjAwOAA</bytes>
 				<string key="NSFrameSize">{370, 517}</string>
 				<reference key="NSSuperview"/>
 				<string key="NSClassName">NSView</string>
+			</object>
+			<object class="NSCollectionViewItem" id="495188657"/>
+			<object class="NSView" id="174326552">
+				<nil key="NSNextResponder"/>
+				<int key="NSvFlags">256</int>
+				<string key="NSFrameSize">{100, 100}</string>
 			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -5956,6 +5964,14 @@ AAAAAAAAAAB0ZXh0AAAAAENvcHlyaWdodCBBcHBsZSwgSW5jLiwgMjAwOAA</bytes>
 						<reference key="destination" ref="850147593"/>
 					</object>
 					<int key="connectionID">3719</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">view</string>
+						<reference key="source" ref="495188657"/>
+						<reference key="destination" ref="174326552"/>
+					</object>
+					<int key="connectionID">3728</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -8623,6 +8639,16 @@ AAAAAAAAAAB0ZXh0AAAAAENvcHlyaWdodCBBcHBsZSwgSW5jLiwgMjAwOAA</bytes>
 						<reference key="object" ref="452468225"/>
 						<reference key="parent" ref="126708491"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">3725</int>
+						<reference key="object" ref="495188657"/>
+						<reference key="parent" ref="562906951"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">3726</int>
+						<reference key="object" ref="174326552"/>
+						<reference key="parent" ref="562906951"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -9438,9 +9464,9 @@ AAAAAAAAAAB0ZXh0AAAAAENvcHlyaWdodCBBcHBsZSwgSW5jLiwgMjAwOAA</bytes>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
-					<string>{{637, 660}, {328, 191}}</string>
+					<string>{{618, 646}, {328, 191}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{637, 660}, {328, 191}}</string>
+					<string>{{618, 646}, {328, 191}}</string>
 					<reference ref="832915391"/>
 					<string>{3.40282e+38, 3.40282e+38}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -9815,7 +9841,7 @@ AAAAAAAAAAB0ZXh0AAAAAENvcHlyaWdodCBBcHBsZSwgSW5jLiwgMjAwOAA</bytes>
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">3720</int>
+			<int key="maxID">3728</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

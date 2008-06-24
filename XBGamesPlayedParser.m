@@ -45,7 +45,7 @@ NSString* achievementURL = @"http://live.xbox.com/en-US/profile/Achievements/Vie
 		[gamesArray addObject:thisGame];
 	}
 
-	return [[gamesArray copy] retain];
+	return [[gamesArray copy] autorelease];
 }
 
 

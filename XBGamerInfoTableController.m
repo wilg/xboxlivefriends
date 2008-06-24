@@ -35,10 +35,10 @@
     [column setDataCell:cell];
     [cell release];
 	
+	[theContentView setAutoresizesSubviews:YES];
 	
 //	NSView *theView = [[gamerInfoContentView selectedTabViewItem] view];
-    //[theContentView setWantsLayer:YES];
-	[theContentView setAutoresizesSubviews:YES];
+//	[theContentView setWantsLayer:YES];
 
 //    [gamerInfoContentView addSubview:[self currentView]];
 //	CATransition *transition;
@@ -46,13 +46,18 @@
 //    transition = [CATransition animation];
 //    [transition setType:kCATransitionMoveIn];
 //    [transition setSubtype:kCATransitionFromLeft];
+//	[transition setDuration:0];
 //    
-//    NSDictionary *ani = [NSDictionary dictionaryWithObject:transition forKey:@"subviews"];
+//	
+//    NSDictionary *ani = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:transition, nil]  forKeys:[NSArray arrayWithObjects:@"subviews", nil]];
+//
+//
+//	
+//	NSDictionary *NOANNIE = [NSDictionary dictionaryWithObject:(id)kCFBooleanTrue
+//					 forKey:kCATransactionDisableActions];
+//
+//	
 //    [theContentView setAnimations:ani];
-
-	
-	
-	
 
 		
 	//add items

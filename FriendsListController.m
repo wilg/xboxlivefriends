@@ -115,7 +115,7 @@ static BOOL loadThreaded = true;
 	
 	if (friends)
 		[friends release];
-	friends = [[[FriendsListParser friends] copy] retain];
+	friends = [[FriendsListParser friends] retain];
 	
 	BOOL success = NO;
 	if (friends) {
@@ -141,8 +141,6 @@ static BOOL loadThreaded = true;
 
 
 - (void)checkFriendsForStatusChange:(NSArray *)newFriends oldFriends:(NSArray *)oldFriends {
-
-	//[[NSNotificationCenter defaultCenter] postNotificationName:@"GrowlNotify" object:[NSDictionary dictionaryWithObjectsAndKeys: @"Refreshed FL!", @"GROWL_NOTIFICATION_TITLE", @"holy shit", @"GROWL_NOTIFICATION_DESCRIPTION", @"Friend Signed In",  @"GROWL_NOTIFICATION_NAME", [[NSImage imageNamed:@"appicon"] TIFFRepresentation], @"GROWL_NOTIFICATION_ICON",  nil]];
 		
 
 	NSMutableDictionary *oldFriendsDict = [NSMutableDictionary dictionary];

@@ -31,6 +31,7 @@
 
 - (void)dealloc {
     [newMessagesAlreadyNotified release];
+	[messages release];
     [super dealloc];
 }
 
@@ -92,6 +93,8 @@
     //sometimes it does this twice at the same time to due threads
 	[records removeAllObjects];	
 
+	if (messages)
+		[messages release];
 	messages = [[XBMessagesParser messages] copy];
 	
 	int unreadCount = 0;
@@ -168,7 +171,7 @@
 		NSMutableParagraphStyle *breakStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
 		[breakStyle setAlignment:NSCenterTextAlignment];
 		static NSDictionary *paraInfo;
-		paraInfo = [[[NSDictionary alloc] initWithObjectsAndKeys:breakStyle, NSParagraphStyleAttributeName, nil] autorelease];
+		paraInfo = [NSDictionary dictionaryWithObjectsAndKeys:breakStyle, NSParagraphStyleAttributeName, nil];
 		[myString addAttribute:NSParagraphStyleAttributeName value:breakStyle range:NSMakeRange(0, [myString length])];
 		[breakStyle release];
 		[myString endEditing];

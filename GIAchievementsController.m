@@ -31,7 +31,6 @@
 
 - (void)displayGamerInfo:(NSString *)gamertag
 {
-	
 	[self setLastFetch:[XBGamesPlayedParser fetchWithTag:gamertag]];
 	[self setLastFetchTag:gamertag];
 	[self performSelectorOnMainThread:@selector(refilter:) withObject:nil waitUntilDone:YES];
@@ -45,11 +44,11 @@
 
 - (IBAction)refilter:(id)sender
 {
-	[self displayGamesPlayed:[[self lastFetch] mutableCopy] forGamertag:[self lastFetchTag]];
+	[self displayGamesPlayed:[self lastFetch] forGamertag:[self lastFetchTag]];
 }
 
 - (IBAction)searchGames:(id)sender{
-	[self displayGamesPlayed:[[self lastFetch] mutableCopy] forGamertag:[self lastFetchTag]];
+	[self displayGamesPlayed:[self lastFetch] forGamertag:[self lastFetchTag]];
 }
 
 
