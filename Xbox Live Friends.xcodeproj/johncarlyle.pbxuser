@@ -211,7 +211,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 134";
 		rLen = 0;
-		rLoc = 3489;
+		rLoc = 3542;
 		rType = 0;
 		vrLen = 1339;
 		vrLoc = 2690;
@@ -461,7 +461,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 134";
 		rLen = 0;
-		rLoc = 3489;
+		rLoc = 3542;
 		rType = 0;
 		vrLen = 1339;
 		vrLoc = 2690;
@@ -1136,7 +1136,7 @@
 		comments = "warning: 'MQPieGraphView' may not respond to '-getLastClicked'";
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		rLen = 1;
-		rLoc = 131;
+		rLoc = 132;
 		rType = 1;
 	};
 	0749DC140E10BF6000F5D8CF /* PBXTextBookmark */ = {
@@ -1154,7 +1154,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 133";
 		rLen = 43;
-		rLoc = 3461;
+		rLoc = 3514;
 		rType = 0;
 		vrLen = 1261;
 		vrLoc = 2849;
@@ -1212,7 +1212,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 133";
 		rLen = 43;
-		rLoc = 3461;
+		rLoc = 3514;
 		rType = 0;
 		vrLen = 1258;
 		vrLoc = 2849;
@@ -1242,7 +1242,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 133";
 		rLen = 43;
-		rLoc = 3461;
+		rLoc = 3514;
 		rType = 0;
 		vrLen = 1258;
 		vrLoc = 2849;
@@ -1272,7 +1272,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 133";
 		rLen = 43;
-		rLoc = 3461;
+		rLoc = 3514;
 		rType = 0;
 		vrLen = 1258;
 		vrLoc = 2849;
@@ -1312,7 +1312,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 133";
 		rLen = 43;
-		rLoc = 3461;
+		rLoc = 3514;
 		rType = 0;
 		vrLen = 1258;
 		vrLoc = 2849;
@@ -1342,7 +1342,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 133";
 		rLen = 43;
-		rLoc = 3461;
+		rLoc = 3514;
 		rType = 0;
 		vrLen = 1240;
 		vrLoc = 2849;
@@ -1392,7 +1392,7 @@
 		comments = "warning: 'MQPieGraphView' may not respond to '-setBackgroundColor:'";
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		rLen = 1;
-		rLoc = 25;
+		rLoc = 26;
 		rType = 1;
 	};
 	0749DC370E10C1A800F5D8CF /* PBXTextBookmark */ = {
@@ -1410,7 +1410,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 23";
 		rLen = 0;
-		rLoc = 450;
+		rLoc = 500;
 		rType = 0;
 		vrLen = 626;
 		vrLoc = 244;
@@ -1430,7 +1430,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 26";
 		rLen = 0;
-		rLoc = 527;
+		rLoc = 577;
 		rType = 0;
 		vrLen = 631;
 		vrLoc = 244;
@@ -1440,7 +1440,7 @@
 		comments = "warning: 'MQPieGraphView' may not respond to '-lastClicked'";
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		rLen = 1;
-		rLoc = 131;
+		rLoc = 132;
 		rType = 1;
 	};
 	0749DC3F0E10C1FD00F5D8CF /* PBXTextBookmark */ = {
@@ -1448,7 +1448,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 133";
 		rLen = 0;
-		rLoc = 3501;
+		rLoc = 3554;
 		rType = 0;
 		vrLen = 696;
 		vrLoc = 3262;
@@ -1458,7 +1458,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 133";
 		rLen = 0;
-		rLoc = 3489;
+		rLoc = 3542;
 		rType = 0;
 		vrLen = 1255;
 		vrLoc = 2854;
@@ -1468,7 +1468,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 133";
 		rLen = 0;
-		rLoc = 3489;
+		rLoc = 3542;
 		rType = 0;
 		vrLen = 1255;
 		vrLoc = 2854;
@@ -1548,7 +1548,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 133";
 		rLen = 0;
-		rLoc = 3501;
+		rLoc = 3554;
 		rType = 0;
 		vrLen = 696;
 		vrLoc = 3262;
@@ -1588,7 +1588,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 133";
 		rLen = 0;
-		rLoc = 3489;
+		rLoc = 3542;
 		rType = 0;
 		vrLen = 1338;
 		vrLoc = 165;
@@ -1608,7 +1608,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 133";
 		rLen = 0;
-		rLoc = 3489;
+		rLoc = 3542;
 		rType = 0;
 		vrLen = 1338;
 		vrLoc = 165;
@@ -1628,7 +1628,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 38";
 		rLen = 0;
-		rLoc = 872;
+		rLoc = 922;
 		rType = 0;
 		vrLen = 1241;
 		vrLoc = 165;
@@ -1638,7 +1638,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 169";
 		rLen = 0;
-		rLoc = 4504;
+		rLoc = 4557;
 		rType = 0;
 		vrLen = 1012;
 		vrLoc = 3850;
@@ -1648,7 +1648,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 25";
 		rLen = 0;
-		rLoc = 455;
+		rLoc = 505;
 		rType = 0;
 		vrLen = 1338;
 		vrLoc = 0;
@@ -1658,7 +1658,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 34";
 		rLen = 0;
-		rLoc = 789;
+		rLoc = 839;
 		rType = 0;
 		vrLen = 1258;
 		vrLoc = 0;
@@ -1668,7 +1668,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 21";
 		rLen = 0;
-		rLoc = 427;
+		rLoc = 477;
 		rType = 0;
 		vrLen = 1258;
 		vrLoc = 0;
@@ -1678,7 +1678,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 23";
 		rLen = 0;
-		rLoc = 450;
+		rLoc = 500;
 		rType = 0;
 		vrLen = 1476;
 		vrLoc = 987;
@@ -1698,7 +1698,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 23";
 		rLen = 0;
-		rLoc = 450;
+		rLoc = 500;
 		rType = 0;
 		vrLen = 1476;
 		vrLoc = 987;
@@ -1735,7 +1735,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 132";
 		rLen = 0;
-		rLoc = 3501;
+		rLoc = 3554;
 		rType = 0;
 		vrLen = 694;
 		vrLoc = 3266;
@@ -1905,7 +1905,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 132";
 		rLen = 0;
-		rLoc = 3501;
+		rLoc = 3554;
 		rType = 0;
 		vrLen = 694;
 		vrLoc = 3266;
@@ -1925,7 +1925,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 161";
 		rLen = 18;
-		rLoc = 4304;
+		rLoc = 4357;
 		rType = 0;
 		vrLen = 1296;
 		vrLoc = 3506;
@@ -1955,7 +1955,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 161";
 		rLen = 18;
-		rLoc = 4304;
+		rLoc = 4357;
 		rType = 0;
 		vrLen = 1296;
 		vrLoc = 3506;
@@ -1985,7 +1985,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 161";
 		rLen = 0;
-		rLoc = 4298;
+		rLoc = 4351;
 		rType = 0;
 		vrLen = 1260;
 		vrLoc = 3542;
@@ -2015,7 +2015,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 161";
 		rLen = 0;
-		rLoc = 4298;
+		rLoc = 4351;
 		rType = 0;
 		vrLen = 1260;
 		vrLoc = 3542;
@@ -2062,7 +2062,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 161";
 		rLen = 0;
-		rLoc = 4298;
+		rLoc = 4351;
 		rType = 0;
 		vrLen = 1260;
 		vrLoc = 3542;
@@ -2082,7 +2082,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 135";
 		rLen = 0;
-		rLoc = 3541;
+		rLoc = 3594;
 		rType = 0;
 		vrLen = 1369;
 		vrLoc = 2664;
@@ -2092,7 +2092,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 134";
 		rLen = 0;
-		rLoc = 3541;
+		rLoc = 3594;
 		rType = 0;
 		vrLen = 1404;
 		vrLoc = 2664;
@@ -2112,7 +2112,7 @@
 		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
 		name = "GIBreakdownChartController.m: 134";
 		rLen = 0;
-		rLoc = 3541;
+		rLoc = 3594;
 		rType = 0;
 		vrLen = 1404;
 		vrLoc = 2664;
@@ -2126,6 +2126,224 @@
 		rType = 0;
 		vrLen = 1123;
 		vrLoc = 5225;
+	};
+	0749DCB50E10D43A00F5D8CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3BC753830E0F6E9900D0EF53 /* ClickableAttachedWindow.m */;
+		name = "ClickableAttachedWindow.m: 15";
+		rLen = 0;
+		rLoc = 305;
+		rType = 0;
+		vrLen = 431;
+		vrLoc = 0;
+	};
+	0749DCB60E10D43A00F5D8CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3B8871240CF3E2F7001A2849 /* ColorizeImage.m */;
+		name = "ColorizeImage.m: 17";
+		rLen = 0;
+		rLoc = 298;
+		rType = 0;
+		vrLen = 755;
+		vrLoc = 0;
+	};
+	0749DCB70E10D43A00F5D8CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3B11A48E0A93CBE6003E788A /* XBMessageCenterController.m */;
+		name = "XBMessageCenterController.m: 35";
+		rLen = 0;
+		rLoc = 972;
+		rType = 0;
+		vrLen = 1286;
+		vrLoc = 163;
+	};
+	0749DCB80E10D43A00F5D8CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3BB9CC5D0B0D9F5A00C33FC2 /* MQPieGraphView.m */;
+		name = "MQPieGraphView.m: 168";
+		rLen = 0;
+		rLoc = 4653;
+		rType = 0;
+		vrLen = 1205;
+		vrLoc = 0;
+	};
+	0749DCB90E10D43A00F5D8CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
+		name = "GIBreakdownChartController.m: 157";
+		rLen = 0;
+		rLoc = 4164;
+		rType = 0;
+		vrLen = 1252;
+		vrLoc = 3459;
+	};
+	0749DCBA0E10D43A00F5D8CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3BB9CC5D0B0D9F5A00C33FC2 /* MQPieGraphView.m */;
+		name = "MQPieGraphView.m: 227";
+		rLen = 0;
+		rLoc = 6091;
+		rType = 0;
+		vrLen = 850;
+		vrLoc = 6092;
+	};
+	0749DCBB0E10D43A00F5D8CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
+		name = "GIBreakdownChartController.m: 134";
+		rLen = 0;
+		rLoc = 3594;
+		rType = 0;
+		vrLen = 1438;
+		vrLoc = 2934;
+	};
+	0749DCBC0E10D43A00F5D8CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3BC753830E0F6E9900D0EF53 /* ClickableAttachedWindow.m */;
+		name = "ClickableAttachedWindow.m: 15";
+		rLen = 0;
+		rLoc = 305;
+		rType = 0;
+		vrLen = 431;
+		vrLoc = 0;
+	};
+	0749DCBD0E10D43A00F5D8CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
+		name = "GIBreakdownChartController.m: 107";
+		rLen = 1;
+		rLoc = 2986;
+		rType = 0;
+		vrLen = 1438;
+		vrLoc = 2934;
+	};
+	0749DCBE0E10D43A00F5D8CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3BB9CC5D0B0D9F5A00C33FC2 /* MQPieGraphView.m */;
+		name = "MQPieGraphView.m: 259";
+		rLen = 0;
+		rLoc = 6519;
+		rType = 0;
+		vrLen = 956;
+		vrLoc = 5953;
+	};
+	0749DCBF0E10D43A00F5D8CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
+		name = "GIBreakdownChartController.m: 157";
+		rLen = 0;
+		rLoc = 4164;
+		rType = 0;
+		vrLen = 1252;
+		vrLoc = 3459;
+	};
+	0749DCC00E10D43A00F5D8CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3B8871240CF3E2F7001A2849 /* ColorizeImage.m */;
+		name = "ColorizeImage.m: 17";
+		rLen = 0;
+		rLoc = 298;
+		rType = 0;
+		vrLen = 755;
+		vrLoc = 0;
+	};
+	0749DCC10E10D43A00F5D8CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3B11A48E0A93CBE6003E788A /* XBMessageCenterController.m */;
+		name = "XBMessageCenterController.m: 35";
+		rLen = 0;
+		rLoc = 972;
+		rType = 0;
+		vrLen = 1286;
+		vrLoc = 163;
+	};
+	0749DCC20E10D43A00F5D8CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
+		name = "GIBreakdownChartController.m: 157";
+		rLen = 0;
+		rLoc = 4164;
+		rType = 0;
+		vrLen = 1252;
+		vrLoc = 3459;
+	};
+	0749DCC30E10D43A00F5D8CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3BB9CC5D0B0D9F5A00C33FC2 /* MQPieGraphView.m */;
+		name = "MQPieGraphView.m: 168";
+		rLen = 0;
+		rLoc = 4653;
+		rType = 0;
+		vrLen = 1205;
+		vrLoc = 0;
+	};
+	0749DCC40E10D43A00F5D8CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
+		name = "GIBreakdownChartController.m: 77";
+		rLen = 0;
+		rLoc = 2130;
+		rType = 0;
+		vrLen = 1418;
+		vrLoc = 1051;
+	};
+	0749DCC50E10D46400F5D8CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
+		name = "GIBreakdownChartController.m: 78";
+		rLen = 0;
+		rLoc = 2130;
+		rType = 0;
+		vrLen = 1481;
+		vrLoc = 1036;
+	};
+	0749DCC80E10D49E00F5D8CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "error: syntax error before 'long'";
+		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
+		rLen = 1;
+		rLoc = 77;
+		rType = 1;
+	};
+	0749DCCB0E10D4C800F5D8CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
+		name = "GIBreakdownChartController.m: 78";
+		rLen = 0;
+		rLoc = 2130;
+		rType = 0;
+		vrLen = 1447;
+		vrLoc = 375;
+	};
+	0749DCCD0E10D4C800F5D8CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
+		name = "GIBreakdownChartController.m: 19";
+		rLen = 0;
+		rLoc = 401;
+		rType = 0;
+		vrLen = 1404;
+		vrLoc = 0;
+	};
+	0749DCCF0E10D4E700F5D8CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
+		name = "GIBreakdownChartController.m: 78";
+		rLen = 0;
+		rLoc = 2130;
+		rType = 0;
+		vrLen = 1410;
+		vrLoc = 375;
+	};
+	0749DCD00E10D4E700F5D8CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */;
+		name = "GIBreakdownChartController.m: 19";
+		rLen = 0;
+		rLoc = 432;
+		rType = 0;
+		vrLen = 1371;
+		vrLoc = 0;
 	};
 	0771C32F0E10A70A005EA0CB /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -2512,6 +2730,28 @@
 			0749DCA00E10CAF400F5D8CF /* PBXTextBookmark */ = 0749DCA00E10CAF400F5D8CF /* PBXTextBookmark */;
 			0749DCA10E10CAF400F5D8CF /* PBXTextBookmark */ = 0749DCA10E10CAF400F5D8CF /* PBXTextBookmark */;
 			0749DCA20E10CAF400F5D8CF /* PBXTextBookmark */ = 0749DCA20E10CAF400F5D8CF /* PBXTextBookmark */;
+			0749DCB50E10D43A00F5D8CF /* PBXTextBookmark */ = 0749DCB50E10D43A00F5D8CF /* PBXTextBookmark */;
+			0749DCB60E10D43A00F5D8CF /* PBXTextBookmark */ = 0749DCB60E10D43A00F5D8CF /* PBXTextBookmark */;
+			0749DCB70E10D43A00F5D8CF /* PBXTextBookmark */ = 0749DCB70E10D43A00F5D8CF /* PBXTextBookmark */;
+			0749DCB80E10D43A00F5D8CF /* PBXTextBookmark */ = 0749DCB80E10D43A00F5D8CF /* PBXTextBookmark */;
+			0749DCB90E10D43A00F5D8CF /* PBXTextBookmark */ = 0749DCB90E10D43A00F5D8CF /* PBXTextBookmark */;
+			0749DCBA0E10D43A00F5D8CF /* PBXTextBookmark */ = 0749DCBA0E10D43A00F5D8CF /* PBXTextBookmark */;
+			0749DCBB0E10D43A00F5D8CF /* PBXTextBookmark */ = 0749DCBB0E10D43A00F5D8CF /* PBXTextBookmark */;
+			0749DCBC0E10D43A00F5D8CF /* PBXTextBookmark */ = 0749DCBC0E10D43A00F5D8CF /* PBXTextBookmark */;
+			0749DCBD0E10D43A00F5D8CF /* PBXTextBookmark */ = 0749DCBD0E10D43A00F5D8CF /* PBXTextBookmark */;
+			0749DCBE0E10D43A00F5D8CF /* PBXTextBookmark */ = 0749DCBE0E10D43A00F5D8CF /* PBXTextBookmark */;
+			0749DCBF0E10D43A00F5D8CF /* PBXTextBookmark */ = 0749DCBF0E10D43A00F5D8CF /* PBXTextBookmark */;
+			0749DCC00E10D43A00F5D8CF /* PBXTextBookmark */ = 0749DCC00E10D43A00F5D8CF /* PBXTextBookmark */;
+			0749DCC10E10D43A00F5D8CF /* PBXTextBookmark */ = 0749DCC10E10D43A00F5D8CF /* PBXTextBookmark */;
+			0749DCC20E10D43A00F5D8CF /* PBXTextBookmark */ = 0749DCC20E10D43A00F5D8CF /* PBXTextBookmark */;
+			0749DCC30E10D43A00F5D8CF /* PBXTextBookmark */ = 0749DCC30E10D43A00F5D8CF /* PBXTextBookmark */;
+			0749DCC40E10D43A00F5D8CF /* PBXTextBookmark */ = 0749DCC40E10D43A00F5D8CF /* PBXTextBookmark */;
+			0749DCC50E10D46400F5D8CF /* PBXTextBookmark */ = 0749DCC50E10D46400F5D8CF /* PBXTextBookmark */;
+			0749DCC80E10D49E00F5D8CF /* PBXTextBookmark */ = 0749DCC80E10D49E00F5D8CF /* PBXTextBookmark */;
+			0749DCCB0E10D4C800F5D8CF /* PBXTextBookmark */ = 0749DCCB0E10D4C800F5D8CF /* PBXTextBookmark */;
+			0749DCCD0E10D4C800F5D8CF /* PBXTextBookmark */ = 0749DCCD0E10D4C800F5D8CF /* PBXTextBookmark */;
+			0749DCCF0E10D4E700F5D8CF /* PBXTextBookmark */ = 0749DCCF0E10D4E700F5D8CF /* PBXTextBookmark */;
+			0749DCD00E10D4E700F5D8CF /* PBXTextBookmark */ = 0749DCD00E10D4E700F5D8CF /* PBXTextBookmark */;
 			0771C32F0E10A70A005EA0CB = 0771C32F0E10A70A005EA0CB /* PBXTextBookmark */;
 			0771C3300E10A70A005EA0CB = 0771C3300E10A70A005EA0CB /* PBXTextBookmark */;
 			0771C3310E10A70A005EA0CB = 0771C3310E10A70A005EA0CB /* PBXTextBookmark */;
@@ -2541,9 +2781,9 @@
 	};
 	3B11A48E0A93CBE6003E788A /* XBMessageCenterController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {755, 4900}}";
-			sepNavSelRange = "{955, 0}";
-			sepNavVisRange = "{479, 726}";
+			sepNavIntBoundsRect = "{{0, 0}, {835, 4830}}";
+			sepNavSelRange = "{972, 0}";
+			sepNavVisRange = "{163, 1286}";
 			sepNavWindowFrame = "{{15, -1}, {1439, 874}}";
 		};
 	};
@@ -2571,7 +2811,7 @@
 	3B8871240CF3E2F7001A2849 /* ColorizeImage.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {835, 745}}";
-			sepNavSelRange = "{755, 0}";
+			sepNavSelRange = "{298, 0}";
 			sepNavVisRange = "{0, 755}";
 		};
 	};
@@ -2608,9 +2848,9 @@
 	};
 	3BB9CC5D0B0D9F5A00C33FC2 /* MQPieGraphView.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {835, 4088}}";
-			sepNavSelRange = "{6091, 0}";
-			sepNavVisRange = "{5225, 1123}";
+			sepNavIntBoundsRect = "{{0, 0}, {835, 4144}}";
+			sepNavSelRange = "{4653, 0}";
+			sepNavVisRange = "{0, 1205}";
 			sepNavWindowFrame = "{{-1, 2}, {1439, 874}}";
 		};
 	};
@@ -2633,6 +2873,13 @@
 			sepNavIntBoundsRect = "{{0, 0}, {835, 8890}}";
 			sepNavSelRange = "{7586, 433}";
 			sepNavVisRange = "{7214, 1412}";
+		};
+	};
+	3BC753830E0F6E9900D0EF53 /* ClickableAttachedWindow.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {835, 745}}";
+			sepNavSelRange = "{305, 0}";
+			sepNavVisRange = "{0, 431}";
 		};
 	};
 	3BD16F160A93E33C008AC8D7 /* XBMessagesParser.h */ = {
@@ -2676,9 +2923,9 @@
 	};
 	3BE471FA0CE98983009343CE /* GIBreakdownChartController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {835, 2842}}";
-			sepNavSelRange = "{3541, 0}";
-			sepNavVisRange = "{2664, 1404}";
+			sepNavIntBoundsRect = "{{0, 0}, {1380, 2716}}";
+			sepNavSelRange = "{432, 0}";
+			sepNavVisRange = "{0, 1371}";
 			sepNavWindowFrame = "{{2, 4}, {1439, 874}}";
 		};
 	};

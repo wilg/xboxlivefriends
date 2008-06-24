@@ -3,7 +3,7 @@
 //  Xbox Live Friends
 //
 //  Created by Wil Gieseler on 11/12/07.
-//  Copyright 2007 __MyCompanyName__. All rights reserved.
+//  Copyright 2007 mindquirk. All rights reserved.
 //
 
 #include "MQSlice.h"
@@ -16,6 +16,7 @@
 #import "GIBreakdownChartController.h"
 #import "XBGamesPlayedParser.h"
 
+#define round(x) ((x)>=0?(long)((x)+0.5):(long)((x)-0.5))
 
 @implementation GIBreakdownChartController
 
@@ -58,15 +59,15 @@
 		
 		for (XBGame *thisGame in gameList) {
 		
-			float ts = [[thisGame theirScore] floatValue];
+			float score = [[thisGame theirScore] floatValue];
 
 			BOOL shouldDisplaySlice = YES;
-			float percent = ts / totalScore * 100.0;
+			float percent = score / totalScore * 100.0;
 			
-			if ([gameList count] > 18 && percent < 0.8)
+			if ([gameList count] > 18 && percent < 1)
 				shouldDisplaySlice = NO;
 
-			if (ts <= 0)
+			if (score <= 0)
 				shouldDisplaySlice = NO;
 				
 			if (shouldDisplaySlice) {
@@ -74,13 +75,13 @@
 
 				NSMutableDictionary *dict = [NSMutableDictionary dictionary];
 				[dict setObject:[thisGame theirScore] forKey:@"score"];
-				[dict setObject:[NSString stringWithFormat:@"%i%%", (int)percent] forKey:@"percent"];
+				[dict setObject:[NSString stringWithFormat:@"%i%%", round(percent)] forKey:@"percent"];
 				[dict setObject:gameIcon forKey:@"image"];
 				[dict setObject:[MQFunctions flattenHTML:[thisGame name]] forKey:@"title"];
-				[pieGraph addSlice:[MQSlice sliceWithColor:[self colorForSlice] texture:textureImage slice:ts message:[thisGame name] captionData:[dict copy]]];
+				[pieGraph addSlice:[MQSlice sliceWithColor:[self colorForSlice] texture:textureImage slice:score message:[thisGame name] captionData:[dict copy]]];
 			}
 			else
-				otherScore = otherScore + ts;
+				otherScore += score;
 			
 		}		
 		
