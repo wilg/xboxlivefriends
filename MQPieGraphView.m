@@ -13,32 +13,35 @@
 
 @implementation MQPieGraphView
 
-@synthesize delegate, backgroundColor, lineColor, textColor, slices, clickedSlice, overSlice, size, padding, fadeFactor;
+@synthesize delegate, backgroundColor, slices, clickedSlice, overSlice, padding, fadeFactor;
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     [[self window] makeFirstResponder:self];
-    //[[self window] setAcceptsMouseMovedEvents:YES];
 }
 
-- (id)initWithFrame:(NSRect)frameRect
-{
+- (id)initWithFrame:(NSRect)frameRect {
+
     self = [super initWithFrame:frameRect];
     
     if (self)   {
-        drawLegend = NO;
-        autosize = YES;
-        fadeFactor = .5;
-        size = 50;
-        backgroundColor = [NSColor whiteColor];
-        lineColor = [NSColor blackColor];
-        textColor = [NSColor blackColor];
-        slices = [[NSMutableArray alloc] initWithCapacity:2];
-        clickedSlice = [[MQSlice alloc] init];
-        overSlice = [[MQSlice alloc] init];
+		
+		[self setFadeFactor:0.5];
+		[self setBackgroundColor:[NSColor whiteColor]];
+		[self setSlices:[NSMutableArray array]];
+		[self setClickedSlice:nil];
+		[self setOverSlice:nil];
+		
     }
     
     return self;
+}
+
+- (void)dealloc {
+    [slices release];
+    [backgroundColor release];
+	[clickedSlice release];
+	[overSlice release];
+    [super dealloc];
 }
 
 
@@ -50,8 +53,7 @@
 	[self setNeedsDisplay:YES];
 }
 
-- (void)sort
-{
+- (void)sort {
     int i, j;
     for (i = 1; i < [slices count]; i++)  {
         for (j = 0; j < [slices count] - i; j++)  {
@@ -65,7 +67,6 @@
 }
 
 - (void)reverseSort {
-
     int i, j;
     for (i = 1; i < [slices count]; i++)  {
         for (j = 0; j < [slices count] - i; j++)  {
@@ -78,15 +79,12 @@
     }
 }
 
-- (void)drawRect:(NSRect)rect   {
+- (void)drawRect:(NSRect)rect {
 
-    [backgroundColor set];
-    [NSBezierPath fillRect:rect];
+	NSGradient *backgroundGradient = [[NSGradient alloc] initWithStartingColor:backgroundColor endingColor:[NSColor colorWithCalibratedWhite:0.1 alpha:1.0]];
+	[backgroundGradient drawInRect:rect angle:-90];
     
-    int oldSize = size;
-    if (autosize)   {
-        size = MIN(rect.size.width / 2 - padding, rect.size.height / 2 - padding);
-    }
+	int size = MIN(rect.size.width / 2 - padding, rect.size.height / 2 - padding);
     
     NSPoint centerPoint;
     centerPoint.x = rect.size.width / 2;
@@ -160,19 +158,14 @@
 		[NSGraphicsContext restoreGraphicsState];
 	}
 
-	
-	size = oldSize;
 }
 
-
-- (void)updateView
-{
+- (void)updateView {
     [self recalibrateSliceSizes];
     [self setNeedsDisplay:YES];
 }
 
-- (void)recalibrateSliceSizes
-{
+- (void)recalibrateSliceSizes {
     int i, j;
     float total = 0.0f;
     for (i = 0 ; i < [slices count]; i++)  {
@@ -184,36 +177,14 @@
     }
 }
 
-- (void)removeSliceAtIndex:(int)index
-{
+- (void)removeSliceAtIndex:(int)index {
     [slices removeObjectAtIndex:index];
 }
 
-- (void)clearSlices
-{
+- (void)clearSlices {
     [slices removeAllObjects];
 }
 
-
-- (void)mouseMoved:(NSEvent *)event
-{
-//    NSPoint point = [self convertPoint:[event locationInWindow] fromView:nil];
-//	
-//	for (MQSlice *slice in slices) {
-//        if ([[slice getBezierPath] containsPoint:point])   {
-//            [overSlice release];
-//            overSlice = [slice retain];
-//            [slice setLight:TRUE];
-//        }
-//        else    {
-//            [slice setLight:FALSE];
-//        }
-//	}
-//	
-//    if (delegate)   {
-//        [delegate mouseMoved:event];
-//    }
-}
 
 - (void)mouseDown:(NSEvent *)event {
 
@@ -236,37 +207,19 @@
 
 }
 
-- (void)keyDown:(NSEvent *)event
-{
-    [delegate keyDown:event];
-}
-
-- (void)dealloc
-{
-    [slices release];
-    [backgroundColor release];
-    [textColor release];
-    [lineColor release];
-    [super dealloc];
-}
-
-- (void)addSlice:(MQSlice *)slice
-{
+- (void)addSlice:(MQSlice *)slice {
     [slices addObject:slice];
 }
 
-- (BOOL)acceptsMouseEvents
-{
+- (BOOL)acceptsMouseEvents {
     return YES;
 }
 
-- (MQSlice *)sliceAtIndex:(int)index
-{
+- (MQSlice *)sliceAtIndex:(int)index {
     return [slices objectAtIndex:index];
 }
 
-- (MQSlice *)sliceForPoint:(NSPoint)p
-{
+- (MQSlice *)sliceForPoint:(NSPoint)p {
     int j;
     for (j = 0 ; j < [slices count]; j++)  {
         NSBezierPath *path = [[slices objectAtIndex:j] getBezierPath];
@@ -278,8 +231,7 @@
 }
 
 
-- (BOOL)acceptsFirstResponder
-{
+- (BOOL)acceptsFirstResponder {
     return YES;
 }
 
