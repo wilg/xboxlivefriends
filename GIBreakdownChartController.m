@@ -33,6 +33,12 @@
 	return @"GIBreakdownChartLoadNotification";
 }
 
+- (void)clearTab {
+    [pieGraph clearSlices];
+    [pieGraph setNeedsDisplay:YES];
+}
+
+
 - (void)displayGamerInfo:(NSString *)gamertag
 {
 	NSArray *theInfo = [XBGamesPlayedParser fetchWithTag:gamertag];
