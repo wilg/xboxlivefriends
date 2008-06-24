@@ -81,7 +81,7 @@ NSString* messageCenterURL = @"http://live.xbox.com/en-US/profile/MessageCenter/
 
 + (BOOL)isGoldMember {
 	NSString *theSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://live.xbox.com/en-US/profile/MessageCenter/SendMessage.aspx"]];
-	return ![theSource contains:@"You must be an Xbox Live Gold member to send messages."];
+	return ![theSource contains:@"You must be an Xbox LIVE Gold member to send messages."];
 }
 
 

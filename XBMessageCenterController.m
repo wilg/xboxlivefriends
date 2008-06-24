@@ -86,6 +86,7 @@
 
 - (void)loadMessageCenter
 {
+    //sometimes it does this twice at the same time to due threads
 	[records removeAllObjects];	
 
 	messages = [[XBMessagesParser messages] copy];
@@ -99,8 +100,10 @@
 	
 	[messagesTable reloadData];
 
+    NSLog(@"has chececked");
 	isGoldMember = [XBMessagesParser isGoldMember];
-	
+	    NSLog(@"afterballs");
+
 	//notify in dock and growl
 	[self badgeDockIconWithNumber:unreadCount];
 	
