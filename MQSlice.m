@@ -12,6 +12,7 @@
 
 @implementation MQSlice
 
+
 - (id)init  
 {
 	return [self initWithColor:[NSColor blueColor] texture:nil slice:10.0f message:@"Unknown Slice" dictionary:nil];

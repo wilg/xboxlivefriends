@@ -3,7 +3,7 @@
 //  
 //
 //  Created by John Carlyle on 11/12/06.
-//  Copyright 2006 __MyCompanyName__. All rights reserved.
+//  Copyright 2006 mindquirk. All rights reserved.
 //
 
 #import "MQSlice.h"
@@ -11,9 +11,9 @@
 #import "NSBezierPath+MCAdditions.h"
 #import "NSShadow+MCAdditions.h"
 
-//#define MIN(x, y) (x < y) ? x : y;
-
 @implementation MQPieGraphView
+
+@synthesize delegate, backgroundColor, lineColor, textColor, slices, clickedSlice, overSlice, size, padding, fadeFactor;
 
 - (void)awakeFromNib
 {
@@ -30,7 +30,7 @@
         autosize = YES;
         fadeFactor = .5;
         size = 50;
-        bg = [NSColor whiteColor];
+        backgroundColor = [NSColor whiteColor];
         lineColor = [NSColor blackColor];
         textColor = [NSColor blackColor];
         slices = [[NSMutableArray alloc] initWithCapacity:2];
@@ -41,36 +41,6 @@
     return self;
 }
 
-- (void)setDelegate:(id)dele
-{
-    [delegate release];
-    delegate = [dele retain];
-}
-
-- (id)getDelegate
-{
-    return delegate;
-}
-
-- (MQSlice *)getLastClicked
-{
-    return clickedSlice;
-}
-
-- (void)setFadeFactor:(float)f
-{
-    fadeFactor = f;
-}
-
-- (float)getFadeFactor
-{
-    return fadeFactor;
-}
-
-- (MQSlice *)getLastOver
-{
-    return overSlice;
-}
 
 - (void)clearSelection {
 	if (clickedSlice)
@@ -94,8 +64,8 @@
     }
 }
 
-- (void)reverseSort
-{
+- (void)reverseSort {
+
     int i, j;
     for (i = 1; i < [slices count]; i++)  {
         for (j = 0; j < [slices count] - i; j++)  {
@@ -108,23 +78,9 @@
     }
 }
 
+- (void)drawRect:(NSRect)rect   {
 
-- (MQSlice *)getSliceForPoint:(NSPoint)p
-{
-    int j;
-    for (j = 0 ; j < [slices count]; j++)  {
-        NSBezierPath *path = [[slices objectAtIndex:j] getBezierPath];
-        if ([path containsPoint:p])   {
-            return [slices objectAtIndex:j];
-        }
-    }
-    return nil;
-}
-
-
-- (void)drawRect:(NSRect)rect
-{
-    [bg set];
+    [backgroundColor set];
     [NSBezierPath fillRect:rect];
     
     int oldSize = size;
@@ -209,32 +165,6 @@
 }
 
 
-- (void)drawLegend:(MQSlice *)slice i:(int)i
-{
-    NSPoint drawPoint;
-    drawPoint.x = 17;
-    drawPoint.y = (i * 15) + 15;
-    
-    [NSBezierPath fillRect:NSMakeRect(drawPoint.x - 7, drawPoint.y + 10, 10, 10)];
-    
-    NSTextStorage *storage = [[NSTextStorage alloc] initWithString:[slice getMessage]];
-    [storage setForegroundColor:textColor];
-    NSLayoutManager *lm = [[NSLayoutManager alloc] init];
-    NSTextContainer *container = [[NSTextContainer alloc] init];
-    
-    [lm addTextContainer:container];
-    [container release];
-    [storage addLayoutManager:lm];
-    [lm release];
-    
-    NSRange glyphRange = [lm glyphRangeForTextContainer:container];
-    [self lockFocus];
-    [lm drawGlyphsForGlyphRange:glyphRange atPoint:drawPoint];
-    [self unlockFocus];
-    
-    [storage release];
-}
-
 - (void)updateView
 {
     [self recalibrateSliceSizes];
@@ -254,53 +184,6 @@
     }
 }
 
-- (BOOL)getDrawsLegend
-{
-    return drawLegend;
-}
-
-- (void)setDrawsLegend:(BOOL)s
-{
-    drawLegend = s;
-}
-
-
-- (BOOL)getAutosizes
-{
-    return autosize;
-}
-
-- (void)setAutosizes:(BOOL)s
-{
-    autosize = s;
-}
-
-
-- (void)setSize:(int)s
-{
-    size = s;
-}
-
-- (int)getSize
-{
-    return size;
-}
-
-- (void)setPadding:(float)pad
-{
-    padding = pad;
-}
-
-- (float)getPadding
-{
-    return padding;
-}
-
-- (void)addSlice:(MQSlice *)slice
-{
-    [slices addObject:slice];
-}
-
 - (void)removeSliceAtIndex:(int)index
 {
     [slices removeObjectAtIndex:index];
@@ -311,45 +194,6 @@
     [slices removeAllObjects];
 }
 
-
-- (MQSlice *)getSliceAtIndex:(int)index
-{
-    return [slices objectAtIndex:index];
-}
-
-- (void)setLineColor:(NSColor *)newColor
-{
-    [lineColor release];
-    lineColor = [newColor retain];
-}
-
-- (NSColor *)getLineColor
-{
-    return lineColor;
-}
-
-- (void)setTextColor:(NSColor *)newColor
-{
-    [textColor release];
-    textColor = [newColor retain];
-}
-
-- (NSColor *)getTextColor
-{
-    return textColor;
-}
-
-
-- (void)setBackground:(NSColor *)newColor
-{
-    [bg release];
-    bg = [newColor retain];
-}
-
-- (NSColor *)getBackground
-{
-    return bg;
-}
 
 - (void)mouseMoved:(NSEvent *)event
 {
@@ -400,16 +244,39 @@
 - (void)dealloc
 {
     [slices release];
-    [bg release];
+    [backgroundColor release];
     [textColor release];
     [lineColor release];
     [super dealloc];
+}
+
+- (void)addSlice:(MQSlice *)slice
+{
+    [slices addObject:slice];
 }
 
 - (BOOL)acceptsMouseEvents
 {
     return YES;
 }
+
+- (MQSlice *)sliceAtIndex:(int)index
+{
+    return [slices objectAtIndex:index];
+}
+
+- (MQSlice *)sliceForPoint:(NSPoint)p
+{
+    int j;
+    for (j = 0 ; j < [slices count]; j++)  {
+        NSBezierPath *path = [[slices objectAtIndex:j] getBezierPath];
+        if ([path containsPoint:p])   {
+            return [slices objectAtIndex:j];
+        }
+    }
+    return nil;
+}
+
 
 - (BOOL)acceptsFirstResponder
 {

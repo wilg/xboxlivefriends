@@ -10,8 +10,9 @@
     NSImage *texture;
     float slice, degrees;
     NSString *message;
-	BOOL shouldDisplay, light, useTexture;;
+	BOOL shouldDisplay, light, useTexture;
 }
+
 - (void)setCaptionData:(NSDictionary *)data;
 - (NSDictionary *)getCaptionData;
 

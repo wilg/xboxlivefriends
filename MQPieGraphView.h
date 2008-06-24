@@ -20,82 +20,48 @@
 @interface MQPieGraphView : NSView {
     id delegate;
     BOOL autosize, drawLegend;
-    NSColor *bg;
+    NSColor *backgroundColor;
     NSColor *lineColor;
     NSColor *textColor;
     NSMutableArray *slices;
     MQSlice *clickedSlice, *overSlice;
     int size;
     float padding, fadeFactor;
-    
 }
+
+@property(assign) id delegate;
+@property(copy) NSColor *backgroundColor;
+@property(assign) NSColor *lineColor;
+@property(assign) NSColor *textColor;
+@property(assign) NSMutableArray *slices;
+@property(assign) MQSlice *clickedSlice;
+@property(assign) MQSlice *overSlice;
+@property(assign) int size;
+@property(assign) float padding;
+@property(assign) float fadeFactor;
+
 //returns a slice depending on the point
-- (MQSlice *)getSliceForPoint:(NSPoint)p;
+- (MQSlice *)sliceForPoint:(NSPoint)p;
 
-//delegate stuff, set [view delegate:self]; in the class you want to get events
-- (void)setDelegate:(id)dele;
-- (id)getDelegate;
-
-//get last clicked stuff do this when you get events
-- (MQSlice *)getLastClicked;
-- (MQSlice *)getLastOver;
 - (void)clearSelection;
 
 //sorts the slices in order of size
 - (void)sort;
 - (void)reverseSort;
 
-//factor of fading
-- (void)setFadeFactor:(float)f;
-- (float)getFadeFactor;
-
-//sets and gets drawing of the legend default NO
-- (BOOL)getDrawsLegend;
-- (void)setDrawsLegend:(BOOL)s;
-
-//sets and gets autoResize default YES
-- (BOOL)getAutosizes;
-- (void)setAutosizes:(BOOL)s;
-
-//sets the lines between sections color default black
-- (void)setLineColor:(NSColor *)newColor;
-//gets the lines between sections color
-- (NSColor *)getLineColor;
-
-//set the radius
-- (void)setSize:(int)s;
-//get the radius (hook to a slider maybe?)
-- (int)getSize;
-
-//set padding
-- (void)setPadding:(float)pad;
-//get padding
-- (float)getPadding;
-
 //adds specified slice to draw list
 - (void)addSlice:(MQSlice *)slice;
 //removes slice at index to draw list
 - (void)removeSliceAtIndex:(int)index;
 //gets a slice at index
-- (MQSlice *)getSliceAtIndex:(int)index;
+- (MQSlice *)sliceAtIndex:(int)index;
 - (void)clearSlices;
 
-//set background color default white
-- (void)setBackground:(NSColor *)newColor;
-//get background color
-- (NSColor *)getBackground;
-
-//set text color default black
-- (void)setTextColor:(NSColor *)newColor;
-//get text color
-- (NSColor *)getTextColor;
 
 //call this to update the view after significant changes to data
 - (void)updateView;
 //called by update
 - (void)recalibrateSliceSizes;
-//DO NOT CALL THIS MANUALLY
-- (void)drawLegend:(MQSlice *)slice i:(int)i;
 
 //mouse stuff
 - (void)mouseMoved:(NSEvent *)event;

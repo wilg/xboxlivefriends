@@ -23,8 +23,7 @@
 {
     [pieGraph setDelegate:self];
 	[pieGraph setPadding:15.0];
-	[pieGraph setBackground:[NSColor colorWithCalibratedHue:1.0 saturation:0.0 brightness:0.2 alpha:1.0]];
-	[pieGraph setDrawsLegend:NO];
+	[pieGraph setBackgroundColor:[NSColor colorWithCalibratedHue:1.0 saturation:0.0 brightness:0.2 alpha:1.0]];
 	[pieGraph updateView];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabSelectionWillChange:) name:@"GamerInfoTabWillChange" object:nil];
 }
@@ -32,7 +31,6 @@
 - (NSString *)notificationName {
 	return @"GIBreakdownChartLoadNotification";
 }
-
 
 - (void)displayGamerInfo:(NSString *)gamertag
 {
@@ -131,7 +129,7 @@
 	}
 
 
-	MQSlice *slice = [pieGraph getLastClicked];
+	MQSlice *slice = [pieGraph clickedSlice];
 	
 	if (slice && slice != lastSlice) {
 		NSDictionary *data = [slice getCaptionData];
