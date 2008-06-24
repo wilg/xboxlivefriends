@@ -13,10 +13,10 @@
 
 @implementation XBMessageCenterController
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
 
 	records = [[NSMutableArray array] retain];
+    messagesAwareOf = [[NSMutableArray array] retain];
 	
 	isGoldMember = NO;
 	
@@ -29,6 +29,10 @@
 	
 }
 
+- (void)dealloc {
+    [messagesAwareOf release];
+    [super dealloc];
+}
 
 #pragma mark -
 #pragma mark NSTableView Delegate Methods
@@ -73,7 +77,7 @@
 }
 
 #pragma mark -
-#pragma mark Table Loading Methods
+#pragma mark Message Loading Methods
 
 - (void)friendsListRefreshed:(NSNotification *)notification {
 	[self loadMessageCenterThreaded];
@@ -100,12 +104,17 @@
 	
 	[messagesTable reloadData];
 
-    NSLog(@"has chececked");
 	isGoldMember = [XBMessagesParser isGoldMember];
-	    NSLog(@"afterballs");
 
-	//notify in dock and growl
+	//notify in dock
 	[self badgeDockIconWithNumber:unreadCount];
+    
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"GrowlNotify" object:
+//				
+//				[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:notificationName, @"New Message", [newFriend info], [[NSImage imageNamed:@"NSApplicationIcon"] TIFFRepresentation], nil] forKeys:[NSArray arrayWithObjects:@"GROWL_NOTIFICATION_NAME", @"GROWL_NOTIFICATION_TITLE", @"GROWL_NOTIFICATION_DESCRIPTION", @"GROWL_NOTIFICATION_ICON", nil]]
+//                
+//                ];
+
 	
 //	if ([myMessageListObject unreadCount] == 1)
 //		[GrowlController notifyWithTitle:@"New Message" description:@"You have one new message from Xbox Live." notificationName:@"New Message" iconImage:nil clickContext:nil];

@@ -26,10 +26,11 @@
 
 
 	IBOutlet WebView *sendMessageWebView;
-
+    
 	NSMutableArray *records;
 	NSArray *messages;
-	
+	NSMutableArray *messagesAwareOf;
+    
 	BOOL isGoldMember;
 }
 
