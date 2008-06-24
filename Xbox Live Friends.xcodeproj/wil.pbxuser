@@ -506,6 +506,13 @@
 			3B9DBC7F0E109FB20015F356 /* PBXTextBookmark */ = 3B9DBC7F0E109FB20015F356 /* PBXTextBookmark */;
 			3B9DBC810E109FB20015F356 /* PBXBookmark */ = 3B9DBC810E109FB20015F356 /* PBXBookmark */;
 			3B9DBC820E109FB20015F356 /* PBXTextBookmark */ = 3B9DBC820E109FB20015F356 /* PBXTextBookmark */;
+			3B9DBC8D0E109FC60015F356 /* PBXTextBookmark */ = 3B9DBC8D0E109FC60015F356 /* PBXTextBookmark */;
+			3B9DBC8F0E109FD40015F356 /* PBXTextBookmark */ = 3B9DBC8F0E109FD40015F356 /* PBXTextBookmark */;
+			3B9DBC900E109FD40015F356 /* PBXTextBookmark */ = 3B9DBC900E109FD40015F356 /* PBXTextBookmark */;
+			3B9DBC930E109FDB0015F356 /* PBXTextBookmark */ = 3B9DBC930E109FDB0015F356 /* PBXTextBookmark */;
+			3B9DBC940E109FDB0015F356 /* PBXTextBookmark */ = 3B9DBC940E109FDB0015F356 /* PBXTextBookmark */;
+			3B9DBC950E109FDB0015F356 /* PBXTextBookmark */ = 3B9DBC950E109FDB0015F356 /* PBXTextBookmark */;
+			3B9DBCA60E10A0920015F356 /* PBXTextBookmark */ = 3B9DBCA60E10A0920015F356 /* PBXTextBookmark */;
 			3BA2AB9F0B0D20C40079E072 = 3BA2AB9F0B0D20C40079E072 /* PBXTextBookmark */;
 			3BA2AC890B0D28EF0079E072 = 3BA2AC890B0D28EF0079E072 /* PBXTextBookmark */;
 			3BA2AD450B0D37680079E072 = 3BA2AD450B0D37680079E072 /* PBXTextBookmark */;
@@ -4123,18 +4130,30 @@
 		vrLoc = 0;
 	};
 	3B88A1EF0AE2BFA3008153B6 /* MQScriptController.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 30;
+		lastKnownFileType = sourcecode.c.h;
+		name = MQScriptController.h;
+		path = "/Users/wil/Documents/Xcode Projects/Checked Out/XLF/MQScriptController.h";
+		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {842, 906}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1022, 557}}";
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 273}";
 			sepNavVisRect = "{{0, 0}, {970, 906}}";
 		};
 	};
 	3B88A1F00AE2BFA3008153B6 /* MQScriptController.m */ = {
+		isa = PBXFileReference;
+		fileEncoding = 30;
+		lastKnownFileType = sourcecode.c.objc;
+		name = MQScriptController.m;
+		path = "/Users/wil/Documents/Xcode Projects/Checked Out/XLF/MQScriptController.m";
+		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {940, 906}}";
-			sepNavSelRange = "{1088, 0}";
-			sepNavVisRange = "{0, 2085}";
+			sepNavIntBoundsRect = "{{0, 0}, {1116, 840}}";
+			sepNavSelRange = "{31, 39}";
+			sepNavVisRange = "{0, 1645}";
 			sepNavVisRect = "{{0, 0}, {970, 906}}";
 		};
 	};
@@ -4585,6 +4604,7 @@
 	};
 	3B9DBC7C0E109FB20015F356 /* wil.pbxuser */ = {
 		isa = PBXFileReference;
+		lastKnownFileType = text;
 		name = wil.pbxuser;
 		path = "/Users/wil/Documents/Xcode Projects/Checked Out/XLF/Xbox Live Friends.xcodeproj/wil.pbxuser";
 		sourceTree = "<absolute>";
@@ -4629,9 +4649,83 @@
 	};
 	3B9DBC830E109FB20015F356 /* wil.pbxuser */ = {
 		isa = PBXFileReference;
+		lastKnownFileType = text;
 		name = wil.pbxuser;
 		path = "/Users/wil/Documents/Xcode Projects/Checked Out/XLF/Xbox Live Friends.xcodeproj/wil.pbxuser";
 		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1022, 95158}}";
+			sepNavSelRange = "{210772, 0}";
+			sepNavVisRange = "{678, 1309}";
+		};
+	};
+	3B9DBC8D0E109FC60015F356 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3B9DBC830E109FB20015F356 /* wil.pbxuser */;
+		name = "wil.pbxuser: 6745";
+		rLen = 0;
+		rLoc = 208056;
+		rType = 0;
+		vrLen = 2000;
+		vrLoc = 0;
+	};
+	3B9DBC8F0E109FD40015F356 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "error: NSAppleScript+HandlerCalls.h: No such file or directory";
+		fRef = 3B88A1F00AE2BFA3008153B6 /* MQScriptController.m */;
+		rLen = 1;
+		rLoc = 1;
+		rType = 1;
+	};
+	3B9DBC900E109FD40015F356 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3B88A1F00AE2BFA3008153B6 /* MQScriptController.m */;
+		name = "MQScriptController.m: 2";
+		rLen = 39;
+		rLoc = 31;
+		rType = 0;
+		vrLen = 1573;
+		vrLoc = 0;
+	};
+	3B9DBC930E109FDB0015F356 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3B9DBC830E109FB20015F356 /* wil.pbxuser */;
+		name = "wil.pbxuser: 6762";
+		rLen = 0;
+		rLoc = 208557;
+		rType = 0;
+		vrLen = 2000;
+		vrLoc = 0;
+	};
+	3B9DBC940E109FDB0015F356 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3B9DBC830E109FB20015F356 /* wil.pbxuser */;
+		name = "wil.pbxuser: 6762";
+		rLen = 0;
+		rLoc = 208557;
+		rType = 0;
+		vrLen = 2000;
+		vrLoc = 0;
+	};
+	3B9DBC950E109FDB0015F356 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3B88A1F00AE2BFA3008153B6 /* MQScriptController.m */;
+		name = "MQScriptController.m: 2";
+		rLen = 39;
+		rLoc = 31;
+		rType = 0;
+		vrLen = 2085;
+		vrLoc = 0;
+	};
+	3B9DBCA60E10A0920015F356 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3B9DBC830E109FB20015F356 /* wil.pbxuser */;
+		name = "wil.pbxuser: 6828";
+		rLen = 0;
+		rLoc = 210772;
+		rType = 0;
+		vrLen = 1309;
+		vrLoc = 678;
 	};
 	3BA2AB540B0D1D500079E072 /* MQSlice.h */ = {
 		isa = PBXFileReference;

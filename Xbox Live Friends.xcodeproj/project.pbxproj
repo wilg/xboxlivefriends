@@ -105,7 +105,6 @@
 		3B8629E90ABCC21A00BCA869 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B8629E80ABCC21A00BCA869 /* add.png */; };
 		3B862A410ABCCC5500BCA869 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B862A400ABCCC5500BCA869 /* SystemConfiguration.framework */; };
 		3B8871250CF3E2F7001A2849 /* ColorizeImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8871240CF3E2F7001A2849 /* ColorizeImage.m */; };
-		3B88A1F40AE2BFA3008153B6 /* MQScriptController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B88A1F00AE2BFA3008153B6 /* MQScriptController.m */; };
 		3B89B67C0DCCF7A4008ED8FA /* DefaultWebViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B89B67B0DCCF7A4008ED8FA /* DefaultWebViewDelegate.m */; };
 		3B89B6970DCCFFDC008ED8FA /* up_chevron.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B89B6960DCCFFDC008ED8FA /* up_chevron.png */; };
 		3B8C6C990A92A5B900DA570C /* XBFriendDefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8C6C970A92A5B900DA570C /* XBFriendDefaultsManager.m */; };
@@ -313,8 +312,6 @@
 		3B862A400ABCCC5500BCA869 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = /System/Library/Frameworks/SystemConfiguration.framework; sourceTree = "<absolute>"; };
 		3B8871230CF3E2F7001A2849 /* ColorizeImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorizeImage.h; sourceTree = "<group>"; };
 		3B8871240CF3E2F7001A2849 /* ColorizeImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorizeImage.m; sourceTree = "<group>"; };
-		3B88A1EF0AE2BFA3008153B6 /* MQScriptController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MQScriptController.h; sourceTree = "<group>"; };
-		3B88A1F00AE2BFA3008153B6 /* MQScriptController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = MQScriptController.m; sourceTree = "<group>"; };
 		3B89B67A0DCCF7A4008ED8FA /* DefaultWebViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultWebViewDelegate.h; sourceTree = "<group>"; };
 		3B89B67B0DCCF7A4008ED8FA /* DefaultWebViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultWebViewDelegate.m; sourceTree = "<group>"; };
 		3B89B6960DCCFFDC008ED8FA /* up_chevron.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up_chevron.png; sourceTree = "<group>"; };
@@ -446,8 +443,6 @@
 				3BEEAC1E0A94414100422957 /* MQFunctions.m */,
 				3BE062F90E05D461003F5824 /* NSString+Crop.h */,
 				3BE062FA0E05D461003F5824 /* NSString+Crop.m */,
-				3B88A1EF0AE2BFA3008153B6 /* MQScriptController.h */,
-				3B88A1F00AE2BFA3008153B6 /* MQScriptController.m */,
 				3B5CBA880A89380400024584 /* Delegates */,
 				3BB926740B24DD6300828D30 /* NonDraggableWebView.h */,
 				3BB926750B24DD6300828D30 /* NonDraggableWebView.m */,
@@ -1117,7 +1112,6 @@
 				3BCA92D50ABC712A002BD4E0 /* XBReputationView.m in Sources */,
 				3BFD38300ABDB6EC007A68B5 /* XBGame.m in Sources */,
 				3B2C53A70AD07E4400BA248D /* XBMessageSender.m in Sources */,
-				3B88A1F40AE2BFA3008153B6 /* MQScriptController.m in Sources */,
 				3BB9CC610B0D9F5A00C33FC2 /* MQPieGraphView.m in Sources */,
 				3BB9CC630B0D9F5A00C33FC2 /* MQSlice.m in Sources */,
 				3BB926770B24DD6300828D30 /* NonDraggableWebView.m in Sources */,
