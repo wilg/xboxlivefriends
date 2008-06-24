@@ -42,8 +42,7 @@
 
 }
 
-- (void)tableViewSelectionDidChange:(NSNotification *)aNotification
-{
+- (void)tableViewSelectionDidChange:(NSNotification *)aNotification {
 	int theRow = [messagesTable selectedRow];
 	if (theRow != -1){
 		XBMessage *msg = [messages objectAtIndex:theRow];
@@ -79,6 +78,7 @@
 #pragma mark Message Loading Methods
 
 - (void)friendsListRefreshed:(NSNotification *)notification {
+	NSLog(@"message center threaded load");
 	[self loadMessageCenterThreaded];
 }
 
@@ -121,8 +121,8 @@
 
 }
 
-- (void)loadFullMessage:(XBMessage *)message
-{
+- (void)loadFullMessage:(XBMessage *)message {
+
 	NSString *toInsert;
 
 	if (message != nil) {
@@ -149,10 +149,9 @@
 	[[messageWebView mainFrame] loadHTMLString:toInsert baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]]];
 }
 
-- (IBAction)openMessageCenter:(id)sender
-{
-		[messageCenterWindow makeKeyAndOrderFront:sender];
-		[self loadMessageCenterThreaded];
+- (IBAction)openMessageCenter:(id)sender {
+	[messageCenterWindow makeKeyAndOrderFront:sender];
+	[self loadMessageCenterThreaded];
 }
 
 - (void)badgeDockIconWithNumber:(int)num
@@ -198,16 +197,15 @@
 
 }
 
-- (void)displaySimpleErrorMessage:(NSString *)headline withMessage:(NSString *)message attachedTo:(NSWindow *)theWindow
-{
+- (void)displaySimpleErrorMessage:(NSString *)headline withMessage:(NSString *)message attachedTo:(NSWindow *)theWindow {
 	NSAlert *alert = [[NSAlert alloc] init];
 	[alert addButtonWithTitle:@"OK"];
 	[alert setMessageText:headline];
 	[alert setInformativeText:message];
 	[alert setAlertStyle:NSWarningAlertStyle];
-	if (theWindow == nil){
+	if (theWindow == nil) {
 		[alert runModal];
-	}else{
+	} else {
 		[alert beginSheetModalForWindow:theWindow modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
 	}
 }
@@ -217,14 +215,14 @@
 #pragma mark -
 #pragma mark Deleting
 
-- (IBAction)deleteMessage:(id)sender
-{
+- (IBAction)deleteMessage:(id)sender {
 	int theRow = [messagesTable selectedRow];
 	if (theRow != -1){
 		NSString *theURL = [NSString stringWithFormat:@"%@%@",@"http://live.xbox.com/en-US/profile/MessageCenter/RemoveMessage.aspx?bk=0&mx=", [[messages objectAtIndex:theRow] identifier]];
 		[NSString stringWithContentsOfURL:[NSURL URLWithString:theURL]];
+		[self tableViewSelectionDidChange:nil];
 		[self loadMessageCenterThreaded];
-	}else
+	} else
 		NSBeep();
 }
 
@@ -233,8 +231,7 @@
 #pragma mark -
 #pragma mark Sending
 
-- (IBAction)openComposePanel:(id)sender
-{
+- (IBAction)openComposePanel:(id)sender {
 	[self sendMessageToFriend:nil];
 }
 
@@ -267,8 +264,7 @@
 
 
 
-- (IBAction)replyButton:(id)sender
-{
+- (IBAction)replyButton:(id)sender {
 	int theRow = [messagesTable selectedRow];
 	if (theRow != -1){
 		XBMessage *msg = [messages objectAtIndex:theRow];
@@ -278,26 +274,24 @@
 }
 
 
-- (void)didEndSheet:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo
-{
+- (void)didEndSheet:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
     [sheet orderOut:self];
 }
 
-- (IBAction)sendMessage:(id)sender
-{
+- (IBAction)sendMessage:(id)sender {
+
 	[SendMessage sendMessage:[messageContents string] to:[recipient stringValue] usingWebView:sendMessageWebView];
 
 	[NSApp endSheet:composePanel];
 }
 
-- (IBAction)cancelComposePanel:(id)sender
-{
+- (IBAction)cancelComposePanel:(id)sender {
 	[NSApp endSheet:composePanel];
 }
 
 
-- (BOOL)textView:(NSTextView *)aTextView shouldChangeTextInRange:(NSRange)affectedCharRange replacementString:(NSString *)replacementString
-{
+- (BOOL)textView:(NSTextView *)aTextView shouldChangeTextInRange:(NSRange)affectedCharRange replacementString:(NSString *)replacementString {
+
 	NSString *theString = [messageContents string];
 	int numChars = [theString length];
 	[charactersUsedText setStringValue:[NSString stringWithFormat:@"%i of 250 char", numChars]];
