@@ -8,13 +8,13 @@
 		<string key="IBDocument.HIToolboxVersion">352.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="2"/>
+			<integer value="3713"/>
 			<integer value="3528"/>
 			<integer value="3579"/>
-			<integer value="2"/>
-			<integer value="3630"/>
-			<integer value="327"/>
 			<integer value="734"/>
-			<integer value="29"/>
+			<integer value="3630"/>
+			<integer value="326"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1353,6 +1353,52 @@
 							</object>
 						</object>
 					</object>
+					<object class="NSMenuItem" id="102226668">
+						<reference key="NSMenu" ref="581222338"/>
+						<bool key="NSIsHidden">YES</bool>
+						<string key="NSTitle">Debug</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<object class="NSCustomResource" key="NSImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">NSSmartBadgeTemplate</string>
+						</object>
+						<reference key="NSOnImage" ref="366204859"/>
+						<reference key="NSMixedImage" ref="107370164"/>
+						<string key="NSAction">submenuAction:</string>
+						<object class="NSMenu" key="NSSubmenu" id="126708491">
+							<string key="NSTitle">Debug</string>
+							<object class="NSMutableArray" key="NSMenuItems">
+								<bool key="EncodedWithXMLCoder">YES</bool>
+								<object class="NSMenuItem" id="711904675">
+									<reference key="NSMenu" ref="126708491"/>
+									<string key="NSTitle">Show Sign In</string>
+									<string key="NSKeyEquiv"/>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="366204859"/>
+									<reference key="NSMixedImage" ref="107370164"/>
+								</object>
+								<object class="NSMenuItem" id="452468225">
+									<reference key="NSMenu" ref="126708491"/>
+									<bool key="NSIsDisabled">YES</bool>
+									<bool key="NSIsSeparator">YES</bool>
+									<string key="NSTitle"/>
+									<string key="NSKeyEquiv"/>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="366204859"/>
+									<reference key="NSMixedImage" ref="107370164"/>
+								</object>
+								<object class="NSMenuItem" id="850147593">
+									<reference key="NSMenu" ref="126708491"/>
+									<string key="NSTitle">Manual Reload</string>
+									<string key="NSKeyEquiv"/>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="366204859"/>
+									<reference key="NSMixedImage" ref="107370164"/>
+								</object>
+							</object>
+						</object>
+					</object>
 				</object>
 				<string key="NSName">_NSMainMenu</string>
 			</object>
@@ -1832,15 +1878,7 @@
 				<string key="NSMaxSize">{3.40282e+38, 3.40282e+38}</string>
 			</object>
 			<object class="NSUserDefaultsController" id="723292381">
-				<object class="NSMutableArray" key="NSDeclaredKeys">
-					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>ShowDebugMenu</string>
-					<string>DebugMenuHidden</string>
-				</object>
 				<bool key="NSSharedInstance">YES</bool>
-			</object>
-			<object class="NSCustomObject" id="516454828">
-				<string key="NSClassName">InspectorWindowDelegate</string>
 			</object>
 			<object class="NSWindowTemplate" id="200295471">
 				<int key="NSWindowStyleMask">271</int>
@@ -3323,9 +3361,6 @@ A</bytes>
 				<string key="NSMinSize">{213, 129}</string>
 				<string key="NSMaxSize">{3.40282e+38, 3.40282e+38}</string>
 				<string key="NSFrameAutosaveName">source log</string>
-			</object>
-			<object class="NSCustomObject" id="320491292">
-				<string key="NSClassName">XBGamercardWindowController</string>
 			</object>
 			<object class="NSCollectionViewItem" id="121354604"/>
 			<object class="NSWindowTemplate" id="552710231">
@@ -5898,6 +5933,30 @@ AAAAAAAAAAB0ZXh0AAAAAENvcHlyaWdodCBBcHBsZSwgSW5jLiwgMjAwOAA</bytes>
 					</object>
 					<int key="connectionID">3683</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">makeKeyAndOrderFront:</string>
+						<reference key="source" ref="446578309"/>
+						<reference key="destination" ref="711904675"/>
+					</object>
+					<int key="connectionID">3715</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">debugMenu</string>
+						<reference key="source" ref="213458689"/>
+						<reference key="destination" ref="102226668"/>
+					</object>
+					<int key="connectionID">3718</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">FetchButton:</string>
+						<reference key="source" ref="512903019"/>
+						<reference key="destination" ref="850147593"/>
+					</object>
+					<int key="connectionID">3719</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -6015,6 +6074,7 @@ AAAAAAAAAAB0ZXh0AAAAAENvcHlyaWdodCBBcHBsZSwgSW5jLiwgMjAwOAA</bytes>
 							<reference ref="802844785"/>
 							<reference ref="998508122"/>
 							<reference ref="331444649"/>
+							<reference ref="102226668"/>
 						</object>
 						<reference key="parent" ref="562906951"/>
 						<string key="objectName">MainMenu</string>
@@ -6539,12 +6599,6 @@ AAAAAAAAAAB0ZXh0AAAAAENvcHlyaWdodCBBcHBsZSwgSW5jLiwgMjAwOAA</bytes>
 						<string key="objectName">Controller</string>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">691</int>
-						<reference key="object" ref="516454828"/>
-						<reference key="parent" ref="562906951"/>
-						<string key="objectName">InspectorWindowDelegate</string>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">702</int>
 						<reference key="object" ref="200295471"/>
 						<object class="NSMutableArray" key="children">
@@ -7010,12 +7064,6 @@ AAAAAAAAAAB0ZXh0AAAAAENvcHlyaWdodCBBcHBsZSwgSW5jLiwgMjAwOAA</bytes>
 						<int key="objectID">910</int>
 						<reference key="object" ref="781972379"/>
 						<reference key="parent" ref="308353246"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">1556</int>
-						<reference key="object" ref="320491292"/>
-						<reference key="parent" ref="562906951"/>
-						<string key="objectName">Gamercard Window Controller</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">2046</int>
@@ -8540,6 +8588,41 @@ AAAAAAAAAAB0ZXh0AAAAAENvcHlyaWdodCBBcHBsZSwgSW5jLiwgMjAwOAA</bytes>
 						<reference key="object" ref="319143197"/>
 						<reference key="parent" ref="877404760"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">3712</int>
+						<reference key="object" ref="102226668"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="126708491"/>
+						</object>
+						<reference key="parent" ref="581222338"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">3713</int>
+						<reference key="object" ref="126708491"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="711904675"/>
+							<reference ref="850147593"/>
+							<reference ref="452468225"/>
+						</object>
+						<reference key="parent" ref="102226668"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">3714</int>
+						<reference key="object" ref="711904675"/>
+						<reference key="parent" ref="126708491"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">3716</int>
+						<reference key="object" ref="850147593"/>
+						<reference key="parent" ref="126708491"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">3720</int>
+						<reference key="object" ref="452468225"/>
+						<reference key="parent" ref="126708491"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -8583,8 +8666,6 @@ AAAAAAAAAAB0ZXh0AAAAAENvcHlyaWdodCBBcHBsZSwgSW5jLiwgMjAwOAA</bytes>
 					<string>154.ImportedFromIB2</string>
 					<string>155.IBPluginDependency</string>
 					<string>155.ImportedFromIB2</string>
-					<string>1556.IBPluginDependency</string>
-					<string>1556.ImportedFromIB2</string>
 					<string>156.IBPluginDependency</string>
 					<string>156.ImportedFromIB2</string>
 					<string>157.IBPluginDependency</string>
@@ -8927,6 +9008,12 @@ AAAAAAAAAAB0ZXh0AAAAAENvcHlyaWdodCBBcHBsZSwgSW5jLiwgMjAwOAA</bytes>
 					<string>3630.IBUserGuides</string>
 					<string>3644.IBPluginDependency</string>
 					<string>3645.IBPluginDependency</string>
+					<string>3712.IBPluginDependency</string>
+					<string>3713.IBEditorWindowLastContentRect</string>
+					<string>3713.IBPluginDependency</string>
+					<string>3714.IBPluginDependency</string>
+					<string>3716.IBPluginDependency</string>
+					<string>3720.IBPluginDependency</string>
 					<string>405.IBPluginDependency</string>
 					<string>405.ImportedFromIB2</string>
 					<string>416.IBEditorWindowLastContentRect</string>
@@ -8967,8 +9054,6 @@ AAAAAAAAAAB0ZXh0AAAAAENvcHlyaWdodCBBcHBsZSwgSW5jLiwgMjAwOAA</bytes>
 					<string>578.ImportedFromIB2</string>
 					<string>58.IBPluginDependency</string>
 					<string>58.ImportedFromIB2</string>
-					<string>691.IBPluginDependency</string>
-					<string>691.ImportedFromIB2</string>
 					<string>702.IBEditorWindowLastContentRect</string>
 					<string>702.IBPluginDependency</string>
 					<string>702.IBWindowTemplateEditedContentRect</string>
@@ -9121,9 +9206,7 @@ AAAAAAAAAAB0ZXh0AAAAAENvcHlyaWdodCBBcHBsZSwgSW5jLiwgMjAwOAA</bytes>
 					<reference ref="9"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
-					<string>{{787, 807}, {230, 103}}</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<reference ref="9"/>
+					<string>{{779, 826}, {230, 103}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -9247,7 +9330,7 @@ AAAAAAAAAAB0ZXh0AAAAAENvcHlyaWdodCBBcHBsZSwgSW5jLiwgMjAwOAA</bytes>
 					<reference ref="9"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
-					<string>{{446, 910}, {402, 20}}</string>
+					<string>{{466, 1120}, {465, 20}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
 					<string>{{191, 576}, {402, 20}}</string>
@@ -9522,6 +9605,12 @@ AAAAAAAAAAB0ZXh0AAAAAENvcHlyaWdodCBBcHBsZSwgSW5jLiwgMjAwOAA</bytes>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>{{856, 1067}, {155, 53}}</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
 					<string>{{579, 448}, {288, 189}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -9555,8 +9644,6 @@ AAAAAAAAAAB0ZXh0AAAAAENvcHlyaWdodCBBcHBsZSwgSW5jLiwgMjAwOAA</bytes>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
 					<string>{{273, 851}, {270, 233}}</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<reference ref="9"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -9728,7 +9815,7 @@ AAAAAAAAAAB0ZXh0AAAAAENvcHlyaWdodCBBcHBsZSwgSW5jLiwgMjAwOAA</bytes>
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">3711</int>
+			<int key="maxID">3720</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -9765,8 +9852,17 @@ AAAAAAAAAAB0ZXh0AAAAAENvcHlyaWdodCBBcHBsZSwgSW5jLiwgMjAwOAA</bytes>
 					<string key="className">Controller</string>
 					<string key="superclassName">NSObject</string>
 					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">sourceLogger</string>
-						<string key="NS.object.0">NSTextView</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSMutableArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>debugMenu</string>
+							<string>sourceLogger</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>NSMenuItem</string>
+							<string>NSTextView</string>
+						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
@@ -9957,22 +10053,6 @@ AAAAAAAAAAB0ZXh0AAAAAENvcHlyaWdodCBBcHBsZSwgSW5jLiwgMjAwOAA</bytes>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">InspectorWindowDelegate</string>
-					<string key="superclassName">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">InspectorWindowDelegate.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">InspectorWindowDelegate</string>
-					<string key="superclassName">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBUserSource</string>
-						<string key="minorKey"/>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
 					<string key="className">LoginController</string>
 					<string key="superclassName">NSObject</string>
 					<object class="NSMutableDictionary" key="actions">
@@ -10114,41 +10194,6 @@ AAAAAAAAAAB0ZXh0AAAAAENvcHlyaWdodCBBcHBsZSwgSW5jLiwgMjAwOAA</bytes>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">XBGamercardWindowController</string>
-					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSMutableArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>gamercardWindow</string>
-							<string>gamertagField</string>
-							<string>reputationView</string>
-							<string>scoreField</string>
-							<string>tileImageView</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>NSWindow</string>
-							<string>NSTextField</string>
-							<string>XBReputationView</string>
-							<string>NSTextField</string>
-							<string>NSImageView</string>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">XBGamercardWindowController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">XBGamercardWindowController</string>
-					<string key="superclassName">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBUserSource</string>
-						<string key="minorKey"/>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
 					<string key="className">XBMessageCenterController</string>
 					<string key="superclassName">NSObject</string>
 					<object class="NSMutableDictionary" key="actions">
@@ -10211,22 +10256,6 @@ AAAAAAAAAAB0ZXh0AAAAAENvcHlyaWdodCBBcHBsZSwgSW5jLiwgMjAwOAA</bytes>
 				<object class="IBPartialClassDescription">
 					<string key="className">XBMessageCenterController</string>
 					<string key="superclassName">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBUserSource</string>
-						<string key="minorKey"/>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">XBReputationView</string>
-					<string key="superclassName">NSView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">XBReputationView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">XBReputationView</string>
-					<string key="superclassName">NSView</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBUserSource</string>
 						<string key="minorKey"/>

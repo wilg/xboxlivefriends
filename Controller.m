@@ -11,15 +11,13 @@
 #import "Controller.h"
 #import "GrowlController.h"
 
-
 @implementation Controller
 
 #pragma mark -
 #pragma mark Application Delegates
 
 
-- (id)init;
-{
+- (id)init {
 	
 	if (![super init])
 	return nil;
@@ -30,11 +28,7 @@
 	[XBFriendDefaultsManager setupDefaults];
 	
 	refreshTimer = nil;
-	
-	// load images in a seperate thread
-	//[XBImageLoaderThread setShouldLoad:NO];
-	//[NSThread detachNewThreadSelector:@selector(imageLoaderThread:) toTarget:[XBImageLoaderThread class] withObject:nil];
-	
+		
 	[[GrowlController alloc] init];
 	
 	queue = [[NSOperationQueue alloc] init];
@@ -60,7 +54,8 @@
 }
 
 - (void)awakeFromNib {
-
+	if (![[NSUserDefaults standardUserDefaults] boolForKey:@"ShowDebugMenu"])
+		[[debugMenu menu] removeItem:debugMenu];
 }
 
 
@@ -73,7 +68,7 @@
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"FriendsListNeedsRefresh" object:nil];
 	}
 	else {
-		NSLog(@"tried refres");
+		NSLog(@"Tried to refresh, but the sign in panel was open.");
 	}
 }
 

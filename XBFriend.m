@@ -40,8 +40,37 @@ NSString *halo2StatsURL = @"http://www.bungie.net/Stats/PlayerStats.aspx?player=
 {
 	NSMutableDictionary *record = [NSMutableDictionary dictionary];
 	
-	NSString *theGT = [self realNameWithFormat:XBUnknownNameDisplayStyle];
 	NSString *myInfo = [self info];
+	
+	
+	NSString *primaryTitle;
+	NSString *secondaryTitle;
+	
+	XBNameDisplayStyle displayStyle = [XBFriend preferredNameStyle];
+	
+	if ([self realName]){
+		if (displayStyle == XBRealNameDisplayStyle) {
+			primaryTitle = [self realName];
+			secondaryTitle = nil;
+		}
+		if (displayStyle == XBRealGamertagNameDisplayStyle) {
+			primaryTitle = [self realName];
+			secondaryTitle = [self gamertag];
+		}
+		if (displayStyle == XBGamertagRealNameDisplayStyle) {
+			primaryTitle = [self gamertag];
+			secondaryTitle = [self realName];
+		}
+		if (displayStyle == XBGamertagNameDisplayStyle) {
+			primaryTitle = [self gamertag];
+			secondaryTitle = nil;
+		}
+	}
+	else {
+		primaryTitle = [self gamertag];
+		secondaryTitle = nil;
+	}
+
 		
 	if ([[self status] isEqual:@"Online"])
 		[record setObject:[NSImage imageNamed:@"green_bead"] forKey:@"bead"];
@@ -56,8 +85,7 @@ NSString *halo2StatsURL = @"http://www.bungie.net/Stats/PlayerStats.aspx?player=
 		[record setObject:[NSImage imageNamed:@"blue_bead"] forKey:@"bead"];
 		
 	[record setObject:[self tileImageWithOfflineGrayedOut] forKey:@"tile"];
-	[record setObject:[NSDictionary dictionaryWithObjectsAndKeys:theGT, @"gamertag", myInfo,  @"textstatus", [self status], @"onlinestatus", nil] forKey:@"gt_and_status"];
-	[record setObject:theGT forKey:@"gt"];
+	[record setObject:[NSDictionary dictionaryWithObjectsAndKeys:[self realNameWithFormat:XBUnknownNameDisplayStyle], @"gamertag", myInfo,  @"textstatus", [self status], @"onlinestatus", primaryTitle, @"primaryTitle", secondaryTitle, @"secondaryTitle", nil] forKey:@"gt_and_status"];
 
 	return record;
 }
@@ -137,44 +165,50 @@ NSString *halo2StatsURL = @"http://www.bungie.net/Stats/PlayerStats.aspx?player=
 	return tileURL;
 }
 
-- (NSString *)realName
-{
-	realName = [XBFriendDefaultsManager realNameForTag:[self gamertag]];
-	return realName;
+- (NSString *)realName {
+	
+	if (realName)
+		return realName;
+	
+	NSString *name = [XBFriendDefaultsManager realNameForTag:[self gamertag]];
+	if (name == nil || [name  isEqualToString:@""] || [name  isEqualToString:@" "] || [name  length] < 1)
+		name = nil;
+		
+	realName = name;
+	
+	return name;
 }
 
-- (NSString *)realNameWithFormat:(XBNameDisplayStyle)theSpecifiedFormat
-{
-
-	NSString *theFormattedName = [self gamertag];
++ (XBNameDisplayStyle)preferredNameStyle {
 	int userNamePref;
-	if (theSpecifiedFormat == XBUnknownNameDisplayStyle){
-		NSNumber *styleNumber = [[NSUserDefaults standardUserDefaults] objectForKey:@"nameDisplayStyle"];
-		if (styleNumber == nil)
-			userNamePref = XBRealNameDisplayStyle;
-		else
-			userNamePref = [styleNumber intValue];
-	}
+	NSNumber *styleNumber = [[NSUserDefaults standardUserDefaults] objectForKey:@"nameDisplayStyle"];
+	if (styleNumber == nil)
+		userNamePref = XBRealNameDisplayStyle;
 	else
-		userNamePref = theSpecifiedFormat;
+		userNamePref = [styleNumber intValue];
+	return userNamePref;
+}
+
+- (NSString *)realNameWithFormat:(XBNameDisplayStyle)format {
+
+	NSString *name = [self gamertag];
 	
-	if ([self realName] != nil){
-		if ([[self realName]  isNotEqualTo:@""]){
-			if ([[self realName]  isNotEqualTo:@" "]){
-				if ([[self realName]  length] >= 1){
-					if (userNamePref == XBRealNameDisplayStyle)
-						theFormattedName = [self realName];
-					if (userNamePref == XBRealGamertagNameDisplayStyle)
-						theFormattedName = [NSString stringWithFormat:@"%@ (%@)", [self realName], [self gamertag]];
-					if (userNamePref == XBGamertagRealNameDisplayStyle)
-						theFormattedName = [NSString stringWithFormat:@"%@ (%@)", [self gamertag], [self realName]];
-					if (userNamePref == XBGamertagNameDisplayStyle)
-						theFormattedName = [self gamertag];
-				}
-			}
-		}
+	if (!format || format == XBUnknownNameDisplayStyle){
+		format = [XBFriend preferredNameStyle];
 	}
-	return theFormattedName;
+	
+	if ([self realName]){
+		if (format == XBRealNameDisplayStyle)
+			name = [self realName];
+		if (format == XBRealGamertagNameDisplayStyle)
+			name = [NSString stringWithFormat:@"%@ (%@)", [self realName], [self gamertag]];
+		if (format == XBGamertagRealNameDisplayStyle)
+			name = [NSString stringWithFormat:@"%@ (%@)", [self gamertag], [self realName]];
+		if (format == XBGamertagNameDisplayStyle)
+			name = [self gamertag];
+	}
+	
+	return name;
 }
 
 

@@ -49,7 +49,8 @@ typedef enum {
 - (NSImage *)tileImageWithOfflineGrayedOut;
 
 - (NSString *)realName;
-- (NSString *)realNameWithFormat:(XBNameDisplayStyle)theSpecifiedFormat;
++ (XBNameDisplayStyle)preferredNameStyle;
+- (NSString *)realNameWithFormat:(XBNameDisplayStyle)format;
 - (void)setRealName:(NSString *)rn;
 - (int)iconStyle;
 - (void)setIconStyle:(int)style;

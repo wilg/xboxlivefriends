@@ -17,6 +17,8 @@
 
 	BOOL isRegistered;
 	NSOperationQueue *queue;
+	
+	IBOutlet NSMenuItem *debugMenu;
 }
 
 - (NSOperationQueue *)operationQueue;
