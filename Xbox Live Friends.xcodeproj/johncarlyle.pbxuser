@@ -1,31 +1,93 @@
 // !$*UTF8*$!
 {
-	073674870A4506D800792C64 /* PBXTextBookmark */ = {
+	0749DB5A0E10A7F700F5D8CF /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		comments = "warning: 'FriendsList' may not respond to '-createRecord:'";
-		fRef = 3B91BE4B099D2633008EB5D4 /* FriendsList.m */;
-		rLen = 1;
-		rLoc = 55;
-		rType = 1;
-	};
-	073674940A45072300792C64 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 3B91BE4B099D2633008EB5D4 /* FriendsList.m */;
-		name = "FriendsList.m: 56";
+		fRef = 3B91BE4A099D2633008EB5D4 /* Controller.h */;
+		name = "Controller.h: 15";
 		rLen = 0;
-		rLoc = 1396;
+		rLoc = 226;
 		rType = 0;
-		vrLen = 1152;
-		vrLoc = 286;
+		vrLen = 368;
+		vrLoc = 0;
+	};
+	0771C32F0E10A70A005EA0CB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3B91BE4B099D2633008EB5D4 /* Controller.m */;
+		name = "Controller.m: 6";
+		rLen = 0;
+		rLoc = 94;
+		rType = 0;
+		vrLen = 900;
+		vrLoc = 666;
+	};
+	0771C3300E10A70A005EA0CB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3BF266670AE34CC2001A3A26 /* Xbox Live Friends.h */;
+		name = "Xbox Live Friends.h: 14";
+		rLen = 25;
+		rLoc = 210;
+		rType = 0;
+		vrLen = 361;
+		vrLoc = 0;
+	};
+	0771C3310E10A70A005EA0CB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3B91BE4A099D2633008EB5D4 /* Controller.h */;
+		name = "Controller.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 368;
+		vrLoc = 0;
+	};
+	0771C3320E10A70A005EA0CB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3B91BE4A099D2633008EB5D4 /* Controller.h */;
+		name = "Controller.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 368;
+		vrLoc = 0;
+	};
+	0771C3330E10A70A005EA0CB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3B91BE4B099D2633008EB5D4 /* Controller.m */;
+		name = "Controller.m: 6";
+		rLen = 0;
+		rLoc = 94;
+		rType = 0;
+		vrLen = 900;
+		vrLoc = 666;
+	};
+	0771C3340E10A70A005EA0CB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3BF266670AE34CC2001A3A26 /* Xbox Live Friends.h */;
+		name = "Xbox Live Friends.h: 14";
+		rLen = 25;
+		rLoc = 210;
+		rType = 0;
+		vrLen = 361;
+		vrLoc = 0;
+	};
+	0771C3350E10A70A005EA0CB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3B91BE4A099D2633008EB5D4 /* Controller.h */;
+		name = "Controller.h: 15";
+		rLen = 0;
+		rLoc = 226;
+		rType = 0;
+		vrLen = 368;
+		vrLoc = 0;
 	};
 	07F879AC09A7EFD900E77895 /* Xbox Live Friends */ = {
 		isa = PBXExecutable;
-		activeArgIndex = 2147483647;
 		activeArgIndices = (
 		);
 		argumentStrings = (
 		);
 		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
 		configStateDict = {
 		};
 		customDataFormattersEnabled = 1;
@@ -49,6 +111,7 @@
 		fallbackIsa = XCSourceControlManager;
 		isSCMEnabled = 0;
 		scmConfiguration = {
+			repositoryName = "Xbox Live Friends (Beanstalk)";
 		};
 		scmType = "";
 	};
@@ -57,8 +120,8 @@
 		indexTemplatePath = "";
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeArchitecture = i386;
 		activeBuildConfigurationName = Debug;
-		activeBuildStyle = 073674690A45050600792C64 /* Development */;
 		activeExecutable = 07F879AC09A7EFD900E77895 /* Xbox Live Friends */;
 		activeTarget = 8D1107260486CEB800E47090 /* Xbox Live Friends */;
 		codeSenseManager = 07F879BB09A7EFDA00E77895 /* Code sense */;
@@ -71,7 +134,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					243,
+					657,
 					20,
 					48,
 					43,
@@ -88,53 +151,61 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 172295430;
-			PBXWorkspaceStateSaveDate = 172295430;
+			PBXConfiguration.PBXFileTableDataSource3.XCSCMDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					20,
+					604,
+					20,
+					48.16259765625,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_SCM_ColumnID,
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 235972597;
+			PBXWorkspaceStateSaveDate = 235972597;
 		};
 		perUserProjectItems = {
-			073674870A4506D800792C64 /* PBXTextBookmark */ = 073674870A4506D800792C64 /* PBXTextBookmark */;
-			073674940A45072300792C64 /* PBXTextBookmark */ = 073674940A45072300792C64 /* PBXTextBookmark */;
+			0749DB5A0E10A7F700F5D8CF /* PBXTextBookmark */ = 0749DB5A0E10A7F700F5D8CF /* PBXTextBookmark */;
+			0771C32F0E10A70A005EA0CB = 0771C32F0E10A70A005EA0CB /* PBXTextBookmark */;
+			0771C3300E10A70A005EA0CB = 0771C3300E10A70A005EA0CB /* PBXTextBookmark */;
+			0771C3310E10A70A005EA0CB = 0771C3310E10A70A005EA0CB /* PBXTextBookmark */;
+			0771C3320E10A70A005EA0CB = 0771C3320E10A70A005EA0CB /* PBXTextBookmark */;
+			0771C3330E10A70A005EA0CB = 0771C3330E10A70A005EA0CB /* PBXTextBookmark */;
+			0771C3340E10A70A005EA0CB = 0771C3340E10A70A005EA0CB /* PBXTextBookmark */;
+			0771C3350E10A70A005EA0CB = 0771C3350E10A70A005EA0CB /* PBXTextBookmark */;
 		};
 		sourceControlManager = 07F879BA09A7EFDA00E77895 /* Source Control */;
 		userBuildSettings = {
 		};
 	};
-	3B3A93DE0A159FA3004CC19C /* PolishedWindow.m */ = {
+	3B91BE4A099D2633008EB5D4 /* Controller.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {948, 3052}}";
-			sepNavSelRange = "{4512, 0}";
-			sepNavVisRect = "{{0, 1229}, {948, 609}}";
-			sepNavWindowFrame = "{{15, 3}, {987, 738}}";
-		};
-	};
-	3B91BE48099D2633008EB5D4 /* hello.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {711, 429}}";
-			sepNavSelRange = "{135, 0}";
-			sepNavVisRect = "{{0, 0}, {711, 429}}";
-			sepNavWindowFrame = "{{84, 120}, {750, 558}}";
-		};
-	};
-	3B91BE49099D2633008EB5D4 /* hello.m */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {711, 672}}";
-			sepNavSelRange = "{136, 0}";
-			sepNavVisRect = "{{0, 0}, {711, 429}}";
-			sepNavWindowFrame = "{{107, 99}, {750, 558}}";
-		};
-	};
-	3B91BE4A099D2633008EB5D4 /* FriendsList.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {711, 429}}";
-			sepNavSelRange = "{122, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {835, 730}}";
+			sepNavSelRange = "{226, 0}";
+			sepNavVisRange = "{0, 368}";
 			sepNavVisRect = "{{0, 0}, {711, 429}}";
 			sepNavWindowFrame = "{{61, 141}, {750, 558}}";
 		};
 	};
-	3B91BE4B099D2633008EB5D4 /* FriendsList.m */ = {
+	3B91BE4B099D2633008EB5D4 /* Controller.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {968, 1638}}";
-			sepNavSelRange = "{1396, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {896, 1260}}";
+			sepNavSelRange = "{94, 0}";
+			sepNavVisRange = "{701, 865}";
 			sepNavVisRect = "{{0, 222}, {968, 606}}";
 			sepNavWindowFrame = "{{0, 5}, {1007, 735}}";
 		};
@@ -144,12 +215,7 @@
 			sepNavWindowFrame = "{{15, 3}, {987, 738}}";
 		};
 	};
-	3B91BE6A099D288E008EB5D4 /* warning.png */ = {
-		uiCtxt = {
-			sepNavWindowFrame = "{{153, 57}, {750, 558}}";
-		};
-	};
-	3BE1632109A7D81400D2E3F2 /* FLParser.m */ = {
+	3BE1632109A7D81400D2E3F2 /* FriendsListParser.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {848, 2002}}";
 			sepNavSelRange = "{389, 0}";
@@ -157,12 +223,19 @@
 			sepNavWindowFrame = "{{38, 162}, {750, 558}}";
 		};
 	};
-	3BE1632209A7D81400D2E3F2 /* FLParser.h */ = {
+	3BE1632209A7D81400D2E3F2 /* FriendsListParser.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {711, 429}}";
 			sepNavSelRange = "{274, 0}";
 			sepNavVisRect = "{{0, 0}, {711, 429}}";
 			sepNavWindowFrame = "{{15, 183}, {750, 558}}";
+		};
+	};
+	3BF266670AE34CC2001A3A26 /* Xbox Live Friends.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {755, 346}}";
+			sepNavSelRange = "{85, 0}";
+			sepNavVisRange = "{0, 361}";
 		};
 	};
 	8D1107260486CEB800E47090 /* Xbox Live Friends */ = {
