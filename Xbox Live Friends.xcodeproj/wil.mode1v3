@@ -231,6 +231,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -286,13 +288,12 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>13</integer>
-									<integer>9</integer>
-									<integer>0</integer>
+									<integer>100</integer>
+									<integer>99</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {331, 961}}</string>
+							<string>{{0, 773}, {331, 961}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -313,7 +314,7 @@
 							<real>309</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>431 157 1366 1020 0 0 1920 1178 </string>
+						<string>431 158 1366 1020 0 0 1920 1178 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -324,14 +325,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>FriendsListModeView.m</string>
+								<string>FriendsListController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -339,11 +338,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>FriendsListModeView.m</string>
+										<string>FriendsListController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>3B4F1FFC0E1097A40025E0AE</string>
+										<string>3B4F20250E109CD60025E0AE</string>
 										<key>history</key>
 										<array>
 											<string>3B5B59380A93B3F5003A5EA5</string>
@@ -555,10 +554,10 @@
 											<string>3B4F1F8D0E108DBC0025E0AE</string>
 											<string>3B4F1F900E108DBC0025E0AE</string>
 											<string>3B4F1FC70E1093900025E0AE</string>
-											<string>3B4F1FC90E1093900025E0AE</string>
 											<string>3B4F1FCA0E1093900025E0AE</string>
+											<string>3B4F20210E109CD60025E0AE</string>
+											<string>3B4F20220E109CD60025E0AE</string>
 											<string>3B4F1FF30E1097650025E0AE</string>
-											<string>3B4F1FF40E1097650025E0AE</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -885,6 +884,8 @@
 											<string>3B4F1FF50E1097650025E0AE</string>
 											<string>3B4F1FF60E1097650025E0AE</string>
 											<string>3B4F1FF70E1097650025E0AE</string>
+											<string>3B4F20230E109CD60025E0AE</string>
+											<string>3B4F20240E109CD60025E0AE</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -898,7 +899,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1013, 974}}</string>
 								<key>RubberWindowFrame</key>
-								<string>431 157 1366 1020 0 0 1920 1178 </string>
+								<string>431 158 1366 1020 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -918,7 +919,7 @@
 								<key>Frame</key>
 								<string>{{0, 979}, {1013, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>431 157 1366 1020 0 0 1920 1178 </string>
+								<string>431 158 1366 1020 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -1076,7 +1077,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>3B4F1FFD0E1097A40025E0AE</string>
 		<string>3B4F1D9C0E106E020025E0AE</string>
 		<string>3B4F1D9D0E106E020025E0AE</string>
 		<string>3BE723190CD50F270066572E</string>
@@ -1086,7 +1086,7 @@
 		<string>/Users/wil/Documents/Xcode Projects/Checked Out/XLF/Xbox Live Friends.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>431 157 1366 1020 0 0 1920 1178 </string>
+	<string>431 158 1366 1020 0 0 1920 1178 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
