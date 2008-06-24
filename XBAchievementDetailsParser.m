@@ -18,46 +18,24 @@
 	return self;
 }
 
-+ (NSArray *)fetchWithGameID:(NSString *)gameID tag:(NSString *)tag
-{
-	NSMutableString *mutableGamerTag = [[tag mutableCopy] autorelease];
-	[mutableGamerTag replaceOccurrencesOfString:@" " withString:@"+" options:0 range:NSMakeRange(0, [mutableGamerTag length])];
-	return [self fetchWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://live.xbox.com/en-US/profile/Achievements/ViewAchievementDetails.aspx?tid=%@&compareTo=%@", gameID, mutableGamerTag]]];
++ (NSArray *)fetchWithGameID:(NSString *)gameID tag:(NSString *)tag {
+	return [self fetchWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://live.xbox.com/en-US/profile/Achievements/ViewAchievementDetails.aspx?tid=%@&compareTo=%@", gameID, [tag replace:@" " with:@"+"]]]];
 }
 
-+ (NSArray *)fetchWithURL:(NSURL *)URL
-{	
++ (NSArray *)fetchWithURL:(NSURL *)URL {	
 
+	NSString *theSource = [[NSString stringWithContentsOfURL:URL encoding:NSUTF8StringEncoding error:nil] mutableCopy];
+	
 	//make arrays
-	NSMutableArray *rows = [[NSMutableArray alloc] init];
-
-	//download source
-	NSString *editString = [[NSString stringWithContentsOfURL:URL encoding:NSISOLatin1StringEncoding error:nil] mutableCopy];
-
-	while ([editString rangeOfString:@"<td class=\"XbcAchYouDetailsName\">"].location != NSNotFound )	{
-		NSRange range;
-		int offset;
-
-		range = [editString rangeOfString:@"<td class=\"XbcAchYouDetailsName\">"];
-		offset = range.location + range.length;
-
-		range = [editString rangeOfString:@"</tr>" options:0 range:NSMakeRange(offset, [editString length] - offset)];
-
-		NSString *thisRow = [editString substringWithRange:NSMakeRange(offset, range.location - offset)];
-		
-		[rows addObject:thisRow];
-				
-		editString = [editString substringFromIndex:range.location];
-	}
+	NSArray *rows = [theSource cropRowsMatching:@"<td class=\"XbcAchYouDetailsName\">" rowEnd:@"</tr>"];
 	
 
 	//convert to list of XBAchievements
-	NSMutableArray *achievementArray = [[NSMutableArray alloc] init];
-	int i;
-	for (i = 0; i < [rows count]; i++){
+	NSMutableArray *achievementArray = [NSMutableArray array];
+	
+	for (NSString *thisAchievementSource in rows){
 
 		XBAchievement *thisAchievement = [XBAchievement achievement];
-		NSMutableString *thisAchievementSource = [[rows objectAtIndex:i] mutableCopy];
 
 
 		NSString *theirArea;
@@ -73,12 +51,12 @@
 		}
 
 
-		[thisAchievement setTitle:[MQFunctions cropString:thisAchievementSource between:@"<strong class=\"XbcAchievementsTitle\">" and:@"</strong>"]];
-		[thisAchievement setSubtitle:[MQFunctions cropString:thisAchievementSource between:@"</p></div><p>" and:@"</p>"]];
+		[thisAchievement setTitle:[thisAchievementSource cropFrom:@"<strong class=\"XbcAchievementsTitle\">" to:@"</strong>"]];
+		[thisAchievement setSubtitle:[thisAchievementSource cropFrom:@"</p></div><p>" to:@"</p>"]];
 		
 
 		NSNumber *myValue;
-		NSString *myValueString = [MQFunctions cropString:myArea between:@"</div><p><strong>" and:@" <img src="];
+		NSString *myValueString = [myArea cropFrom:@"</div><p><strong>" to:@" <img src="];
 		if ([myValueString isEqualToString:@"--"])
 			myValue = nil;
 		else
@@ -86,7 +64,7 @@
 
 		
 		NSNumber *theirValue;
-		NSString *theirValueString = [MQFunctions cropString:theirArea between:@"</div><p><strong>" and:@" <img src="];
+		NSString *theirValueString = [theirArea cropFrom:@"</div><p><strong>" to:@" <img src="];
 		if ([theirValueString isEqualToString:@"--"])
 			theirValue = nil;
 		else
@@ -95,14 +73,12 @@
 
 		[thisAchievement determineAchievementSettingsFromMyValue:myValue
 													  theirValue:theirValue
-													  myTile:[MQFunctions cropString:myArea between:@"<img src=\"" and:@"\""]
-													  theirTile:[MQFunctions cropString:theirArea between:@"<img src=\"" and:@"\""]
+													  myTile:[myArea cropFrom:@"<img src=\"" to:@"\""]
+													  theirTile:[theirArea cropFrom:@"<img src=\"" to:@"\""]
 		];
 				
 
 		[achievementArray addObject:thisAchievement];
-
-		[thisAchievementSource release];
 	}
 
 

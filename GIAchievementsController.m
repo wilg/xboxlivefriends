@@ -289,13 +289,11 @@
 
 	NSArray *achievementArray = [XBAchievementDetailsParser fetchWithGameID:gameID tag:[self lastFetchTag]];
 	NSString *achievementDetailsSource = @"";
-	NSString *theRow = [NSString stringWithContentsOfFile:[NSString stringWithFormat:@"%@%@", [[NSBundle mainBundle] resourcePath], @"/achievement_row.htm"] encoding:NSMacOSRomanStringEncoding error:NULL];
+	NSString *rowSource = [NSString stringWithContentsOfFile:[NSString stringWithFormat:@"%@%@", [[NSBundle mainBundle] resourcePath], @"/achievement_row.htm"] encoding:NSMacOSRomanStringEncoding error:NULL];
 
-	int i;
-	for (i = 0; i < [achievementArray count]; i++){
+	for (XBAchievement *theAchievement in achievementArray){
 
-			NSMutableString *currentEditRow = [theRow mutableCopy];
-			XBAchievement *theAchievement = [achievementArray objectAtIndex:i];
+			NSString *row = [[rowSource copy] autorelease];
 			
 			NSString *disabledString;
 			if ([theAchievement iHaveAchievement] || [theAchievement theyHaveAchievement]) {
@@ -304,26 +302,26 @@
 			else {
 				disabledString = @"achievement_disabled";
 			}
-			[currentEditRow replaceOccurrencesOfString:@"$achievement_disabled" withString:disabledString options:0 range:NSMakeRange(0, [currentEditRow length])];
+			
+			row = [row replace:@"$achievement_disabled" with:disabledString];
 
 			NSString *achievementValue;
 			if ([theAchievement achievementValue] != 0)
 				achievementValue = [NSString stringWithFormat:@"<span class='achievement_value'>%@<img src='gamerscore_icon.png' class='gamerscore' /></span>", [theAchievement achievementValue]];
 			else
 				achievementValue = @"";
-				
-			[currentEditRow replaceOccurrencesOfString:@"$achievement_value" withString:achievementValue options:0 range:NSMakeRange(0, [currentEditRow length])];
+			
+			row = [row replace:@"$achievement_value" with:achievementValue];
+			row = [row replace:@"$achievement_title" with:[theAchievement title]];
+			row = [row replace:@"$achievement_subtitle" with:[theAchievement subtitle]];
+			row = [row replace:@"$tile_url" with:[[theAchievement tileURL] absoluteString]];
+			row = [row replace:@"$their_checkmark" with:[self checkmark:[theAchievement theyHaveAchievement]]];
+			row = [row replace:@"$your_checkmark" with:[self checkmark:[theAchievement iHaveAchievement]]];
+
+			
+			achievementDetailsSource = [achievementDetailsSource stringByAppendingString:row];			
 			
 			
-			[currentEditRow replaceOccurrencesOfString:@"$achievement_title" withString:[theAchievement title] options:0 range:NSMakeRange(0, [currentEditRow length])];
-			[currentEditRow replaceOccurrencesOfString:@"$achievement_subtitle" withString:[theAchievement subtitle] options:0 range:NSMakeRange(0, [currentEditRow length])];
-			[currentEditRow replaceOccurrencesOfString:@"$tile_url" withString:[[theAchievement tileURL] absoluteString] options:0 range:NSMakeRange(0, [currentEditRow length])];
-
-			[currentEditRow replaceOccurrencesOfString:@"$their_checkmark" withString:[self checkmark:[theAchievement theyHaveAchievement]] options:0 range:NSMakeRange(0, [currentEditRow length])];
-			[currentEditRow replaceOccurrencesOfString:@"$your_checkmark" withString:[self checkmark:[theAchievement iHaveAchievement]] options:0 range:NSMakeRange(0, [currentEditRow length])];
-
-			achievementDetailsSource = [achievementDetailsSource stringByAppendingString:currentEditRow];
-			[currentEditRow release];
 	}
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"GIStopProgressIndicator" object:nil];
 
