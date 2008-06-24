@@ -1,52 +1,35 @@
-
-
 #import <Cocoa/Cocoa.h>
 
-
 @interface MQSlice : NSObject {
-    NSDictionary *captionData;
-    NSBezierPath *path;
-    NSColor *color, *colorizedTexture;
-    NSImage *texture;
-    float slice, degrees;
+
+	BOOL identifier, shouldDisplay;
+
     NSString *message;
-	BOOL shouldDisplay, light, useTexture;
+    NSDictionary *captionData;
+	
+    NSBezierPath *path;
+    NSColor *color;
+	
+    float size, degreeSize;
+	
 }
 
-- (void)setCaptionData:(NSDictionary *)data;
-- (NSDictionary *)getCaptionData;
+//sorting
+@property(assign) BOOL identifier;
+@property(assign) BOOL shouldDisplay;
 
-- (void)setLight:(BOOL)l;
-- (BOOL)getLight;
+// caption data
+@property(retain) NSString *message;
+@property(retain) NSDictionary *captionData;
 
-- (void)setUseTexture:(BOOL)t;
-- (BOOL)getUseTexture;
-- (NSColor *)generateColorizedTexture;
-- (void)generateTexture;
+//drawing data
+@property(retain) NSBezierPath *path;
+@property(retain) NSColor *color;
 
-- (void)setBezierPath:(NSBezierPath *)newPath;
-- (NSBezierPath *)getBezierPath;
+//sizing
+@property(assign) float size;
+@property(assign) float degreeSize;
 
-- (void)setImage:(NSImage *)image;
-- (NSImage *)getImage;
-
-- (void)setColor:(NSColor *)newColor;
-- (NSColor *)getColor;
-- (NSColor *)untexturedColor;
-
-- (void)setSlice:(float)newSlice;
-- (float)getSlice;
-
-- (void)setMessage:(NSString *)newMessage;
-- (NSString *)getMessage;
-
-- (float)getDegrees;
-- (void)setDegrees:(float)newDegree;
-
-- (BOOL)shouldDisplay;
-- (void)setShouldDisplay:(BOOL)x;
-
-+ (MQSlice *)sliceWithColor:(NSColor *)theColor texture:(NSImage *)tex slice:(float)theSlice message:(NSString *)theMessage captionData:(NSDictionary *)dict;
-- (id)initWithColor:(NSColor *)theColor texture:(NSImage *)tex slice:(float)theSlice message:(NSString *)theMessage dictionary:(NSDictionary *)dict;
++ (MQSlice *)slice;
 
 @end

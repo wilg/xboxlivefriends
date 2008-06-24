@@ -15,18 +15,19 @@
 #import "Xbox Live Friends.h"
 #import "GIBreakdownChartController.h"
 #import "XBGamesPlayedParser.h"
+#import "ColorizeImage.h"
 
 #define round(x) ((x)>=0?(long)((x)+0.5):(long)((x)-0.5))
 
 @implementation GIBreakdownChartController
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     [pieGraph setDelegate:self];
 	[pieGraph setPadding:15.0];
 	[pieGraph setBackgroundColor:[NSColor colorWithCalibratedHue:1.0 saturation:0.0 brightness:0.2 alpha:1.0]];
-	[pieGraph updateView];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabSelectionWillChange:) name:@"GamerInfoTabWillChange" object:nil];
+	[pieGraph setNeedsDisplay:YES];
+
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabWillChange:) name:@"GamerInfoTabWillChange" object:nil];
 }
 
 - (NSString *)notificationName {
@@ -39,25 +40,25 @@
 }
 
 
-- (void)displayGamerInfo:(NSString *)gamertag
-{
+- (void)displayGamerInfo:(NSString *)gamertag {
 	NSArray *theInfo = [XBGamesPlayedParser fetchWithTag:gamertag];
-//	[self setLastFetch:[theInfo copy]];
 	[self displayPieChart:theInfo];
 }
 
 
-- (void)displayPieChart:(NSArray *)gameList
-{
+- (void)displayPieChart:(NSArray *)gameList {
+
 	[self doInfoPopAt:NSZeroPoint withSlice:nil];
 	[gameList retain];
-	[pieGraph clearSlices];
+
 	NSImage *textureImage = [NSImage imageNamed:@"pie_texture.jpg"];
 	
 	float totalScore = 0.0;
 	float otherScore = 0.0;
 	
-	if([gameList count] != 0){
+	lastColorUsed = 0;
+	
+	if([gameList count] != 0) {
 	
 		for (XBGame *thisGameCount in gameList) {
 			totalScore += [[thisGameCount theirScore] floatValue];
@@ -84,7 +85,16 @@
 				[dict setObject:[NSString stringWithFormat:@"%i%%", round(percent)] forKey:@"percent"];
 				[dict setObject:gameIcon forKey:@"image"];
 				[dict setObject:[MQFunctions flattenHTML:[thisGame name]] forKey:@"title"];
-				[pieGraph addSlice:[MQSlice sliceWithColor:[self colorForSlice] texture:textureImage slice:score message:[thisGame name] captionData:[dict copy]]];
+				
+				
+				MQSlice *slice = [MQSlice slice];
+				[slice setColor:[NSColor colorWithPatternImage:[ColorizeImage colorizeImage:textureImage withColor:[self colorForSlice]]]];
+				[slice setSize:score];
+				[slice setMessage:[thisGame name]];
+				[slice setCaptionData:[dict copy]];
+				[slice setShouldDisplay:shouldDisplaySlice];
+				
+				[pieGraph addSlice:slice];
 			}
 			else
 				otherScore += score;
@@ -92,15 +102,14 @@
 		}		
 		
 	}
-	else
-		NSLog(@"empty list");
 	
 	// if (otherScore > 0.0)
 	// [pieGraph addSlice:[MQSlice sliceWithColor:[MQFunctions colorFromHexRGB:@"666666"] slice:otherScore message:@"Other Games"]];
 	
 	[pieGraph sort];
-	[pieGraph updateView];
-
+	[pieGraph recalibrateSliceSizes];
+	[pieGraph setNeedsDisplay:YES];
+	
 }
 
 - (NSColor *)colorForSlice
@@ -135,11 +144,10 @@
 		[pieGraph clearSelection];
 	}
 
-
-	MQSlice *slice = [pieGraph clickedSlice];
+	MQSlice *slice = [pieGraph lastClickedSlice];
 	
 	if (slice && slice != lastSlice) {
-		NSDictionary *data = [slice getCaptionData];
+		NSDictionary *data = [slice captionData];
 		[sliceCaption setStringValue:[data objectForKey:@"score"]];
 		[sliceTitle setStringValue:[data objectForKey:@"title"]];
 		[percentField setStringValue:[data objectForKey:@"percent"]];
@@ -150,35 +158,20 @@
 	[self doInfoPopAt:[[pieGraph window] convertBaseToScreen:[event locationInWindow]] withSlice:slice];
 }
 
-- (void)mouseMoved:(NSEvent *)event
-{
-}
-
 - (void)doInfoPopAt:(NSPoint)position withSlice:(MQSlice *)slice {
 
-
     if (slice) {
-	
-	
 		if (!infoPop) {
-		
 			infoPop = [[ClickableAttachedWindow alloc] initWithView:infoView attachedToPoint:position onSide:MAPositionTop];
 			[infoPop setDelegate:self];
 			[infoPop setViewMargin:10.0];
 			[infoPop setBackgroundColor:[NSColor colorWithCalibratedWhite:0 alpha:0.7]];
 			[[pieGraph window] addChildWindow:infoPop ordered:NSWindowAbove];
-
 		}
-				
-
 		[infoPop setPoint:position side:MAPositionTop];
-	
-
-		
-		
-    } else {
-		[self closeInfoPop];
     }
+	else
+		[self closeInfoPop];
 
 }
 
@@ -191,15 +184,25 @@
 	}
 }
 
--(void)tabSelectionWillChange:(NSNotification *)notification {
-	[self closeInfoPop];
-	[pieGraph clearSelection];
+- (void)tabBecameVisible {
+	if ([pieGraph window])
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifiedToCloseInfoPop:) name:NSWindowDidResizeNotification object:[pieGraph window]];
+}
+
+- (void)tabWillChange:(NSNotification *)notification {
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidResizeNotification object:[pieGraph window]];
+	if (infoPop) {
+		[self closeInfoPop];
+		[pieGraph clearSelection];
+	}
 }
 
 
-
-- (void)tabBecameVisible {
-	[[pieGraph window] makeFirstResponder:pieGraph];
+- (void)notifiedToCloseInfoPop:(NSNotification *)notification {
+	if (infoPop) {
+		[self closeInfoPop];
+		[pieGraph clearSelection];
+	}
 }
 
 

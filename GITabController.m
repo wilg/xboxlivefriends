@@ -14,7 +14,7 @@
 @synthesize lastFetch, lastFetchTag;
 @dynamic errorForTab;
 
-- (id)init	{
+- (id)init {
 	if (![super init])
 	return nil;
 	
@@ -24,27 +24,23 @@
 	return self;
 }
 
-- (NSString *)notificationName
-{
+- (NSString *)notificationName {
 	// Override this in your controller
 	return @"AddNotificationNameHere";
 }
 
-- (BOOL)postsDoneNotificationAutomatically
-{
+- (BOOL)postsDoneNotificationAutomatically {
 	// you may override this in your controller
 	return true;
 }
 
-- (BOOL)threadedLoad
-{
+- (BOOL)threadedLoad {
 	// you may override this in your controller
 	return true;
 }
 
 
-- (void)notifiedToLoad:(NSNotification *)notification
-{
+- (void)notifiedToLoad:(NSNotification *)notification {
 	[self tabBecameVisible];
 	NSString *gamertag = [[[notification object] copy] autorelease];
 	@try{
@@ -83,16 +79,11 @@
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"GIPaneDoneLoading" object:nil];
 }
 
-- (void)tabLoadThread:(NSString *)gamertag 
-{
-    //NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-
+- (void)tabLoadThread:(NSString *)gamertag  {
 	[self displayGamerInfo:gamertag];
 
 	if ([self postsDoneNotificationAutomatically])
 		[self loadingComplete];
-	
-	//[pool release];
 }
 
 - (NSString *)errorForTab {
@@ -112,9 +103,7 @@
 }
 
 
-- (void)displayGamerInfo:(NSString *)gamertag
-{
-
+- (void)displayGamerInfo:(NSString *)gamertag {
 
 }
 

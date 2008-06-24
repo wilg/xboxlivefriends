@@ -13,11 +13,7 @@
 
 @implementation MQPieGraphView
 
-@synthesize delegate, backgroundColor, slices, clickedSlice, overSlice, padding, fadeFactor;
-
-- (void)awakeFromNib {
-    [[self window] makeFirstResponder:self];
-}
+@synthesize delegate, backgroundColor, slices, padding, fadeFactor;
 
 - (id)initWithFrame:(NSRect)frameRect {
 
@@ -25,11 +21,11 @@
     
     if (self)   {
 		
+		currentIdentifier = 5;
+		
 		[self setFadeFactor:0.5];
 		[self setBackgroundColor:[NSColor whiteColor]];
 		[self setSlices:[NSMutableArray array]];
-		[self setClickedSlice:nil];
-		[self setOverSlice:nil];
 		
     }
     
@@ -39,51 +35,27 @@
 - (void)dealloc {
     [slices release];
     [backgroundColor release];
-	[clickedSlice release];
-	[overSlice release];
     [super dealloc];
 }
 
 
 - (void)clearSelection {
-	if (clickedSlice)
-		[clickedSlice setLight:FALSE];
-	clickedSlice = nil;
-	overSlice = nil;
+	highlightedSliceIdentifier = 0;
 	[self setNeedsDisplay:YES];
 }
 
 - (void)sort {
-    int i, j;
-    for (i = 1; i < [slices count]; i++)  {
-        for (j = 0; j < [slices count] - i; j++)  {
-            MQSlice *a = [slices objectAtIndex:j];
-            MQSlice *b = [slices objectAtIndex:j+1];
-            if ([a getSlice] > [b getSlice])   {
-                [slices exchangeObjectAtIndex:j withObjectAtIndex:j+1];
-            }
-        }
-    }
-}
-
-- (void)reverseSort {
-    int i, j;
-    for (i = 1; i < [slices count]; i++)  {
-        for (j = 0; j < [slices count] - i; j++)  {
-            MQSlice *a = [slices objectAtIndex:j];
-            MQSlice *b = [slices objectAtIndex:j+1];
-            if ([a getSlice] < [b getSlice])   {
-                [slices exchangeObjectAtIndex:j withObjectAtIndex:j+1];
-            }
-        }
-    }
+	[self setSlices:[[[slices sortedArrayUsingSelector:@selector(compare:)] mutableCopy] autorelease]];
 }
 
 - (void)drawRect:(NSRect)rect {
 
 	NSGradient *backgroundGradient = [[NSGradient alloc] initWithStartingColor:backgroundColor endingColor:[NSColor colorWithCalibratedWhite:0.1 alpha:1.0]];
+
 	[backgroundGradient drawInRect:rect angle:-90];
     
+	[backgroundGradient release];
+	
 	int size = MIN(rect.size.width / 2 - padding, rect.size.height / 2 - padding);
     
     NSPoint centerPoint;
@@ -112,69 +84,73 @@
 	//the angle we start at and go around
 	float angle = 90.0f;
 	
+	NSShadow *sliceDropShadow = [[NSShadow alloc] initWithColor:[NSColor colorWithCalibratedWhite:0 alpha:.5] offset:NSMakeSize(0, 0.0) blurRadius:6.0];
+	
     for (MQSlice *slice in slices)  {
 		[NSGraphicsContext saveGraphicsState];
-		
-		//setup shadow
-		NSShadow *dropShadow = [[NSShadow alloc] initWithColor:[NSColor colorWithCalibratedWhite:0 alpha:.4] offset:NSMakeSize(0, 0.0) blurRadius:6.0];
-		
 		
 		//get the path for the slice
 		NSBezierPath *sliceShape = [NSBezierPath bezierPath];
 		[sliceShape moveToPoint:centerPoint];
-		[sliceShape appendBezierPathWithArcWithCenter:centerPoint radius:size startAngle:angle - 0.01 endAngle:angle + [slice getDegrees] + 0.01];
+		[sliceShape appendBezierPathWithArcWithCenter:centerPoint radius:size startAngle:angle - 0.02 endAngle:angle + [slice degreeSize] + 0.02];
 		
 		//tell the slice what we're up to
-		[slice setBezierPath:sliceShape];
+		[slice setPath:sliceShape];
 		
 
 		// draw drop shadow
-		[NSGraphicsContext saveGraphicsState];
-		[dropShadow set];
-		[sliceShape fill];
-		[NSGraphicsContext restoreGraphicsState];
+		if (![self inLiveResize]) {
+			[NSGraphicsContext saveGraphicsState];
+			[sliceDropShadow set];
+			[sliceShape fill];
+			[NSGraphicsContext restoreGraphicsState];
+		}
 		
 		//draw fill
 		[NSGraphicsContext saveGraphicsState];
-		if (![slice getLight]) {
-			NSColor *theColor = [slice getLight] ? [slice untexturedColor] : [slice getColor];
+		if (highlightedSliceIdentifier == [slice identifier]) {
+			NSGradient *highlightGradient = [[NSGradient alloc] initWithStartingColor:[NSColor colorWithCalibratedWhite:.506 alpha:1.0] endingColor:[NSColor colorWithCalibratedWhite:.376 alpha:1.0]];
+			[highlightGradient drawInBezierPath:sliceShape angle:angle];
+				
+			if (![self inLiveResize]) {
+
+				NSShadow *highlightedInnerShadow = [[NSShadow alloc] initWithColor:[NSColor colorWithCalibratedWhite:0 alpha:.9] offset:NSMakeSize(0, 0.0) blurRadius:55.0];
+				[sliceShape fillWithInnerShadow:highlightedInnerShadow];
+				[highlightGradient release];
+			}
+
+		}
+		else {
+			NSColor *theColor = [slice color];
 			[theColor set];
 			[sliceShape fill];
 		}
-		else {
-			NSGradient *highlightGradient = [[NSGradient alloc] initWithStartingColor:[NSColor colorWithCalibratedWhite:.506 alpha:1.0] endingColor:[NSColor colorWithCalibratedWhite:.376 alpha:1.0]];
-			[highlightGradient drawInBezierPath:sliceShape angle:angle];
-
-			NSShadow *highlightedInnerShadow = [[NSShadow alloc] initWithColor:[NSColor colorWithCalibratedWhite:0 alpha:.9] offset:NSMakeSize(0, 0.0) blurRadius:55.0];
-			[sliceShape fillWithInnerShadow:highlightedInnerShadow];
-			[highlightGradient release];
-		}
 		[NSGraphicsContext restoreGraphicsState];
 
-
-		angle += [slice getDegrees];
-		[dropShadow release];
+		angle += [slice degreeSize];
 		
 		[NSGraphicsContext restoreGraphicsState];
 	}
 
+	[sliceDropShadow release];
+
 }
 
-- (void)updateView {
-    [self recalibrateSliceSizes];
+- (void)viewDidEndLiveResize {
     [self setNeedsDisplay:YES];
 }
 
 - (void)recalibrateSliceSizes {
-    int i, j;
-    float total = 0.0f;
-    for (i = 0 ; i < [slices count]; i++)  {
-        int sliceSize = [[slices objectAtIndex:i] getSlice];
-        total += sliceSize;
+	NSMutableArray *array = [NSMutableArray array];
+    float total = 0.0;
+	for (MQSlice *slice in slices) {
+		total += [slice size];
+	}
+	for (MQSlice *slice in slices) {
+        [slice setDegreeSize:[slice size] / total * 360.0f];
+		[array addObject:slice];
     }
-    for (j = 0 ; j < [slices count]; j++)  {
-        [[slices objectAtIndex:j] setDegrees:[[slices objectAtIndex:j] getSlice] / total * 360.0f];
-    }
+	[self setSlices:array];
 }
 
 - (void)removeSliceAtIndex:(int)index {
@@ -189,42 +165,41 @@
 - (void)mouseDown:(NSEvent *)event {
 
     NSPoint point = [self convertPoint:[event locationInWindow] fromView:nil];
-	[clickedSlice release];
-	clickedSlice = nil;
-	for (MQSlice *slice in slices) {
-		[slice setLight:FALSE];
-        if ([[slice getBezierPath] containsPoint:point])   {
-            clickedSlice = [slice retain];
-            [slice setLight:TRUE];
-        }
-	}
-	
+	highlightedSliceIdentifier = [[self sliceForPoint:point] identifier];
     [self setNeedsDisplay:YES];
 	
-    if (delegate)   {
+    if (delegate)
         [delegate mouseDown:event];
-    }
 
 }
 
+- (MQSlice *)lastClickedSlice {
+	return [self sliceWithIdentifier:highlightedSliceIdentifier];
+}
+
+
 - (void)addSlice:(MQSlice *)slice {
+	[slice setIdentifier:currentIdentifier];
     [slices addObject:slice];
+	currentIdentifier++;
 }
 
 - (BOOL)acceptsMouseEvents {
     return YES;
 }
 
-- (MQSlice *)sliceAtIndex:(int)index {
-    return [slices objectAtIndex:index];
+- (MQSlice *)sliceWithIdentifier:(int)i {
+    for (MQSlice *slice in slices) {
+		if ([slice identifier] == i)
+			return slice;
+	}
+	return nil;
 }
 
-- (MQSlice *)sliceForPoint:(NSPoint)p {
-    int j;
-    for (j = 0 ; j < [slices count]; j++)  {
-        NSBezierPath *path = [[slices objectAtIndex:j] getBezierPath];
-        if ([path containsPoint:p])   {
-            return [slices objectAtIndex:j];
+- (MQSlice *)sliceForPoint:(NSPoint)point {
+    for (MQSlice *slice in slices) {
+        if ([[slice path] containsPoint:point]) {
+            return slice;
         }
     }
     return nil;

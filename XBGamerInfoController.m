@@ -29,7 +29,6 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(paneDoneLoading:) name:@"GIPaneDoneLoading" object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestFailed:) name:@"GIRequestFailed" object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gamercardLoaded:) name:@"GIGamercardLoaded" object:nil];
-
 	
 	return self;
 }
