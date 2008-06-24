@@ -22,6 +22,9 @@
 	[bio setStringValue:@""];
 	[location setStringValue:@""];
 	[name setStringValue:@""];
+	
+	[zone setStringValue:@""];
+	[reputation setReputationPercentage:0];
 }
 
 - (void)displayGamerInfo:(NSString *)gamertag
@@ -30,6 +33,9 @@
 	[bio setStringValue:[gamercard bio]];
 	[location setStringValue:[gamercard location]];
 	[name setStringValue:[gamercard realName]];
+	
+	[zone setStringValue:[gamercard gamerzone]];
+	[reputation setReputationPercentage:[gamercard rep]];
 }
 
 @end

@@ -46,7 +46,6 @@
 		3B1EA5C70CBB44EB0030AAAD /* gamerscore_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B1EA5C60CBB44EB0030AAAD /* gamerscore_icon.png */; };
 		3B2458130CE8E5A300FA2893 /* GIAchievementsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2458120CE8E5A300FA2893 /* GIAchievementsController.m */; };
 		3B2A80410E05E9FB00C48DED /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2A80400E05E9FB00C48DED /* MAAttachedWindow.m */; };
-		3B2C53A70AD07E4400BA248D /* XBMessageSender.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2C53A50AD07E4400BA248D /* XBMessageSender.m */; };
 		3B30901F0A980B8100E94E3D /* loadingBorder.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3B30901E0A980B8100E94E3D /* loadingBorder.icns */; };
 		3B3090270A9814CB00E94E3D /* XBImageLoaderThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3090250A9814CB00E94E3D /* XBImageLoaderThread.m */; };
 		3B35D9D50A8FED5A00433884 /* XBFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B35D9D30A8FED5A00433884 /* XBFriend.m */; };
@@ -157,6 +156,8 @@
 		3BF81E9A0CD835E000D74991 /* gamerscore.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3BF81E990CD835E000D74991 /* gamerscore.pdf */; };
 		3BFABF9F0A45E9F500A49E84 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFABF9E0A45E9F500A49E84 /* WebKit.framework */; };
 		3BFD38300ABDB6EC007A68B5 /* XBGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFD382E0ABDB6EC007A68B5 /* XBGame.m */; };
+		3BFEA5D90E11BCA500B74A34 /* stars_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFEA5D70E11BCA500B74A34 /* stars_empty.png */; };
+		3BFEA5DA0E11BCA500B74A34 /* stars_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFEA5D80E11BCA500B74A34 /* stars_full.png */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -220,8 +221,6 @@
 		3B2A803F0E05E9FB00C48DED /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAAttachedWindow.h; sourceTree = "<group>"; };
 		3B2A80400E05E9FB00C48DED /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindow.m; sourceTree = "<group>"; };
 		3B2BE4700E05A56700171FF4 /* QuickLook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickLook.h; sourceTree = "<group>"; };
-		3B2C53A40AD07E4400BA248D /* XBMessageSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBMessageSender.h; sourceTree = "<group>"; };
-		3B2C53A50AD07E4400BA248D /* XBMessageSender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBMessageSender.m; sourceTree = "<group>"; };
 		3B30901E0A980B8100E94E3D /* loadingBorder.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = loadingBorder.icns; sourceTree = "<group>"; };
 		3B3090240A9814CB00E94E3D /* XBImageLoaderThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBImageLoaderThread.h; sourceTree = "<group>"; };
 		3B3090250A9814CB00E94E3D /* XBImageLoaderThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBImageLoaderThread.m; sourceTree = "<group>"; };
@@ -376,6 +375,8 @@
 		3BFABF9E0A45E9F500A49E84 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
 		3BFD382D0ABDB6EC007A68B5 /* XBGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBGame.h; sourceTree = "<group>"; };
 		3BFD382E0ABDB6EC007A68B5 /* XBGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBGame.m; sourceTree = "<group>"; };
+		3BFEA5D70E11BCA500B74A34 /* stars_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stars_empty.png; sourceTree = "<group>"; };
+		3BFEA5D80E11BCA500B74A34 /* stars_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stars_full.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Xbox Live Friends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Xbox Live Friends.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -465,7 +466,6 @@
 				080E96DDFE201D6D7F000001 /* Multipurpose Classes */,
 				3BC7542C0E0F80B600D0EF53 /* Community Frameworks and Extensions */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
-				3BD65D6A0E111191004BE80A /* Unused but worth keeping */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -522,8 +522,6 @@
 				3BD16F170A93E33C008AC8D7 /* XBMessagesParser.m */,
 				3B3FA7F40E0B1E10009CBBBC /* SendMessage.h */,
 				3B3FA7F50E0B1E10009CBBBC /* SendMessage.m */,
-				3B2C53A40AD07E4400BA248D /* XBMessageSender.h */,
-				3B2C53A50AD07E4400BA248D /* XBMessageSender.m */,
 				3BEC3FBC0A99419900ACA189 /* XBMessageWaitingView.h */,
 				3BEC3FBD0A99419900ACA189 /* XBMessageWaitingView.m */,
 				3B5B590F0A93B339003A5EA5 /* XBSplitView.h */,
@@ -540,6 +538,9 @@
 				3B0C97470DCEC20700ABCD50 /* details_tab.png */,
 				3B0C97670DCEC5AA00ABCD50 /* GIGamerDetailsController.h */,
 				3B0C97680DCEC5AA00ABCD50 /* GIGamerDetailsController.m */,
+				3B83AE3A0A869A0900CF3D69 /* XBGamercard.h */,
+				3B83AE3B0A869A0900CF3D69 /* XBGamercard.m */,
+				3BF81E6F0CD82EFA00D74991 /* Reputation View */,
 			);
 			name = "Details View";
 			sourceTree = "<group>";
@@ -692,8 +693,6 @@
 		3BA3ADD80E0E244600ADE992 /* Inspector */ = {
 			isa = PBXGroup;
 			children = (
-				3B83AE3A0A869A0900CF3D69 /* XBGamercard.h */,
-				3B83AE3B0A869A0900CF3D69 /* XBGamercard.m */,
 				3BA3ADDB0E0E246D00ADE992 /* FriendOptionsController.h */,
 				3BA3ADDC0E0E246D00ADE992 /* FriendOptionsController.m */,
 				3B8C6C960A92A5B900DA570C /* XBFriendDefaultsManager.h */,
@@ -766,14 +765,6 @@
 				3B1686940A15A9D100233AE9 /* bevel.png */,
 			);
 			name = Images;
-			sourceTree = "<group>";
-		};
-		3BD65D6A0E111191004BE80A /* Unused but worth keeping */ = {
-			isa = PBXGroup;
-			children = (
-				3BF81E6F0CD82EFA00D74991 /* Reputation View */,
-			);
-			name = "Unused but worth keeping";
 			sourceTree = "<group>";
 		};
 		3BD65D6B0E1111F3004BE80A /* Multipurpose Views */ = {
@@ -849,6 +840,8 @@
 			children = (
 				3BCA92D20ABC712A002BD4E0 /* XBReputationView.h */,
 				3BCA92D30ABC712A002BD4E0 /* XBReputationView.m */,
+				3BFEA5D70E11BCA500B74A34 /* stars_empty.png */,
+				3BFEA5D80E11BCA500B74A34 /* stars_full.png */,
 				3BF81E740CD82F3A00D74991 /* stars_full.pdf */,
 				3BF81E770CD82FB000D74991 /* stars_empty.pdf */,
 				3BF81E990CD835E000D74991 /* gamerscore.pdf */,
@@ -976,6 +969,8 @@
 				3B3FA7A50E0B1664009CBBBC /* message.css in Resources */,
 				3B4F1F1A0E10799B0025E0AE /* xlf_red.icns in Resources */,
 				3B4F1F1B0E10799B0025E0AE /* xlf_yellow.icns in Resources */,
+				3BFEA5D90E11BCA500B74A34 /* stars_empty.png in Resources */,
+				3BFEA5DA0E11BCA500B74A34 /* stars_full.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1002,7 +997,6 @@
 				3BEC3FBF0A99419900ACA189 /* XBMessageWaitingView.m in Sources */,
 				3BCA92D50ABC712A002BD4E0 /* XBReputationView.m in Sources */,
 				3BFD38300ABDB6EC007A68B5 /* XBGame.m in Sources */,
-				3B2C53A70AD07E4400BA248D /* XBMessageSender.m in Sources */,
 				3BB9CC610B0D9F5A00C33FC2 /* MQPieGraphView.m in Sources */,
 				3BB9CC630B0D9F5A00C33FC2 /* MQSlice.m in Sources */,
 				3BB926770B24DD6300828D30 /* NonDraggableWebView.m in Sources */,

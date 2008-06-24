@@ -18,5 +18,6 @@
 - (float)reputationPercentage;
 - (void)setReputationPercentage:(float)percent;
 
+- (NSImage *)colorizeImage:(NSImage *)src withColor:(NSColor *)color;
 
 @end

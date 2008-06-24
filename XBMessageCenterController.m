@@ -47,10 +47,13 @@
 	int theRow = [messagesTable selectedRow];
 	if (theRow != -1){
 		XBMessage *msg = [messages objectAtIndex:theRow];
-		[self loadFullMessage:msg];
+		if (msg) {
+			[self loadFullMessage:msg];
+		}
 	}
-	else
+	else {
 		[self loadFullMessage:nil];
+	}
 }
 
 - (BOOL)selectionShouldChangeInTableView:(NSTableView *)aTableView

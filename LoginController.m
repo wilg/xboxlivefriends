@@ -155,7 +155,7 @@ NSString* signInURL = @"http://live.xbox.com/en-US/default.aspx";
 		
 
 	[webViewProgressSpinner stopAnimation:nil];
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"DisplayFriendsListError" object:@"Couldn't Connect didFailProvisionalLoadWithError"];
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"DisplayFriendsListError" object:@"Couldn't Connect"];
 }
 
 - (void)webView:(WebView *)sender didFailLoadWithError:(NSError *)error forFrame:(WebFrame *)frame {
@@ -167,7 +167,7 @@ NSString* signInURL = @"http://live.xbox.com/en-US/default.aspx";
 	}
 
 	[webViewProgressSpinner stopAnimation:nil];
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"DisplayFriendsListError" object:[error description]];
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"DisplayFriendsListError" object:@"Couldn't Load"];
 }
 
 - (void)webViewLoadingChange:(NSNotification *)aNotification {

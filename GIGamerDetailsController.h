@@ -14,7 +14,9 @@
 	IBOutlet NSTextField *name;
 	IBOutlet NSTextField *location;
 	IBOutlet NSTextField *bio;
-
+	IBOutlet NSTextField *zone;
+	
+	IBOutlet XBReputationView *reputation;
 }
 
 @end

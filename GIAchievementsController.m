@@ -67,6 +67,7 @@
 	BOOL showsError = NO;
 	int usableGames = 0;
 
+	int popupTag = [[filterPopup selectedItem] tag];
 	
 	if([gamesList count] != 0){
 		int i = 0;
@@ -131,63 +132,63 @@
 				float theirCompletion = [self percentCompletedFromString:[thisGame theirScore]];
 				float myCompletion = [self percentCompletedFromString:[thisGame yourScore]];
 
-				if ([[filterPopup selectedItem] tag] == 1) {
+				if (popupTag == 1) {
 					if (myScore > 0)
 						shouldDisplayThisGame = YES;
 					else
 						shouldDisplayThisGame = NO;
 
 				}
-				else if ([[filterPopup selectedItem] tag] == 2) {
+				else if (popupTag == 2) {
 					if (theirIntScore > 0)
 						shouldDisplayThisGame = YES;
 					else
 						shouldDisplayThisGame = NO;
 				}
-				else if ([[filterPopup selectedItem] tag] == 3) {
+				else if (popupTag == 3) {
 					if (theirIntScore > 0 && myScore > 0)
 						shouldDisplayThisGame = YES;
 					else
 						shouldDisplayThisGame = NO;
 				}
-				else if ([[filterPopup selectedItem] tag] == 4) {
+				else if (popupTag == 4) {
 					if (myScore == 0 && theirIntScore > 0)
 						shouldDisplayThisGame = YES;
 					else
 						shouldDisplayThisGame = NO;
 				}
-				else if ([[filterPopup selectedItem] tag] == 5) {
+				else if (popupTag == 5) {
 					if (theirIntScore == 0 && myScore > 0)
 						shouldDisplayThisGame = YES;
 					else
 						shouldDisplayThisGame = NO;
 				}
-				else if ([[filterPopup selectedItem] tag] == 6) {
-					if (totalPointsPossible > 200)
+				else if (popupTag == 6) {
+					if (totalPointsPossible > 250)
 						shouldDisplayThisGame = YES;
 					else
 						shouldDisplayThisGame = NO;
 				}
-				else if ([[filterPopup selectedItem] tag] == 7) {
-					if (totalPointsPossible == 200)
+				else if (popupTag == 7) {
+					if (totalPointsPossible <= 250 && totalPointsPossible > 0)
 						shouldDisplayThisGame = YES;
 					else
 						shouldDisplayThisGame = NO;
 				}
-				else if ([[filterPopup selectedItem] tag] == 8) {
+				else if (popupTag == 8) {
 					if (totalPointsPossible <= 0)
 						shouldDisplayThisGame = YES;
 					else
 						shouldDisplayThisGame = NO;
 				}
 
-				else if ([[filterPopup selectedItem] tag] == 9) {
+				else if (popupTag == 9) {
 					if (theirCompletion >= 1.0 || myCompletion >= 1.0)
 						shouldDisplayThisGame = YES;
 					else
 						shouldDisplayThisGame = NO;
 				}
-				else if ([[filterPopup selectedItem] tag] == 10) {
+				else if (popupTag == 10) {
 					if (theirCompletion < 1.0 && theirCompletion > 0.0)
 						shouldDisplayThisGame = YES;
 					else if (myCompletion < 1.0 && myCompletion > 0.0)
@@ -195,6 +196,19 @@
 					else
 						shouldDisplayThisGame = NO;
 				}
+				else if (popupTag == 11) {
+					if (myScore > theirIntScore && myScore > 0  && theirIntScore > 0)
+						shouldDisplayThisGame = YES;
+					else
+						shouldDisplayThisGame = NO;
+				}
+				else if (popupTag == 12) {
+					if (myScore < theirIntScore && myScore > 0  && theirIntScore > 0)
+						shouldDisplayThisGame = YES;
+					else
+						shouldDisplayThisGame = NO;
+				}
+
 				
 				//filter games list in accordance with search string
 				if ([[searchField stringValue] length] > 0 && [[thisGame name] rangeOfString:[searchField stringValue] options:NSCaseInsensitiveSearch].location == NSNotFound) {
@@ -227,7 +241,7 @@
 	if (showsError){
 			NSMutableString *errorMut = [[[NSString stringWithContentsOfFile:[NSString stringWithFormat:@"%@%@", [[NSBundle mainBundle] resourcePath], @"/simple_error_message.htm"] encoding:NSMacOSRomanStringEncoding error:NULL] mutableCopy] autorelease];
 
-			if ([[filterPopup selectedItem] tag] == 0 && [[searchField stringValue] length] == 0) {
+			if (popupTag == 0 && [[searchField stringValue] length] == 0) {
 				[errorMut replaceOccurrencesOfString:@"$title" withString:@"Gamertag Not Found" options:0 range:NSMakeRange(0, [errorMut length])];
 			}
 			else {
