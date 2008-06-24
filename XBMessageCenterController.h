@@ -29,7 +29,8 @@
     
 	NSMutableArray *records;
 	NSArray *messages;
-	NSMutableArray *messagesAwareOf;
+	
+	NSArray *newMessagesAlreadyNotified;
     
 	BOOL isGoldMember;
 }

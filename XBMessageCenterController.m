@@ -16,7 +16,7 @@
 - (void)awakeFromNib {
 
 	records = [[NSMutableArray array] retain];
-    messagesAwareOf = [[NSMutableArray array] retain];
+    newMessagesAlreadyNotified = [[NSArray array] retain];
 	
 	isGoldMember = NO;
 	
@@ -30,7 +30,7 @@
 }
 
 - (void)dealloc {
-    [messagesAwareOf release];
+    [newMessagesAlreadyNotified release];
     [super dealloc];
 }
 
@@ -46,7 +46,6 @@
 {
 	int theRow = [messagesTable selectedRow];
 	if (theRow != -1){
-		//if
 		XBMessage *msg = [messages objectAtIndex:theRow];
 		[self loadFullMessage:msg];
 	}
@@ -97,9 +96,20 @@
 	
 	int unreadCount = 0;
 	for (XBMessage *msg in messages) {
-		if (![msg isRead])
-			unreadCount++;
 		[records addObject:[msg tableViewRecord]];
+		if (![msg isRead]) {
+			unreadCount++;
+			
+			if (![newMessagesAlreadyNotified containsObject:[msg identifier]]) {
+				//notify if there is a new message
+				[[NSNotificationCenter defaultCenter] postNotificationName:@"GrowlNotify" object:
+				
+				[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"New Message", [@"New Message from " stringByAppendingString:[msg sender]], [msg subject], [[NSImage imageNamed:@"toolbar_check"] TIFFRepresentation], nil] forKeys:[NSArray arrayWithObjects:@"GROWL_NOTIFICATION_NAME", @"GROWL_NOTIFICATION_TITLE", @"GROWL_NOTIFICATION_DESCRIPTION", @"GROWL_NOTIFICATION_ICON", nil]]
+				
+				];
+				newMessagesAlreadyNotified = [newMessagesAlreadyNotified arrayByAddingObject:[msg identifier]];
+			}
+		}
 	}
 	
 	[messagesTable reloadData];
@@ -108,18 +118,6 @@
 
 	//notify in dock
 	[self badgeDockIconWithNumber:unreadCount];
-    
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"GrowlNotify" object:
-//				
-//				[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:notificationName, @"New Message", [newFriend info], [[NSImage imageNamed:@"NSApplicationIcon"] TIFFRepresentation], nil] forKeys:[NSArray arrayWithObjects:@"GROWL_NOTIFICATION_NAME", @"GROWL_NOTIFICATION_TITLE", @"GROWL_NOTIFICATION_DESCRIPTION", @"GROWL_NOTIFICATION_ICON", nil]]
-//                
-//                ];
-
-	
-//	if ([myMessageListObject unreadCount] == 1)
-//		[GrowlController notifyWithTitle:@"New Message" description:@"You have one new message from Xbox Live." notificationName:@"New Message" iconImage:nil clickContext:nil];
-//	if ([myMessageListObject unreadCount] > 1)
-//		[GrowlController notifyWithTitle:@"New Messages" description:[NSString stringWithFormat:@"You have %i new messages from Xbox Live.", [myMessageListObject unreadCount]] notificationName:@"New Message" iconImage:nil clickContext:nil];
 
 }
 
@@ -155,17 +153,6 @@
 {
 		[messageCenterWindow makeKeyAndOrderFront:sender];
 		[self loadMessageCenterThreaded];
-}
-
-- (IBAction)deleteMessage:(id)sender
-{
-	int theRow = [messagesTable selectedRow];
-	if (theRow != -1){
-		NSString *theURL = [NSString stringWithFormat:@"%@%@",@"http://live.xbox.com/en-US/profile/MessageCenter/RemoveMessage.aspx?bk=0&mx=", [[messages objectAtIndex:theRow] identifier]];
-		[NSString stringWithContentsOfURL:[NSURL URLWithString:theURL]];
-		[self loadMessageCenterThreaded];
-	}else
-		NSBeep();
 }
 
 - (void)badgeDockIconWithNumber:(int)num
@@ -225,13 +212,26 @@
 	}
 }
 
-- (void)alertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(id)contextInfo
-{	
+- (void)alertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(id)contextInfo {}
+
+#pragma mark -
+#pragma mark Deleting
+
+- (IBAction)deleteMessage:(id)sender
+{
+	int theRow = [messagesTable selectedRow];
+	if (theRow != -1){
+		NSString *theURL = [NSString stringWithFormat:@"%@%@",@"http://live.xbox.com/en-US/profile/MessageCenter/RemoveMessage.aspx?bk=0&mx=", [[messages objectAtIndex:theRow] identifier]];
+		[NSString stringWithContentsOfURL:[NSURL URLWithString:theURL]];
+		[self loadMessageCenterThreaded];
+	}else
+		NSBeep();
 }
 
 
+
 #pragma mark -
-#pragma mark Sending Related Methods
+#pragma mark Sending
 
 - (IBAction)openComposePanel:(id)sender
 {

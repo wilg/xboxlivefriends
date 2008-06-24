@@ -3,23 +3,19 @@
 //  Xbox Live Friends
 //
 //  Created by Wil Gieseler on 6/14/08.
-//  Copyright 2008 __MyCompanyName__. All rights reserved.
 //
 
 #import "GrowlController.h"
 
 @implementation GrowlController
 
-- (id)init;
-{
+- (id)init {
 	if (![super init])
 	return nil;
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(growlWithNotification:) name:@"GrowlNotify" object:nil];
 
 	[GrowlApplicationBridge setGrowlDelegate:self];
-
-	NSLog(@"growl init");
 
 	return self;
 }
@@ -32,24 +28,19 @@
 }
 
 
-- (void)notifyWithTitle:(NSString *)title description:(NSString *)description notificationName:(NSString *)notificationName iconImage:(NSImage *)iconImage  clickContext:(id)clickContext
-{
+- (void)notifyWithTitle:(NSString *)title description:(NSString *)description notificationName:(NSString *)notificationName iconImage:(NSImage *)iconImage  clickContext:(id)clickContext {
 
 	[GrowlApplicationBridge notifyWithTitle:title description:description notificationName:notificationName iconData:[iconImage TIFFRepresentation] priority:0 isSticky:YES clickContext:clickContext];
 
 }
 
-- (void)notifyWithDictionary:(NSDictionary *)dick
-{
-	NSLog(@"notifyWithDictionary growl");
-	//[GrowlApplicationBridge notifyWithDictionary:dick];
+- (void)notifyWithDictionary:(NSDictionary *)dick {
 	
 	[GrowlApplicationBridge notifyWithTitle:[dick objectForKey:@"GROWL_NOTIFICATION_TITLE"] description:[dick objectForKey:@"GROWL_NOTIFICATION_DESCRIPTION"] notificationName:[dick objectForKey:@"GROWL_NOTIFICATION_NAME"] iconData:[dick objectForKey:@"GROWL_NOTIFICATION_ICON"] priority:0 isSticky:NO clickContext:nil];
 
 }
 
 - (void)growlWithNotification:(NSNotification *)notification {
-	NSLog(@"growlWithNotification");
 	[self notifyWithDictionary:[notification object]];
 }
 
