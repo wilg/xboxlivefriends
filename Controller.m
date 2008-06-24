@@ -17,9 +17,6 @@
 #pragma mark -
 #pragma mark Application Delegates
 
-- (void)applicationDidFinishLaunching:(NSNotification *)notification {
-
-}
 
 - (id)init;
 {
@@ -58,20 +55,26 @@
 	[NSApp setApplicationIconImage:[NSImage imageNamed:@"NSApplicationIcon"]];
 }
 
-- (void)awakeFromNib
-{
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 
 }
 
+- (void)awakeFromNib {
+
+}
 
 
 #pragma mark -
 #pragma mark Miscellaneous
 
-- (void)timedRefresh
-{
-	NSLog(@"Timed Refresh");
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"FriendsListNeedsRefresh" object:nil];
+- (void)timedRefresh {
+	if (![[NSUserDefaults standardUserDefaults] boolForKey:@"InSignInMode"]) {
+		NSLog(@"Timed Refresh");
+		[[NSNotificationCenter defaultCenter] postNotificationName:@"FriendsListNeedsRefresh" object:nil];
+	}
+	else {
+		NSLog(@"tried refres");
+	}
 }
 
 @end

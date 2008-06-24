@@ -43,6 +43,9 @@ static BOOL loadThreaded = true;
 	[friendsListWindow setAutorecalculatesContentBorderThickness:NO forEdge:NSMinYEdge];
 	[friendsListWindow setContentBorderThickness:36.0 forEdge:NSMinYEdge];
 
+	[[myTag cell] setBackgroundStyle:NSBackgroundStyleRaised];
+	[[myMessage cell] setBackgroundStyle:NSBackgroundStyleRaised];
+
 
 	[friendsTable setDelegate:self];
 	[friendsTable setDataSource:self];
@@ -62,22 +65,23 @@ static BOOL loadThreaded = true;
 }
 
 - (void)firstFriendsListLoadThread {
-	NSLog(@"firstFriendsListLoadThread");
-	[self friendsListLocked:YES];
+	[self performSelectorOnMainThread:@selector(friendsListLocked:) withObject:[NSNumber numberWithBool:YES] waitUntilDone:NO];
 	if ([self downloadFriendsList]) {
 		[self displayFriendsList];
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"FirstFriendsLoaded" object:nil];
 	}
 }
 
-- (void)friendsListLocked:(BOOL)locked {
+- (void)friendsListLocked:(NSNumber *)lockedNum {
+	BOOL locked = [lockedNum boolValue];
 	if (locked) {
 		[myBead setImage:[NSImage imageNamed:@"red_bead"]];
+		[[NSUserDefaults standardUserDefaults] setBool:FALSE forKey:@"friendsListIsLoadedAndReady"];
 	}
 	else {
+		[[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"friendsListIsLoadedAndReady"];
 		[myBead setImage:[NSImage imageNamed:@"green_bead"]];
 	}
-
 }
 
 
@@ -109,20 +113,28 @@ static BOOL loadThreaded = true;
 
 	NSArray *oldFriends = friends;
 	
-	friends = [FriendsListParser friends];
+	if (friends)
+		[friends release];
+	friends = [[[FriendsListParser friends] copy] retain];
 	
 	BOOL success = NO;
 	if (friends) {
+
 		success = YES;
 		[self checkFriendsForStatusChange:friends oldFriends:oldFriends];
 		[self displayMyGamercard];
-		
+
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"ChangeFriendsListMode" object:@"friends"];
-		[self friendsListLocked:NO];
+
+		[self performSelectorOnMainThread:@selector(friendsListLocked:) withObject:[NSNumber numberWithBool:NO] waitUntilDone:YES];
+		
 	}
 	else {
+		[self performSelectorOnMainThread:@selector(friendsListLocked:) withObject:[NSNumber numberWithBool:YES] waitUntilDone:YES];
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"FriendsListConnectionError" object:nil];
 	}
+	
+
 
 	return success;
 }
@@ -131,15 +143,6 @@ static BOOL loadThreaded = true;
 - (void)checkFriendsForStatusChange:(NSArray *)newFriends oldFriends:(NSArray *)oldFriends {
 
 	//[[NSNotificationCenter defaultCenter] postNotificationName:@"GrowlNotify" object:[NSDictionary dictionaryWithObjectsAndKeys: @"Refreshed FL!", @"GROWL_NOTIFICATION_TITLE", @"holy shit", @"GROWL_NOTIFICATION_DESCRIPTION", @"Friend Signed In",  @"GROWL_NOTIFICATION_NAME", [[NSImage imageNamed:@"appicon"] TIFFRepresentation], @"GROWL_NOTIFICATION_ICON",  nil]];
-
-
-	if (!oldFriends || [oldFriends count] == 0) {
-		NSLog(@"no old friends");
-		return;
-	}
-	else {
-		NSLog(@"old friends count: %i", [oldFriends count]);
-	}
 		
 
 	NSMutableDictionary *oldFriendsDict = [NSMutableDictionary dictionary];
@@ -161,7 +164,6 @@ static BOOL loadThreaded = true;
 			NSString *notificationName;
 
 			if ([newFriend statusHasChangedFromFriend:correspondingOldFriend]) {
-						NSLog(@"statusHasChangedFromFriend %@ to %@", [newFriend gamertag], [newFriend status]);
 
 				differences++;
 				
@@ -213,13 +215,9 @@ static BOOL loadThreaded = true;
 			}
 			
 		}
-		else {
-			NSLog(@"no corresponding friend for %@", [newFriend gamertag]);
-		}
 		
 	}
 	
-	NSLog(@"differences: %i", differences);
 }
 
 - (void)displayFriendsList {
@@ -241,7 +239,6 @@ static BOOL loadThreaded = true;
 
 
 - (void)refreshFriendsListThread {
-	NSLog(@"threaded download");
 
 	if ([self downloadFriendsList])
 		[self displayFriendsList];
@@ -255,9 +252,6 @@ static BOOL loadThreaded = true;
 	//Download my Gamercard
 	XBGamercard *myCard = [XBGamercard cardForURL:[NSURL URLWithString:@"http://live.xbox.com/en-US/profile/profile.aspx"]];
 	
-	[[myTag cell] setBackgroundStyle:NSBackgroundStyleRaised];
-	[[myMessage cell] setBackgroundStyle:NSBackgroundStyleRaised];
-
 	[myTag setObjectValue:[myCard gamertag]];
 	[myMessage setObjectValue:[myCard motto]];
 	[myScore setStringValue:[myCard gamerscore]];
@@ -440,7 +434,6 @@ static BOOL loadThreaded = true;
 
 - (void)alertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(id)contextInfo
 {	
-	NSLog(@"friends list alert did end");
 	if ([contextInfo objectAtIndex:0] == @"remove_friend"){
 		if (returnCode == NSAlertFirstButtonReturn) {
 			NSString *theURLBase = @"http://live.xbox.com/en-US/profile/FriendsMgmt.aspx?act=Delete&gt=";

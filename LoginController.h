@@ -21,7 +21,7 @@
 	IBOutlet NSTextField *email;
 	IBOutlet NSTextField *password;
 
-	NSString *toDoAfterNextLoadCompletes;
+	NSString *currentMode;
 
 }
 

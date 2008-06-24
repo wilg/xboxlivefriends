@@ -54,45 +54,7 @@ NSString *halo2StatsURL = @"http://www.bungie.net/Stats/PlayerStats.aspx?player=
 	
 	if ([[self status] isEqual:@"Pending"])
 		[record setObject:[NSImage imageNamed:@"blue_bead"] forKey:@"bead"];
-	
-
-//	NSString *theFinalStatus = [NSString stringWithFormat:@"%@\n%@", theGT, myInfo];
-//
-//	BOOL nostatus;
-//	if ([myInfo length] <= 3){
-//		nostatus = YES;
-//		theFinalStatus = [NSString stringWithFormat:@"\n%@", theGT];
-//	}else{
-//		nostatus = NO;
-//	}
-	
-	
-//	// make the status strings gray
-//	NSMutableAttributedString *theFinalStatusAttributed = [[[NSMutableAttributedString alloc] initWithString:theFinalStatus] autorelease];
-//	NSRange statusRange = [theFinalStatus rangeOfString:myInfo];
-//	[theFinalStatusAttributed beginEditing];
-//	[theFinalStatusAttributed addAttribute:NSForegroundColorAttributeName value:[NSColor disabledControlTextColor] range:statusRange];
-//	if ([status isEqual:@"Offline"]){
-//		[theFinalStatusAttributed addAttribute:NSForegroundColorAttributeName value:[NSColor headerColor] range:NSMakeRange(0, [theFinalStatus length])];
-//	}
-//	if (nostatus){
-//		[theFinalStatusAttributed addAttribute:NSFontAttributeName value:[NSFont systemFontOfSize:5.0] range:NSMakeRange(0,1)];
-//	}
-//	if (isSelectedRow){
-//		if (displaysInKeyWindow)
-//		[theFinalStatusAttributed addAttribute:NSForegroundColorAttributeName value:[NSColor whiteColor] range:NSMakeRange(0, [theFinalStatus length])];
-//	}
-//	[theFinalStatusAttributed addAttribute:NSFontAttributeName value:[NSFont systemFontOfSize:11.0] range:statusRange];
-//	[theFinalStatusAttributed endEditing];
-//
-//	//make it ellipsize
-//	static NSDictionary *paraInfo = nil;
-//	NSMutableParagraphStyle *breakStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-//	[breakStyle setLineBreakMode:NSLineBreakByTruncatingTail];
-//	paraInfo = [[[NSDictionary alloc] initWithObjectsAndKeys:breakStyle, NSParagraphStyleAttributeName, nil] autorelease];
-//	[breakStyle release];
-//	[theFinalStatusAttributed addAttribute:NSParagraphStyleAttributeName value:breakStyle range:NSMakeRange(0, [theFinalStatus length])];
-	
+		
 	[record setObject:[self tileImageWithOfflineGrayedOut] forKey:@"tile"];
 	[record setObject:[NSDictionary dictionaryWithObjectsAndKeys:theGT, @"gamertag", myInfo,  @"textstatus", [self status], @"onlinestatus", nil] forKey:@"gt_and_status"];
 	[record setObject:theGT forKey:@"gt"];
@@ -110,16 +72,7 @@ NSString *halo2StatsURL = @"http://www.bungie.net/Stats/PlayerStats.aspx?player=
 	}
 	
 	if(selectedIconStyle == XBHalo2IconStyle){
-//		NSString *cachedEmblemName = [NSString stringWithFormat:@"halo2emblemfor_%@", [self gamertag]];
-//		
-//		theTile = [NSImage imageNamed:cachedEmblemName];
-//		
-//		if (theTile == nil){
-//			theTile = [NSImage imageNamed:@"loadingBorder"];
-//		}
-//		[theTile retain];
 		selectedIconStyle = XBGamerPictureIconStyle;
-
 	}
 	if(selectedIconStyle == XBAddressBookIconStyle){
 		theTile = [XBFriendDefaultsManager addressBookImageForPerson:[self realName]];
@@ -329,41 +282,7 @@ NSString *halo2StatsURL = @"http://www.bungie.net/Stats/PlayerStats.aspx?player=
 
 - (BOOL)haloEmblem
 {
-	NSString *nameFormat = [NSString stringWithFormat:@"halo2emblemfor_%@", [self gamertag]];
-	BOOL didLoad = NO;
-	if ([NSImage imageNamed:nameFormat] == nil){
-		NSMutableString *mutableGamerTag = [[self gamertag] mutableCopy];
-		[mutableGamerTag replaceOccurrencesOfString:@" " withString:@"+" options:0 range:NSMakeRange(0, [mutableGamerTag length])];
-		NSString *theStringURL = [NSString stringWithFormat:@"%@%@", halo2StatsURL, mutableGamerTag];
-		
-		
-		NSString *editString = [[MQCURLHandleWrapper sharedInstance] fetchURLtoString:[NSURL URLWithString:theStringURL] withTimeout:3];
-		//NSString *editString = [NSString stringWithContentsOfURL:[NSURL URLWithString:theStringURL]];
-		
-		NSImage *theEmblem;
-		
-		if ([editString rangeOfString:@"halo2emblem.ashx"].location != NSNotFound )	{
-			NSRange range;
-			int offset;
-	 
-			range = [editString rangeOfString:@"halo2emblem.ashx"];
-			offset = range.location + range.length;
-		
-			range = [editString rangeOfString:@"\"" options:0 range:NSMakeRange(offset, [editString length] - offset)];
-		
-			NSMutableString *parsedURL = [[editString substringWithRange:NSMakeRange(offset, range.location - offset)] mutableCopy];
-			[parsedURL replaceOccurrencesOfString:@"&amp;" withString:@"&" options:0 range:NSMakeRange(0, [parsedURL length])];
-			parsedURL = [NSString stringWithFormat:@"%@%@", @"http://www.bungie.net/Stats/halo2emblem.ashx", parsedURL];
-			theEmblem = [[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:parsedURL]];
-			[theEmblem setName:nameFormat];
-			[parsedURL release];
-			didLoad = YES;
-		}
-			
-		[mutableGamerTag release];
-	}
-	
-	return didLoad;
+	return NO;
 }
 
 - (BOOL)currentGameHasChangedFromFriend:(XBFriend *)oldFriend

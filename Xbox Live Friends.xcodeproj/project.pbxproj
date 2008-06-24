@@ -12,7 +12,6 @@
 			buildActionMask = 2147483647;
 			contextName = "";
 			files = (
-				3B88A2180AE2C02F008153B6 /* XLF.applescript in AppleScript */,
 			);
 			isSharedContext = 0;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -48,8 +47,6 @@
 		3B1EA4D20CBB35930030AAAD /* achievement_row.htm in Resources */ = {isa = PBXBuildFile; fileRef = 3B1EA4D10CBB35930030AAAD /* achievement_row.htm */; };
 		3B1EA5C70CBB44EB0030AAAD /* gamerscore_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B1EA5C60CBB44EB0030AAAD /* gamerscore_icon.png */; };
 		3B2458130CE8E5A300FA2893 /* GIAchievementsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2458120CE8E5A300FA2893 /* GIAchievementsController.m */; };
-		3B2521730ABE18F500B0535A /* license.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3B2521720ABE18F500B0535A /* license.icns */; };
-		3B269DCD0A97F9100083F530 /* MQCURLHandleWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B269DCB0A97F9100083F530 /* MQCURLHandleWrapper.m */; };
 		3B294A6C0A8800BB006365E1 /* gamesplayed_row.mqhtp in Resources */ = {isa = PBXBuildFile; fileRef = 3B294A6A0A8800BB006365E1 /* gamesplayed_row.mqhtp */; };
 		3B294A6D0A8800BB006365E1 /* gamesplayed_body.mqhtp in Resources */ = {isa = PBXBuildFile; fileRef = 3B294A6B0A8800BB006365E1 /* gamesplayed_body.mqhtp */; };
 		3B294AB30A8804F5006365E1 /* graybar.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B294AB10A8804F5006365E1 /* graybar.png */; };
@@ -77,6 +74,8 @@
 		3B49B5070ABE505000BE22A3 /* unregistered_row.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B49B5060ABE505000BE22A3 /* unregistered_row.png */; };
 		3B49B5100ABE521F00BE22A3 /* unregistered_row_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B49B50F0ABE521F00BE22A3 /* unregistered_row_bg.png */; };
 		3B4ED1A20A9584D8008B5F4A /* badge_1_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4ED1A00A9584D8008B5F4A /* badge_1_2.png */; };
+		3B4F1F1A0E10799B0025E0AE /* xlf_red.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3B4F1F180E10799B0025E0AE /* xlf_red.icns */; };
+		3B4F1F1B0E10799B0025E0AE /* xlf_yellow.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3B4F1F190E10799B0025E0AE /* xlf_yellow.icns */; };
 		3B511CED0E04B33400530154 /* simple_error_message.htm in Resources */ = {isa = PBXBuildFile; fileRef = 3B511CEC0E04B33400530154 /* simple_error_message.htm */; };
 		3B511D1F0E04BD9100530154 /* tab_halo_screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B511D1E0E04BD9100530154 /* tab_halo_screenshot.png */; };
 		3B511D240E04BE4A00530154 /* GIHaloScreenshotsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B511D230E04BE4A00530154 /* GIHaloScreenshotsController.m */; };
@@ -107,8 +106,6 @@
 		3B862A410ABCCC5500BCA869 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B862A400ABCCC5500BCA869 /* SystemConfiguration.framework */; };
 		3B8871250CF3E2F7001A2849 /* ColorizeImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8871240CF3E2F7001A2849 /* ColorizeImage.m */; };
 		3B88A1F40AE2BFA3008153B6 /* MQScriptController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B88A1F00AE2BFA3008153B6 /* MQScriptController.m */; };
-		3B88A1F60AE2BFA3008153B6 /* NSAppleScript+HandlerCalls.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B88A1F20AE2BFA3008153B6 /* NSAppleScript+HandlerCalls.m */; };
-		3B88A2180AE2C02F008153B6 /* XLF.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = 3B88A2170AE2C02F008153B6 /* XLF.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
 		3B89B67C0DCCF7A4008ED8FA /* DefaultWebViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B89B67B0DCCF7A4008ED8FA /* DefaultWebViewDelegate.m */; };
 		3B89B6970DCCFFDC008ED8FA /* up_chevron.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B89B6960DCCFFDC008ED8FA /* up_chevron.png */; };
 		3B8C6C990A92A5B900DA570C /* XBFriendDefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8C6C970A92A5B900DA570C /* XBFriendDefaultsManager.m */; };
@@ -239,9 +236,6 @@
 		3B1EA5C60CBB44EB0030AAAD /* gamerscore_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gamerscore_icon.png; sourceTree = "<group>"; };
 		3B2458110CE8E5A300FA2893 /* GIAchievementsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIAchievementsController.h; sourceTree = "<group>"; };
 		3B2458120CE8E5A300FA2893 /* GIAchievementsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GIAchievementsController.m; sourceTree = "<group>"; };
-		3B2521720ABE18F500B0535A /* license.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = license.icns; sourceTree = "<group>"; };
-		3B269DCA0A97F9100083F530 /* MQCURLHandleWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQCURLHandleWrapper.h; sourceTree = "<group>"; };
-		3B269DCB0A97F9100083F530 /* MQCURLHandleWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQCURLHandleWrapper.m; sourceTree = "<group>"; };
 		3B294A6A0A8800BB006365E1 /* gamesplayed_row.mqhtp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = gamesplayed_row.mqhtp; sourceTree = "<group>"; };
 		3B294A6B0A8800BB006365E1 /* gamesplayed_body.mqhtp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = gamesplayed_body.mqhtp; sourceTree = "<group>"; };
 		3B294AB10A8804F5006365E1 /* graybar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = graybar.png; sourceTree = "<group>"; };
@@ -280,6 +274,8 @@
 		3B49B5060ABE505000BE22A3 /* unregistered_row.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unregistered_row.png; sourceTree = "<group>"; };
 		3B49B50F0ABE521F00BE22A3 /* unregistered_row_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unregistered_row_bg.png; sourceTree = "<group>"; };
 		3B4ED1A00A9584D8008B5F4A /* badge_1_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = badge_1_2.png; sourceTree = "<group>"; };
+		3B4F1F180E10799B0025E0AE /* xlf_red.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = xlf_red.icns; sourceTree = "<group>"; };
+		3B4F1F190E10799B0025E0AE /* xlf_yellow.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = xlf_yellow.icns; sourceTree = "<group>"; };
 		3B511CEC0E04B33400530154 /* simple_error_message.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = simple_error_message.htm; sourceTree = "<group>"; };
 		3B511D1E0E04BD9100530154 /* tab_halo_screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_halo_screenshot.png; sourceTree = "<group>"; };
 		3B511D220E04BE4A00530154 /* GIHaloScreenshotsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIHaloScreenshotsController.h; sourceTree = "<group>"; };
@@ -319,9 +315,6 @@
 		3B8871240CF3E2F7001A2849 /* ColorizeImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorizeImage.m; sourceTree = "<group>"; };
 		3B88A1EF0AE2BFA3008153B6 /* MQScriptController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = MQScriptController.h; sourceTree = "<group>"; };
 		3B88A1F00AE2BFA3008153B6 /* MQScriptController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = MQScriptController.m; sourceTree = "<group>"; };
-		3B88A1F10AE2BFA3008153B6 /* NSAppleScript+HandlerCalls.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = "NSAppleScript+HandlerCalls.h"; sourceTree = "<group>"; };
-		3B88A1F20AE2BFA3008153B6 /* NSAppleScript+HandlerCalls.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = "NSAppleScript+HandlerCalls.m"; sourceTree = "<group>"; };
-		3B88A2170AE2C02F008153B6 /* XLF.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = XLF.applescript; sourceTree = "<group>"; };
 		3B89B67A0DCCF7A4008ED8FA /* DefaultWebViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultWebViewDelegate.h; sourceTree = "<group>"; };
 		3B89B67B0DCCF7A4008ED8FA /* DefaultWebViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultWebViewDelegate.m; sourceTree = "<group>"; };
 		3B89B6960DCCFFDC008ED8FA /* up_chevron.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up_chevron.png; sourceTree = "<group>"; };
@@ -453,12 +446,8 @@
 				3BEEAC1E0A94414100422957 /* MQFunctions.m */,
 				3BE062F90E05D461003F5824 /* NSString+Crop.h */,
 				3BE062FA0E05D461003F5824 /* NSString+Crop.m */,
-				3B269DCA0A97F9100083F530 /* MQCURLHandleWrapper.h */,
-				3B269DCB0A97F9100083F530 /* MQCURLHandleWrapper.m */,
 				3B88A1EF0AE2BFA3008153B6 /* MQScriptController.h */,
 				3B88A1F00AE2BFA3008153B6 /* MQScriptController.m */,
-				3B88A1F10AE2BFA3008153B6 /* NSAppleScript+HandlerCalls.h */,
-				3B88A1F20AE2BFA3008153B6 /* NSAppleScript+HandlerCalls.m */,
 				3B5CBA880A89380400024584 /* Delegates */,
 				3BB926740B24DD6300828D30 /* NonDraggableWebView.h */,
 				3BB926750B24DD6300828D30 /* NonDraggableWebView.m */,
@@ -522,7 +511,6 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				3B88A2170AE2C02F008153B6 /* XLF.applescript */,
 			);
 			name = Xenon;
 			sourceTree = "<group>";
@@ -640,7 +628,8 @@
 			children = (
 				3BB926F80B24E25600828D30 /* pie_shadow.png */,
 				3B91BE5E099D26E7008EB5D4 /* appicon.icns */,
-				3B2521720ABE18F500B0535A /* license.icns */,
+				3B4F1F180E10799B0025E0AE /* xlf_red.icns */,
+				3B4F1F190E10799B0025E0AE /* xlf_yellow.icns */,
 				3B8558290A9994B300585C15 /* Message Center */,
 				3B8558280A9994A500585C15 /* Colors */,
 				3B8558270A99948D00585C15 /* Friends List */,
@@ -1051,7 +1040,6 @@
 				3BDA5A000ABD3B150053554E /* warning.png in Resources */,
 				3BDA5A140ABD3C610053554E /* warning_flat.png in Resources */,
 				3B0E2DC70ABE0BFB00A51921 /* nogamesplayed_inspector.mqhtp in Resources */,
-				3B2521730ABE18F500B0535A /* license.icns in Resources */,
 				3B49B4440ABE360500BE22A3 /* heart.png in Resources */,
 				3B49B4920ABE40C700BE22A3 /* itunesblue.png in Resources */,
 				3B49B4950ABE412000BE22A3 /* gray.png in Resources */,
@@ -1098,6 +1086,8 @@
 				3B54EA2B0E09AE8100B1142F /* close_bar.png in Resources */,
 				3BE8A95A0E09C74100694B24 /* tileshadow.png in Resources */,
 				3B3FA7A50E0B1664009CBBBC /* message.css in Resources */,
+				3B4F1F1A0E10799B0025E0AE /* xlf_red.icns in Resources */,
+				3B4F1F1B0E10799B0025E0AE /* xlf_yellow.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1122,14 +1112,12 @@
 				3B7320290A93DB56003C8FE0 /* XBMessage.m in Sources */,
 				3BD16F190A93E33C008AC8D7 /* XBMessagesParser.m in Sources */,
 				3BEEAC200A94414100422957 /* MQFunctions.m in Sources */,
-				3B269DCD0A97F9100083F530 /* MQCURLHandleWrapper.m in Sources */,
 				3B3090270A9814CB00E94E3D /* XBImageLoaderThread.m in Sources */,
 				3BEC3FBF0A99419900ACA189 /* XBMessageWaitingView.m in Sources */,
 				3BCA92D50ABC712A002BD4E0 /* XBReputationView.m in Sources */,
 				3BFD38300ABDB6EC007A68B5 /* XBGame.m in Sources */,
 				3B2C53A70AD07E4400BA248D /* XBMessageSender.m in Sources */,
 				3B88A1F40AE2BFA3008153B6 /* MQScriptController.m in Sources */,
-				3B88A1F60AE2BFA3008153B6 /* NSAppleScript+HandlerCalls.m in Sources */,
 				3BB9CC610B0D9F5A00C33FC2 /* MQPieGraphView.m in Sources */,
 				3BB9CC630B0D9F5A00C33FC2 /* MQSlice.m in Sources */,
 				3BB926770B24DD6300828D30 /* NonDraggableWebView.m in Sources */,

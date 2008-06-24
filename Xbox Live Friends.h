@@ -3,7 +3,6 @@
 
 //Mindquirk Classes
 #include "MQFunctions.h"
-#include "MQCURLHandleWrapper.h"
 #include "MQScriptController.h"
 #import "NSString+Crop.h"
 

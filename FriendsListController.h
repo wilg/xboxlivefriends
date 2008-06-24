@@ -47,7 +47,7 @@
 - (void)displayFriendsList;
 - (void)checkFriendsForStatusChange:(NSArray *)newFriends oldFriends:(NSArray *)oldFriends;
 
-- (void)friendsListLocked:(BOOL)locked;
+- (void)friendsListLocked:(NSNumber *)lockedNum;
 
 - (IBAction)FetchButton:(id)sender;
 - (IBAction)updateTableView:(id)sender;

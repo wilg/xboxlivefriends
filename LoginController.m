@@ -14,15 +14,14 @@ NSString* signInURL = @"http://live.xbox.com/en-US/default.aspx";
 
 @implementation LoginController
 
-- (id)init;
-{
+- (id)init {
 	
 	if (![super init])
 	return nil;
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkConnectionAndLogin:) name:@"FriendsListConnectionError" object:nil];
 	
-	toDoAfterNextLoadCompletes = @"";
+	currentMode = @"";
 	
 //	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(webViewLoadingStart:) name:WebViewProgressStartedNotification object:webView];
 //	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(webViewLoadingEnd:) name:WebViewProgressFinishedNotification object:webView];
@@ -41,6 +40,14 @@ NSString* signInURL = @"http://live.xbox.com/en-US/default.aspx";
 }
 
 - (IBAction)newSignInButtonClicked:(id)sender {
+	
+	if (![[email stringValue] contains:@"@"] || [[password stringValue] isEqualToString:@""]) {
+		NSBeep();
+		return;
+	}
+	
+	currentMode = @"signInFormSubmitted";
+	
 	[self loginToPassportWithEmail:[email stringValue] password:[password stringValue]];
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"ChangeFriendsListMode" object:@"loading"];
 }
@@ -60,7 +67,8 @@ NSString* signInURL = @"http://live.xbox.com/en-US/default.aspx";
 
 
 - (IBAction)OpenSignIn:(id)sender{
-	toDoAfterNextLoadCompletes = @"something";
+	currentMode = @"loadingSignIn";
+	[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"InSignInMode"];
 	[self loadURL:[NSURL URLWithString:signInURL]];
 
 	//[[NSNotificationCenter defaultCenter] postNotificationName:@"ChangeFriendsListMode" object:@"sign_in"];
@@ -102,35 +110,24 @@ NSString* signInURL = @"http://live.xbox.com/en-US/default.aspx";
 #pragma mark WebView-Related Methods
 
 - (void)loadURL:(NSURL *)URL {
-	NSLog(@"webView mainFrame] loadRequest");
-
 	[[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:URL]];
 }
 
-//- (void)webViewLoadingStart:(NSNotification *)aNotification {
 - (void)webView:(WebView *)sender didStartProvisionalLoadForFrame:(WebFrame *)frame {
-	NSLog(@"didStartProvisionalLoadForFrame");
 
 	if (frame != [sender mainFrame])
 		return;
-	NSLog(@"bigdeal");
 
-	NSLog(@"webViewLoadingStart");
 	[webViewProgressSpinner startAnimation:nil];
 	[webViewProgress setDoubleValue:0.0];
 	[webViewProgress setHidden:false];
 }
 
-//- (void)webViewLoadingEnd:(NSNotification *)aNotification
-//{
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame {
-	NSLog(@"didFinishLoadForFrame");
 
 	if (frame != [sender mainFrame])
 		return;
 
-	NSLog(@"bigdeal");
-	//NSLog([[[[[webView mainFrame] dataSource] request] URL] absoluteString]);
 	[webViewProgressSpinner stopAnimation:nil];
 	[webViewProgress setHidden:true];
 	if ([self isSignedIn]) {
@@ -138,14 +135,42 @@ NSString* signInURL = @"http://live.xbox.com/en-US/default.aspx";
 		[self loadURL:[NSURL URLWithString:@"about:blank"]];
 	}
 	else {
-		if (toDoAfterNextLoadCompletes)
+		NSLog(currentMode);
+		if (currentMode == @"signInFormSubmitted") {
 			[[NSNotificationCenter defaultCenter] postNotificationName:@"ChangeFriendsListMode" object:@"sign_in"];
+		}
+		else if (currentMode == @"loadingSignIn") {
+			currentMode = @"signInForm";
+			[[NSNotificationCenter defaultCenter] postNotificationName:@"ChangeFriendsListMode" object:@"sign_in"];
+		}
+		else if (currentMode == @"signInForm") {
+		
+		}
 	}
 }
 
-- (void)webViewLoadingChange:(NSNotification *)aNotification
-{
-	NSLog(@"webViewLoadingChange");
+- (void)webView:(WebView *)sender didFailProvisionalLoadWithError:(NSError *)error forFrame:(WebFrame *)frame {
+	if (frame != [sender mainFrame])
+		return;
+		
+
+	[webViewProgressSpinner stopAnimation:nil];
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"DisplayFriendsListError" object:@"Couldn't Connect didFailProvisionalLoadWithError"];
+}
+
+- (void)webView:(WebView *)sender didFailLoadWithError:(NSError *)error forFrame:(WebFrame *)frame {
+	if (frame != [sender mainFrame])
+		return;
+
+	if (currentMode == @"signInFormSubmitted") {
+		return;
+	}
+
+	[webViewProgressSpinner stopAnimation:nil];
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"DisplayFriendsListError" object:[error description]];
+}
+
+- (void)webViewLoadingChange:(NSNotification *)aNotification {
 	[webViewProgress setDoubleValue:[webView estimatedProgress]];
 }
 
@@ -198,10 +223,12 @@ NSString* signInURL = @"http://live.xbox.com/en-US/default.aspx";
 }
 
 - (void)doneWithSignIn {
-	toDoAfterNextLoadCompletes = nil;
+	currentMode = nil;
 	[signInWindow close];
+	[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"InSignInMode"];
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"FriendsListNeedsRefresh" object:nil];
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"ShowFriendsList" object:nil];
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"ChangeFriendsListMode" object:@"friends"];
 }
 
 

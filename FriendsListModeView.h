@@ -20,6 +20,9 @@
 	IBOutlet NSView *friendsList;
 	IBOutlet NSView *loadingView;
 	IBOutlet NSView *loginView;
+	IBOutlet NSView *errorView;
+
+	IBOutlet NSTextField *errorString;
 
 }
 
