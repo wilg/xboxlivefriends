@@ -50,7 +50,8 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-
+	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"InSignInMode"];
+	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"friendsListIsLoadedAndReady"];
 }
 
 - (void)awakeFromNib {
