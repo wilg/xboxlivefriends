@@ -82,6 +82,8 @@
 		3B78AC710A952E4E00E3FDBD /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B78AC700A952E4E00E3FDBD /* Sparkle.framework */; };
 		3B78AC870A952E8800E3FDBD /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3B78AC700A952E4E00E3FDBD /* Sparkle.framework */; };
 		3B79B1430A940DFF00C599A2 /* message.htm in Resources */ = {isa = PBXBuildFile; fileRef = 3B79B1420A940DFF00C599A2 /* message.htm */; };
+		3B7F28290E11D1520021BBD3 /* graybar.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B7F28270E11D1520021BBD3 /* graybar.png */; };
+		3B7F282A0E11D1520021BBD3 /* greenbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B7F28280E11D1520021BBD3 /* greenbar.png */; };
 		3B82C42B0A86561A002692C7 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B82C42A0A86561A002692C7 /* Growl.framework */; };
 		3B82C4B30A86591F002692C7 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3B82C42A0A86561A002692C7 /* Growl.framework */; };
 		3B8313E70CEB9D4D00A5A358 /* GamerInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B8313E60CEB9D4D00A5A358 /* GamerInfo.xib */; };
@@ -271,6 +273,8 @@
 		3B7320270A93DB56003C8FE0 /* XBMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBMessage.m; sourceTree = "<group>"; };
 		3B78AC700A952E4E00E3FDBD /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		3B79B1420A940DFF00C599A2 /* message.htm */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.html; path = message.htm; sourceTree = "<group>"; };
+		3B7F28270E11D1520021BBD3 /* graybar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = graybar.png; sourceTree = "<group>"; };
+		3B7F28280E11D1520021BBD3 /* greenbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenbar.png; sourceTree = "<group>"; };
 		3B82C42A0A86561A002692C7 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
 		3B8313D10CEB9AFB00A5A358 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/GamerInfo.xib; sourceTree = "<group>"; };
 		3B83AE3A0A869A0900CF3D69 /* XBGamercard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBGamercard.h; sourceTree = "<group>"; };
@@ -780,6 +784,8 @@
 			isa = PBXGroup;
 			children = (
 				3B8F674C0CB8866100A0D308 /* compare_achievements.css */,
+				3B7F28270E11D1520021BBD3 /* graybar.png */,
+				3B7F28280E11D1520021BBD3 /* greenbar.png */,
 				3B8F67910CB88FC800A0D308 /* compare_header.png */,
 				3BA8E51C0CBAA14C00C87EFC /* disclosure.png */,
 				3B1EA3510CBB1DA00030AAAD /* disclosure_up.png */,
@@ -971,6 +977,8 @@
 				3B4F1F1B0E10799B0025E0AE /* xlf_yellow.icns in Resources */,
 				3BFEA5D90E11BCA500B74A34 /* stars_empty.png in Resources */,
 				3BFEA5DA0E11BCA500B74A34 /* stars_full.png in Resources */,
+				3B7F28290E11D1520021BBD3 /* graybar.png in Resources */,
+				3B7F282A0E11D1520021BBD3 /* greenbar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
