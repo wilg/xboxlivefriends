@@ -109,8 +109,12 @@ NSString* gamerCardURL = @"http://live.xbox.com/en-US/profile/profile.aspx?pp=0&
 	bio = [bio replace:@"&quot;" with:@"\""];
 
 	location = [MQFunctions cropString:editString between:@"Location</h6><p class=\"XbcProfileForceWordWrap\">" and:@"</p>"];
+	location = [location replace:@"&amp;" with:@"&"];
+	location = [location replace:@"&quot;" with:@"\""];
 
 	realName = [MQFunctions cropString:editString between:@"Name</h6><p class=\"XbcProfileForceWordWrap\">" and:@"</p>"];
+	realName = [realName replace:@"&amp;" with:@"&"];
+	realName = [realName replace:@"&quot;" with:@"\""];
 
 	//find rep
 	NSString *repNumerator = [MQFunctions cropString:editString between:@"Reputation:</span><span class=\"XbcFloatRightAlignRight\"><img src=\"/xweb/lib/images/gc_repstars_meyou_" and:@".gif"];
