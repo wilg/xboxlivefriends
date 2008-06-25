@@ -87,8 +87,9 @@
 }
 
 - (void)loadMessageCenterThreaded {
-    NSInvocationOperation* theOp = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(loadMessageCenter) object:nil];
-     [[[[NSApplication sharedApplication] delegate] operationQueue] addOperation:theOp];	
+//    NSInvocationOperation* theOp = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(loadMessageCenter) object:nil];
+//     [[[[NSApplication sharedApplication] delegate] operationQueue] addOperation:theOp];	
+	[self performSelectorOnMainThread:@selector(loadMessageCenter) withObject:nil waitUntilDone:NO];
 }
 
 - (void)loadMessageCenter
@@ -113,7 +114,8 @@
 				[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"New Message", [@"New Message from " stringByAppendingString:[msg sender]], [msg subject], [[NSImage imageNamed:@"toolbar_check"] TIFFRepresentation], nil] forKeys:[NSArray arrayWithObjects:@"GROWL_NOTIFICATION_NAME", @"GROWL_NOTIFICATION_TITLE", @"GROWL_NOTIFICATION_DESCRIPTION", @"GROWL_NOTIFICATION_ICON", nil]]
 				
 				];
-				newMessagesAlreadyNotified = [newMessagesAlreadyNotified arrayByAddingObject:[msg identifier]];
+				[newMessagesAlreadyNotified release];
+				newMessagesAlreadyNotified = [[newMessagesAlreadyNotified arrayByAddingObject:[msg identifier]] retain];
 			}
 		}
 	}

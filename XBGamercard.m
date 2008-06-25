@@ -106,6 +106,7 @@ NSString* gamerCardURL = @"http://live.xbox.com/en-US/profile/profile.aspx?pp=0&
 
 	bio = [MQFunctions cropString:editString between:@"Bio</h6><p class=\"XbcProfileForceWordWrap\">" and:@"</p>"];
 	bio = [bio replace:@"&amp;" with:@"&"];
+	bio = [bio replace:@"&quot;" with:@"\""];
 
 	location = [MQFunctions cropString:editString between:@"Location</h6><p class=\"XbcProfileForceWordWrap\">" and:@"</p>"];
 

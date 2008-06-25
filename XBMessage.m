@@ -38,6 +38,18 @@
 	return self;
 }
 
+-(void)dealloc {
+	[sender release];
+	[date release];
+	[contents release];
+	[subject release];
+	[expirationDate release];
+	[identifier release];
+
+
+	[super dealloc];
+}
+
 - (NSDictionary *)tableViewRecord
 {
 	NSMutableDictionary *record = [NSMutableDictionary dictionary];
