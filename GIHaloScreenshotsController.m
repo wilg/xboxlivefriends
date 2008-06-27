@@ -11,6 +11,7 @@
 #import "GIHaloScreenshotsController.h"
 #import "Xbox Live Friends.h"
 #import "QuickLook.h"
+#import "HaloScreenshotParser.h"
 
 #define QLPreviewPanel NSClassFromString(@"QLPreviewPanel")
 
@@ -33,7 +34,7 @@ static NSArray *openFiles()
 
 @implementation GIHaloScreenshotsController
 
-- (id)init	{
+- (id)init {
 	if (![super init])
 	return nil;
 	
@@ -64,15 +65,10 @@ static NSArray *openFiles()
 }
 
 
-- (NSString *)notificationName
-{
+- (NSString *)notificationName {
 	return @"GIHaloScreenshotLoadNotification";
 }
 
-- (BOOL)postsDoneNotificationAutomatically
-{
-	return false;
-}
 
 - (void)clearTab {
 	[mImages removeAllObjects];
@@ -81,74 +77,14 @@ static NSArray *openFiles()
 	[myImageDescriptions removeAllObjects];
 }
 
-- (void)displayGamerInfo:(NSString *)gamertag
-{
-	
-
-	NSMutableArray *thumbSSIDs = [NSMutableArray array];
-	NSMutableArray *largeSSIDs = [NSMutableArray array];
-	NSMutableArray *titles = [NSMutableArray array];
-	NSMutableArray *descriptions = [NSMutableArray array];
-
-	NSMutableString *mutableGamerTag = [[gamertag mutableCopy] autorelease];
-	[mutableGamerTag replaceOccurrencesOfString:@" " withString:@"%20" options:0 range:NSMakeRange(0, [mutableGamerTag length])];
-
-	NSString *pageSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.bungie.net/stats/halo3/screenshots.aspx?gamertag=%@", mutableGamerTag]]];
-	
-	
-	int pageIndex = 0;
-	NSString *thisPageSource = pageSource;
-	while ([thisPageSource rangeOfString:@"Next</a>"].location != NSNotFound) {
-		pageIndex++;
-		NSLog(@"page index: %i", pageIndex);
-		thisPageSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.bungie.net/stats/halo3/screenshots.aspx?gamertag=%@&page=%i", mutableGamerTag, pageIndex]]];
-		pageSource = [pageSource stringByAppendingString:thisPageSource];
+- (void)displayGamerInfo:(NSString *)gamertag {
+	NSDictionary *info = [HaloScreenshotParser parseScreenshotList:gamertag];
+	if (info) {
+		[self thumbDownload:info];
 	}
-	
-	//do the gallery images too
-	NSString *gallerySource = [NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.bungie.net/stats/halo3/screenshots.aspx?mode=pinned&gamertag=%@", mutableGamerTag]]];
-	pageSource = [pageSource stringByAppendingString:gallerySource];
-	pageIndex = 0;
-	thisPageSource = gallerySource;
-	while ([thisPageSource rangeOfString:@"Next</a>"].location != NSNotFound) {
-		pageIndex++;
-		NSLog(@"gallery page index: %i", pageIndex);
-		thisPageSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.bungie.net/stats/halo3/screenshots.aspx?gamertag=%@&page=%i", mutableGamerTag, pageIndex]]];
-		pageSource = [pageSource stringByAppendingString:thisPageSource];
+	else {
+		[self setErrorForTab:@"No Screenshots"];
 	}
-
-	
-	
-	NSString *editString = pageSource;
-
-	while ([editString rangeOfString:@".ashx?ssid="].location != NSNotFound )	{
-		NSRange range;
-		int offset;
-
-		range = [editString rangeOfString:@".ashx?ssid="];
-		offset = range.location + range.length;
-
-		range = [editString rangeOfString:@"\"" options:0 range:NSMakeRange(offset, [editString length] - offset)];
-
-		NSString *thumbSSID = [editString substringWithRange:NSMakeRange(offset, range.location - offset)];
-		if (![thumbSSIDs containsObject:thumbSSID])
-			[thumbSSIDs addObject:thumbSSID];
-		
-		editString = [editString substringFromIndex:range.location];
-	}
-
-
-	for (NSString *thumbID in thumbSSIDs) {
-		NSString *thumbSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.bungie.net/stats/halo3/screenshot_viewer_popup.aspx?ssid=%@", thumbID]]];
-		[titles addObject:[[thumbSource cropFrom:@"screenshotTitle" to:@"/a>"] cropFrom:@">" to:@"<"]];
-		[descriptions addObject:[thumbSource cropFrom:@"descriptionLabel\">" to:@"<"]];
-		[largeSSIDs addObject: [MQFunctions cropString:thumbSource between:@"Screenshot.ashx?size=medium&amp;ssid=" and:@"\""]];
-	}
-
-
-//   [NSThread detachNewThreadSelector:@selector(threadedThumbDownload:) toTarget:self withObject:largeSSIDs];
-	[self thumbDownload:[NSArray arrayWithObjects:largeSSIDs, titles, descriptions, nil]];
-
 }
 
 - (NSString *)screenshotPath {
@@ -159,21 +95,11 @@ static NSArray *openFiles()
 	return defaultPath;
 }
 
-- (void)threadedThumbDownload:(NSArray *)largeSSIDs
-{
- 
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+-(void)thumbDownload:(NSDictionary *)info {
 
-	[self thumbDownload:largeSSIDs];
- 
-    [pool release];
-}
-
--(void)thumbDownload:(NSArray *)information {
-
-	NSArray *largeSSIDs = [information objectAtIndex:0];
-	NSArray *titles = [information objectAtIndex:1];
-	NSArray *descriptions = [information objectAtIndex:2];
+	NSArray *largeSSIDs = [info objectForKey:@"ssids"];
+	NSArray *titles = [info objectForKey:@"titles"];
+	NSArray *descriptions = [info objectForKey:@"descriptions"];
 
 	NSString *defaultPath =	[self screenshotPath];
 	

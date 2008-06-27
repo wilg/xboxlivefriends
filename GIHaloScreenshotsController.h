@@ -46,7 +46,7 @@
 - (IBAction) quickLookButton:(id) sender;
 - (void)quickLookSelectedItems;
 
--(void)thumbDownload:(NSArray *)largeSSIDs;
+-(void)thumbDownload:(NSDictionary *)info;
 - (void) updateDatasource;
 - (void)doInfoPop;
 - (void)closeInfoPop;

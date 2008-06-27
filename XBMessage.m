@@ -90,6 +90,10 @@
 	return type;
 }
 
+- (void)setContents:(NSString *)cont {
+	contents = cont;
+}
+
 - (NSString *)contents
 {
 	if (!contents)

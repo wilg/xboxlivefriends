@@ -14,9 +14,7 @@
 
 
 + (NSDictionary *)fetchWithTag:(NSString *)tag {
-	NSMutableString *mutableGamerTag = [[tag mutableCopy] autorelease];
-	[mutableGamerTag replaceOccurrencesOfString:@" " withString:@"+" options:0 range:NSMakeRange(0, [mutableGamerTag length])];
-	return [self fetchWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", @"http://www.bungie.net/Stats/Halo3/Default.aspx?player=", mutableGamerTag]]];
+	return [self fetchWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", @"http://www.bungie.net/Stats/Halo3/Default.aspx?player=", [tag replace:@" " with:@"+"]]]];
 }
 
 
@@ -27,23 +25,24 @@
 
 	NSMutableDictionary *serviceRecord = [NSMutableDictionary dictionary];
 
-	NSString *xp = [MQFunctions cropString:pageSource between:@"ctl00_mainContent_identityStrip_lblTotalRP\">" and:@"</span>"];
-	if (!xp) {
+	if (![pageSource contains:@"ctl00_mainContent_identityStrip_lblTotalRP"]) {
 		return nil;
 	}
-	
+
+	NSString *xp = [pageSource cropFrom:@"ctl00_mainContent_identityStrip_lblTotalRP\">" to:@"</span>"];
+		
 	[serviceRecord setObject:xp forKey:@"xp"];
-	[serviceRecord setObject:[MQFunctions cropString:pageSource between:@"ctl00_mainContent_identityStrip_lblSkill\">" and:@"</span>"] forKey:@"skill"];
-	[serviceRecord setObject:[MQFunctions cropString:pageSource between:@"ctl00_mainContent_identityStrip_lblRank\">" and:@"</span>"] forKey:@"rankTitle"];
-	[serviceRecord setObject:[MQFunctions cropString:pageSource between:@"ctl00_mainContent_identityStrip_lblServiceTag\">" and:@"</span>"] forKey:@"serviceTag"];
+	[serviceRecord setObject:[pageSource cropFrom:@"ctl00_mainContent_identityStrip_lblSkill\">" to:@"</span>"] forKey:@"skill"];
+	[serviceRecord setObject:[pageSource cropFrom:@"ctl00_mainContent_identityStrip_lblRank\">" to:@"</span>"] forKey:@"rankTitle"];
+	[serviceRecord setObject:[pageSource cropFrom:@"ctl00_mainContent_identityStrip_lblServiceTag\">" to:@"</span>"] forKey:@"serviceTag"];
 
-	NSString *rankImageArea = [MQFunctions cropString:pageSource between:@"<img id=\"ctl00_mainContent_identityStrip_imgRank\"" and:@"/>"];
+	NSString *rankImageArea = [pageSource cropFrom:@"<img id=\"ctl00_mainContent_identityStrip_imgRank\"" to:@"/>"];
 	if (rankImageArea)
-		[serviceRecord setObject:[NSURL URLWithString:[@"http://www.bungie.net/" stringByAppendingString:[MQFunctions cropString:rankImageArea between:@"src=\"" and:@"\""]]] forKey:@"rankImageURL"];
+		[serviceRecord setObject:[NSURL URLWithString:[@"http://www.bungie.net/" stringByAppendingString:[rankImageArea cropFrom:@"src=\"" to:@"\""]]] forKey:@"rankImageURL"];
 
-	NSString *nextRankArea = [MQFunctions cropString:pageSource between:@"ctl00_mainContent_identityStrip_hypNextRank" and:@"</li>"];
+	NSString *nextRankArea = [pageSource cropFrom:@"ctl00_mainContent_identityStrip_hypNextRank" to:@"</li>"];
 	if (nextRankArea)
-		[serviceRecord setObject:[MQFunctions cropString:nextRankArea between:@"\">" and:@"<"] forKey:@"nextRankAt"];
+		[serviceRecord setObject:[pageSource cropFrom:@"\">" to:@"<"] forKey:@"nextRankAt"];
 
 	
 	return [serviceRecord copy];

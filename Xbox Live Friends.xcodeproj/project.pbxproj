@@ -106,6 +106,7 @@
 		3B8F67A20CB8945F00A0D308 /* error.css in Resources */ = {isa = PBXBuildFile; fileRef = 3B8F67A00CB8945F00A0D308 /* error.css */; };
 		3B91BE4D099D2633008EB5D4 /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B91BE4B099D2633008EB5D4 /* Controller.m */; };
 		3B91BE5F099D26E7008EB5D4 /* appicon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3B91BE5E099D26E7008EB5D4 /* appicon.icns */; };
+		3B9BFA5D0E14841D0002312B /* HaloScreenshotParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFA5C0E14841D0002312B /* HaloScreenshotParser.m */; };
 		3BA3ADDD0E0E246D00ADE992 /* FriendOptionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3ADDC0E0E246D00ADE992 /* FriendOptionsController.m */; };
 		3BA852A20DCD6BF300602576 /* toolbar_achievements.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BA852A10DCD6BF300602576 /* toolbar_achievements.png */; };
 		3BA8E51D0CBAA14C00C87EFC /* disclosure.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BA8E51C0CBAA14C00C87EFC /* disclosure.png */; };
@@ -301,6 +302,8 @@
 		3B91BE4A099D2633008EB5D4 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
 		3B91BE4B099D2633008EB5D4 /* Controller.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = Controller.m; sourceTree = "<group>"; };
 		3B91BE5E099D26E7008EB5D4 /* appicon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = appicon.icns; sourceTree = "<group>"; };
+		3B9BFA5B0E14841D0002312B /* HaloScreenshotParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HaloScreenshotParser.h; sourceTree = "<group>"; };
+		3B9BFA5C0E14841D0002312B /* HaloScreenshotParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HaloScreenshotParser.m; sourceTree = "<group>"; };
 		3BA3ADDB0E0E246D00ADE992 /* FriendOptionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendOptionsController.h; sourceTree = "<group>"; };
 		3BA3ADDC0E0E246D00ADE992 /* FriendOptionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendOptionsController.m; sourceTree = "<group>"; };
 		3BA852A10DCD6BF300602576 /* toolbar_achievements.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbar_achievements.png; sourceTree = "<group>"; };
@@ -590,6 +593,8 @@
 				3B2BE4700E05A56700171FF4 /* QuickLook.h */,
 				3B511D220E04BE4A00530154 /* GIHaloScreenshotsController.h */,
 				3B511D230E04BE4A00530154 /* GIHaloScreenshotsController.m */,
+				3B9BFA5B0E14841D0002312B /* HaloScreenshotParser.h */,
+				3B9BFA5C0E14841D0002312B /* HaloScreenshotParser.m */,
 			);
 			name = "Halo 3 Screenshots View";
 			sourceTree = "<group>";
@@ -1043,6 +1048,7 @@
 				3BC754540E0F819400D0EF53 /* BGHUDTextFieldCell.m in Sources */,
 				3BC7546A0E0F879300D0EF53 /* NSImage+BHReflectedImage.m in Sources */,
 				3BC754E10E0F8FE100D0EF53 /* RoundedBox.m in Sources */,
+				3B9BFA5D0E14841D0002312B /* HaloScreenshotParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

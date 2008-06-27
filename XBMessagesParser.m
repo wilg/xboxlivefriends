@@ -22,6 +22,27 @@ NSString* messageCenterURL = @"http://live.xbox.com/en-US/profile/MessageCenter/
 	
 	NSArray *rows = [theSource cropRowsMatching:@"<tbody" rowEnd:@"</tbody>"];
 	
+	
+//	BOOL demoMode = YES;
+//	
+//	XBMessage *x;
+//	if (demoMode) {
+//		//demo mode shit
+//		x = [XBMessage messageWithSender:@"Foot Kablamo" date:[NSDate dateWithTimeIntervalSinceNow:-2344] type:XBTextMessageType subject:@"do you want to pl..." expirationDate:@"30 days" isRead:NO identifier:@"ewfnoewa"];
+//		[x setContents:@"<p>do you want to play halo later?</p>"];
+//		[allMessages addObject:x];
+//		
+//		x = [XBMessage messageWithSender:@"durrik" date:[NSDate dateWithTimeIntervalSinceNow:-4393] type:XBTextMessageType subject:@"hey have you seen the new..." expirationDate:@"30 days" isRead:NO identifier:@"ewfnoewa"];
+//		[x setContents:@"<p>hey have you seen the new crazy shit on my page?</p>"];
+//		[allMessages addObject:x];
+//
+//
+//		x = [XBMessage messageWithSender:@"RxE xMoNoToNiCx" date:[NSDate dateWithTimeIntervalSinceNow:-10393] type:XBTextMessageType subject:@"i sure love mindquir..." expirationDate:@"30 days" isRead:NO identifier:@"ewfnoewa"];
+//		[x setContents:@"<p>WTF?!?!?</p><p>Infinitly ridiculous! Someone referred to me, an upstanding citizen, in an untoward manner inside of the online community of &quot;Halo the Third&quot;!</p><p>I, for one, was apalled!</p><p>However, this is clearly a singular occurance, and I will not let it dissuade me from playing on-line in the Xbox Live community.</p><p>I bid you good-day, ladies and gentlemen.</p>"];
+//		[allMessages addObject:x];
+//
+//	}
+	
 	for (NSString *row in rows) {
 		NSString *gamertag = [row cropFrom:@"headers=\"GamerTag\">" to:@"/a>"];
 		gamertag = [gamertag cropFrom:@"\">" to:@"<"];

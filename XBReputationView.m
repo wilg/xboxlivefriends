@@ -21,7 +21,6 @@
 }
 
 - (void)drawRect:(NSRect)rect {
-	NSLog(@"reputationViewDrawRect");
 
 	NSImage *foreground = [[[NSImage imageNamed:@"stars_full.png"] copy] autorelease];
 	NSImage *background = [[[NSImage imageNamed:@"stars_empty.png"] copy] autorelease];
