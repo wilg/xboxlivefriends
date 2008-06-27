@@ -30,6 +30,7 @@ typedef enum {
 	BOOL isRead;
 
 }
+@property(assign) BOOL isRead;
 
 - (id)initWithSender:(NSString *)aSender date:(NSDate *)dateString type:(int)atype subject:(NSString *)asubj expirationDate:(NSString *)anExpiration isRead:(BOOL)aRead identifier:(NSString *)theident;
 

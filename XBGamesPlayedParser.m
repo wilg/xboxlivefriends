@@ -29,7 +29,8 @@ NSString* achievementURL = @"http://live.xbox.com/en-US/profile/Achievements/Vie
 		XBGame *thisGame = [XBGame game];
 		
 		if (![row contains:@"XbcAchYouCell"]) {
-			thisGame.isJustMe = YES;
+			return nil;
+			//thisGame.isJustMe = YES;
 		}
 		
 		[thisGame setName:[row cropFrom:@"XbcAchievementsTitle\">" to:@"</strong>"]];

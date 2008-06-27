@@ -23,7 +23,6 @@
 
 	NSString *pageSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.bungie.net/stats/halo3/screenshots.aspx?gamertag=%@", gamertag]]];
 	
-	
 	int pageIndex = 0;
 	NSString *thisPageSource = pageSource;
 	while ([thisPageSource rangeOfString:@"Next</a>"].location != NSNotFound) {
@@ -32,7 +31,7 @@
 		thisPageSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.bungie.net/stats/halo3/screenshots.aspx?gamertag=%@&page=%i", gamertag, pageIndex]]];
 		pageSource = [pageSource stringByAppendingString:thisPageSource];
 	}
-	
+
 	//do the gallery images too
 	NSString *gallerySource = [NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.bungie.net/stats/halo3/screenshots.aspx?mode=pinned&gamertag=%@", gamertag]]];
 	pageSource = [pageSource stringByAppendingString:gallerySource];
@@ -44,6 +43,9 @@
 		thisPageSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.bungie.net/stats/halo3/screenshots.aspx?gamertag=%@&page=%i", gamertag, pageIndex]]];
 		pageSource = [pageSource stringByAppendingString:thisPageSource];
 	}
+
+	if (![pageSource contains:@".ashx?ssid="])
+		return nil;
 
 	for (NSString *thisSSID in [pageSource cropRowsMatching:@".ashx?ssid=" rowEnd:@"\""]) {
 		if (![thumbSSIDs containsObject:thisSSID])

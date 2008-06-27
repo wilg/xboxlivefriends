@@ -42,7 +42,12 @@
 
 - (void)displayGamerInfo:(NSString *)gamertag {
 	NSArray *theInfo = [XBGamesPlayedParser fetchWithTag:gamertag];
-	[self displayPieChart:theInfo];
+	if (theInfo) {
+		[self displayPieChart:theInfo];
+	}
+	else {
+		[self setErrorForTab:@"An Error Occurred"];
+	}
 }
 
 

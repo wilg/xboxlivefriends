@@ -72,7 +72,7 @@ BOOL debugLogOn = NO;
 		{
 			NSDictionary *encodingDict = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:encoding] forKey:@"CharacterEncoding"];
 			attrString = [[NSAttributedString alloc] initWithHTML:theData documentAttributes:&encodingDict];
-			result = [[[attrString string] retain] autorelease];	// keep only this
+			result = [[[attrString string] copy] autorelease];	// keep only this
 			[attrString release];	// don't do autorelease since this is so deep down.
 		}
 	}

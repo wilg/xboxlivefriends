@@ -12,6 +12,8 @@
 
 @implementation XBMessage
 
+@synthesize isRead;
+
 - (id)initWithSender:(NSString *)aSender date:(NSDate *)dateString type:(int)atype subject:(NSString *)asubj expirationDate:(NSString *)anExpiration isRead:(BOOL)aRead identifier:(NSString *)theident
 {
 	if (![super init])
@@ -114,12 +116,6 @@
 	[expirationDate retain];
 	return expirationDate;
 }
-
-- (BOOL)isRead
-{
-	return isRead;
-}
-
 
 - (NSString *)identifier
 {

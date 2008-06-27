@@ -29,11 +29,16 @@
 
 }
 
-- (void)displayGamerInfo:(NSString *)gamertag
-{
-	[self setLastFetch:[XBGamesPlayedParser fetchWithTag:gamertag]];
-	[self setLastFetchTag:gamertag];
-	[self performSelectorOnMainThread:@selector(refilter:) withObject:nil waitUntilDone:YES];
+- (void)displayGamerInfo:(NSString *)gamertag {
+	NSArray *gamesPlayed = [XBGamesPlayedParser fetchWithTag:gamertag];
+	if (gamesPlayed) {
+		[self setLastFetch:gamesPlayed];
+		[self setLastFetchTag:gamertag];
+		[self performSelectorOnMainThread:@selector(refilter:) withObject:nil waitUntilDone:YES];
+	}
+	else {
+		[self setErrorForTab:@"An Error Occurred"];
+	}
 
 }
 
