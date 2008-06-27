@@ -76,6 +76,10 @@
 			@try{
 				currentEditRow = [theRow mutableCopy];
 				
+				if (thisGame.isJustMe) {
+					[self setErrorForTab:@"Cannot View Your Own Achievements"];
+					return;
+				}
 				
 				NSString *rowEvenness;
 				if (usableGames % 2 == 1) {
@@ -255,9 +259,7 @@
 
 	[theBodyMut replaceOccurrencesOfString:@"$their_tag" withString:gamertag options:0 range:NSMakeRange(0, [theBodyMut length])];
 	[theBodyMut replaceOccurrencesOfString:@"$games_list" withString:allRows options:0 range:NSMakeRange(0, [theBodyMut length])];
-	
-//	NSLog(theBodyMut);
-	
+		
 	[[comparisonWebView mainFrame] loadHTMLString:theBodyMut baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]]];
 }
 

@@ -508,6 +508,8 @@
 			3BD07C360E14C4600077A0FF /* PBXTextBookmark */ = 3BD07C360E14C4600077A0FF /* PBXTextBookmark */;
 			3BD07C370E14C4600077A0FF /* PBXTextBookmark */ = 3BD07C370E14C4600077A0FF /* PBXTextBookmark */;
 			3BD07C380E14C4600077A0FF /* PBXTextBookmark */ = 3BD07C380E14C4600077A0FF /* PBXTextBookmark */;
+			3BD07C590E14D6B70077A0FF /* PBXTextBookmark */ = 3BD07C590E14D6B70077A0FF /* PBXTextBookmark */;
+			3BD07C5A0E14D6B70077A0FF /* PBXTextBookmark */ = 3BD07C5A0E14D6B70077A0FF /* PBXTextBookmark */;
 			3BD4D2BD0E120C4C00DC0505 = 3BD4D2BD0E120C4C00DC0505 /* PBXBookmark */;
 			3BD4D2BE0E120C4C00DC0505 = 3BD4D2BE0E120C4C00DC0505 /* PBXTextBookmark */;
 			3BD4D2BF0E120C4C00DC0505 = 3BD4D2BF0E120C4C00DC0505 /* PBXTextBookmark */;
@@ -829,17 +831,17 @@
 	};
 	3B1622610CBA8D4600569A5F /* XBAchievement.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1049, 902}}";
-			sepNavSelRange = "{572, 0}";
-			sepNavVisRange = "{0, 1004}";
+			sepNavIntBoundsRect = "{{0, 0}, {1101, 900}}";
+			sepNavSelRange = "{375, 0}";
+			sepNavVisRange = "{0, 1056}";
 			sepNavVisRect = "{{0, 0}, {1107, 906}}";
 		};
 	};
 	3B1622620CBA8D4600569A5F /* XBAchievement.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1049, 1834}}";
-			sepNavSelRange = "{954, 0}";
-			sepNavVisRange = "{0, 1380}";
+			sepNavIntBoundsRect = "{{0, 0}, {1101, 1946}}";
+			sepNavSelRange = "{233, 0}";
+			sepNavVisRange = "{0, 1345}";
 			sepNavVisRect = "{{0, 191}, {1033, 906}}";
 		};
 	};
@@ -894,9 +896,9 @@
 	};
 	3B1885E60CB9D9510071B870 /* XBAchievementDetailsParser.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1049, 1204}}";
-			sepNavSelRange = "{2605, 4}";
-			sepNavVisRange = "{579, 1459}";
+			sepNavIntBoundsRect = "{{0, 0}, {1101, 1330}}";
+			sepNavSelRange = "{2586, 0}";
+			sepNavVisRange = "{806, 1886}";
 			sepNavVisRect = "{{0, 111}, {862, 906}}";
 		};
 	};
@@ -1071,9 +1073,9 @@
 	};
 	3B2458120CE8E5A300FA2893 /* GIAchievementsController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1049, 5320}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1101, 5306}}";
 			sepNavSelRange = "{6187, 0}";
-			sepNavVisRange = "{5958, 1794}";
+			sepNavVisRange = "{877, 2514}";
 		};
 	};
 	3B2458440CE900AF00FA2893 /* PBXTextBookmark */ = {
@@ -1438,7 +1440,7 @@
 	};
 	3B487BB70E0EFB8600D31E16 /* FriendStatusCell.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1101, 1890}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1101, 1904}}";
 			sepNavSelRange = "{1262, 10}";
 			sepNavVisRange = "{0, 2812}";
 			sepNavWindowFrame = "{{15, 150}, {1134, 1023}}";
@@ -1707,7 +1709,7 @@
 		fRef = 3B1885E60CB9D9510071B870 /* XBAchievementDetailsParser.m */;
 		name = "XBAchievementDetailsParser.m: 85";
 		rLen = 4;
-		rLoc = 2605;
+		rLoc = 2676;
 		rType = 0;
 		vrLen = 1459;
 		vrLoc = 579;
@@ -3116,7 +3118,7 @@
 		fRef = 3B1622610CBA8D4600569A5F /* XBAchievement.h */;
 		name = "XBAchievement.h: 47";
 		rLen = 0;
-		rLoc = 1004;
+		rLoc = 1056;
 		rType = 0;
 		vrLen = 932;
 		vrLoc = 0;
@@ -3342,9 +3344,9 @@
 	};
 	3BC07C180CE93E8C00B50CA0 /* LoginController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1049, 3388}}";
-			sepNavSelRange = "{1198, 92}";
-			sepNavVisRange = "{150, 2237}";
+			sepNavIntBoundsRect = "{{0, 0}, {1101, 3374}}";
+			sepNavSelRange = "{1526, 0}";
+			sepNavVisRange = "{280, 2481}";
 		};
 	};
 	3BC07C1A0CE93EBA00B50CA0 /* FriendsListController.h */ = {
@@ -3356,9 +3358,9 @@
 	};
 	3BC07C1B0CE93EBA00B50CA0 /* FriendsListController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1049, 8624}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1101, 8610}}";
 			sepNavSelRange = "{4753, 10}";
-			sepNavVisRange = "{6296, 1781}";
+			sepNavVisRange = "{6145, 1931}";
 			sepNavWindowFrame = "{{266, 5}, {1134, 1023}}";
 		};
 	};
@@ -3462,7 +3464,7 @@
 	3BC19A8E0CF6652E00415B31 /* GIServiceRecordParser.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1101, 900}}";
-			sepNavSelRange = "{1111, 0}";
+			sepNavSelRange = "{1258, 0}";
 			sepNavVisRange = "{0, 1916}";
 		};
 	};
@@ -3549,7 +3551,7 @@
 		fRef = 3B1622610CBA8D4600569A5F /* XBAchievement.h */;
 		name = "XBAchievement.h: 30";
 		rLen = 0;
-		rLoc = 572;
+		rLoc = 624;
 		rType = 0;
 		vrLen = 1004;
 		vrLoc = 0;
@@ -3639,7 +3641,7 @@
 		fRef = 3B1622620CBA8D4600569A5F /* XBAchievement.m */;
 		name = "XBAchievement.m: 51";
 		rLen = 0;
-		rLoc = 954;
+		rLoc = 976;
 		rType = 0;
 		vrLen = 1380;
 		vrLoc = 0;
@@ -4092,7 +4094,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 19;
-		modificationTime = 236241838.783823;
+		modificationTime = 236242510.443512;
 		state = 1;
 	};
 	3BD07B9F0E14B8900077A0FF /* PBXTextBookmark */ = {
@@ -4843,6 +4845,24 @@
 		rLoc = 1111;
 		rType = 0;
 		vrLen = 1916;
+		vrLoc = 0;
+	};
+	3BD07C590E14D6B70077A0FF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "error: syntax error before ')' token";
+		fRef = 3B1622610CBA8D4600569A5F /* XBAchievement.h */;
+		rLen = 1;
+		rLoc = 26;
+		rType = 1;
+	};
+	3BD07C5A0E14D6B70077A0FF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3B1622610CBA8D4600569A5F /* XBAchievement.h */;
+		name = "XBAchievement.h: 27";
+		rLen = 33;
+		rLoc = 377;
+		rType = 0;
+		vrLen = 1020;
 		vrLoc = 0;
 	};
 	3BD16F160A93E33C008AC8D7 /* XBMessagesParser.h */ = {

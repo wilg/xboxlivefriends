@@ -19,7 +19,10 @@
 	NSString *yourAchievementCount;
 	NSString *theirAchievementCount;
 	
+	BOOL isJustMe;
 }
+
+@property(assign) BOOL isJustMe;
 
 - (id)init;
 

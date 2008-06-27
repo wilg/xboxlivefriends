@@ -19,8 +19,12 @@
 	
 	BOOL iHaveAchievement;
 	BOOL theyHaveAchievement;
+	
+	BOOL isJustMe;
 
 }
+
+@property(assign) BOOL isJustMe;
 
 - (id)init;
 - (void)dealloc;

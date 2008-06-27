@@ -11,6 +11,7 @@
 
 
 @implementation XBAchievement
+@synthesize isJustMe;
 
 - (id)init
 {
@@ -26,6 +27,7 @@
 //	iHaveAchievement = nil;
 //	theyHaveAchievement = nil;
 
+	self.isJustMe = NO;
 	
 	[title retain];
 	[gameID retain];

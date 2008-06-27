@@ -76,6 +76,10 @@
 													  myTile:[myArea cropFrom:@"<img src=\"" to:@"\""]
 													  theirTile:[theirArea cropFrom:@"<img src=\"" to:@"\""]
 		];
+		
+		if (![thisAchievementSource contains:@"XbcAchYouCell"]) {
+			thisAchievement.isJustMe = YES;
+		}
 				
 
 		[achievementArray addObject:thisAchievement];

@@ -69,7 +69,7 @@ NSString* signInURL = @"http://live.xbox.com/en-US/default.aspx";
 - (IBAction)OpenSignIn:(id)sender{
 	currentMode = @"loadingSignIn";
 	[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"InSignInMode"];
-	[self loadURL:[NSURL URLWithString:signInURL]];
+	[self performSelectorOnMainThread:@selector(loadURL:) withObject:[NSURL URLWithString:signInURL] waitUntilDone:YES];
 
 	//[[NSNotificationCenter defaultCenter] postNotificationName:@"ChangeFriendsListMode" object:@"sign_in"];
 

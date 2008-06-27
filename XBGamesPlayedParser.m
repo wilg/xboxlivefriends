@@ -27,10 +27,21 @@ NSString* achievementURL = @"http://live.xbox.com/en-US/profile/Achievements/Vie
 	for (NSString *row in rows) {
 		
 		XBGame *thisGame = [XBGame game];
+		
+		if (![row contains:@"XbcAchYouCell"]) {
+			thisGame.isJustMe = YES;
+		}
+		
 		[thisGame setName:[row cropFrom:@"XbcAchievementsTitle\">" to:@"</strong>"]];
 		[thisGame setTileURL:[NSURL URLWithString:[row cropFrom:@"AchievementsGameIcon\" src=\"" to:@"\" alt=\""]]];
-
-		NSString *yourScore = [row cropFrom:@"XbcAchMeCell\"><strong>" to:@" <img src"];
+		
+		NSString *yourScore;
+		if (thisGame.isJustMe) {
+			yourScore = [row cropFrom:@"XbcAchGamerData\"><strong>" to:@" <img src"];
+		}
+		else {
+			yourScore = [row cropFrom:@"XbcAchMeCell\"><strong>" to:@" <img src"];
+		}
 		if ([yourScore rangeOfString:@"No Gamerscore"].location != NSNotFound || yourScore == nil)
 			yourScore = @"-1 of 1000";
 		[thisGame setYourScore:yourScore];

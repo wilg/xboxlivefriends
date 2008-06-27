@@ -11,6 +11,7 @@
 
 
 @implementation XBGame
+@synthesize isJustMe;
 
 - (id)init
 {

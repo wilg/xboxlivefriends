@@ -60,28 +60,37 @@
 	
 	if([gameList count] != 0) {
 	
-		for (XBGame *thisGameCount in gameList) {
-			totalScore += [[thisGameCount theirScore] floatValue];
+		for (XBGame *game in gameList) {
+			if (game.isJustMe)
+				totalScore += [[game yourScore] floatValue];
+			else
+				totalScore += [[game theirScore] floatValue];
 		}
 		
 		for (XBGame *thisGame in gameList) {
 		
-			float score = [[thisGame theirScore] floatValue];
+			NSString *score;
+			if (thisGame.isJustMe)
+				score = [thisGame yourScore];
+			else
+				score = [thisGame theirScore];
+			
+			float floatScore = [score floatValue];
 
 			BOOL shouldDisplaySlice = YES;
-			float percent = score / totalScore * 100.0;
+			float percent = floatScore / totalScore * 100.0;
 			
 			if ([gameList count] > 18 && percent < 1)
 				shouldDisplaySlice = NO;
 
-			if (score <= 0)
+			if (floatScore <= 0)
 				shouldDisplaySlice = NO;
 				
 			if (shouldDisplaySlice) {
 				NSImage *gameIcon = [[NSImage alloc] initWithContentsOfURL:[thisGame tileURL]];
 
 				NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-				[dict setObject:[thisGame theirScore] forKey:@"score"];
+				[dict setObject:score forKey:@"score"];
 				[dict setObject:[NSString stringWithFormat:@"%i%%", round(percent)] forKey:@"percent"];
 				[dict setObject:gameIcon forKey:@"image"];
 				[dict setObject:[MQFunctions flattenHTML:[thisGame name]] forKey:@"title"];
@@ -89,7 +98,7 @@
 				
 				MQSlice *slice = [MQSlice slice];
 				[slice setColor:[NSColor colorWithPatternImage:[ColorizeImage colorizeImage:textureImage withColor:[self colorForSlice]]]];
-				[slice setSize:score];
+				[slice setSize:floatScore];
 				[slice setMessage:[thisGame name]];
 				[slice setCaptionData:[dict copy]];
 				[slice setShouldDisplay:shouldDisplaySlice];
@@ -97,7 +106,7 @@
 				[pieGraph addSlice:slice];
 			}
 			else
-				otherScore += score;
+				otherScore += floatScore;
 			
 		}		
 		
