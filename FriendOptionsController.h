@@ -19,8 +19,6 @@
 	IBOutlet NSImageView *gamertile;
 	IBOutlet NSImageView *gamertileReflection;
 
-	
-
 	XBFriend *currentFriend;
 
 }

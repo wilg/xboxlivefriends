@@ -5,7 +5,7 @@
 //  i trip blind kids, what's your anti-drug?
 // 
 //  © 2006 mindquirk
-//  
+//  *test*
 
 #import <Cocoa/Cocoa.h>
 
