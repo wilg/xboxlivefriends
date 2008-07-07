@@ -73,8 +73,10 @@
 		3B54EA2B0E09AE8100B1142F /* close_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B54EA2A0E09AE8100B1142F /* close_bar.png */; };
 		3B5B59120A93B339003A5EA5 /* XBSplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B59100A93B339003A5EA5 /* XBSplitView.m */; };
 		3B5BDD880E21E31F00D00C7C /* StayAround.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5BDD870E21E31F00D00C7C /* StayAround.m */; };
-		3B5BDDAF0E21E47100D00C7C /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5BDDAE0E21E47100D00C7C /* Sparkle.framework */; };
-		3B5BDDDC0E21E4D800D00C7C /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5BDDDB0E21E4D800D00C7C /* Growl.framework */; };
+		3B5BDDAF0E21E47100D00C7C /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3B5BDDAE0E21E47100D00C7C /* Sparkle.framework */; };
+		3B5BDDDC0E21E4D800D00C7C /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3B5BDDDB0E21E4D800D00C7C /* Growl.framework */; };
+		3B5BDDFB0E21E64700D00C7C /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5BDDDB0E21E4D800D00C7C /* Growl.framework */; };
+		3B5BDDFC0E21E64700D00C7C /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5BDDAE0E21E47100D00C7C /* Sparkle.framework */; };
 		3B6324DD0CE8C0C800418B0E /* XLF.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B6324DC0CE8C0C800418B0E /* XLF.xib */; };
 		3B6324E20CE8C11200418B0E /* MQColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6324E10CE8C11200418B0E /* MQColorView.m */; };
 		3B63252D0CE8C52A00418B0E /* XBGamerInfoTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B63252C0CE8C52A00418B0E /* XBGamerInfoTableController.m */; };
@@ -171,6 +173,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				3B5BDDDC0E21E4D800D00C7C /* Growl.framework in CopyFiles */,
+				3B5BDDAF0E21E47100D00C7C /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,14 +394,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B5BDDFB0E21E64700D00C7C /* Growl.framework in Frameworks */,
+				3B5BDDFC0E21E64700D00C7C /* Sparkle.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				3BFABF9F0A45E9F500A49E84 /* WebKit.framework in Frameworks */,
 				3B4429860A46391B004A4AE1 /* AddressBook.framework in Frameworks */,
 				3B8629C30ABCC16D00BCA869 /* QuartzCore.framework in Frameworks */,
 				3B862A410ABCCC5500BCA869 /* SystemConfiguration.framework in Frameworks */,
 				3B511D840E04C45700530154 /* Quartz.framework in Frameworks */,
-				3B5BDDAF0E21E47100D00C7C /* Sparkle.framework in Frameworks */,
-				3B5BDDDC0E21E4D800D00C7C /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

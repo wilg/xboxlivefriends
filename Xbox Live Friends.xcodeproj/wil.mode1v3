@@ -231,6 +231,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -269,27 +271,29 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
-								<string>3B8058470CF38FE4000E85D3</string>
-								<string>3B8058480CF38FFA000E85D3</string>
-								<string>3B00E5C70ABE1F5B00B48E3A</string>
-								<string>3BF81DAD0CD81BBA00D74991</string>
-								<string>3B8058430CF38EF6000E85D3</string>
-								<string>3BDE443D0A8E62AA0003700B</string>
-								<string>3B8058420CF38EE2000E85D3</string>
-								<string>3BEF50090CF614C700B5B4F8</string>
-								<string>3B511D210E04BE3900530154</string>
-								<string>080E96DDFE201D6D7F000001</string>
+								<string>29B97323FDCFA39411CA2CEA</string>
+								<string>1058C7A2FEA54F0111CA2CBB</string>
 								<string>1C37FBAC04509CD000000102</string>
+								<string>3B5BDDEF0E21E5E200D00C7C</string>
+								<string>3B5BDDF00E21E5E200D00C7C</string>
+								<string>3B5BDDFF0E21E65700D00C7C</string>
 								<string>1C37FAAC04509CD000000102</string>
 								<string>1C37FABC05509CD000000102</string>
-								<string>E2644B35053B69B200211256</string>
 								<string>1CC0EA4004350EF90041110B</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>159</integer>
-									<integer>135</integer>
+									<integer>36</integer>
+									<integer>35</integer>
+									<integer>28</integer>
+									<integer>27</integer>
+								</array>
+								<array>
+									<integer>37</integer>
+									<integer>35</integer>
+									<integer>28</integer>
+									<integer>27</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
@@ -325,8 +329,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -344,7 +346,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>3B5BDD9F0E21E3AE00D00C7C</string>
+										<string>3B5BDE000E21E65700D00C7C</string>
 										<key>history</key>
 										<array>
 											<string>3B85587A0A9995E900585C15</string>
@@ -924,8 +926,12 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>3B5BDE010E21E65700D00C7C</string>
+		<string>3B5BDDF30E21E5E200D00C7C</string>
+		<string>3B5BDDF40E21E5E200D00C7C</string>
 		<string>3BE723190CD50F270066572E</string>
 		<string>1CD10A99069EF8BA00B06720</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/wil/Desktop/trunk/Xbox Live Friends.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -945,8 +951,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -969,6 +973,8 @@
 							<string>705pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -1255,6 +1261,8 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -1290,7 +1298,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>3BE795C70E1596A100272904</string>
+				<string>3B5BDDE90E21E53200D00C7C</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
@@ -1300,7 +1308,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
