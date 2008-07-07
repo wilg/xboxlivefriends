@@ -5,9 +5,10 @@
 //  i trip blind kids, what's your anti-drug?
 // 
 //  © 2006 mindquirk
-//  *test*
+//  
 
 #import <Cocoa/Cocoa.h>
+#import "StayAround.h"
 
 @interface Controller : NSObject {
 
@@ -20,6 +21,7 @@
 	
 	IBOutlet NSMenuItem *debugMenu;
 }
++ (StayAround *)stayArounds;
 
 - (NSOperationQueue *)operationQueue;
 - (void)timedRefresh;

@@ -6,6 +6,7 @@
 //  Copyright 2008 __MyCompanyName__. All rights reserved.
 //
 
+#import "Xbox Live Friends.h"
 #import "MQColorView.h"
 #import "FriendsListModeView.h"
 
@@ -14,6 +15,10 @@
 
 
 - (void)awakeFromNib {
+
+	NSLog(@"FACE");
+	
+	[[Controller stayArounds] addObject:self];
 
 	[loadingProgress startAnimation:nil];
 	[[loadingView window] makeKeyAndOrderFront:nil];
@@ -29,7 +34,15 @@
 
 }
 
+- (void)finalize
+{
+	NSLog(@"SHIT FINALIZED");
+	
+	[super finalize];
+}
+
 - (void)firstFriendsLoaded:(NSNotification *)notification {
+NSLog(@"FirstFriendsLoaded");
 
 	[self setCurrentView:friendsList];
 	[loadingProgress stopAnimation:nil];
@@ -51,6 +64,7 @@
 }
 
 - (void)changeModeNotification:(NSNotification *)notification {
+NSLog(@"changeModeNotification");
 	[self performSelectorOnMainThread:@selector(changeMode:) withObject:[notification object] waitUntilDone:YES];
 }
 
@@ -62,6 +76,8 @@
 
 
 - (void)setCurrentView:(NSView *)newView {
+NSLog(@"setCurrentView");
+
 	[newView setFrameSize:[contentView frame].size];
 	[newView setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
 

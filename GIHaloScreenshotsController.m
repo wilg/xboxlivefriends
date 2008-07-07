@@ -83,6 +83,7 @@ static NSArray *openFiles()
 		[self thumbDownload:info];
 	}
 	else {
+		NSLog(@"info is nil");
 		[self setErrorForTab:@"No Screenshots"];
 	}
 }

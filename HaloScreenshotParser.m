@@ -47,6 +47,8 @@
 	if (![pageSource contains:@".ashx?ssid="])
 		return nil;
 
+	NSLog(@"FACts of live");
+
 	for (NSString *thisSSID in [pageSource cropRowsMatching:@".ashx?ssid=" rowEnd:@"\""]) {
 		if (![thumbSSIDs containsObject:thisSSID])
 			[thumbSSIDs addObject:thisSSID];

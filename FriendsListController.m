@@ -19,10 +19,9 @@ static BOOL loadThreaded = true;
 
 @synthesize friends;
 
-- (id)init;
-{
+- (id)init {
 	if (![super init])
-	return nil;
+		return nil;
 
 	tableViewItems = [[NSMutableArray alloc] init];
 	
@@ -53,8 +52,8 @@ static BOOL loadThreaded = true;
 	[friendsTable setTarget: self];
 
 
-	FriendStatusCell *statusCell = [[[FriendStatusCell alloc] init] autorelease];
-	[statusCell setControlView:[friendsListWindow contentView]];
+	FriendStatusCell *statusCell = [[FriendStatusCell alloc] init];
+	[statusCell setControlView:friendsTable];
 	[[friendsTable tableColumnWithIdentifier:@"gt_and_status"] setDataCell:statusCell];
 
 }
@@ -113,16 +112,16 @@ static BOOL loadThreaded = true;
 
 	NSArray *oldFriends = friends;
 	
-	if (friends)
-		[friends release];
-	friends = [[FriendsListParser friends] retain];
+	friends = [FriendsListParser friends];
 	
 	BOOL success = NO;
 	if (friends) {
-
+	
 		success = YES;
 		[self checkFriendsForStatusChange:friends oldFriends:oldFriends];
 		[self displayMyGamercard];
+		[self showDockMenu];
+		//[self performSelectorOnMainThread:@selector(showDockMenu) withObject:nil waitUntilDone:NO];
 
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"ChangeFriendsListMode" object:@"friends"];
 
@@ -135,10 +134,41 @@ static BOOL loadThreaded = true;
 	}
 	
 
-
+	[[NSGarbageCollector defaultCollector] collectIfNeeded];
 	return success;
 }
 
+- (void)showDockMenu {
+
+	for (NSMenuItem *item in [dockMenu itemArray]) {
+		if ([item tag] == 1)
+			[dockMenu removeItem:item];
+	}
+	
+	int index = 0;		
+	for (XBFriend *friend in friends) {
+		
+		if ([[friend status] isEqual:@"Offline"])
+			continue;
+		
+		NSMenuItem *thisItem = [[NSMenuItem alloc] init];
+		//[thisItem setAttributedTitle:[friend dockMenuString]];
+		[thisItem setTitle:[NSString stringWithFormat:@"%@: %@", [friend gamertag], [friend info]]];
+		//[thisItem setImage:[[friend bead] copy]];
+		[thisItem setTag:1];
+		[thisItem setAction:@selector(openURLDonate:)];
+		[dockMenu insertItem:thisItem atIndex:index];
+		index++;
+	}
+	
+	if (index == 0) {
+		NSMenuItem *thisItem = [[NSMenuItem alloc] init];
+		[thisItem setTitle:@"Nobody Online"];
+		[thisItem setTag:1];
+		[dockMenu insertItem:thisItem atIndex:0];
+	}
+
+}
 
 - (void)checkFriendsForStatusChange:(NSArray *)newFriends oldFriends:(NSArray *)oldFriends {
 		
@@ -219,16 +249,13 @@ static BOOL loadThreaded = true;
 }
 
 - (void)displayFriendsList {
-	
 
 	[tableViewItems removeAllObjects];
-	
-	for (XBFriend *currentFriend in [[friends copy] autorelease]) {
+	for (XBFriend *currentFriend in friends) {
 		[tableViewItems addObject:[currentFriend tableViewRecord]];
 	}
-
 	[friendsTable reloadData];
-
+	
 }
 
 - (void)displayFriendsListThread {
@@ -276,7 +303,6 @@ static BOOL loadThreaded = true;
 	NSMutableString *mutableGamerTag = [theGamertag mutableCopy];
 	[mutableGamerTag replaceOccurrencesOfString:@" " withString:@"+" options:0 range:NSMakeRange(0, [mutableGamerTag length])];
 	NSString *theStringURL = [NSString stringWithFormat:@"%@%@", theURLBase, mutableGamerTag];
-	[mutableGamerTag release];
 	[NSApp endSheet:addFriendSheet];
 	//querys xbox.com and gets a response
 	NSString *response = [NSString stringWithContentsOfURL:[NSURL URLWithString:theStringURL]];
@@ -297,14 +323,15 @@ static BOOL loadThreaded = true;
 
 		XBFriend *currentFriend = [friends objectAtIndex:theRow];
 		
-		NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+		NSAlert *alert = [[NSAlert alloc] init];
 		[alert addButtonWithTitle:@"Remove"];
 		[alert addButtonWithTitle:@"Don't Remove"];
 		[alert setMessageText:@"Remove Friend"];
 		[alert setInformativeText:[NSString stringWithFormat:@"Do you want to remove %@ from your friends list?", [currentFriend gamertag]]];
 		[alert setAlertStyle:NSWarningAlertStyle];
 
-		NSArray *context = [[NSArray arrayWithObjects:@"remove_friend", [currentFriend gamertag], nil] retain];
+		NSArray *context = [NSArray arrayWithObjects:@"remove_friend", [currentFriend gamertag], nil];
+		CFRetain(context);
 		[alert beginSheetModalForWindow:friendsListWindow modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:context];
 
 		
@@ -407,9 +434,10 @@ static BOOL loadThreaded = true;
 {
 }
 
-- (void)didEndSheet:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo
-{
+- (void)didEndSheet:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
     [sheet orderOut:self];
+	if (contextInfo)
+		CFRelease(contextInfo);
 }
 
 #pragma mark -

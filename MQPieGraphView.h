@@ -10,8 +10,8 @@
 }
 
 @property(assign) id delegate;
-@property(copy) NSColor *backgroundColor;
-@property(retain) NSMutableArray *slices;
+@property(assign) NSColor *backgroundColor;
+@property(assign) NSMutableArray *slices;
 @property(assign) float padding;
 @property(assign) float fadeFactor;
 

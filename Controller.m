@@ -2,25 +2,33 @@
 //  Controller.m
 //  Xbox Live Friends
 //
-//  yo this motherfucker be tripping
+//  i trip blind kids, what's your anti-drug?
 // 
 //  © 2006 mindquirk
 //  
-
 #import "Xbox Live Friends.h"
 #import "Controller.h"
 #import "GrowlController.h"
+
+StayAround *stayArounds;
 
 @implementation Controller
 
 #pragma mark -
 #pragma mark Application Delegates
 
++ (StayAround *)stayArounds {
+	if (!stayArounds)
+		stayArounds = [[StayAround alloc] init];
+	return stayArounds;
+}
 
 - (id)init {
 	
 	if (![super init])
 	return nil;
+	
+	[Controller stayArounds];
 	
 	//[MQFunctions startDebugLog];
 
@@ -34,7 +42,7 @@
 	queue = [[NSOperationQueue alloc] init];
 		
 	if (refreshTimer == nil)
-		refreshTimer = [[NSTimer scheduledTimerWithTimeInterval:30.0 target:self selector:@selector(timedRefresh) userInfo:nil repeats:YES] retain];
+		refreshTimer = [NSTimer scheduledTimerWithTimeInterval:30.0 target:self selector:@selector(timedRefresh) userInfo:nil repeats:YES];
 
 
 	return self;

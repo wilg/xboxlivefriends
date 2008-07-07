@@ -72,12 +72,12 @@
 		3B511D840E04C45700530154 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B511D830E04C45700530154 /* Quartz.framework */; };
 		3B54EA2B0E09AE8100B1142F /* close_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B54EA2A0E09AE8100B1142F /* close_bar.png */; };
 		3B5B59120A93B339003A5EA5 /* XBSplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B59100A93B339003A5EA5 /* XBSplitView.m */; };
+		3B5BDD880E21E31F00D00C7C /* StayAround.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5BDD870E21E31F00D00C7C /* StayAround.m */; };
 		3B6324DD0CE8C0C800418B0E /* XLF.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B6324DC0CE8C0C800418B0E /* XLF.xib */; };
 		3B6324E20CE8C11200418B0E /* MQColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6324E10CE8C11200418B0E /* MQColorView.m */; };
 		3B63252D0CE8C52A00418B0E /* XBGamerInfoTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B63252C0CE8C52A00418B0E /* XBGamerInfoTableController.m */; };
 		3B6326680CE8DA7800418B0E /* NSVTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6326670CE8DA7800418B0E /* NSVTextFieldCell.m */; };
 		3B6BE9250E0459AC004FBA19 /* GrowlController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6BE9240E0459AC004FBA19 /* GrowlController.m */; };
-		3B6BE93B0E045A68004FBA19 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B6BE93A0E045A68004FBA19 /* Growl.framework */; };
 		3B7320290A93DB56003C8FE0 /* XBMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7320270A93DB56003C8FE0 /* XBMessage.m */; };
 		3B79B1430A940DFF00C599A2 /* message.htm in Resources */ = {isa = PBXBuildFile; fileRef = 3B79B1420A940DFF00C599A2 /* message.htm */; };
 		3B7F28290E11D1520021BBD3 /* graybar.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B7F28270E11D1520021BBD3 /* graybar.png */; };
@@ -254,6 +254,8 @@
 		3B54EA2A0E09AE8100B1142F /* close_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close_bar.png; sourceTree = "<group>"; };
 		3B5B590F0A93B339003A5EA5 /* XBSplitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSplitView.h; sourceTree = "<group>"; };
 		3B5B59100A93B339003A5EA5 /* XBSplitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSplitView.m; sourceTree = "<group>"; };
+		3B5BDD860E21E31F00D00C7C /* StayAround.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StayAround.h; sourceTree = "<group>"; };
+		3B5BDD870E21E31F00D00C7C /* StayAround.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StayAround.m; sourceTree = "<group>"; };
 		3B6324DA0CE8C0BF00418B0E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/XLF.xib; sourceTree = "<group>"; };
 		3B6324E00CE8C11200418B0E /* MQColorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQColorView.h; sourceTree = "<group>"; };
 		3B6324E10CE8C11200418B0E /* MQColorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQColorView.m; sourceTree = "<group>"; };
@@ -263,7 +265,6 @@
 		3B6326670CE8DA7800418B0E /* NSVTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSVTextFieldCell.m; sourceTree = "<group>"; };
 		3B6BE9230E0459AC004FBA19 /* GrowlController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrowlController.h; sourceTree = "<group>"; };
 		3B6BE9240E0459AC004FBA19 /* GrowlController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrowlController.m; sourceTree = "<group>"; };
-		3B6BE93A0E045A68004FBA19 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
 		3B7320260A93DB56003C8FE0 /* XBMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBMessage.h; sourceTree = "<group>"; };
 		3B7320270A93DB56003C8FE0 /* XBMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBMessage.m; sourceTree = "<group>"; };
 		3B79B1420A940DFF00C599A2 /* message.htm */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.html; path = message.htm; sourceTree = "<group>"; };
@@ -390,7 +391,6 @@
 				3B4429860A46391B004A4AE1 /* AddressBook.framework in Frameworks */,
 				3B8629C30ABCC16D00BCA869 /* QuartzCore.framework in Frameworks */,
 				3B862A410ABCCC5500BCA869 /* SystemConfiguration.framework in Frameworks */,
-				3B6BE93B0E045A68004FBA19 /* Growl.framework in Frameworks */,
 				3B511D840E04C45700530154 /* Quartz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -451,6 +451,8 @@
 				3BD65D360E1110D9004BE80A /* Nibs and Xibs */,
 				3B91BE4A099D2633008EB5D4 /* Controller.h */,
 				3B91BE4B099D2633008EB5D4 /* Controller.m */,
+				3B5BDD860E21E31F00D00C7C /* StayAround.h */,
+				3B5BDD870E21E31F00D00C7C /* StayAround.m */,
 				3B8058470CF38FE4000E85D3 /* Login */,
 				3B8058480CF38FFA000E85D3 /* Friends List */,
 				3B00E5C70ABE1F5B00B48E3A /* Message Center */,
@@ -651,7 +653,6 @@
 				3BD65D370E111138004BE80A /* Images */,
 				3B6BE9230E0459AC004FBA19 /* GrowlController.h */,
 				3B6BE9240E0459AC004FBA19 /* GrowlController.m */,
-				3B6BE93A0E045A68004FBA19 /* Growl.framework */,
 			);
 			name = "Friends List";
 			sourceTree = "<group>";
@@ -1037,6 +1038,7 @@
 				3BC7546A0E0F879300D0EF53 /* NSImage+BHReflectedImage.m in Sources */,
 				3BC754E10E0F8FE100D0EF53 /* RoundedBox.m in Sources */,
 				3B9BFA5D0E14841D0002312B /* HaloScreenshotParser.m in Sources */,
+				3B5BDD880E21E31F00D00C7C /* StayAround.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

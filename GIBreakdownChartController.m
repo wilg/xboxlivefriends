@@ -42,6 +42,7 @@
 
 - (void)displayGamerInfo:(NSString *)gamertag {
 	NSArray *theInfo = [XBGamesPlayedParser fetchWithTag:gamertag];
+	NSLog(@"paresed");
 	if (theInfo) {
 		[self displayPieChart:theInfo];
 	}
@@ -105,7 +106,7 @@
 				[slice setColor:[NSColor colorWithPatternImage:[ColorizeImage colorizeImage:textureImage withColor:[self colorForSlice]]]];
 				[slice setSize:floatScore];
 				[slice setMessage:[thisGame name]];
-				[slice setCaptionData:[dict copy]];
+				[slice setCaptionData:dict];
 				[slice setShouldDisplay:shouldDisplaySlice];
 				
 				[pieGraph addSlice:slice];

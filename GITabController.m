@@ -18,6 +18,8 @@
 	if (![super init])
 	return nil;
 	
+	[[Controller stayArounds] addObject:self];
+
 	[self setErrorForTab:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifiedToLoad:) name:[self notificationName] object:nil];
 	

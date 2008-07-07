@@ -20,17 +20,4 @@
 	return [[[MQSlice alloc] init] autorelease];
 }
 
-- (void)dealloc {
-	if (message)
-		[message release];
-	if (captionData)
-		[captionData release];
-	if (path)
-		[path release];
-	if (color)
-		[color release];
-	
-	[super dealloc];
-}
-
 @end

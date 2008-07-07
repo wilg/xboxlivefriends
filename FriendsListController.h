@@ -30,6 +30,9 @@
 	//menu bar
 	IBOutlet NSMenuItem *deleteFriendMenu;
 	
+	//dock menu
+	IBOutlet NSMenu *dockMenu;
+	
 	//variables
 	NSMutableArray *tableViewItems;
 	NSArray *friends;
@@ -45,6 +48,7 @@
 
 - (BOOL)downloadFriendsList;
 - (void)displayFriendsList;
+- (void)showDockMenu;
 - (void)checkFriendsForStatusChange:(NSArray *)newFriends oldFriends:(NSArray *)oldFriends;
 
 - (void)friendsListLocked:(NSNumber *)lockedNum;

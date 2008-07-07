@@ -186,6 +186,8 @@ NSString* signInURL = @"http://live.xbox.com/en-US/default.aspx";
 
 - (BOOL)isSignedIn
 {
+NSLog(@"isSignedIn");
+
 	NSString *webViewSource;
 	WebDataSource *dataSource = [[webView mainFrame] dataSource];
 	if ([[dataSource representation] canProvideDocumentSource]) {
@@ -223,6 +225,7 @@ NSString* signInURL = @"http://live.xbox.com/en-US/default.aspx";
 }
 
 - (void)doneWithSignIn {
+NSLog(@"doneWithSignIn");
 	currentMode = nil;
 	[signInWindow close];
 	[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"InSignInMode"];

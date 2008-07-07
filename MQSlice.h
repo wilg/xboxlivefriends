@@ -19,12 +19,12 @@
 @property(assign) BOOL shouldDisplay;
 
 // caption data
-@property(retain) NSString *message;
-@property(retain) NSDictionary *captionData;
+@property(assign) NSString *message;
+@property(assign) NSDictionary *captionData;
 
 //drawing data
-@property(retain) NSBezierPath *path;
-@property(retain) NSColor *color;
+@property(assign) NSBezierPath *path;
+@property(assign) NSColor *color;
 
 //sizing
 @property(assign) float size;

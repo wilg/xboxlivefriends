@@ -54,17 +54,17 @@ NSString* statusNewlineReplacement = @" - ";
 	
 	NSArray *rows = [theSource cropRowsMatching:@"<tr" rowEnd:@"</tr>"];
 	
-//	BOOL demoMode = YES;
-//	
-//	if (demoMode) {
-//		//demo mode shit
-//		[friends addObject:[XBFriend friendWithTag:@"my hand" tileURLString:@"http://www.xbox.com/NR/rdonlyres/A5B41DAF-4921-4478-B5D6-955B537E02BD/0/cod4forcerecon01.jpg" statusString:@"Online" infoString:@"Call of Duty 4 - Search and Destroy on Creek"]];
-//		[friends addObject:[XBFriend friendWithTag:@"Darksoul0X" tileURLString:@"http://tiles.xbox.com/tiles/IL/Ef/0mdsb2JgbC8RX1ZeV0oAGAZfL3RpbGUvMC8xODBlZQAAAQAAAAD9MLEA.jpg" statusString:@"Online" infoString:@"Xbox 360 Dashboard"]];
-//		[friends addObject:[XBFriend friendWithTag:@"hkmhrnz777" tileURLString:@"http://tiles.xbox.com/tiles/nw/6K/1Gdsb2JgbC9CCgUNBBwAGAFYL3RpbGUvMC8xODAwNgAAAQAAAAD7pQ6-.jpg" statusString:@"Online" infoString:@"Gears of War - Execution Mansion"]];
-//		[friends addObject:[XBFriend friendWithTag:@"Unholy Vanny" tileURLString:@"http://www.xbox.com/NR/rdonlyres/A5B41DAF-4921-4478-B5D6-955B537E02BD/0/cod4forcerecon01.jpg" statusString:@"Online" infoString:@"Rainbow Six Vegas - Campaign"]];
-//		[friends addObject:[XBFriend friendWithTag:@"KnownEvil Homer" tileURLString:@"http://tiles.xbox.com/tiles/09/4Q/1mdsb2JgbC9ECgRcBBwAF1EPL3RpbGUvMC8xODAwMAAAAQAAAAD5P97z.jpg" statusString:@"Busy" infoString:@"47 minutes ago - Xbox 360 Dashboard"]];
-//		[friends addObject:[XBFriend friendWithTag:@"Omega Spawn" tileURLString:@"http://tiles.xbox.com/tiles/BK/Hv/1Gdsb2JgbC8SCgUMBRkAGAFbL3RpbGUvMC8xODAwZgAAAQAAAAD7wKEk.jpg" statusString:@"Away" infoString:@"Watching a movie"]];
-//	}
+	BOOL demoMode = [[NSUserDefaults standardUserDefaults] boolForKey:@"DebugDemoMode"];
+	
+	if (demoMode) {
+		//demo mode shit
+		[friends addObject:[XBFriend friendWithTag:@"my hand" tileURLString:@"http://www.xbox.com/NR/rdonlyres/A5B41DAF-4921-4478-B5D6-955B537E02BD/0/cod4forcerecon01.jpg" statusString:@"Online" infoString:@"Call of Duty 4 - Search and Destroy on Creek"]];
+		[friends addObject:[XBFriend friendWithTag:@"Darksoul0X" tileURLString:@"http://tiles.xbox.com/tiles/IL/Ef/0mdsb2JgbC8RX1ZeV0oAGAZfL3RpbGUvMC8xODBlZQAAAQAAAAD9MLEA.jpg" statusString:@"Online" infoString:@"Xbox 360 Dashboard"]];
+		[friends addObject:[XBFriend friendWithTag:@"hkmhrnz777" tileURLString:@"http://tiles.xbox.com/tiles/nw/6K/1Gdsb2JgbC9CCgUNBBwAGAFYL3RpbGUvMC8xODAwNgAAAQAAAAD7pQ6-.jpg" statusString:@"Online" infoString:@"Gears of War - Execution Mansion"]];
+		[friends addObject:[XBFriend friendWithTag:@"Unholy Vanny" tileURLString:@"http://www.xbox.com/NR/rdonlyres/A5B41DAF-4921-4478-B5D6-955B537E02BD/0/cod4forcerecon01.jpg" statusString:@"Online" infoString:@"Rainbow Six Vegas - Campaign"]];
+		[friends addObject:[XBFriend friendWithTag:@"KnownEvil Homer" tileURLString:@"http://tiles.xbox.com/tiles/09/4Q/1mdsb2JgbC9ECgRcBBwAF1EPL3RpbGUvMC8xODAwMAAAAQAAAAD5P97z.jpg" statusString:@"Busy" infoString:@"47 minutes ago - Xbox 360 Dashboard"]];
+		[friends addObject:[XBFriend friendWithTag:@"Omega Spawn" tileURLString:@"http://tiles.xbox.com/tiles/BK/Hv/1Gdsb2JgbC8SCgUMBRkAGAFbL3RpbGUvMC8xODAwZgAAAQAAAAD7wKEk.jpg" statusString:@"Away" infoString:@"Watching a movie"]];
+	}
 
 	for (NSString *row in rows) {
 		
@@ -99,17 +99,17 @@ NSString* statusNewlineReplacement = @" - ";
 
 		XBFriend *theFriend = [XBFriend friendWithTag:gamertag tileURLString:gamertileURL statusString:status infoString:richPresence];
 		
-//		if (demoMode) {
-//			if ([status isEqualToString:@"Pending"]) {
-//				[friends insertObject:theFriend atIndex:0];
-//				continue;
-//			}
-//			
-//			if (![status isEqualToString:@"Offline"]) {
-//				[friends insertObject:theFriend atIndex:1];
-//				continue;
-//			}
-//		}
+		if (demoMode) {
+			if ([status isEqualToString:@"Pending"]) {
+				[friends insertObject:theFriend atIndex:0];
+				continue;
+			}
+			
+			if (![status isEqualToString:@"Offline"]) {
+				[friends insertObject:theFriend atIndex:1];
+				continue;
+			}
+		}
 
 
 		[friends addObject:theFriend];
