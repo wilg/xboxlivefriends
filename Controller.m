@@ -2,7 +2,7 @@
 //  Controller.m
 //  Xbox Live Friends
 //
-//  i trip blind kids, what's your anti-drug?
+//  yo this motherfucker be tripping
 // 
 //  © 2006 mindquirk
 //  
