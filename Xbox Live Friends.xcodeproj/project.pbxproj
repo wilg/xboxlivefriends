@@ -73,6 +73,7 @@
 		3B54EA2B0E09AE8100B1142F /* close_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B54EA2A0E09AE8100B1142F /* close_bar.png */; };
 		3B5B59120A93B339003A5EA5 /* XBSplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B59100A93B339003A5EA5 /* XBSplitView.m */; };
 		3B5BDD880E21E31F00D00C7C /* StayAround.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5BDD870E21E31F00D00C7C /* StayAround.m */; };
+		3B5BDDAF0E21E47100D00C7C /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5BDDAE0E21E47100D00C7C /* Sparkle.framework */; };
 		3B6324DD0CE8C0C800418B0E /* XLF.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B6324DC0CE8C0C800418B0E /* XLF.xib */; };
 		3B6324E20CE8C11200418B0E /* MQColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6324E10CE8C11200418B0E /* MQColorView.m */; };
 		3B63252D0CE8C52A00418B0E /* XBGamerInfoTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B63252C0CE8C52A00418B0E /* XBGamerInfoTableController.m */; };
@@ -256,6 +257,7 @@
 		3B5B59100A93B339003A5EA5 /* XBSplitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSplitView.m; sourceTree = "<group>"; };
 		3B5BDD860E21E31F00D00C7C /* StayAround.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StayAround.h; sourceTree = "<group>"; };
 		3B5BDD870E21E31F00D00C7C /* StayAround.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StayAround.m; sourceTree = "<group>"; };
+		3B5BDDAE0E21E47100D00C7C /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		3B6324DA0CE8C0BF00418B0E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/XLF.xib; sourceTree = "<group>"; };
 		3B6324E00CE8C11200418B0E /* MQColorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQColorView.h; sourceTree = "<group>"; };
 		3B6324E10CE8C11200418B0E /* MQColorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQColorView.m; sourceTree = "<group>"; };
@@ -392,6 +394,7 @@
 				3B8629C30ABCC16D00BCA869 /* QuartzCore.framework in Frameworks */,
 				3B862A410ABCCC5500BCA869 /* SystemConfiguration.framework in Frameworks */,
 				3B511D840E04C45700530154 /* Quartz.framework in Frameworks */,
+				3B5BDDAF0E21E47100D00C7C /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,6 +432,7 @@
 		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3B5BDDAE0E21E47100D00C7C /* Sparkle.framework */,
 				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
 				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
 				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
@@ -1083,11 +1087,13 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_2)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_3)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)\"";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
@@ -1119,11 +1125,13 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_2)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_3)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)\"";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
 				INFOPLIST_FILE = Info.plist;
