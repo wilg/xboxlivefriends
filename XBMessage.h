@@ -18,11 +18,9 @@ typedef enum {
 
 @interface XBMessage : NSObject {
 
-
-
 	NSString *sender;
 	NSDate *date;
-	int type;
+	XBMessageType type;
 	NSString *contents;
 	NSString *subject;
 	NSString *expirationDate;
@@ -30,23 +28,20 @@ typedef enum {
 	BOOL isRead;
 
 }
+
 @property(assign) BOOL isRead;
 
-- (id)initWithSender:(NSString *)aSender date:(NSDate *)dateString type:(int)atype subject:(NSString *)asubj expirationDate:(NSString *)anExpiration isRead:(BOOL)aRead identifier:(NSString *)theident;
+@property(assign) NSString *sender;
+@property(assign) NSDate *date;
+@property(assign) XBMessageType type;
+@property(assign) NSString *contents;
+@property(assign) NSString *subject;
+@property(assign) NSString *expirationDate;
+@property(assign) NSString *identifier;
 
-- (NSString *)sender;
-- (NSDate *)date;
-- (int)type;
-- (NSString *)contents;
-- (NSString *)subject;
-- (NSString *)expirationDate;
-- (BOOL)isRead;
-- (NSString *)identifier;
++ (XBMessage *)message;
+
 - (void)parseFullMessage;
-
 - (NSDictionary *)tableViewRecord;
-
-
-+ (id)messageWithSender:(NSString *)aSender date:(NSDate *)dateString type:(int)atype subject:(NSString *)asubj expirationDate:(NSString *)anExpiration isRead:(BOOL)aRead identifier:(NSString *)theident;
 
 @end

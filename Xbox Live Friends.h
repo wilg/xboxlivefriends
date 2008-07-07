@@ -13,7 +13,6 @@
 #include "XBGame.h"
 #include "XBGamercard.h" 
 #include "XBFriendDefaultsManager.h"
-#include "XBMessage.h"
 #include "XBAchievement.h"
 
 //Controller

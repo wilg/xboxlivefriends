@@ -7,6 +7,7 @@
 //
 
 #import "Xbox Live Friends.h"
+#include "XBMessage.h"
 #import "XBMessagesParser.h"
 
 NSString* messageCenterURL = @"http://live.xbox.com/en-US/profile/MessageCenter/ViewMessages.aspx";
@@ -14,44 +15,71 @@ NSString* messageCenterURL = @"http://live.xbox.com/en-US/profile/MessageCenter/
 @implementation XBMessagesParser
 
 + (NSArray *)messages {
-	NSString *theSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:messageCenterURL]];
 
 	NSMutableArray *allMessages = [NSMutableArray array];
-	
+	NSString *theSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:messageCenterURL]];
+
 	theSource = [theSource cropFrom:@"/thead" to:@"</table>"];
-	
 	NSArray *rows = [theSource cropRowsMatching:@"<tbody" rowEnd:@"</tbody>"];
 	
 	
-//	BOOL demoMode = YES;
-//	
-//	XBMessage *x;
-//	if (demoMode) {
-//		//demo mode shit
-//		x = [XBMessage messageWithSender:@"Foot Kablamo" date:[NSDate dateWithTimeIntervalSinceNow:-2344] type:XBTextMessageType subject:@"do you want to pl..." expirationDate:@"30 days" isRead:NO identifier:@"ewfnoewa"];
-//		[x setContents:@"<p>do you want to play halo later?</p>"];
-//		[allMessages addObject:x];
-//		
-//		x = [XBMessage messageWithSender:@"durrik" date:[NSDate dateWithTimeIntervalSinceNow:-4393] type:XBTextMessageType subject:@"hey have you seen the new..." expirationDate:@"30 days" isRead:NO identifier:@"ewfnoewa"];
-//		[x setContents:@"<p>hey have you seen the new crazy shit on my page?</p>"];
-//		[allMessages addObject:x];
-//
-//
-//		x = [XBMessage messageWithSender:@"RxE xMoNoToNiCx" date:[NSDate dateWithTimeIntervalSinceNow:-10393] type:XBTextMessageType subject:@"i sure love mindquir..." expirationDate:@"30 days" isRead:NO identifier:@"ewfnoewa"];
-//		[x setContents:@"<p>WTF?!?!?</p><p>Infinitly ridiculous! Someone referred to me, an upstanding citizen, in an untoward manner inside of the online community of &quot;Halo the Third&quot;!</p><p>I, for one, was apalled!</p><p>However, this is clearly a singular occurance, and I will not let it dissuade me from playing on-line in the Xbox Live community.</p><p>I bid you good-day, ladies and gentlemen.</p>"];
-//		[allMessages addObject:x];
-//
-//	}
+	BOOL demoMode = [[NSUserDefaults standardUserDefaults] boolForKey:@"DebugDemoMode"];
+	
+	if (demoMode) {
+	
+		XBMessage *x = [XBMessage message];
+
+		x.sender = @"Foot Kablamo";
+		x.date = [NSDate dateWithTimeIntervalSinceNow:-2344];
+		x.type = XBTextMessageType;
+		x.subject = @"do you want to pl...";
+		x.expirationDate = @"30 days";
+		x.identifier = @"rewfiowenmfoewa";
+		x.contents = @"<p>do you want to play halo later?</p>";
+		
+		[allMessages addObject:x];
+
+		XBMessage *y = [XBMessage message];
+
+		y.sender = @"durrik";
+		y.date = [NSDate dateWithTimeIntervalSinceNow:-4393];
+		y.type = XBTextMessageType;
+		y.subject = @"hey have you seen the new...";
+		y.expirationDate = @"30 days";
+		y.identifier = @"fioejwfioaejwoifejawo";
+		y.contents = @"<p>hey have you seen the new crazy shit on my page?</p>";
+		
+		[allMessages addObject:y];
+
+		XBMessage *z = [XBMessage message];
+		
+		z.sender = @"RxE xMoNoToNiCx";
+		z.date = [NSDate dateWithTimeIntervalSinceNow:-10393];
+		z.type = XBTextMessageType;
+		z.subject = @"WTF?!?!? Inf...";
+		z.expirationDate = @"30 days";
+		z.identifier = @"4398j834fn8wjf";
+		z.contents = @"<p>WTF?!?!?</p><p>Infinitly ridiculous! Someone referred to me, an upstanding citizen, in an untoward manner inside of the online community of &quot;Halo the Third&quot;!</p><p>I, for one, was apalled!</p><p>However, this is clearly a singular occurance, and I will not let it dissuade me from playing on-line in the Xbox Live community.</p><p>I bid you good-day, ladies and gentlemen.</p>";
+		
+		[allMessages addObject:z];
+
+	}
 	
 	for (NSString *row in rows) {
+		XBMessage *rowMessage = [XBMessage message];
+	
 		NSString *gamertag = [row cropFrom:@"headers=\"GamerTag\">" to:@"/a>"];
 		gamertag = [gamertag cropFrom:@"\">" to:@"<"];
-		NSString *identifier = [row cropFrom:@"http://live.xbox.com/en-US/profile/MessageCenter/ViewMessage.aspx?mx=" to:@"\""];
+		rowMessage.sender = gamertag;
+		
+		rowMessage.identifier = [row cropFrom:@"http://live.xbox.com/en-US/profile/MessageCenter/ViewMessage.aspx?mx=" to:@"\""];
 		
 		NSString *tbodyClass = [row cropFrom:@"class=\"" to:@"\""];
 		BOOL isRead = YES;
 		if ([tbodyClass isEqual:@"XbcMessageUnread"])
 			isRead = NO;
+			
+		rowMessage.isRead = isRead;
 		
 		NSDate *sentDate = [NSDate date];
 		@try {
@@ -75,6 +103,8 @@ NSString* messageCenterURL = @"http://live.xbox.com/en-US/profile/MessageCenter/
 		@catch (NSException *err) {
 		
 		}
+		
+		rowMessage.date = sentDate;
 
 		NSString *subject = [row cropFrom:@"headers=\"Summary\">" to:@"<"];
 		subject = [MQFunctions flattenHTML:subject];
@@ -87,16 +117,16 @@ NSString* messageCenterURL = @"http://live.xbox.com/en-US/profile/MessageCenter/
 		else
 			theType = XBTextMessageType;
 
-
-		XBMessage *thisMessage = [XBMessage messageWithSender:gamertag date:sentDate type:theType subject:subject expirationDate:nil isRead:isRead identifier:identifier];
+		rowMessage.type = theType;
+		rowMessage.subject = subject;
 		
 		if (theType != XBFriendRequestMessageType)
-			[allMessages addObject:thisMessage];
+			[allMessages addObject:rowMessage];
 		
 
 	}
 		
-	return [[allMessages copy] autorelease];
+	return allMessages;
 
 }
 

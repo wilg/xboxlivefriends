@@ -13,8 +13,7 @@ NSString *halo2StatsURL = @"http://www.bungie.net/Stats/PlayerStats.aspx?player=
 
 @implementation XBFriend
 
-- (id)initWithTag:(NSString *)aTag tileURLString:(NSString *)aTile statusString:(NSString *)aStatus infoString:(NSString *)anInfo
-{
+- (id)initWithTag:(NSString *)aTag tileURLString:(NSString *)aTile statusString:(NSString *)aStatus infoString:(NSString *)anInfo {
 	if (![super init])
 	return nil;
 
@@ -27,27 +26,20 @@ NSString *halo2StatsURL = @"http://www.bungie.net/Stats/PlayerStats.aspx?player=
 	isSelectedRow = NO;
 	displaysInKeyWindow = NO;
 		
-	[realName retain];
-	[gamertag retain];
-	[status retain];
-	[tileURL retain];
-	[info retain];
-
 	return self;
 }
 
-- (NSDictionary *)tableViewRecord
-{
+- (NSDictionary *)tableViewRecord {
+
 	NSMutableDictionary *record = [NSMutableDictionary dictionary];
 	
 	NSString *myInfo = [self info];
-	
 	
 	NSString *primaryTitle;
 	NSString *secondaryTitle;
 	
 	XBNameDisplayStyle displayStyle = [XBFriend preferredNameStyle];
-	
+
 	if ([self realName]){
 		if (displayStyle == XBRealNameDisplayStyle) {
 			primaryTitle = [self realName];
@@ -71,27 +63,53 @@ NSString *halo2StatsURL = @"http://www.bungie.net/Stats/PlayerStats.aspx?player=
 		secondaryTitle = nil;
 	}
 
-		
-	if ([[self status] isEqual:@"Online"])
-		[record setObject:[NSImage imageNamed:@"green_bead"] forKey:@"bead"];
 
-	if ([[self status] isEqual:@"Busy"])
-		[record setObject:[NSImage imageNamed:@"yellow_bead"] forKey:@"bead"];
-	
-	if ([[self status] isEqual:@"Away"])
-		[record setObject:[NSImage imageNamed:@"red_bead"] forKey:@"bead"];
-	
-	if ([[self status] isEqual:@"Pending"])
-		[record setObject:[NSImage imageNamed:@"blue_bead"] forKey:@"bead"];
-		
+	[record setObject:[self bead] forKey:@"bead"];	
 	[record setObject:[self tileImageWithOfflineGrayedOut] forKey:@"tile"];
 	[record setObject:[NSDictionary dictionaryWithObjectsAndKeys:[self realNameWithFormat:XBUnknownNameDisplayStyle], @"gamertag", myInfo,  @"textstatus", [self status], @"onlinestatus", primaryTitle, @"primaryTitle", secondaryTitle, @"secondaryTitle", nil] forKey:@"gt_and_status"];
-
 	return record;
 }
 
-- (NSImage *)tileImage
-{	
+- (NSAttributedString *)dockMenuString {
+//	return @"FUCKK";
+//	return [NSString stringWithFormat:@"%@ %@", self.gamertag, self.info];
+	
+	NSMutableDictionary *attributes = [[[NSMutableDictionary alloc] initWithObjectsAndKeys:
+												[NSColor grayColor],NSForegroundColorAttributeName,
+												[NSFont systemFontOfSize:[NSFont systemFontSizeForControlSize: NSSmallControlSize]],NSFontAttributeName,
+												nil] autorelease];
+	NSAttributedString *string = [[NSAttributedString alloc] initWithString:self.info attributes:attributes];
+	
+	return string;
+	
+	NSMutableAttributedString *gt = [[NSMutableAttributedString alloc] initWithString:self.gamertag];
+	
+	[gt appendAttributedString:string];
+	
+	return [gt copy];
+}
+
+- (NSImage *)bead {
+	if ([self.status isEqual:@"Online"]) {
+		NSLog(@"greenBead");
+		return [NSImage imageNamed:@"green_bead"];
+	}
+
+	else if ([self.status isEqual:@"Busy"])
+		return [NSImage imageNamed:@"yellow_bead"];
+	
+	else if ([self.status isEqual:@"Away"])
+		return [NSImage imageNamed:@"red_bead"];
+	
+	else if ([self.status isEqual:@"Pending"])
+		return [NSImage imageNamed:@"blue_bead"];
+	
+	return [NSImage imageNamed:@"empty"];
+	
+	return nil;
+}
+
+- (NSImage *)tileImage {	
 	int selectedIconStyle = [self iconStyle];
 	
 	NSImage *theTile;

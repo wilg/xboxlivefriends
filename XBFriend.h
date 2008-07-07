@@ -45,6 +45,8 @@ typedef enum {
 - (NSURL *)tileURL;
 - (NSString *)info;
 - (NSDictionary *)tableViewRecord;
+- (NSAttributedString *)dockMenuString;
+- (NSImage *)bead;
 - (NSImage *)tileImage;
 - (NSImage *)tileImageWithOfflineGrayedOut;
 

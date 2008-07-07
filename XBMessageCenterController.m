@@ -7,6 +7,7 @@
 //
 
 #include "Xbox Live Friends.h"
+#include "XBMessage.h"
 #include "XBMessageCenterController.h"
 #include "XBMessagesParser.h"
 #include "SendMessage.h"
@@ -22,6 +23,7 @@
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestedMessageForFriend:) name:@"SendMessageToFriend" object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(friendsListRefreshed:) name:@"FriendsListNeedsRefresh" object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(firstFriendsListLoaded:) name:@"FirstFriendsLoaded" object:nil];
 	
 	[messagesTable setDataSource:self];
 	[messagesTable setDelegate:self];
@@ -81,8 +83,11 @@
 #pragma mark -
 #pragma mark Message Loading Methods
 
+- (void)firstFriendsListLoaded:(NSNotification *)notification {
+	[self loadMessageCenterThreaded];
+}
+
 - (void)friendsListRefreshed:(NSNotification *)notification {
-	NSLog(@"message center threaded load");
 	[self loadMessageCenterThreaded];
 }
 
