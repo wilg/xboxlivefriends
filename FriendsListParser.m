@@ -74,14 +74,15 @@ NSString* statusNewlineReplacement = @" - ";
 		NSString *gamertag = [row cropFrom:@"GamerTag=" to:@"\""];
 		gamertag = [gamertag replace:@"+" with:@" "];
 	
-		NSString *gamertileURL = [row cropFrom:@"GamerTile\"><img width=\"32\" height=\"32\" src=\"" to:@"\""];
+		NSString *gamertileURL = [row cropFrom:@"<td class=\"XbcGamerTile" to:@"</td>"];
+		gamertileURL = [gamertileURL cropFrom:@"src=\"" to:@"\""];
 		if ([gamertileURL contains:@"QuestionMark32x32.jpg"])
 			gamertileURL = @"http://live.xbox.com/xweb/lib/images/QuestionMark32x32.jpg";
 
-		NSString *status = [row cropFrom:@"headers=\"Status\">" to:@"</"];
-		status = [status cropFrom:@">" to:nil];
+		NSString *status = [row cropFrom:@"headers=\"Status\">" to:@"</td>"];
+		status = [status stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 	
-		NSString *richPresence = [row cropFrom:@"headers=\"Info\"><p>" to:@"</p></td>"];
+		NSString *richPresence = [row cropFrom:@"headers=\"Info\">" to:@"</td>"];
 		richPresence = [richPresence replace:@"&nbsp;" with:@" "];
 		richPresence = [richPresence replace:@"<br />" with:@"\n"];
 		richPresence = [richPresence replace:@"<br>" with:@"\n"];
@@ -98,8 +99,9 @@ NSString* statusNewlineReplacement = @" - ";
 
 
 		XBFriend *theFriend = [XBFriend friendWithTag:gamertag tileURLString:gamertileURL statusString:status infoString:richPresence];
-		
+
 		if (demoMode) {
+		
 			if ([status isEqualToString:@"Pending"]) {
 				[friends insertObject:theFriend atIndex:0];
 				continue;

@@ -90,10 +90,8 @@ NSString *halo2StatsURL = @"http://www.bungie.net/Stats/PlayerStats.aspx?player=
 }
 
 - (NSImage *)bead {
-	if ([self.status isEqual:@"Online"]) {
-		NSLog(@"greenBead");
+	if ([self.status isEqual:@"Online"])
 		return [NSImage imageNamed:@"green_bead"];
-	}
 
 	else if ([self.status isEqual:@"Busy"])
 		return [NSImage imageNamed:@"yellow_bead"];
@@ -105,8 +103,6 @@ NSString *halo2StatsURL = @"http://www.bungie.net/Stats/PlayerStats.aspx?player=
 		return [NSImage imageNamed:@"blue_bead"];
 	
 	return [NSImage imageNamed:@"empty"];
-	
-	return nil;
 }
 
 - (NSImage *)tileImage {	
@@ -141,7 +137,7 @@ NSString *halo2StatsURL = @"http://www.bungie.net/Stats/PlayerStats.aspx?player=
 - (NSImage *)tileImageWithOfflineGrayedOut
 {
 	NSImage *theTile = [self tileImage];
-	
+
 	if (![[self status] isEqual:@"Offline"])
 		return theTile;
 	if ([[theTile name] isEqual:@"empty"])
@@ -157,6 +153,10 @@ NSString *halo2StatsURL = @"http://www.bungie.net/Stats/PlayerStats.aspx?player=
 	[dimmedImage unlockFocus];
 
 	return dimmedImage;
+}
+
+- (NSString *)description {
+	return gamertag;
 }
 
 

@@ -37,7 +37,7 @@ static BOOL loadThreaded = true;
 - (void)awakeFromNib {
 
 	[friendsListWindow setAutorecalculatesContentBorderThickness:NO forEdge:NSMaxYEdge];
-	[friendsListWindow setContentBorderThickness:39.0 forEdge:NSMaxYEdge];
+	[friendsListWindow setContentBorderThickness:40.0 forEdge:NSMaxYEdge];
 	
 	[friendsListWindow setAutorecalculatesContentBorderThickness:NO forEdge:NSMinYEdge];
 	[friendsListWindow setContentBorderThickness:36.0 forEdge:NSMinYEdge];
@@ -109,7 +109,7 @@ static BOOL loadThreaded = true;
 }
 
 - (BOOL)downloadFriendsList {
-
+	NSLog(@"downloadFriendsList");
 	NSArray *oldFriends = friends;
 	
 	friends = [FriendsListParser friends];
@@ -139,34 +139,34 @@ static BOOL loadThreaded = true;
 }
 
 - (void)showDockMenu {
-
-	for (NSMenuItem *item in [dockMenu itemArray]) {
-		if ([item tag] == 1)
-			[dockMenu removeItem:item];
-	}
-	
-	int index = 0;		
-	for (XBFriend *friend in friends) {
-		
-		if ([[friend status] isEqual:@"Offline"])
-			continue;
-		
-		NSMenuItem *thisItem = [[NSMenuItem alloc] init];
-		//[thisItem setAttributedTitle:[friend dockMenuString]];
-		[thisItem setTitle:[NSString stringWithFormat:@"%@: %@", [friend gamertag], [friend info]]];
-		//[thisItem setImage:[[friend bead] copy]];
-		[thisItem setTag:1];
-		[thisItem setAction:@selector(openURLDonate:)];
-		[dockMenu insertItem:thisItem atIndex:index];
-		index++;
-	}
-	
-	if (index == 0) {
-		NSMenuItem *thisItem = [[NSMenuItem alloc] init];
-		[thisItem setTitle:@"Nobody Online"];
-		[thisItem setTag:1];
-		[dockMenu insertItem:thisItem atIndex:0];
-	}
+//
+//	for (NSMenuItem *item in [dockMenu itemArray]) {
+//		if ([item tag] == 1)
+//			[dockMenu removeItem:item];
+//	}
+//	
+//	int index = 0;		
+//	for (XBFriend *friend in friends) {
+//		
+//		if ([[friend status] isEqual:@"Offline"])
+//			continue;
+//		
+//		NSMenuItem *thisItem = [[NSMenuItem alloc] init];
+//		//[thisItem setAttributedTitle:[friend dockMenuString]];
+//		[thisItem setTitle:[NSString stringWithFormat:@"%@: %@", [friend gamertag], [friend info]]];
+//		//[thisItem setImage:[[friend bead] copy]];
+//		[thisItem setTag:1];
+//		[thisItem setAction:@selector(openURLDonate:)];
+//		[dockMenu insertItem:thisItem atIndex:index];
+//		index++;
+//	}
+//	
+//	if (index == 0) {
+//		NSMenuItem *thisItem = [[NSMenuItem alloc] init];
+//		[thisItem setTitle:@"Nobody Online"];
+//		[thisItem setTag:1];
+//		[dockMenu insertItem:thisItem atIndex:0];
+//	}
 
 }
 
@@ -249,7 +249,7 @@ static BOOL loadThreaded = true;
 }
 
 - (void)displayFriendsList {
-
+	NSLog(@"displayFriendsList");
 	[tableViewItems removeAllObjects];
 	for (XBFriend *currentFriend in friends) {
 		[tableViewItems addObject:[currentFriend tableViewRecord]];

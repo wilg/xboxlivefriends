@@ -84,40 +84,41 @@ NSString* gamerCardURL = @"http://live.xbox.com/en-US/profile/profile.aspx?pp=0&
 
 	NSString *editString = [NSString stringWithContentsOfURL:URL];
 	
-	NSString *thisGamertag = [MQFunctions cropString:editString between:@"<div class=\"XbcGamercardMe\">" and:@"</h3>"];
+	NSString *thisGamertag = [MQFunctions cropString:editString between:@"myXboxAvatarCard_gamertagLabel\">" and:@"</span>"];
 	if (thisGamertag)
-		gamertag = [MQFunctions cropString:thisGamertag between:@"AlignLeft\">" and:@"</span>"];
+		gamertag = thisGamertag;
 	else {
 		gamertag = nil;
 		return;
 	}
 	
 	//find motto
-	motto = [MQFunctions cropString:editString between:@"XbcGamercardMotto\"><p>" and:@"<br />"];
+	motto = [MQFunctions cropString:editString between:@"myXboxAvatarCard_mottoLabel\">" and:@"</span>"];
 
-	intGamerscore = [[MQFunctions cropString:editString between:@"Gamerscore:</span><span class=\"XbcFloatRightAlignRight\">" and:@"</span>"] intValue];
+	intGamerscore = [[MQFunctions cropString:editString between:@"myXboxAvatarCard_gamerscoreLabel\">" and:@"</span>"] intValue];
 	gamerscore = [MQFunctions stringWithThousandSeperatorFromInt:intGamerscore];
 	
 	//find tile
-	NSString *tile_tag = [MQFunctions cropString:editString between:@"class=\"XbcGamercardGamertile\" height=\"64\" width=\"64\"" and:@"/>"];
-	gamertile = [NSURL URLWithString:[MQFunctions cropString:tile_tag between:@"src=\"" and:@"\""]];
-	
+//	NSString *tile_tag = [MQFunctions cropString:editString between:@"class=\"XbcGamercardGamertile\" height=\"64\" width=\"64\"" and:@"/>"];
+//	gamertile = [NSURL URLWithString:[MQFunctions cropString:tile_tag between:@"src=\"" and:@"\""]];
+	gamertile = [NSURL URLWithString:[NSString stringWithFormat:@"http://avatar.xboxlive.com/avatar/%@/avatarpic-l.png", thisGamertag]];
+
 	gamerzone = [MQFunctions cropString:editString between:@"Zone:</span><span class=\"XbcFloatRightAlignRight\">" and:@"</span>"];
 
-	bio = [MQFunctions cropString:editString between:@"Bio</h6><p class=\"XbcProfileForceWordWrap\">" and:@"</p>"];
+	bio = [MQFunctions cropString:editString between:@"ctl00_MainContent_myXboxAvatarCard_profileInfoPopOver_bioFlyoutLabel\" class=\"XbcProfileInfoText\">" and:@"</span>"];
 	bio = [bio replace:@"&amp;" with:@"&"];
 	bio = [bio replace:@"&quot;" with:@"\""];
 
-	location = [MQFunctions cropString:editString between:@"Location</h6><p class=\"XbcProfileForceWordWrap\">" and:@"</p>"];
+	location = [MQFunctions cropString:editString between:@"ctl00_MainContent_myXboxAvatarCard_profileInfoPopOver_locationLabel\" class=\"XbcProfileInfoText\">" and:@"</span>"];
 	location = [location replace:@"&amp;" with:@"&"];
 	location = [location replace:@"&quot;" with:@"\""];
 
-	realName = [MQFunctions cropString:editString between:@"Name</h6><p class=\"XbcProfileForceWordWrap\">" and:@"</p>"];
+	realName = [MQFunctions cropString:editString between:@"ctl00_MainContent_myXboxAvatarCard_profileInfoPopOver_nameLabel\" class=\"XbcProfileInfoText\">" and:@"</span>"];
 	realName = [realName replace:@"&amp;" with:@"&"];
 	realName = [realName replace:@"&quot;" with:@"\""];
 
 	//find rep
-	NSString *repNumerator = [MQFunctions cropString:editString between:@"Reputation:</span><span class=\"XbcFloatRightAlignRight\"><img src=\"/xweb/lib/images/gc_repstars_meyou_" and:@".gif"];
+	NSString *repNumerator = [MQFunctions cropString:editString between:@"MyXbox/repstars" and:@"."];
 	rep = [repNumerator floatValue] / 20.0;
 	
 }

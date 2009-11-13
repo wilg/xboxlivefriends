@@ -19,23 +19,28 @@
 }
 
 - (void)clearTab {
+	[avatar setImageAlignment:NSImageAlignBottom];
+	[avatar setImage:[NSImage imageNamed:@"no_avatar"]];
 	[bio setStringValue:@""];
 	[location setStringValue:@""];
 	[name setStringValue:@""];
-	
 	[zone setStringValue:@""];
 	[reputation setReputationPercentage:0];
 }
 
 - (void)displayGamerInfo:(NSString *)gamertag
 {
-	XBGamercard *gamercard = [XBGamercard cardForFriend:[XBFriend friendWithTag:gamertag]];
+	XBFriend *theFriend = [XBFriend friendWithTag:gamertag];
+	XBGamercard *gamercard = [XBGamercard cardForFriend:theFriend];
 	[bio setStringValue:[gamercard bio]];
 	[location setStringValue:[gamercard location]];
 	[name setStringValue:[gamercard realName]];
-	
 	[zone setStringValue:[gamercard gamerzone]];
 	[reputation setReputationPercentage:[gamercard rep]];
+	
+	NSImage *avatarImage = [[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://avatar.xboxlive.com/avatar/%@/avatar-body.png", [theFriend urlEscapedGamertag]]]];
+	if (avatarImage)
+		[avatar setImage:avatarImage];
 }
 
 @end

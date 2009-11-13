@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">352.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="3471"/>
+			<integer value="106"/>
 			<integer value="3770"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
@@ -1285,25 +1285,6 @@
 							<string key="NSTitle">Help</string>
 							<object class="NSMutableArray" key="NSMenuItems">
 								<bool key="EncodedWithXMLCoder">YES</bool>
-								<object class="NSMenuItem" id="906055820">
-									<reference key="NSMenu" ref="564329302"/>
-									<string key="NSTitle">Xbox Live Friends Help</string>
-									<string key="NSKeyEquiv">?</string>
-									<int key="NSKeyEquivModMask">1048576</int>
-									<int key="NSMnemonicLoc">2147483647</int>
-									<reference key="NSOnImage" ref="366204859"/>
-									<reference key="NSMixedImage" ref="107370164"/>
-								</object>
-								<object class="NSMenuItem" id="693699443">
-									<reference key="NSMenu" ref="564329302"/>
-									<bool key="NSIsDisabled">YES</bool>
-									<bool key="NSIsSeparator">YES</bool>
-									<string key="NSTitle"/>
-									<string key="NSKeyEquiv"/>
-									<int key="NSMnemonicLoc">2147483647</int>
-									<reference key="NSOnImage" ref="366204859"/>
-									<reference key="NSMixedImage" ref="107370164"/>
-								</object>
 								<object class="NSMenuItem" id="963944996">
 									<reference key="NSMenu" ref="564329302"/>
 									<string key="NSTitle">Donate</string>
@@ -4743,14 +4724,6 @@ OAA</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">showHelp:</string>
-						<reference key="source" ref="801528972"/>
-						<reference key="destination" ref="906055820"/>
-					</object>
-					<int key="connectionID">122</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
 						<string key="label">terminate:</string>
 						<reference key="source" ref="696114077"/>
 						<reference key="destination" ref="508395997"/>
@@ -6311,19 +6284,12 @@ OAA</bytes>
 						<reference key="object" ref="564329302"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="693699443"/>
-							<reference ref="906055820"/>
 							<reference ref="62161288"/>
 							<reference ref="963944996"/>
 							<reference ref="741422850"/>
 							<reference ref="295978802"/>
 						</object>
 						<reference key="parent" ref="331444649"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">111</int>
-						<reference key="object" ref="906055820"/>
-						<reference key="parent" ref="564329302"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">163</int>
@@ -7733,11 +7699,6 @@ OAA</bytes>
 						<reference key="parent" ref="154877937"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">3424</int>
-						<reference key="object" ref="693699443"/>
-						<reference key="parent" ref="564329302"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">3425</int>
 						<reference key="object" ref="62161288"/>
 						<reference key="parent" ref="564329302"/>
@@ -8671,8 +8632,6 @@ OAA</bytes>
 					<string>106.IBEditorWindowLastContentRect</string>
 					<string>106.IBPluginDependency</string>
 					<string>106.ImportedFromIB2</string>
-					<string>111.IBPluginDependency</string>
-					<string>111.ImportedFromIB2</string>
 					<string>1149.IBPluginDependency</string>
 					<string>1149.ImportedFromIB2</string>
 					<string>129.IBPluginDependency</string>
@@ -8873,7 +8832,6 @@ OAA</bytes>
 					<string>3420.IBPluginDependency</string>
 					<string>3423.IBPluginDependency</string>
 					<string>3423.ImportedFromIB2</string>
-					<string>3424.IBPluginDependency</string>
 					<string>3425.IBPluginDependency</string>
 					<string>3426.IBPluginDependency</string>
 					<string>3427.IBPluginDependency</string>
@@ -9224,9 +9182,7 @@ OAA</bytes>
 					<reference ref="9"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
-					<string>{{779, 826}, {230, 103}}</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<reference ref="9"/>
+					<string>{{645, 904}, {182, 73}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -9431,7 +9387,6 @@ OAA</bytes>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>

@@ -19,6 +19,8 @@
 	if (![super init])
 	return nil;
 	
+	[[Controller stayArounds] addObject:self];
+		
 	[self setCurrentGamertag: nil];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openLookupPanel:) name:@"GIOpenLookupWindow" object:nil];

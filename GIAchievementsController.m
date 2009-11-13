@@ -15,18 +15,14 @@
 
 @implementation GIAchievementsController
 
-- (NSString *)notificationName
-{
-	// Override this in your controller
+- (NSString *)notificationName {
 	return @"GIAchievementsLoadNotification";
 }
 
-- (void)awakeFromNib
-{
-	
+- (void)awakeFromNib {	
     [comparisonWebView setFrameLoadDelegate:self];
 	[comparisonWebView setUIDelegate:self];
-
+	[comparisonWebView setShouldCloseWithWindow:NO];
 }
 
 - (void)displayGamerInfo:(NSString *)gamertag {
@@ -302,9 +298,10 @@
 }
 
 
-- (NSString *)webViewAchievementDetails:(NSString *)gameID
-{
+- (void)webViewAchievementDetails:(NSDictionary *)info {
 
+	NSString *gameID = [info objectForKey:@"gameID"];
+	
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"GIStartProgressIndicator" object:nil];
 
 	NSArray *achievementArray = [XBAchievementDetailsParser fetchWithGameID:gameID tag:[self lastFetchTag]];
@@ -345,9 +342,22 @@
 	}
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"GIStopProgressIndicator" object:nil];
 
-	return achievementDetailsSource;
+	[[comparisonWebView windowScriptObject] callWebScriptMethod:@"details_loaded" withArguments:[NSArray arrayWithObjects:achievementDetailsSource, gameID,[info objectForKey:@"row"], nil]];
+
+
+	//return achievementDetailsSource;
+}
+
+- (void)beginLoadingDetailsForGame:(NSString *)gameID row:(NSString *)row {
+	NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:gameID, @"gameID", row, @"row", nil];
+//	NSInvocationOperation* theOp = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(webViewAchievementDetails:) object:dict];
+//	[[[NSApp delegate] operationQueue] addOperation:theOp];	
+
+
+		[self performSelectorOnMainThread:@selector(webViewAchievementDetails:) withObject:dict waitUntilDone:YES];
 
 }
+
 
 - (NSString *)checkmark:(BOOL)x {
 	NSString *y;
@@ -361,7 +371,9 @@
 }
 
 
-+ (BOOL)isSelectorExcludedFromWebScript:(SEL)aSelector { return NO; }
++ (BOOL)isSelectorExcludedFromWebScript:(SEL)aSelector {
+	return NO;
+}
 
 - (unsigned)webView:(WebView *)sender dragSourceActionMaskForPoint:(NSPoint)point
 {

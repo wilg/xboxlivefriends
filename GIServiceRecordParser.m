@@ -33,7 +33,7 @@
 		
 	[serviceRecord setObject:xp forKey:@"xp"];
 	[serviceRecord setObject:[pageSource cropFrom:@"ctl00_mainContent_identityStrip_lblSkill\">" to:@"</span>"] forKey:@"skill"];
-	[serviceRecord setObject:[pageSource cropFrom:@"ctl00_mainContent_identityStrip_lblRank\">" to:@"</span>"] forKey:@"rankTitle"];
+	[serviceRecord setObject:[pageSource cropFrom:@"ctl00_mainContent_identityStrip_lblRank\">Global Rank: " to:@"</span>"] forKey:@"rankTitle"];
 	[serviceRecord setObject:[pageSource cropFrom:@"ctl00_mainContent_identityStrip_lblServiceTag\">" to:@"</span>"] forKey:@"serviceTag"];
 
 	NSString *rankImageArea = [pageSource cropFrom:@"<img id=\"ctl00_mainContent_identityStrip_imgRank\"" to:@"/>"];

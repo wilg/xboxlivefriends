@@ -39,6 +39,8 @@ typedef enum {
 
 - (id)initWithTag:(NSString *)aTag tileURLString:(NSString *)aTile statusString:(NSString *)aStatus infoString:(NSString *)anInfo;
 
+- (NSString *)description;
+
 - (NSString *)gamertag;
 - (NSString *)urlEscapedGamertag;
 - (NSString *)status;

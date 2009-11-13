@@ -92,13 +92,12 @@
 }
 
 - (void)loadMessageCenterThreaded {
-//    NSInvocationOperation* theOp = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(loadMessageCenter) object:nil];
-//     [[[[NSApplication sharedApplication] delegate] operationQueue] addOperation:theOp];	
-	[self performSelectorOnMainThread:@selector(loadMessageCenter) withObject:nil waitUntilDone:NO];
+    NSInvocationOperation* theOp = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(loadMessageCenter) object:nil];
+     [[[[NSApplication sharedApplication] delegate] operationQueue] addOperation:theOp];	
+//	[self performSelectorOnMainThread:@selector(loadMessageCenter) withObject:nil waitUntilDone:NO];
 }
 
-- (void)loadMessageCenter
-{
+- (void)loadMessageCenter {
     //sometimes it does this twice at the same time to due threads
 	[records removeAllObjects];	
 
@@ -125,13 +124,17 @@
 		}
 	}
 	
-	[messagesTable reloadData];
+	[self performSelectorOnMainThread:@selector(reloadTable) withObject:nil waitUntilDone:NO];
 
 	isGoldMember = [XBMessagesParser isGoldMember];
 
 	//notify in dock
 	[self badgeDockIconWithNumber:unreadCount];
 
+}
+
+- (void)reloadTable {
+	[messagesTable reloadData];
 }
 
 - (void)loadFullMessage:(XBMessage *)message {
