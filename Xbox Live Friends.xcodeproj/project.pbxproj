@@ -19,6 +19,7 @@
 /* End PBXAppleScriptBuildPhase section */
 
 /* Begin PBXBuildFile section */
+		3B03DC600ED512030074491D /* no_avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B03DC5F0ED512030074491D /* no_avatar.png */; };
 		3B049A090ABD1DA5002EA246 /* divider_friendslist_top.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B049A070ABD1DA5002EA246 /* divider_friendslist_top.png */; };
 		3B049A0A0ABD1DA5002EA246 /* divider_friendslist_bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B049A080ABD1DA5002EA246 /* divider_friendslist_bottom.png */; };
 		3B0C97480DCEC20800ABCD50 /* details_tab.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0C97470DCEC20700ABCD50 /* details_tab.png */; };
@@ -44,6 +45,7 @@
 		3B1EA3520CBB1DA00030AAAD /* disclosure_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B1EA3510CBB1DA00030AAAD /* disclosure_up.png */; };
 		3B1EA4D20CBB35930030AAAD /* achievement_row.htm in Resources */ = {isa = PBXBuildFile; fileRef = 3B1EA4D10CBB35930030AAAD /* achievement_row.htm */; };
 		3B1EA5C70CBB44EB0030AAAD /* gamerscore_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B1EA5C60CBB44EB0030AAAD /* gamerscore_icon.png */; };
+		3B223FC70E230B4700875C82 /* compare_achievements.js in Resources */ = {isa = PBXBuildFile; fileRef = 3B223F9A0E230A9F00875C82 /* compare_achievements.js */; };
 		3B2458130CE8E5A300FA2893 /* GIAchievementsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2458120CE8E5A300FA2893 /* GIAchievementsController.m */; };
 		3B2A80410E05E9FB00C48DED /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2A80400E05E9FB00C48DED /* MAAttachedWindow.m */; };
 		3B30901F0A980B8100E94E3D /* loadingBorder.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3B30901E0A980B8100E94E3D /* loadingBorder.icns */; };
@@ -188,6 +190,7 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* Xbox Live Friends_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Xbox Live Friends_Prefix.pch"; sourceTree = "<group>"; };
+		3B03DC5F0ED512030074491D /* no_avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_avatar.png; sourceTree = "<group>"; };
 		3B049A070ABD1DA5002EA246 /* divider_friendslist_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = divider_friendslist_top.png; sourceTree = "<group>"; };
 		3B049A080ABD1DA5002EA246 /* divider_friendslist_bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = divider_friendslist_bottom.png; sourceTree = "<group>"; };
 		3B0C97470DCEC20700ABCD50 /* details_tab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = details_tab.png; sourceTree = "<group>"; };
@@ -219,6 +222,7 @@
 		3B1EA3510CBB1DA00030AAAD /* disclosure_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disclosure_up.png; sourceTree = "<group>"; };
 		3B1EA4D10CBB35930030AAAD /* achievement_row.htm */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.html; path = achievement_row.htm; sourceTree = "<group>"; };
 		3B1EA5C60CBB44EB0030AAAD /* gamerscore_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gamerscore_icon.png; sourceTree = "<group>"; };
+		3B223F9A0E230A9F00875C82 /* compare_achievements.js */ = {isa = PBXFileReference; explicitFileType = sourcecode.javascript; fileEncoding = 4; path = compare_achievements.js; sourceTree = "<group>"; };
 		3B2458110CE8E5A300FA2893 /* GIAchievementsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIAchievementsController.h; sourceTree = "<group>"; };
 		3B2458120CE8E5A300FA2893 /* GIAchievementsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GIAchievementsController.m; sourceTree = "<group>"; };
 		3B2A803F0E05E9FB00C48DED /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAAttachedWindow.h; sourceTree = "<group>"; };
@@ -415,8 +419,6 @@
 				3BEEAC1E0A94414100422957 /* MQFunctions.m */,
 				3BE062F90E05D461003F5824 /* NSString+Crop.h */,
 				3BE062FA0E05D461003F5824 /* NSString+Crop.m */,
-				3BB926740B24DD6300828D30 /* NonDraggableWebView.h */,
-				3BB926750B24DD6300828D30 /* NonDraggableWebView.m */,
 				3B89B67A0DCCF7A4008ED8FA /* DefaultWebViewDelegate.h */,
 				3B89B67B0DCCF7A4008ED8FA /* DefaultWebViewDelegate.m */,
 			);
@@ -549,6 +551,7 @@
 				3B0C97680DCEC5AA00ABCD50 /* GIGamerDetailsController.m */,
 				3B83AE3A0A869A0900CF3D69 /* XBGamercard.h */,
 				3B83AE3B0A869A0900CF3D69 /* XBGamercard.m */,
+				3B03DC5F0ED512030074491D /* no_avatar.png */,
 				3BF81E6F0CD82EFA00D74991 /* Reputation View */,
 			);
 			name = "Details View";
@@ -780,6 +783,8 @@
 		3BD65D6B0E1111F3004BE80A /* Multipurpose Views */ = {
 			isa = PBXGroup;
 			children = (
+				3BB926740B24DD6300828D30 /* NonDraggableWebView.h */,
+				3BB926750B24DD6300828D30 /* NonDraggableWebView.m */,
 				3B6324E00CE8C11200418B0E /* MQColorView.h */,
 				3B6324E10CE8C11200418B0E /* MQColorView.m */,
 			);
@@ -805,6 +810,7 @@
 				3B511CEC0E04B33400530154 /* simple_error_message.htm */,
 				3B18855C0CB9D4AB0071B870 /* effects.js */,
 				3B18855D0CB9D4AB0071B870 /* prototype.js */,
+				3B223F9A0E230A9F00875C82 /* compare_achievements.js */,
 			);
 			name = HTML;
 			sourceTree = "<group>";
@@ -906,6 +912,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B223FC70E230B4700875C82 /* compare_achievements.js in Resources */,
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				3B91BE5F099D26E7008EB5D4 /* appicon.icns in Resources */,
 				3B1686800A15A4B700233AE9 /* blue_bead.png in Resources */,
@@ -985,6 +992,7 @@
 				3BFEA5DA0E11BCA500B74A34 /* stars_full.png in Resources */,
 				3B7F28290E11D1520021BBD3 /* graybar.png in Resources */,
 				3B7F282A0E11D1520021BBD3 /* greenbar.png in Resources */,
+				3B03DC600ED512030074491D /* no_avatar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1096,6 +1104,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_3)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../../BWToolkit\"",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)\"";
@@ -1133,6 +1142,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_3)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../../BWToolkit\"",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)\"";
