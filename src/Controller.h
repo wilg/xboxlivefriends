@@ -15,6 +15,8 @@
 	//misc
 	IBOutlet NSTextView *sourceLogger;
 	NSTimer *refreshTimer;
+	IBOutlet NSButton *autoRefresh;
+	IBOutlet NSTextField *refreshTime;
 
 	BOOL isRegistered;
 	NSOperationQueue *queue;
@@ -25,6 +27,9 @@
 
 - (NSOperationQueue *)operationQueue;
 - (void)timedRefresh;
+- (void)startRefreshTimer;
+- (IBAction)toggleRefreshTimer:(id)sender;
+- (IBAction)changeRefreshTime:(id)sender;
 
 
 @end

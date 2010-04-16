@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class LoginController;
 
 @interface FriendsListController : NSObject {
 

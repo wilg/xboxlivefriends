@@ -25,6 +25,7 @@ typedef enum {
 	NSString *subject;
 	NSString *expirationDate;
 	NSString *identifier;
+	NSString *dateString;
 	BOOL isRead;
 
 }
@@ -38,6 +39,7 @@ typedef enum {
 @property(assign) NSString *subject;
 @property(assign) NSString *expirationDate;
 @property(assign) NSString *identifier;
+@property(assign) NSString *dateString;
 
 + (XBMessage *)message;
 

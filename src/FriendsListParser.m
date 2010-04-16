@@ -7,18 +7,29 @@
 
 #import "FriendsListParser.h"
 #import "Xbox Live Friends.h"
+#import "LoginController.h"
 
-NSString* friendsListURL = @"http://live.xbox.com/en-US/profile/Friends.aspx";
+#define FRIEND_PAGE @"http://live.xbox.com/en-US/profile/Friends.aspx"
+
+//NSString* friendsListURL = @"http://live.xbox.com/en-US/profile/Friends.aspx";
 NSString* statusNewlineReplacement = @" - ";
+NSString* theSource;
 
 @implementation FriendsListParser
 
 + (NSArray *)friends {
 
 	NSArray *friendsArray;
-	NSString *theSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:friendsListURL] encoding:NSUTF8StringEncoding error:nil];
+	NSLog(@"Getting friends list HTML");
+	theSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:FRIEND_PAGE] encoding:NSUTF8StringEncoding error:nil];
+	NSLog(@"Acquired the source");
+	
+	if ([theSource contains:@"Sign out"]) {
+		NSLog(@"Yep, we are logged in");
+	}
 
-	BOOL success = NO;
+	//BOOL success = NO;
+	/*
 	if ([theSource length] >= 5) {
 		@try {
 			
@@ -38,23 +49,37 @@ NSString* statusNewlineReplacement = @" - ";
 		}
 		@catch(id err){}
 	}
+	*/
 	
+	if ([theSource contains:@"Save my e-mail address and password"]) {
+		NSLog(@"We are not logged in! Lets try loggin in and doing it again:");
+	}
+	
+	friendsArray = [self friendsWithSource:theSource];
+	if ([friendsArray count] == 0) {
+		NSLog(@"Friends Array could not be built!");
+		return nil;
+	}
+	
+	/*
 	if (!success)
 		return nil;
+	*/
 
 	return friendsArray;
 }
 
 + (NSArray *)friendsWithSource:(NSString *)theSource {
-	if ([theSource contains:@"<title>Continue</title>"])
+	if ([theSource contains:@"<title>Continue</title>"]) {
 		[NSException raise:@"Signed Out" format:@"Please sign in to Windows Live ID."];
+	}
 
-	NSMutableArray *friends = [NSMutableArray array];
+	NSMutableArray *friends = [[NSMutableArray alloc] init];
 	
 	
 	NSArray *rows = [theSource cropRowsMatching:@"<tr" rowEnd:@"</tr>"];
 	
-	BOOL demoMode = [[NSUserDefaults standardUserDefaults] boolForKey:@"DebugDemoMode"];
+	/* BOOL demoMode = [[NSUserDefaults standardUserDefaults] boolForKey:@"DebugDemoMode"];
 	
 	if (demoMode) {
 		//demo mode shit
@@ -65,6 +90,7 @@ NSString* statusNewlineReplacement = @" - ";
 		[friends addObject:[XBFriend friendWithTag:@"KnownEvil Homer" tileURLString:@"http://tiles.xbox.com/tiles/09/4Q/1mdsb2JgbC9ECgRcBBwAF1EPL3RpbGUvMC8xODAwMAAAAQAAAAD5P97z.jpg" statusString:@"Busy" infoString:@"47 minutes ago - Xbox 360 Dashboard"]];
 		[friends addObject:[XBFriend friendWithTag:@"Omega Spawn" tileURLString:@"http://tiles.xbox.com/tiles/BK/Hv/1Gdsb2JgbC8SCgUMBRkAGAFbL3RpbGUvMC8xODAwZgAAAQAAAAD7wKEk.jpg" statusString:@"Away" infoString:@"Watching a movie"]];
 	}
+	*/
 
 	for (NSString *row in rows) {
 		
@@ -99,7 +125,8 @@ NSString* statusNewlineReplacement = @" - ";
 
 
 		XBFriend *theFriend = [XBFriend friendWithTag:gamertag tileURLString:gamertileURL statusString:status infoString:richPresence];
-
+		
+		/*
 		if (demoMode) {
 		
 			if ([status isEqualToString:@"Pending"]) {
@@ -112,7 +139,7 @@ NSString* statusNewlineReplacement = @" - ";
 				continue;
 			}
 		}
-
+		*/
 
 		[friends addObject:theFriend];
 

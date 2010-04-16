@@ -21,26 +21,26 @@
 	NSMutableArray *titles = [NSMutableArray array];
 	NSMutableArray *descriptions = [NSMutableArray array];
 
-	NSString *pageSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.bungie.net/stats/halo3/screenshots.aspx?gamertag=%@", gamertag]]];
+	NSString *pageSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.bungie.net/stats/halo3/screenshots.aspx?gamertag=%@", gamertag]] encoding:NSUTF8StringEncoding error:nil];
 	
 	int pageIndex = 0;
 	NSString *thisPageSource = pageSource;
 	while ([thisPageSource rangeOfString:@"Next</a>"].location != NSNotFound) {
 		pageIndex++;
 		NSLog(@"page index: %i", pageIndex);
-		thisPageSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.bungie.net/stats/halo3/screenshots.aspx?gamertag=%@&page=%i", gamertag, pageIndex]]];
+		thisPageSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.bungie.net/stats/halo3/screenshots.aspx?gamertag=%@&page=%i", gamertag, pageIndex]] encoding:NSUTF8StringEncoding error:nil];
 		pageSource = [pageSource stringByAppendingString:thisPageSource];
 	}
 
 	//do the gallery images too
-	NSString *gallerySource = [NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.bungie.net/stats/halo3/screenshots.aspx?mode=pinned&gamertag=%@", gamertag]]];
+	NSString *gallerySource = [NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.bungie.net/stats/halo3/screenshots.aspx?mode=pinned&gamertag=%@", gamertag]] encoding:NSUTF8StringEncoding error:nil];
 	pageSource = [pageSource stringByAppendingString:gallerySource];
 	pageIndex = 0;
 	thisPageSource = gallerySource;
 	while ([thisPageSource rangeOfString:@"Next</a>"].location != NSNotFound) {
 		pageIndex++;
 		NSLog(@"gallery page index: %i", pageIndex);
-		thisPageSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.bungie.net/stats/halo3/screenshots.aspx?gamertag=%@&page=%i", gamertag, pageIndex]]];
+		thisPageSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.bungie.net/stats/halo3/screenshots.aspx?gamertag=%@&page=%i", gamertag, pageIndex]] encoding:NSUTF8StringEncoding error:nil];
 		pageSource = [pageSource stringByAppendingString:thisPageSource];
 	}
 
@@ -59,7 +59,7 @@
 	
 	
 	for (NSString *thumbID in thumbSSIDs) {
-		NSString *thumbSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.bungie.net/stats/halo3/screenshot_viewer_popup.aspx?ssid=%@", thumbID]]];
+		NSString *thumbSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.bungie.net/stats/halo3/screenshot_viewer_popup.aspx?ssid=%@", thumbID]] encoding:NSUTF8StringEncoding error:nil];
 		[titles addObject:[[thumbSource cropFrom:@"screenshotTitle" to:@"/a>"] cropFrom:@">" to:@"<"]];
 		[descriptions addObject:[thumbSource cropFrom:@"descriptionLabel\">" to:@"<"]];
 		[largeSSIDs addObject: [thumbSource cropFrom:@"Screenshot.ashx?size=medium&amp;ssid=" to:@"\""]];

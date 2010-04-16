@@ -23,9 +23,14 @@
 	IBOutlet NSView *errorView;
 
 	IBOutlet NSTextField *errorString;
+	
+	// Preferences
+	IBOutlet NSButton *autoLogin;
 
 }
 
+- (void)changeMode:(NSString *)mode;
 - (void)setCurrentView:(NSView *)newView;
+- (void)initialSignIn;
 
 @end

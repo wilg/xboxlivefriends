@@ -163,6 +163,9 @@
 		3BFD38300ABDB6EC007A68B5 /* XBGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFD382E0ABDB6EC007A68B5 /* XBGame.m */; };
 		3BFEA5D90E11BCA500B74A34 /* stars_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFEA5D70E11BCA500B74A34 /* stars_empty.png */; };
 		3BFEA5DA0E11BCA500B74A34 /* stars_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFEA5D80E11BCA500B74A34 /* stars_full.png */; };
+		55C79A1A1178A5F0006CFA67 /* EMKeychainItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C79A191178A5F0006CFA67 /* EMKeychainItem.m */; };
+		55C79A351178A600006CFA67 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C79A341178A600006CFA67 /* Carbon.framework */; };
+		55C79A3A1178A615006CFA67 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C79A391178A615006CFA67 /* Security.framework */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -389,6 +392,10 @@
 		3BFD382E0ABDB6EC007A68B5 /* XBGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBGame.m; sourceTree = "<group>"; };
 		3BFEA5D70E11BCA500B74A34 /* stars_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stars_empty.png; sourceTree = "<group>"; };
 		3BFEA5D80E11BCA500B74A34 /* stars_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stars_full.png; sourceTree = "<group>"; };
+		55C79A181178A5F0006CFA67 /* EMKeychainItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMKeychainItem.h; sourceTree = "<group>"; };
+		55C79A191178A5F0006CFA67 /* EMKeychainItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMKeychainItem.m; sourceTree = "<group>"; };
+		55C79A341178A600006CFA67 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		55C79A391178A615006CFA67 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Xbox Live Friends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Xbox Live Friends.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -406,6 +413,8 @@
 				3B8629C30ABCC16D00BCA869 /* QuartzCore.framework in Frameworks */,
 				3B862A410ABCCC5500BCA869 /* SystemConfiguration.framework in Frameworks */,
 				3B511D840E04C45700530154 /* Quartz.framework in Frameworks */,
+				55C79A351178A600006CFA67 /* Carbon.framework in Frameworks */,
+				55C79A3A1178A615006CFA67 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +443,8 @@
 				3B4429850A46391B004A4AE1 /* AddressBook.framework */,
 				3BFABF9E0A45E9F500A49E84 /* WebKit.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+				55C79A341178A600006CFA67 /* Carbon.framework */,
+				55C79A391178A615006CFA67 /* Security.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -719,6 +730,8 @@
 		3BC7542C0E0F80B600D0EF53 /* Community Frameworks and Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				55C79A181178A5F0006CFA67 /* EMKeychainItem.h */,
+				55C79A191178A5F0006CFA67 /* EMKeychainItem.m */,
 				3BC754DF0E0F8FE100D0EF53 /* RoundedBox.h */,
 				3BC754E00E0F8FE100D0EF53 /* RoundedBox.m */,
 				3B2A803F0E05E9FB00C48DED /* MAAttachedWindow.h */,
@@ -1059,6 +1072,7 @@
 				3BC754E10E0F8FE100D0EF53 /* RoundedBox.m in Sources */,
 				3B9BFA5D0E14841D0002312B /* HaloScreenshotParser.m in Sources */,
 				3B5BDD880E21E31F00D00C7C /* StayAround.m in Sources */,
+				55C79A1A1178A5F0006CFA67 /* EMKeychainItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

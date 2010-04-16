@@ -9,17 +9,23 @@
 #import "Xbox Live Friends.h"
 #import "LoginController.h"
 
-NSString* signInURL = @"http://live.xbox.com/en-US/default.aspx";
+#define FRIENDS_PAGE @"http://live.xbox.com/en-US/profile/Friends.aspx"
+
+NSString* signInURL = @"http://live.xbox.com/en-US/profile/Friends.aspx";
 
 
 @implementation LoginController
 
 - (id)init {
 	
-	if (![super init])
-	return nil;
+	if (![super init]) {
+		return nil;
+	}
+	
+	keychainItem = [EMGenericKeychainItem genericKeychainItemForService:@"XboxLiveFriends" withUsername:@"XboxLive"];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkConnectionAndLogin:) name:@"FriendsListConnectionError" object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkConnectionAndLogin:) name:@"DoSignIn" object:nil];
 	
 	currentMode = @"";
 	
@@ -32,11 +38,24 @@ NSString* signInURL = @"http://live.xbox.com/en-US/default.aspx";
 
 - (void)awakeFromNib {
 	[webView setFrameLoadDelegate:self];
+	
+	// The first time we open the app, a new keychain will be created to save our password.
+	if (keychainItem) {
+		[password setStringValue:keychainItem.password];
+		NSLog(@"%@", keychainItem.username);
+	} else {
+		[EMGenericKeychainItem addGenericKeychainItemForService:@"XboxLiveFriends" withUsername:@"XboxLive" password:@"nopass"];
+		NSLog(@"Creating Keychain item");
+	}
+	
+	//[self loginToPassportWithEmail:[email stringValue] password:[password stringValue]];
 }
 
-- (void)checkConnectionAndLogin:(NSNotification *)notification{
+- (void)checkConnectionAndLogin:(NSNotification *)notification
+{
 	NSLog(@"FriendsListConnectionError");
-	[self performSelectorOnMainThread:@selector(OpenSignIn:) withObject:nil waitUntilDone:NO];
+	[self loadURL:[NSURL URLWithString:FRIENDS_PAGE]];
+	//[self performSelectorOnMainThread:@selector(OpenSignIn:) withObject:nil waitUntilDone:NO];
 }
 
 - (IBAction)newSignInButtonClicked:(id)sender {
@@ -46,14 +65,21 @@ NSString* signInURL = @"http://live.xbox.com/en-US/default.aspx";
 		return;
 	}
 	
+	// Check against the current keychain
+	EMGenericKeychainItem *tempKeys = [EMGenericKeychainItem genericKeychainItemForService:@"XboxLiveFriends" withUsername:@"XboxLive"];
+	NSString *temppw = tempKeys.password;
+	if (temppw != [password stringValue]) {
+		tempKeys.password = [password stringValue];
+	}
+	
 	currentMode = @"signInFormSubmitted";
 	
-	[self loginToPassportWithEmail:[email stringValue] password:[password stringValue]];
+	[self loadURL:[NSURL URLWithString:signInURL]];
+	//[self loginToPassportWithEmail:[email stringValue] password:[password stringValue]];
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"ChangeFriendsListMode" object:@"loading"];
 }
 
 - (BOOL)loginToPassportWithEmail:(NSString *)emailAddress password:(NSString *)loginPass {
-
 	
 	NSString* script = [NSString stringWithFormat: 
 	@"document.getElementsByName(\"login\")[0].value = decodeURIComponent('%@');document.getElementsByName(\"passwd\")[0].value = decodeURIComponent('%@');document.getElementById('i0136').click();document.getElementsByName('SI')[0].click();",
@@ -71,7 +97,7 @@ NSString* signInURL = @"http://live.xbox.com/en-US/default.aspx";
 	[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"InSignInMode"];
 	[self performSelectorOnMainThread:@selector(loadURL:) withObject:[NSURL URLWithString:signInURL] waitUntilDone:YES];
 
-	//[[NSNotificationCenter defaultCenter] postNotificationName:@"ChangeFriendsListMode" object:@"sign_in"];
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"ChangeFriendsListMode" object:@"sign_in"];
 
 //	[signInWindow center];
 //	[signInWindow makeKeyAndOrderFront:nil];
@@ -110,6 +136,8 @@ NSString* signInURL = @"http://live.xbox.com/en-US/default.aspx";
 #pragma mark WebView-Related Methods
 
 - (void)loadURL:(NSURL *)URL {
+	NSString *attemp = [URL absoluteString];
+	NSLog(@"Attemping to load: %@", attemp);
 	[[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:URL]];
 }
 
@@ -132,10 +160,11 @@ NSString* signInURL = @"http://live.xbox.com/en-US/default.aspx";
 	[webViewProgress setHidden:true];
 	if ([self isSignedIn]) {
 		[self doneWithSignIn];
-		[self loadURL:[NSURL URLWithString:@"about:blank"]];
-	}
-	else {
-		NSLog(currentMode);
+		//[self loadURL:[NSURL URLWithString:signInURL]];
+	} else {
+		[self loginToPassportWithEmail:[email stringValue] password:[password stringValue]];
+		/*
+		NSLog(@"%@", currentMode);
 		if (currentMode == @"signInFormSubmitted") {
 			[[NSNotificationCenter defaultCenter] postNotificationName:@"ChangeFriendsListMode" object:@"sign_in"];
 		}
@@ -146,6 +175,7 @@ NSString* signInURL = @"http://live.xbox.com/en-US/default.aspx";
 		else if (currentMode == @"signInForm") {
 		
 		}
+		 */
 	}
 }
 
@@ -186,8 +216,28 @@ NSString* signInURL = @"http://live.xbox.com/en-US/default.aspx";
 
 - (BOOL)isSignedIn
 {
-NSLog(@"isSignedIn");
+	NSLog(@"Are we signed in?");
+	
+	NSString *loginSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:FRIENDS_PAGE] encoding:NSUTF8StringEncoding error:nil];
+	
+	if (!loginSource) {
+		return NO;
+	}
+	
+	if ([loginSource rangeOfString:@"Sign out"].location != NSNotFound) {
+		NSLog(@"We are signed in");
+		return YES;
+	}
+	/*
+	 if ([loginSource contains:@"Sign out"]) {
+	 NSLog(@"We Are signed in");
+	 return YES;
+	 }
+	 */
+	NSLog(@"We are not signed in");
+	return NO;
 
+	/*
 	NSString *webViewSource;
 	WebDataSource *dataSource = [[webView mainFrame] dataSource];
 	if ([[dataSource representation] canProvideDocumentSource]) {
@@ -203,9 +253,9 @@ NSLog(@"isSignedIn");
 			return false;
 		}
 		
-		NSString *friendsListSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://live.xbox.com/en-US/profile/Friends.aspx"] encoding:NSUTF8StringEncoding error:nil];
+		friendsListSource1 = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://live.xbox.com/en-US/profile/Friends.aspx"] encoding:NSUTF8StringEncoding error:nil];
 		
-		if([friendsListSource rangeOfString:@"The service is unavailable at this time."].location != NSNotFound) {
+		if([friendsListSource1 rangeOfString:@"The service is unavailable at this time."].location != NSNotFound) {
 			[self webViewErrorMessage:@"Apparently this portion of Xbox.com is unavailable right now. Please try again later." title:@"Friends List Data Unavailable"];
 			return false;
 		}
@@ -222,20 +272,86 @@ NSLog(@"isSignedIn");
 		return false;
 			
 	return false;
+	 */
 }
 
 - (void)doneWithSignIn {
-NSLog(@"doneWithSignIn");
+	NSLog(@"doneWithSignIn");
 	currentMode = nil;
 	[signInWindow close];
+	
 	[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"InSignInMode"];
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"InitialSignIn" object:nil];
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"StartRefreshTimer" object:nil];
+	/*
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"FriendsListNeedsRefresh" object:nil];
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"ShowFriendsList" object:nil];
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"ChangeFriendsListMode" object:@"friends"];
+	 */
+	
+	
 }
 
-
-
-
++ (BOOL)isLoggedIn
+{
+	// Need to speed this up somehow ...
+	NSLog(@"Are we signed in?");
+	
+	NSString *loginSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:FRIENDS_PAGE] encoding:NSUTF8StringEncoding error:nil];
+	
+	if (!loginSource) {
+		return NO;
+	}
+	
+	if ([loginSource rangeOfString:@"Sign out"].location != NSNotFound) {
+		NSLog(@"We are signed in");
+		return YES;
+	}
+	/*
+	 if ([loginSource contains:@"Sign out"]) {
+	 NSLog(@"We Are signed in");
+	 return YES;
+	 }
+	 */
+	NSLog(@"We are not signed in");
+	return NO;
+	
+	/*
+	 NSString *webViewSource;
+	 WebDataSource *dataSource = [[webView mainFrame] dataSource];
+	 if ([[dataSource representation] canProvideDocumentSource]) {
+	 webViewSource = [[dataSource representation] documentSource];
+	 }
+	 else {
+	 return false;
+	 }
+	 
+	 if ([webViewSource rangeOfString:@"<title>Xbox.com | Home Page - My Xbox</title>"].location != NSNotFound) {
+	 
+	 if ([webViewSource rangeOfString:@"<span class=\"text\">View Friends</span>"].location == NSNotFound) {
+	 return false;
+	 }
+	 
+	 friendsListSource1 = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://live.xbox.com/en-US/profile/Friends.aspx"] encoding:NSUTF8StringEncoding error:nil];
+	 
+	 if([friendsListSource1 rangeOfString:@"The service is unavailable at this time."].location != NSNotFound) {
+	 [self webViewErrorMessage:@"Apparently this portion of Xbox.com is unavailable right now. Please try again later." title:@"Friends List Data Unavailable"];
+	 return false;
+	 }
+	 else
+	 return true;
+	 
+	 }
+	 
+	 if ([webViewSource rangeOfString:@"<title>Continue</title>"].location != NSNotFound) 
+	 return false;
+	 if ([webViewSource rangeOfString:@"<title>Sign In</title>"].location != NSNotFound)
+	 return false;
+	 if ([webViewSource rangeOfString:@"<title>Xbox.com | Page unavailable</title>"].location != NSNotFound)
+	 return false;
+	 
+	 return false;
+	 */
+}
 
 @end

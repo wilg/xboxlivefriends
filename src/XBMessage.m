@@ -12,7 +12,7 @@
 
 @implementation XBMessage
 
-@synthesize isRead, sender, date, type, contents, subject, expirationDate, identifier;
+@synthesize isRead, sender, date, type, contents, subject, expirationDate, identifier, dateString;
 
 + (XBMessage *)message {
 	return [[XBMessage alloc] init];
@@ -30,6 +30,7 @@
 	[record setObject:self.sender forKey:@"from"];
 	[record setObject:self.subject forKey:@"message"];
 	[record setObject:[MQFunctions humanReadableDate:self.date] forKey:@"date"];
+	//[record setObject:self.dateString forKey:@"date"];
 	
 	if ([self type] == XBVoiceMessageType){
 		[record setObject:[NSImage imageNamed:@"speaker"] forKey:@"attachment"];
@@ -56,7 +57,7 @@
 - (void)parseFullMessage {
 
 	NSURL *theURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", @"http://live.xbox.com/en-US/profile/MessageCenter/ViewMessage.aspx?mx=", [self identifier]]];
-	NSString *theSource = [NSString stringWithContentsOfURL:theURL];
+	NSString *theSource = [NSString stringWithContentsOfURL:theURL encoding:NSUTF8StringEncoding error:nil];
 		
 	NSString *parsedMessage = [theSource cropFrom:@"<div class=\"XbcMessageTextPanel\">" to:@"</div>"];
 	if (parsedMessage)

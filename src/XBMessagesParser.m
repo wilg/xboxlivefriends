@@ -17,7 +17,7 @@ NSString* messageCenterURL = @"http://live.xbox.com/en-US/profile/MessageCenter/
 + (NSArray *)messages {
 
 	NSMutableArray *allMessages = [NSMutableArray array];
-	NSString *theSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:messageCenterURL]];
+	NSString *theSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:messageCenterURL] encoding:NSUTF8StringEncoding error:nil];
 
 	theSource = [theSource cropFrom:@"/thead" to:@"</table>"];
 	NSArray *rows = [theSource cropRowsMatching:@"<tbody" rowEnd:@"</tbody>"];
@@ -82,6 +82,7 @@ NSString* messageCenterURL = @"http://live.xbox.com/en-US/profile/MessageCenter/
 		rowMessage.isRead = isRead;
 		
 		NSDate *sentDate = [NSDate date];
+		NSString *sentDateString;
 		@try {
 			NSString *dateSent = [row cropFrom:@"_xbcDisplayDate(" to:@")"];
 			dateSent = [NSString stringWithFormat:@"%@ GMT", dateSent];
@@ -99,12 +100,28 @@ NSString* messageCenterURL = @"http://live.xbox.com/en-US/profile/MessageCenter/
 				theDate = [NSDate date];
 			
 			sentDate = theDate;
+			
+			// -----------------------------------------------
+			
+			theDate = [theDate dateWithCalendarFormat:@"%d %m %y %H:%M" timeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
+			
+			NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+			[formatter setTimeStyle:NSDateFormatterShortStyle];
+			[formatter setDateStyle:NSDateFormatterLongStyle];
+			
+			NSLocale *gbLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+			[dateFormatter setLocale:gbLocale];
+			
+			//NSLog(@"Date for locale %@: %@", [[formatter locale] localeIdentifier], [formatter stringFromDate:theDate]);
+			sentDateString = [NSString stringWithFormat:@"%@", [formatter stringFromDate:theDate]];
+			// -----------------------------------------------
 		}
 		@catch (NSException *err) {
 		
 		}
 		
 		rowMessage.date = sentDate;
+		rowMessage.dateString = sentDateString;
 
 		NSString *subject = [row cropFrom:@"headers=\"Summary\">" to:@"<"];
 		subject = [MQFunctions flattenHTML:subject];
@@ -131,7 +148,7 @@ NSString* messageCenterURL = @"http://live.xbox.com/en-US/profile/MessageCenter/
 }
 
 + (BOOL)isGoldMember {
-	NSString *theSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://live.xbox.com/en-US/profile/MessageCenter/SendMessage.aspx"]];
+	NSString *theSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://live.xbox.com/en-US/profile/MessageCenter/SendMessage.aspx"] encoding:NSUTF8StringEncoding error:nil];
 	return ![theSource contains:@"You must be an Xbox LIVE Gold member to send messages."];
 }
 

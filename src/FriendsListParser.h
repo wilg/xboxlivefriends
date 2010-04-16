@@ -7,7 +7,6 @@
 #import <Cocoa/Cocoa.h>
 
 @interface FriendsListParser : NSObject {
-
 //	NSArray *friends;
 	
 }

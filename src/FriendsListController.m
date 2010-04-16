@@ -12,6 +12,7 @@
 #include "GrowlController.h"
 #include "FriendsListParser.h"
 #include "FriendStatusCell.h"
+#include "LoginController.h"
 
 static BOOL loadThreaded = true;
 
@@ -28,8 +29,8 @@ static BOOL loadThreaded = true;
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(friendsListNeedsRefresh:) name:@"FriendsListNeedsRefresh" object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(friendsListNeedsRedraw:) name:@"FriendsListNeedsRedraw" object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showFriendsList:) name:@"ShowFriendsList" object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(firstFriendsListLoad:) name:NSApplicationDidFinishLaunchingNotification object:nil];
-
+	//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(firstFriendsListLoad:) name:NSApplicationDidFinishLaunchingNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(firstFriendsListLoad:) name:@"InitialSignIn" object:nil];
 
 	return self;
 }
@@ -120,7 +121,7 @@ static BOOL loadThreaded = true;
 		success = YES;
 		[self checkFriendsForStatusChange:friends oldFriends:oldFriends];
 		[self displayMyGamercard];
-		[self showDockMenu];
+		//[self showDockMenu];
 		//[self performSelectorOnMainThread:@selector(showDockMenu) withObject:nil waitUntilDone:NO];
 
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"ChangeFriendsListMode" object:@"friends"];
@@ -129,8 +130,10 @@ static BOOL loadThreaded = true;
 		
 	}
 	else {
+		NSLog(@"Friends = nil");
 		[self performSelectorOnMainThread:@selector(friendsListLocked:) withObject:[NSNumber numberWithBool:YES] waitUntilDone:YES];
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"FriendsListConnectionError" object:nil];
+		
 	}
 	
 
@@ -275,7 +278,7 @@ static BOOL loadThreaded = true;
 - (void)displayMyGamercard {
 
 	//Download my Gamercard
-	XBGamercard *myCard = [XBGamercard cardForURL:[NSURL URLWithString:@"http://live.xbox.com/en-US/profile/profile.aspx"]];
+	XBGamercard *myCard = [XBGamercard cardForURL:[NSURL URLWithString:@"http://live.xbox.com/en-US/default.aspx"]];
 	
 	[myTag setObjectValue:[myCard gamertag]];
 	[myMessage setObjectValue:[myCard motto]];
@@ -305,14 +308,14 @@ static BOOL loadThreaded = true;
 	NSString *theStringURL = [NSString stringWithFormat:@"%@%@", theURLBase, mutableGamerTag];
 	[NSApp endSheet:addFriendSheet];
 	//querys xbox.com and gets a response
-	NSString *response = [NSString stringWithContentsOfURL:[NSURL URLWithString:theStringURL]];
+	NSString *response = [NSString stringWithContentsOfURL:[NSURL URLWithString:theStringURL] encoding:NSUTF8StringEncoding error:nil];
 	NSRange errorRange = [response rangeOfString:@"The gamertag you entered does not exist on Xbox Live."];
 	if (errorRange.location != NSNotFound){
 		//gamertag doesn't exist
 		NSString *theError = [NSString stringWithFormat:@"The gamertag \"%@\" does not exist on Xbox Live.", theGamertag];
 		[self displaySimpleErrorMessage:@"Gamertag Doesn't Exist" withMessage:theError attachedTo:friendsListWindow];
 	}
-	[NSString stringWithContentsOfURL:[NSURL URLWithString:theStringURL]];
+	[NSString stringWithContentsOfURL:[NSURL URLWithString:theStringURL] encoding:NSUTF8StringEncoding error:nil];
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"FriendsListNeedsRefresh" object:nil];
 }
 
@@ -468,7 +471,7 @@ static BOOL loadThreaded = true;
 			NSString *theStringURL = [NSString stringWithFormat:@"%@%@", theURLBase, mutableGamerTag];
 			[mutableGamerTag release];
 			//querys xbox.com and gets a response
-			[NSString stringWithContentsOfURL:[NSURL URLWithString:theStringURL]];
+			[NSString stringWithContentsOfURL:[NSURL URLWithString:theStringURL] encoding:NSUTF8StringEncoding error:nil];
 			[[NSNotificationCenter defaultCenter] postNotificationName:@"FriendsListNeedsRefresh" object:nil];
 		}
 	}
@@ -518,7 +521,7 @@ static BOOL loadThreaded = true;
 }
 
 - (IBAction)openURLEmailUs:(id)sender{
-	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"mailto:software@mindquirk.com"]];
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"mailto:northernysk@gmail.com"]];
 }
 
 
@@ -594,7 +597,7 @@ static BOOL loadThreaded = true;
 - (IBAction)cancelFriendRequest:(id)sender
 {
 	NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://live.xbox.com/en-US/profile/FriendsMgmt.aspx?gt=%@&act=Retract", [[self currentlySelectedFriend] urlEscapedGamertag]]];
-	[NSString stringWithContentsOfURL:url];
+	[NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
 	[friendsTable selectRowIndexes:[NSIndexSet indexSet] byExtendingSelection:NO];
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"FriendsListNeedsRefresh" object:nil];
 	[self closeRequestPop];
@@ -603,7 +606,7 @@ static BOOL loadThreaded = true;
 - (IBAction)acceptFriendRequest:(id)sender
 {
 	NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://live.xbox.com/en-US/profile/FriendsMgmt.aspx?gt=%@&act=Accept", [[self currentlySelectedFriend] urlEscapedGamertag]]];
-	[NSString stringWithContentsOfURL:url];
+	[NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
 	[friendsTable selectRowIndexes:[NSIndexSet indexSet] byExtendingSelection:NO];
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"FriendsListNeedsRefresh" object:nil];
 	[self closeRequestPop];
@@ -612,7 +615,7 @@ static BOOL loadThreaded = true;
 - (IBAction)denyFriendRequest:(id)sender
 {
 	NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://live.xbox.com/en-US/profile/FriendsMgmt.aspx?gt=%@&act=Reject", [[self currentlySelectedFriend] urlEscapedGamertag]]];
-	[NSString stringWithContentsOfURL:url];
+	[NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
 	[friendsTable selectRowIndexes:[NSIndexSet indexSet] byExtendingSelection:NO];
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"FriendsListNeedsRefresh" object:nil];
 	[self closeRequestPop];

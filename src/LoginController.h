@@ -7,9 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "EMKeychainItem.h"
 
 
 @interface LoginController : NSObject {
+	
+	// Keychain Access
+	EMGenericKeychainItem *keychainItem;
 
 	//sign in window
 	IBOutlet NSWindow *signInWindow;
@@ -22,6 +26,7 @@
 	IBOutlet NSTextField *password;
 
 	NSString *currentMode;
+	NSString *friendsListSource1;
 
 }
 
@@ -38,5 +43,6 @@
 - (BOOL)isSignedIn;
 - (void)doneWithSignIn;
 
++ (BOOL)isLoggedIn;
 
 @end

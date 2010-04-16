@@ -4,6 +4,7 @@
 //Mindquirk Classes
 #include "MQFunctions.h"
 #import "NSString+Crop.h"
+#import "EMKeychainItem.h"
 
 //CustomViews
 #include "XBReputationView.h"

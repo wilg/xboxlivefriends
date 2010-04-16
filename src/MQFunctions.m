@@ -22,7 +22,7 @@ BOOL debugLogOn = NO;
 + (void)debugLog:(NSString *)logText
 {
 	if (debugLogOn) {
-		NSLog(logText);
+		NSLog(@"%@", logText);
 	}
 }
 
@@ -173,7 +173,7 @@ BOOL debugLogOn = NO;
 	
 //	[[Controller sharedInstance] webViewWithRequest:urlRequest];
 
-	return [NSString stringWithContentsOfURL:url];
+	return [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
 }
 
 

@@ -38,6 +38,7 @@
 - (void)loadMessageCenterThreaded;
 - (void)loadMessageCenter;
 - (IBAction)openMessageCenter:(id)sender;
+- (void)displayFullMessage:(XBMessage *)message;
 - (void)loadFullMessage:(XBMessage *)message;
 - (void)badgeDockIconWithNumber:(int)num;
 - (void)displaySimpleErrorMessage:(NSString *)headline withMessage:(NSString *)message attachedTo:(NSWindow *)theWindow;

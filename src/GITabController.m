@@ -72,7 +72,7 @@
 	}
 	@catch(NSException *exception) {
 		NSLog(@"GITabController caught exception");
-		NSLog([exception reason]);
+		NSLog(@"%@", [exception reason]);
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"GIRequestFailed" object:nil];
 	}	
 }

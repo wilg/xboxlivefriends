@@ -137,6 +137,12 @@
 	[messagesTable reloadData];
 }
 
+// To display the message without having to load a HTML page.
+- (void)displayFullMessage:(XBMessage *)message
+{
+	
+}
+
 - (void)loadFullMessage:(XBMessage *)message {
 
 	NSString *toInsert;
@@ -235,7 +241,7 @@
 	int theRow = [messagesTable selectedRow];
 	if (theRow != -1){
 		NSString *theURL = [NSString stringWithFormat:@"%@%@",@"http://live.xbox.com/en-US/profile/MessageCenter/RemoveMessage.aspx?bk=0&mx=", [[messages objectAtIndex:theRow] identifier]];
-		[NSString stringWithContentsOfURL:[NSURL URLWithString:theURL]];
+		[NSString stringWithContentsOfURL:[NSURL URLWithString:theURL] encoding:NSUTF8StringEncoding error:nil];
 		[self tableViewSelectionDidChange:nil];
 		[self loadMessageCenterThreaded];
 	} else

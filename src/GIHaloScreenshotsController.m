@@ -206,7 +206,7 @@ static NSArray *openFiles()
 		
 		if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
 			NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.bungie.net/Stats/Halo3/Screenshot.ashx?size=full&ssid=%@", ssid]];
-			NSLog([imageURL absoluteString]);
+			NSLog(@"%@", [imageURL absoluteString]);
 			NSData *thisScreenshotData = [NSData dataWithContentsOfURL:imageURL];
 			[thisScreenshotData writeToFile:filePath atomically:YES];
 		}

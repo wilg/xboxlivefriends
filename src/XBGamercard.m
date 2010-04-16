@@ -82,7 +82,7 @@ NSString* gamerCardURL = @"http://live.xbox.com/en-US/profile/profile.aspx?pp=0&
 - (void)fetchWithURL:(NSURL *)URL
 {
 
-	NSString *editString = [NSString stringWithContentsOfURL:URL];
+	NSString *editString = [NSString stringWithContentsOfURL:URL encoding:NSUTF8StringEncoding error:nil];
 	
 	NSString *thisGamertag = [MQFunctions cropString:editString between:@"myXboxAvatarCard_gamertagLabel\">" and:@"</span>"];
 	if (thisGamertag)
