@@ -8,6 +8,7 @@
 
 #import "Xbox Live Friends.h"
 #import "XBGamerInfoController.h"
+#import "FriendsListController.h"
 
 
 @implementation XBGamerInfoController
@@ -34,7 +35,6 @@
 	
 	return self;
 }
-
 
 - (void)lookupRequest:(NSNotification *)notification
 {
@@ -82,11 +82,20 @@
 }
 
 
-- (IBAction)lookupButtonPressed:(id)sender {
+- (IBAction)lookupButtonPressed:(id)sender 
+{
+	NSString *mytag = [LoginController myGamertag];
+	
 	if ([[gamertagInputField stringValue] isEqualToString:@""]) {
 		[self closeLookupPanel:nil];
 		return;
 	}
+	
+	if ([[gamertagInputField stringValue] isEqualToString:mytag]) {
+		[NSApp endSheet:lookupPanel returnCode:ErrorPanelReturnCode];
+		return;
+	}
+	
 	[NSApp endSheet:lookupPanel returnCode:OpenProgressBarPanelReturnCode];
 	[self fullLookup:[gamertagInputField stringValue]];
 }
@@ -118,6 +127,7 @@
 	[self setCurrentGamertag:[theGamercard gamertag]];
 	[gamertag setStringValue:[theGamercard gamertag]];
 	[gamerscore setStringValue:[theGamercard gamerscore]];
+	[motto setStringValue:[theGamercard motto]];
 	[tile setImage:[theGamercard gamertileImage]];
 
 	if ([[[theGamercard gamertileURL] absoluteString] isEqualToString:@"http://tiles.xbox.com/tiles/8y/ov/0Wdsb2JhbC9EClZWVEoAGAFdL3RpbGUvMC8yMDAwMAAAAAAAAAD+ACrT.jpg"]) {
@@ -156,9 +166,19 @@
 //	NSLog(@"end lookupGamerInfo");
 }
 
-- (void)lookupGamerInfoThreaded:(NSString *)gamertagString {
-
-	XBGamercard *theGamercard = [XBGamercard cardForFriend:[XBFriend friendWithTag:gamertagString]];
+- (void)lookupGamerInfoThreaded:(NSString *)gamertagString 
+{
+	// We need to check whether we are loking up ourselves or someone else.
+	XBGamercard *theGamercard;
+	NSString *mytag = [LoginController myGamertag];
+	
+	if ([gamertagString isEqualToString:mytag]) {
+		theGamercard = [XBGamercard cardForSelf];
+		NSLog(@"We're loading %@", [theGamercard gamertag]);
+	} else {
+		theGamercard = [XBGamercard cardForFriend:[XBFriend friendWithTag:gamertagString]];
+	}
+	
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"GIGamercardLoaded" object:theGamercard];
 
 }
@@ -221,6 +241,17 @@
 	}
 }
 
+- (void)openErrorPanel
+{
+	[NSApp beginSheet:errorPanel modalForWindow:gamerInfoWindow modalDelegate:self didEndSelector:@selector(didEndSheet:returnCode:contextInfo:)  contextInfo:nil];
+}
+
+- (IBAction)closeErrorPanel:(id)sender
+{
+	[NSApp endSheet:errorPanel];
+	[self openLookupPanel:nil];
+}
+
 - (void)didEndSheet:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo
 {
     [sheet orderOut:self];
@@ -229,6 +260,9 @@
 	}
 	if (returnCode == OpenProgressBarPanelReturnCode) {
 		[self openProgressPanel];
+	}
+	if (returnCode == ErrorPanelReturnCode) {
+		[self openErrorPanel];
 	}
 }
 

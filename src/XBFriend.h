@@ -28,6 +28,7 @@ typedef enum {
 	NSString *gamertag;
 	NSString *status;
 	NSURL *tileURL;
+	NSString *tileURLString;
 	NSString *info;
 	NSString *realName;
 	float reputation;
@@ -45,6 +46,7 @@ typedef enum {
 - (NSString *)urlEscapedGamertag;
 - (NSString *)status;
 - (NSURL *)tileURL;
+- (NSString *)tileURLString;
 - (NSString *)info;
 - (NSDictionary *)tableViewRecord;
 - (NSAttributedString *)dockMenuString;

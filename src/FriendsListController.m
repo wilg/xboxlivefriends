@@ -14,6 +14,8 @@
 #include "FriendStatusCell.h"
 #include "LoginController.h"
 
+#define SHELLGAMERCARD @"http://live.xbox.com/ShellGamercardV2.ashx"
+
 static BOOL loadThreaded = true;
 
 @implementation FriendsListController
@@ -278,7 +280,7 @@ static BOOL loadThreaded = true;
 - (void)displayMyGamercard {
 
 	//Download my Gamercard
-	XBGamercard *myCard = [XBGamercard cardForURL:[NSURL URLWithString:@"http://live.xbox.com/en-US/default.aspx"]];
+	XBGamercard *myCard = [XBGamercard cardForSelf];
 	
 	[myTag setObjectValue:[myCard gamertag]];
 	[myMessage setObjectValue:[myCard motto]];
@@ -631,5 +633,12 @@ static BOOL loadThreaded = true;
 	}
 }
 
++ (NSString *)myGamertag
+{
+	NSString *shellCard = [NSString stringWithContentsOfURL:[NSURL URLWithString:SHELLGAMERCARD] encoding:NSUTF8StringEncoding error:nil];
+	NSString *tempGamertag = [shellCard cropFrom:@"<p><a href=\"http://live.xbox.com/en-US/default.aspx\">" to:@"</a>"];
+	
+	return tempGamertag;
+}
 
 @end

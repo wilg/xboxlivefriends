@@ -19,8 +19,10 @@ NSString *halo2StatsURL = @"http://www.bungie.net/Stats/PlayerStats.aspx?player=
 
 	gamertag = aTag;
 	status = aStatus;
-	if (aTile != nil)
+	if (aTile != nil) {
+		tileURLString = aTile;
 		tileURL = [NSURL URLWithString:aTile];
+	}
 	info = anInfo;
 	realName = nil;
 	isSelectedRow = NO;
@@ -166,7 +168,7 @@ NSString *halo2StatsURL = @"http://www.bungie.net/Stats/PlayerStats.aspx?player=
 }
 
 - (NSString *)urlEscapedGamertag {
-	return [[self gamertag] replace:@" " with:@"+"];
+	return [[self gamertag] replace:@" " with:@"%20"];
 }
 
 
@@ -178,6 +180,11 @@ NSString *halo2StatsURL = @"http://www.bungie.net/Stats/PlayerStats.aspx?player=
 - (NSURL *)tileURL
 {
 	return tileURL;
+}
+
+- (NSString *)tileURLString
+{
+	return tileURLString;
 }
 
 - (NSString *)realName {

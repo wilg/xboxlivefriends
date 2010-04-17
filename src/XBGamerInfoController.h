@@ -11,12 +11,14 @@
 typedef enum {
 	OpenProgressBarPanelReturnCode = 11701,
 	CloseWindowPanelReturnCode = 11702,
+	ErrorPanelReturnCode = 11703,
 } PanelReturnCode;
 
 @interface XBGamerInfoController : NSObject {
 
 	IBOutlet NSPanel *lookupPanel;
 	IBOutlet NSPanel *progressPanel;
+	IBOutlet NSPanel *errorPanel;
 	IBOutlet NSWindow *gamerInfoWindow;
 	IBOutlet NSTextField *gamertagInputField;
 
@@ -26,6 +28,7 @@ typedef enum {
 
 	IBOutlet NSTextField *gamerscore;
 	IBOutlet NSTextField *gamertag;
+	IBOutlet NSTextField *motto;
 	IBOutlet NSImageView *tile;
 
 	NSString *currentTabName;
@@ -53,6 +56,7 @@ typedef enum {
 - (void)closeProgressPanel;
 - (void)openProgressPanel;
 
-
+- (void)openErrorPanel;
+- (IBAction)closeErrorPanel:(id)sender;
 
 @end

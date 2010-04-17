@@ -23,10 +23,6 @@ NSString* theSource;
 	NSLog(@"Getting friends list HTML");
 	theSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:FRIEND_PAGE] encoding:NSUTF8StringEncoding error:nil];
 	NSLog(@"Acquired the source");
-	
-	if ([theSource contains:@"Sign out"]) {
-		NSLog(@"Yep, we are logged in");
-	}
 
 	//BOOL success = NO;
 	/*

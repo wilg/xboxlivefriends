@@ -9,6 +9,7 @@
 #import "Xbox Live Friends.h"
 #import "GITabController.h"
 #import "GIGamerDetailsController.h"
+#import "LoginController.h"
 
 
 @implementation GIGamerDetailsController
@@ -26,17 +27,29 @@
 	[name setStringValue:@""];
 	[zone setStringValue:@""];
 	[reputation setReputationPercentage:0];
+	[repStars setImage:nil]; // Ruaridh
 }
 
 - (void)displayGamerInfo:(NSString *)gamertag
 {
+	NSString *myTag = [LoginController myGamertag];
+	XBGamercard *gamercard;
 	XBFriend *theFriend = [XBFriend friendWithTag:gamertag];
-	XBGamercard *gamercard = [XBGamercard cardForFriend:theFriend];
+	
+	if ([myTag isEqualToString:gamertag]) {
+		gamercard = [XBGamercard cardForSelf];
+		NSLog(@"Loading my tag: %@", [gamercard gamertag]);
+	} else {
+		gamercard = [XBGamercard cardForFriend:theFriend];
+		NSLog(@"Gamertags not equal");
+	}
+	
 	[bio setStringValue:[gamercard bio]];
 	[location setStringValue:[gamercard location]];
 	[name setStringValue:[gamercard realName]];
-	[zone setStringValue:[gamercard gamerzone]];
+	//[zone setStringValue:[gamercard gamerzone]];
 	[reputation setReputationPercentage:[gamercard rep]];
+	[repStars setImage:[gamercard repStars]]; // Ruaridh
 	
 	NSImage *avatarImage = [[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://avatar.xboxlive.com/avatar/%@/avatar-body.png", [theFriend urlEscapedGamertag]]]];
 	if (avatarImage)

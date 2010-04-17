@@ -7,6 +7,7 @@
 // i trip blind kids, whats your anti-drug?
 
 #import <Cocoa/Cocoa.h>
+#import "MAAttachedWindow.h"
 
 @class LoginController;
 
@@ -89,5 +90,7 @@
 - (IBAction)acceptFriendRequest:(id)sender;
 - (IBAction)denyFriendRequest:(id)sender;
 - (void)closeRequestPop;
+
++ (NSString *)myGamertag;
 
 @end

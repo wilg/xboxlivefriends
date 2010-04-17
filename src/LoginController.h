@@ -44,5 +44,6 @@
 - (void)doneWithSignIn;
 
 + (BOOL)isLoggedIn;
++ (NSString *)myGamertag;
 
 @end

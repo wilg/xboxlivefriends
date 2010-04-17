@@ -16,6 +16,7 @@
 	IBOutlet NSTextField *bio;
 	IBOutlet NSTextField *zone;
 	IBOutlet NSImageView *avatar;
+	IBOutlet NSImageView *repStars;
 
 	IBOutlet XBReputationView *reputation;
 }

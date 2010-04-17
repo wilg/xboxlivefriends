@@ -10,6 +10,7 @@
 #import "LoginController.h"
 
 #define FRIENDS_PAGE @"http://live.xbox.com/en-US/profile/Friends.aspx"
+#define SHELLGAMERCARD @"http://live.xbox.com/ShellGamercardV2.ashx"
 
 NSString* signInURL = @"http://live.xbox.com/en-US/profile/Friends.aspx";
 
@@ -294,7 +295,6 @@ NSString* signInURL = @"http://live.xbox.com/en-US/profile/Friends.aspx";
 
 + (BOOL)isLoggedIn
 {
-	// Need to speed this up somehow ...
 	NSLog(@"Are we signed in?");
 	
 	NSString *loginSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:FRIENDS_PAGE] encoding:NSUTF8StringEncoding error:nil];
@@ -352,6 +352,14 @@ NSString* signInURL = @"http://live.xbox.com/en-US/profile/Friends.aspx";
 	 
 	 return false;
 	 */
+}
+
++ (NSString *)myGamertag
+{
+	NSString *shellCard = [NSString stringWithContentsOfURL:[NSURL URLWithString:SHELLGAMERCARD] encoding:NSUTF8StringEncoding error:nil];
+	NSString *tempGamertag = [shellCard cropFrom:@"<p><a href=\"http://live.xbox.com/en-US/default.aspx\">" to:@"</a>"];
+	
+	return tempGamertag;
 }
 
 @end

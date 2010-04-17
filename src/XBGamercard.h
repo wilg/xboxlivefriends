@@ -17,6 +17,7 @@
 	NSURL *gamertile;
 	NSString *gamerzone;
 	float rep;
+	NSImage *repStars;
 	
 	NSString *bio;
 	NSString *realName;
@@ -24,9 +25,12 @@
 
 }
 
+- (id)initWithSelf;
 - (id)initWithFriend:(XBFriend *)theFriend;
 - (id)initWithURL:(NSURL *)theURL;
 
+- (void)fetchSelf;
+- (void)fetchFriend:(XBFriend *)theFriend;
 - (void)fetchWithTag:(NSString *)escapedTag;
 - (void)fetchWithURL:(NSURL *)URL;
 
@@ -40,8 +44,10 @@
 - (NSURL *)gamertileURL;
 - (NSImage *)gamertileImage;
 - (NSString *)gamerzone;
+- (NSImage *)repStars;
 - (float)rep;
 
++ (XBGamercard *)cardForSelf;
 + (XBGamercard *)cardForFriend:(XBFriend *)theFriend;
 + (XBGamercard *)cardForURL:(NSURL *)theURL;
 
