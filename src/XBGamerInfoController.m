@@ -32,8 +32,20 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(paneDoneLoading:) name:@"GIPaneDoneLoading" object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestFailed:) name:@"GIRequestFailed" object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gamercardLoaded:) name:@"GIGamercardLoaded" object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeLoadStatus:) name:@"GIChangeLoadStatus" object:nil];
 	
 	return self;
+}
+
+- (void)changeLoadStatus:(NSNotification *)notification
+{
+	if ([notification object]) {
+		[currentProgress setStringValue:[notification object]];
+	} else {
+		NSLog(@"No notification object");
+		[currentProgress setStringValue:@""];
+	}
+	
 }
 
 - (void)lookupRequest:(NSNotification *)notification

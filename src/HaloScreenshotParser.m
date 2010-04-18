@@ -54,8 +54,12 @@
 			[thumbSSIDs addObject:thisSSID];
 	}
 	
-	if ([thumbSSIDs count] == 0)
+	if ([thumbSSIDs count] == 0) {
 		return nil;
+	}
+	
+	NSString *screenCount = [NSString stringWithFormat:@"Found %i Screens", [thumbSSIDs count]];
+	[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"GIChangeLoadStatus" object:screenCount]];
 	
 	for (NSString *thumbID in thumbSSIDs) {
 		//NSString *thumbSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.bungie.net/stats/halo3/screenshot_viewer_popup.aspx?ssid=%@", thumbID]] encoding:NSUTF8StringEncoding error:nil];
@@ -63,6 +67,8 @@
 		
 		NSString *thumbTitle = [thumbSource cropFrom:@"<div class=\"shareLeftHeader\">" to:@"<span>"];
 		thumbTitle = [MQFunctions flattenHTML:thumbTitle];
+		NSString *loadingScreen = [NSString stringWithFormat:@"Loading screen: %@", thumbTitle];
+		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"GIChangeLoadStatus" object:loadingScreen]];
 		
 		[titles addObject:thumbTitle];
 		[descriptions addObject:[thumbSource cropFrom:@"<div class=\"shareMoreInfo\">" to:@"</div>"]];
@@ -74,6 +80,8 @@
 		[largeSSIDs addObject: [thumbSource cropFrom:@"Screenshot.ashx?size=medium&amp;ssid=" to:@"\""]];
 		 */
 	}
+	
+	//[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"ChangeHaloScreenLoadStatus" object:@" "]];
 	
 	NSMutableDictionary *dickt = [NSMutableDictionary dictionary];
 	[dickt setObject:largeSSIDs forKey:@"ssids"];

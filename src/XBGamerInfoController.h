@@ -16,6 +16,7 @@ typedef enum {
 
 @interface XBGamerInfoController : NSObject {
 
+	IBOutlet NSTextField *currentProgress;
 	IBOutlet NSPanel *lookupPanel;
 	IBOutlet NSPanel *progressPanel;
 	IBOutlet NSPanel *errorPanel;
@@ -38,8 +39,9 @@ typedef enum {
 @property(copy) NSString *currentGamertag;
 @property(copy) NSString *currentTabName;
 
+- (void)changeLoadStatus:(NSNotification *)notification;
 - (void)lookupRequest:(NSNotification *)notification;
--(void)openGamerInfoWindow;
+- (void)openGamerInfoWindow;
 
 - (IBAction)openLookupPanel:(id)sender;
 - (IBAction)closeLookupPanel:(id)sender;
@@ -49,7 +51,7 @@ typedef enum {
 - (void)stopSpinner:(NSNotification *)notification;
 - (void)paneDoneLoading:(NSNotification *)notification;
 
--(void)fullLookup:(NSString *)gamertagString;
+- (void)fullLookup:(NSString *)gamertagString;
 - (void)lookupGamerInfo:(NSString *)gamertagString;
 
 - (void)loadCurrentTab;

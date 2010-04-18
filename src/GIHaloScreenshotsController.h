@@ -38,7 +38,6 @@
 	IBOutlet NSTextField *infoPopDescription;
 
     IBOutlet NSTextField *counter;
-	IBOutlet NSTextField *currentProgress;
 
 	BOOL quickLookAvailable;
 
