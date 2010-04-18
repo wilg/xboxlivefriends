@@ -142,7 +142,8 @@
 	
 	gamertag = [theFriend gamertag];
 	
-	motto = [editString cropFrom:@"myXboxAvatarCard_mottoLabel\">" to:@"</span>"];
+	NSString *tempMotto = [editString cropFrom:@"myXboxAvatarCard_mottoLabel\">" to:@"</span>"];
+	motto = [MQFunctions flattenHTML:tempMotto];
 	
 	intGamerscore = [[MQFunctions cropString:editString between:@"myXboxAvatarCard_gamerscoreLabel\">" and:@"</span>"] intValue];
 	gamerscore = [MQFunctions stringWithThousandSeperatorFromInt:intGamerscore];
@@ -192,7 +193,8 @@
 	}
 	
 	//find motto
-	motto = [MQFunctions cropString:editString between:@"myXboxAvatarCard_mottoLabel\">" and:@"</span>"];
+	NSString *tempMotto = [editString cropFrom:@"myXboxAvatarCard_mottoLabel\">" to:@"</span>"];
+	motto = [MQFunctions flattenHTML:tempMotto];
 
 	intGamerscore = [[MQFunctions cropString:editString between:@"myXboxAvatarCard_gamerscoreLabel\">" and:@"</span>"] intValue];
 	gamerscore = [MQFunctions stringWithThousandSeperatorFromInt:intGamerscore];

@@ -10,7 +10,7 @@
 
 
 @interface HaloScreenshotParser : NSObject {
-
+	
 }
 
 + (NSDictionary *)parseScreenshotList:(NSString *)gamertag;

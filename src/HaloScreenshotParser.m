@@ -33,7 +33,7 @@
 	}
 
 	//do the gallery images too
-	NSString *gallerySource = [NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.bungie.net/stats/halo3/screenshots.aspx?mode=pinned&gamertag=%@", gamertag]] encoding:NSUTF8StringEncoding error:nil];
+	NSString *gallerySource = [NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.bungie.net/stats/halo3/screenshots.aspx?player=%20&mode=pinned", gamertag]] encoding:NSUTF8StringEncoding error:nil];
 	pageSource = [pageSource stringByAppendingString:gallerySource];
 	pageIndex = 0;
 	thisPageSource = gallerySource;
@@ -57,12 +57,22 @@
 	if ([thumbSSIDs count] == 0)
 		return nil;
 	
-	
 	for (NSString *thumbID in thumbSSIDs) {
-		NSString *thumbSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.bungie.net/stats/halo3/screenshot_viewer_popup.aspx?ssid=%@", thumbID]] encoding:NSUTF8StringEncoding error:nil];
+		//NSString *thumbSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.bungie.net/stats/halo3/screenshot_viewer_popup.aspx?ssid=%@", thumbID]] encoding:NSUTF8StringEncoding error:nil];
+		NSString *thumbSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.bungie.net/Online/Halo3UserContentDetails.aspx?h3fileid=%@", thumbID]] encoding:NSUTF8StringEncoding error:nil];
+		
+		NSString *thumbTitle = [thumbSource cropFrom:@"<div class=\"shareLeftHeader\">" to:@"<span>"];
+		thumbTitle = [MQFunctions flattenHTML:thumbTitle];
+		
+		[titles addObject:thumbTitle];
+		[descriptions addObject:[thumbSource cropFrom:@"<div class=\"shareMoreInfo\">" to:@"</div>"]];
+		[largeSSIDs addObject: [thumbSource cropFrom:@"/Screenshot.ashx?size=full&amp;ssid=" to:@"\""]];
+		
+		/*
 		[titles addObject:[[thumbSource cropFrom:@"screenshotTitle" to:@"/a>"] cropFrom:@">" to:@"<"]];
 		[descriptions addObject:[thumbSource cropFrom:@"descriptionLabel\">" to:@"<"]];
 		[largeSSIDs addObject: [thumbSource cropFrom:@"Screenshot.ashx?size=medium&amp;ssid=" to:@"\""]];
+		 */
 	}
 	
 	NSMutableDictionary *dickt = [NSMutableDictionary dictionary];

@@ -38,6 +38,7 @@
 	IBOutlet NSTextField *infoPopDescription;
 
     IBOutlet NSTextField *counter;
+	IBOutlet NSTextField *currentProgress;
 
 	BOOL quickLookAvailable;
 
@@ -54,6 +55,5 @@
 - (IBAction) zoomed:(id) sender;
 - (void) addAnImageWithPath:(NSString *) path;
 - (IBAction) addImageButtonClicked:(id) sender;
-
 
 @end
