@@ -58,6 +58,9 @@
 		return nil;
 	}
 	
+	int maxLoad = [thumbSSIDs count];
+	int currentLoad = 1;
+	
 	NSString *screenCount = [NSString stringWithFormat:@"Found %i Screens", [thumbSSIDs count]];
 	[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"GIChangeLoadStatus" object:screenCount]];
 	
@@ -67,12 +70,14 @@
 		
 		NSString *thumbTitle = [thumbSource cropFrom:@"<div class=\"shareLeftHeader\">" to:@"<span>"];
 		thumbTitle = [MQFunctions flattenHTML:thumbTitle];
-		NSString *loadingScreen = [NSString stringWithFormat:@"Loading screen: %@", thumbTitle];
+		NSString *loadingScreen = [NSString stringWithFormat:@"Loading screen %i/%i: %@", currentLoad, maxLoad, thumbTitle];
 		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"GIChangeLoadStatus" object:loadingScreen]];
 		
 		[titles addObject:thumbTitle];
 		[descriptions addObject:[thumbSource cropFrom:@"<div class=\"shareMoreInfo\">" to:@"</div>"]];
 		[largeSSIDs addObject: [thumbSource cropFrom:@"/Screenshot.ashx?size=full&amp;ssid=" to:@"\""]];
+		
+		currentLoad += 1;
 		
 		/*
 		[titles addObject:[[thumbSource cropFrom:@"screenshotTitle" to:@"/a>"] cropFrom:@">" to:@"<"]];

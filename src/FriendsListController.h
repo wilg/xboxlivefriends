@@ -55,6 +55,9 @@
 
 - (void)friendsListLocked:(NSNumber *)lockedNum;
 
+- (void)addFriendFromNotification:(NSNotification *)notification;
+- (void)addFriendWithTag:(NSString *)theGamertag;
+
 - (IBAction)FetchButton:(id)sender;
 - (IBAction)updateTableView:(id)sender;
 - (IBAction)AddFriend:(id)sender;

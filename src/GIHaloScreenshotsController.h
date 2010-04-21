@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <Quartz/Quartz.h>
+#import <QuickLook/QuickLook.h>
 
 @interface MyImageObject : NSObject{
     NSString * mPath;
@@ -38,6 +39,8 @@
 	IBOutlet NSTextField *infoPopDescription;
 
     IBOutlet NSTextField *counter;
+	
+	id* previewPanel;
 
 	BOOL quickLookAvailable;
 

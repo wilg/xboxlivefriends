@@ -50,6 +50,13 @@
 
 - (void)lookupRequest:(NSNotification *)notification
 {
+	NSString *mytag = [LoginController myGamertag];
+	
+	if ([[notification object] isEqualToString:mytag]) {
+		// If the user tries to load themselves, it would be good to open the account nib.
+		return;
+	}
+	
 	[self openGamerInfoWindow];
 	[self openProgressPanel];
 	[self fullLookup:[notification object]];
@@ -95,7 +102,7 @@
 
 
 - (IBAction)lookupButtonPressed:(id)sender 
-{
+{	
 	NSString *mytag = [LoginController myGamertag];
 	
 	if ([[gamertagInputField stringValue] isEqualToString:@""]) {
@@ -209,16 +216,24 @@
 	[self startSpinner:nil];
 	[progressPanelText setStringValue:[NSString stringWithFormat:@"Loading %@...", currentTabName]];
 
-	if ([currentTabName isEqual:@"Achievements"])
+	if ([currentTabName isEqual:@"Achievements"]) {
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"GIAchievementsLoadNotification" object:currentGamertag];
-	if ([currentTabName isEqual:@"Breakdown"])
+	}
+	if ([currentTabName isEqual:@"Breakdown"]) {
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"GIBreakdownChartLoadNotification" object:currentGamertag];
-	if ([currentTabName isEqual:@"Service Record"])
+	}
+	if ([currentTabName isEqual:@"Service Record"]) {
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"GIHaloServiceRecordLoadNotification" object:currentGamertag];
-	if ([currentTabName isEqual:@"Screenshots"])
+	}
+	if ([currentTabName isEqual:@"Screenshots"]) {
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"GIHaloScreenshotLoadNotification" object:currentGamertag];
-	if ([currentTabName isEqual:@"Details"])
+	}
+	if ([currentTabName isEqual:@"Details"]) {
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"GIDetailsLoadNotification" object:currentGamertag];
+	}
+	if ([currentTabName isEqual:@"Friends"]) {
+		[[NSNotificationCenter defaultCenter] postNotificationName:@"GIFriendsLoadNotification" object:currentGamertag];
+	}
 
 }
 

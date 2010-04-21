@@ -28,7 +28,8 @@
 
 	NSDictionary *dict = [GIServiceRecordParser fetchWithTag:gamertag];
 	if (!dict)  {
-		[self setErrorForTab:@"No Service Record"];
+		//[self setErrorForTab:@"No Service Record"];
+		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"GIShowErrorTab" object:@"No Service Record"]];
 		return;
 	}
 	

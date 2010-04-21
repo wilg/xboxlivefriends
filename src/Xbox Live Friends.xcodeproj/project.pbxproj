@@ -163,6 +163,10 @@
 		3BFD38300ABDB6EC007A68B5 /* XBGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFD382E0ABDB6EC007A68B5 /* XBGame.m */; };
 		3BFEA5D90E11BCA500B74A34 /* stars_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFEA5D70E11BCA500B74A34 /* stars_empty.png */; };
 		3BFEA5DA0E11BCA500B74A34 /* stars_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFEA5D80E11BCA500B74A34 /* stars_full.png */; };
+		5518D7B6117E052500FD550B /* GamerFriendsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5518D7B5117E052500FD550B /* GamerFriendsParser.m */; };
+		55395673117E56B7000F5530 /* error-bang.gif in Resources */ = {isa = PBXBuildFile; fileRef = 55395672117E56B7000F5530 /* error-bang.gif */; };
+		55791CAF117DEC3F009FECBB /* GIFriendsOfGamerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55791CAE117DEC3F009FECBB /* GIFriendsOfGamerController.m */; };
+		55910544117B4EAA0012E9E5 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55910543117B4EAA0012E9E5 /* QuickLook.framework */; };
 		55C79A1A1178A5F0006CFA67 /* EMKeychainItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C79A191178A5F0006CFA67 /* EMKeychainItem.m */; };
 		55C79A351178A600006CFA67 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C79A341178A600006CFA67 /* Carbon.framework */; };
 		55C79A3A1178A615006CFA67 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C79A391178A615006CFA67 /* Security.framework */; };
@@ -392,6 +396,12 @@
 		3BFD382E0ABDB6EC007A68B5 /* XBGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBGame.m; sourceTree = "<group>"; };
 		3BFEA5D70E11BCA500B74A34 /* stars_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stars_empty.png; sourceTree = "<group>"; };
 		3BFEA5D80E11BCA500B74A34 /* stars_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stars_full.png; sourceTree = "<group>"; };
+		5518D7B4117E052500FD550B /* GamerFriendsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamerFriendsParser.h; sourceTree = "<group>"; };
+		5518D7B5117E052500FD550B /* GamerFriendsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamerFriendsParser.m; sourceTree = "<group>"; };
+		55395672117E56B7000F5530 /* error-bang.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "error-bang.gif"; sourceTree = "<group>"; };
+		55791CAD117DEC3F009FECBB /* GIFriendsOfGamerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIFriendsOfGamerController.h; sourceTree = "<group>"; };
+		55791CAE117DEC3F009FECBB /* GIFriendsOfGamerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GIFriendsOfGamerController.m; sourceTree = "<group>"; };
+		55910543117B4EAA0012E9E5 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
 		55C79A181178A5F0006CFA67 /* EMKeychainItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMKeychainItem.h; sourceTree = "<group>"; };
 		55C79A191178A5F0006CFA67 /* EMKeychainItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMKeychainItem.m; sourceTree = "<group>"; };
 		55C79A341178A600006CFA67 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
@@ -415,6 +425,7 @@
 				3B511D840E04C45700530154 /* Quartz.framework in Frameworks */,
 				55C79A351178A600006CFA67 /* Carbon.framework in Frameworks */,
 				55C79A3A1178A615006CFA67 /* Security.framework in Frameworks */,
+				55910544117B4EAA0012E9E5 /* QuickLook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +456,7 @@
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 				55C79A341178A600006CFA67 /* Carbon.framework */,
 				55C79A391178A615006CFA67 /* Security.framework */,
+				55910543117B4EAA0012E9E5 /* QuickLook.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -581,6 +593,7 @@
 		3B463BC50A928CAE004E500D /* Multipurpose Images */ = {
 			isa = PBXGroup;
 			children = (
+				55395672117E56B7000F5530 /* error-bang.gif */,
 				3BB926F80B24E25600828D30 /* pie_shadow.png */,
 				3BC199060CF628AB00415B31 /* url_icon.png */,
 				3B91BE5E099D26E7008EB5D4 /* appicon.icns */,
@@ -860,6 +873,7 @@
 				3B8058430CF38EF6000E85D3 /* Achievements View */,
 				3B8058420CF38EE2000E85D3 /* Breakdown View */,
 				3B0C97460DCEC1F500ABCD50 /* Details View */,
+				55791CA1117DE89B009FECBB /* Friends of Friend View */,
 				3BEF50090CF614C700B5B4F8 /* Halo 3 Service Record View */,
 				3B511D210E04BE3900530154 /* Halo 3 Screenshots View */,
 			);
@@ -878,6 +892,17 @@
 				3BF81E990CD835E000D74991 /* gamerscore.pdf */,
 			);
 			name = "Reputation View";
+			sourceTree = "<group>";
+		};
+		55791CA1117DE89B009FECBB /* Friends of Friend View */ = {
+			isa = PBXGroup;
+			children = (
+				55791CAD117DEC3F009FECBB /* GIFriendsOfGamerController.h */,
+				55791CAE117DEC3F009FECBB /* GIFriendsOfGamerController.m */,
+				5518D7B4117E052500FD550B /* GamerFriendsParser.h */,
+				5518D7B5117E052500FD550B /* GamerFriendsParser.m */,
+			);
+			name = "Friends of Friend View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1006,6 +1031,7 @@
 				3B7F28290E11D1520021BBD3 /* graybar.png in Resources */,
 				3B7F282A0E11D1520021BBD3 /* greenbar.png in Resources */,
 				3B03DC600ED512030074491D /* no_avatar.png in Resources */,
+				55395673117E56B7000F5530 /* error-bang.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1073,6 +1099,8 @@
 				3B9BFA5D0E14841D0002312B /* HaloScreenshotParser.m in Sources */,
 				3B5BDD880E21E31F00D00C7C /* StayAround.m in Sources */,
 				55C79A1A1178A5F0006CFA67 /* EMKeychainItem.m in Sources */,
+				55791CAF117DEC3F009FECBB /* GIFriendsOfGamerController.m in Sources */,
+				5518D7B6117E052500FD550B /* GamerFriendsParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -65,6 +65,7 @@
 	[records addObject:[self tableViewRecordForTab:@"Achievements" icon:[NSImage imageNamed:@"achievement_tab"] view:gamerInfoAchievementView]];
 	[records addObject:[self tableViewRecordForTab:@"Breakdown" icon:[NSImage imageNamed:@"pie_tab"] view:gamerInfoPieView]];
 	[records addObject:[self tableViewRecordForTab:@"Details" icon:[NSImage imageNamed:@"details_tab"] view:gamerInfoDetailsView]];
+	[records addObject:[self tableViewRecordForTab:@"Friends" icon:[NSImage imageNamed:@"defaultfriend"] view:gamerFriendsOfFriend]];
 	[records addObject:[self tableViewRecordForTab:@" HALO 3" icon:[NSNull null] view:[NSNull null]]];
 	[records addObject:[self tableViewRecordForTab:@"Service Record" icon:[NSImage imageNamed:@"halo_service_record_tab"] view:gamerInfoHaloMultiplayerSRView]];
 	[records addObject:[self tableViewRecordForTab:@"Screenshots" icon:[NSImage imageNamed:@"tab_halo_screenshot"] view:gamerInfoHaloScreenshotsView]];

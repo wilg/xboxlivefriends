@@ -47,7 +47,8 @@
 		[self displayPieChart:theInfo];
 	}
 	else {
-		[self setErrorForTab:@"An Error Occurred"];
+		//[self setErrorForTab:@"An Error Occurred"];
+		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"GIShowErrorTab" object:@"An Error Occurred"]];
 	}
 }
 

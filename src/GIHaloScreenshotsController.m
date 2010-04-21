@@ -12,9 +12,10 @@
 #import "Xbox Live Friends.h"
 #import "QuickLook.h"
 #import "HaloScreenshotParser.h"
+#import <Quartz/Quartz.h>
+#import <QuickLook/QuickLook.h>
 
 #define QLPreviewPanel NSClassFromString(@"QLPreviewPanel")
-
 
 static NSArray *openFiles()
 {
@@ -40,6 +41,9 @@ static NSArray *openFiles()
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabSelectionChanged:) name:@"GamerInfoTabWillChange" object:nil];
 	
+	[previewPanel setDelegate:self];
+	[previewPanel setDataSource:self];
+	
 	return self;
 }
 
@@ -48,9 +52,10 @@ static NSArray *openFiles()
 {
 
 	// First, load the Quick Look framework and set the delegate
-	quickLookAvailable = [[NSBundle bundleWithPath:@"/System/Library/PrivateFrameworks/QuickLookUI.framework"] load];
-	if(quickLookAvailable)
+	quickLookAvailable = [[NSBundle bundleWithPath:@"/System/Library/Frameworks/QuickLook.framework"] load];
+	if(quickLookAvailable) {
 		[[[QLPreviewPanel sharedPreviewPanel] windowController] setDelegate:self];
+	}
 
 
     mImages = [[NSMutableArray alloc] init];
@@ -79,13 +84,15 @@ static NSArray *openFiles()
 	NSDictionary *info = [HaloScreenshotParser parseScreenshotList:gamertag];
 	if (info) {
 		NSLog(@"Downloading Thumbs");
+		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"GIChangeLoadStatus" object:@""]];
 		[self thumbDownload:info];
 	}
 	else {
 		NSLog(@"info is nil");
-		[self setErrorForTab:@"No Screenshots"];
+		//[self setErrorForTab:@"No Screenshots"];
+		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"GIShowErrorTab" object:@"No Screenshots"]];
 	}
-	[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"GIChangeLoadStatus" object:@""]];
+	
 }
 
 - (NSString *)screenshotPath {
@@ -133,7 +140,8 @@ static NSArray *openFiles()
 	}
 	
 	if ([mImages count] == 0) {
-		[self setErrorForTab:@"No Screenshots"];
+		//[self setErrorForTab:@"No Screenshots"];
+		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"GIShowErrorTab" object:@"No Screenshots"]];
 	}
 
 	[self loadingComplete];
@@ -146,8 +154,10 @@ static NSArray *openFiles()
 // This is the delegate method
 // It should return the frame for the item represented by the URL
 // If an empty frame is returned then the panel will fade in/out instead
+/*
 - (NSRect)previewPanel:(NSPanel*)panel frameForURL:(NSURL*)URL
 {
+	NSLog(@"OLD PREVIEW METHOD");
 	if ([[mImageBrowser selectionIndexes] count] == 0)
 		return NSMakeRect(0, 0, 0, 0);
 
@@ -160,6 +170,7 @@ static NSArray *openFiles()
 	return frame;
 	
 }
+ */
 
 - (void)tabSelectionChanged:(NSNotification *)notification
 {	
@@ -169,21 +180,22 @@ static NSArray *openFiles()
 
 - (IBAction) quickLookButton:(id) sender;
 {
-	if(quickLookAvailable)
-	{
+	if(quickLookAvailable) {
+		NSLog(@"Quicklook is available");
 		// If the user presses space when the preview panel is open then we close it
-		if([[QLPreviewPanel sharedPreviewPanel] isOpen])
-			[[QLPreviewPanel sharedPreviewPanel] closeWithEffect:2];
-		else
-		{
+		if([[QLPreviewPanel sharedPreviewPanel] isOpen]) {
+			[[QLPreviewPanel sharedPreviewPanel] close];
+		} else {
 			// Otherwise, set the current items
 			[self quickLookSelectedItems];
 			// And then display the panel
-			[[QLPreviewPanel sharedPreviewPanel] makeKeyAndOrderFrontWithEffect:2];
+			[[QLPreviewPanel sharedPreviewPanel] makeKeyAndOrderFront:nil];
 			// Restore the focus to our window to demo the selection changing, scrolling (left/right)
 			// and closing (space) functionality
 			[[mImageBrowser window] makeKeyWindow];
 		}
+	} else {
+		NSLog(@"Quicklook not available");
 	}
 
 }
@@ -202,7 +214,11 @@ static NSArray *openFiles()
 		//download the big image
 		NSString *ssid = [myImageSSIDs objectAtIndex:selectedIndex];
 		NSString *defaultPath =	[self screenshotPath];
+		NSLog(@"Image defaultPath: %@", defaultPath);
+		NSLog(@"Image SSID: %@", ssid);
+		// This is not the path of the image, since the downloaded image uses a different SSID.
 		NSString *filePath = [NSString stringWithFormat:@"%@/%@_full.jpg", defaultPath, ssid];
+		NSLog(@"Image filepath: %@", filePath);
 		
 		if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
 			NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.bungie.net/Stats/Halo3/Screenshot.ashx?size=full&ssid=%@", ssid]];
@@ -219,8 +235,10 @@ static NSArray *openFiles()
 
 		// The code above just gathers an array of NSURLs representing the selected items,
 		// to set here
-		[[QLPreviewPanel sharedPreviewPanel] setURLs:URLs currentIndex:0 preservingDisplayState:YES];
-
+		//[[QLPreviewPanel sharedPreviewPanel] setURLs:URLs currentIndex:0 preservingDisplayState:YES];
+		//[[[QLPreviewPanel sharedPreviewPanel] dataSource] setURLs:URLs currentIndex:0 preservingDisplayState:YES];
+		//[[QLPreviewPanel sharedPreviewPanel] reloadData];
+		[previewPanel reloadData];
 	
 
 	}
@@ -264,6 +282,7 @@ static NSArray *openFiles()
 }
 
 - (void) imageBrowserSelectionDidChange:(IKImageBrowserView *) aBrowser {
+	NSLog(@"Selection Changed");
 	if([[QLPreviewPanel sharedPreviewPanel] isOpen])
 		[self quickLookSelectedItems];
 	[self doInfoPop];
@@ -407,7 +426,113 @@ static NSArray *openFiles()
     [pool release];
 }
 
+#pragma mark -
+#pragma mark Quicklook Methods
+
+- (BOOL)acceptsPreviewPanelControl:(id)panel;
+{
+    return YES;
+}
+
+- (void)beginPreviewPanelControl:(id)panel
+{
+    // This document is now responsible of the preview panel
+    // It is allowed to set the delegate, data source and refresh panel.
+    previewPanel = [panel retain];
+    [previewPanel setDelegate:self];
+	[previewPanel setDataSource:self];
+	NSLog(@"Begin PreviewPanel Control");
+}
+
+- (void)endPreviewPanelControl:(id)panel
+{
+    // This document loses its responsisibility on the preview panel
+    // Until the next call to -beginPreviewPanelControl: it must not
+    // change the panel's delegate, data source or refresh it.
+    [previewPanel release];
+    previewPanel = nil;
+}
+
+// Quick Look panel data source
+
+- (NSInteger)numberOfPreviewItemsInPreviewPanel:(id)panel
+{
+    return [mImages count];
+}
+
+- (id /* <QLPreviewItem> */)previewPanel:(id)panel previewItemAtIndex:(NSInteger)index
+{
+	NSLog(@"PREVIEW THIS");
+    return [mImages objectAtIndex:[[mImageBrowser selectionIndexes] firstIndex]];
+}
+
+// Quick Look panel delegate
+
+- (BOOL)previewPanel:(id)panel handleEvent:(NSEvent *)event
+{
+    // redirect all key down events to the table view
+	/*
+    if ([event type] == NSKeyDown) {
+        [downloadsTableView keyDown:event];
+        return YES;
+    }
+	 */
+    return NO;
+}
+
+// This delegate method provides the rect on screen from which the panel will zoom.
+- (NSRect)previewPanel:(id)panel sourceFrameOnScreenForPreviewItem:(id /* <QLPreviewItem> */)item
+{
+    NSInteger index = [mImages indexOfObject:item];
+    if (index == NSNotFound) {
+        return NSZeroRect;
+    }
+	
+    NSRect iconRect = [mImageBrowser itemFrameAtIndex:index];
+	
+    // check that the icon rect is visible on screen
+    NSRect visibleRect = [mImageBrowser visibleRect];
+    
+    if (!NSIntersectsRect(visibleRect, iconRect)) {
+        return NSZeroRect;
+    }
+    
+    // convert icon rect to screen coordinates
+    iconRect = [mImageBrowser convertRectToBase:iconRect];
+    iconRect.origin = [[mImageBrowser window] convertBaseToScreen:iconRect.origin];
+    
+    return iconRect;
+}
+/*
+- (NSRect)previewPanel:(NSPanel*)panel frameForURL:(NSURL*)URL
+{
+	if ([[mImageBrowser selectionIndexes] count] == 0)
+		return NSMakeRect(0, 0, 0, 0);
+	
+	NSUInteger selectedIndex =  [[mImageBrowser selectionIndexes] firstIndex];
+	
+	NSRect frame = [mImageBrowser itemFrameAtIndex:selectedIndex];
+	frame = [mImageBrowser convertRectToBase:frame];
+	frame.origin = [[mImageBrowser window] convertBaseToScreen:frame.origin];
+	
+	return frame;
+	
+}
+*/
+// This delegate method provides a transition image between the table view and the preview panel
+/*
+- (id)previewPanel:(id)panel transitionImageForPreviewItem:(id <QLPreviewItem>)item contentRect:(NSRect *)contentRect
+{
+    DownloadItem* downloadItem = (DownloadItem *)item;
+	
+    return downloadItem.iconImage;
+}
+ */
+
 @end
+
+#pragma mark -
+#pragma mark Image Object
 
 @implementation MyImageObject
 

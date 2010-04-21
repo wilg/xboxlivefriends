@@ -46,15 +46,20 @@ NSString* theSource;
 		@catch(id err){}
 	}
 	*/
-	
+	/*
 	if ([theSource contains:@"Save my e-mail address and password"]) {
 		NSLog(@"We are not logged in! Lets try loggin in and doing it again:");
 	}
-	
+	*/
 	friendsArray = [self friendsWithSource:theSource];
 	if ([friendsArray count] == 0) {
 		NSLog(@"Friends Array could not be built!");
-		return nil;
+		NSMutableArray *noFriends = [[NSMutableArray alloc] init];
+		if ([LoginController isLoggedIn]) {
+			NSLog(@"User is logged in, they must have no friends!");
+			[noFriends addObject:[XBFriend friendWithTag:@"No Friends" tileURLString:@"http://live.xbox.com/xweb/lib/images/QuestionMark32x32.jpg" statusString:@"Online" infoString:@"Playing Real Lifeª"]];
+		}
+		return noFriends;
 	}
 	
 	/*

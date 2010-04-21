@@ -30,7 +30,6 @@
 
 }
 
-
 - (IBAction)newSignInButtonClicked:(id)sender;
 - (BOOL)loginToPassportWithEmail:(NSString *)emailAddress password:(NSString *)loginPass;
 

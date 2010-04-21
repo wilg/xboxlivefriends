@@ -33,7 +33,8 @@
 		[self performSelectorOnMainThread:@selector(refilter:) withObject:nil waitUntilDone:YES];
 	}
 	else {
-		[self setErrorForTab:@"An Error Occurred"];
+		//[self setErrorForTab:@"An Error Occurred"];
+		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"GIShowErrorTab" object:@"An Error Occurred"]];
 	}
 
 }
@@ -78,7 +79,8 @@
 				currentEditRow = [theRow mutableCopy];
 				
 				if (thisGame.isJustMe) {
-					[self setErrorForTab:@"Cannot View Your Own Achievements"];
+					//[self setErrorForTab:@"Cannot View Your Own Achievements"];
+					[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"GIShowErrorTab" object:@"Cannot View Your Own Achievements"]];
 					return;
 				}
 				

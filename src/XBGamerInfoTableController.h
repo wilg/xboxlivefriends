@@ -25,6 +25,7 @@
 	IBOutlet NSView *gamerInfoHaloMultiplayerSRView;
 	IBOutlet NSView *gamerInfoHaloScreenshotsView;
 	IBOutlet NSView *gamerInfoDetailsView;
+	IBOutlet NSView *gamerFriendsOfFriend;
 
 	IBOutlet NSTextField *gamerInfoErrorText;
 

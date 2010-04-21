@@ -27,15 +27,17 @@
 	[name setStringValue:@""];
 	[zone setStringValue:@""];
 	[reputation setReputationPercentage:0];
-	[repStars setImage:nil]; // Ruaridh
+	[repStars setImage:nil];
 }
 
 - (void)displayGamerInfo:(NSString *)gamertag
 {
-	NSString *myTag = [LoginController myGamertag];
-	XBGamercard *gamercard;
-	XBFriend *theFriend = [XBFriend friendWithTag:gamertag];
+	//NSString *myTag = [LoginController myGamertag];
 	
+	XBFriend *theFriend = [XBFriend friendWithTag:gamertag];
+	XBGamercard *gamercard = [XBGamercard cardForFriend:theFriend];
+	
+	/*
 	if ([myTag isEqualToString:gamertag]) {
 		gamercard = [XBGamercard cardForSelf];
 		NSLog(@"Loading my tag: %@", [gamercard gamertag]);
@@ -43,6 +45,7 @@
 		gamercard = [XBGamercard cardForFriend:theFriend];
 		NSLog(@"Gamertags not equal");
 	}
+	*/
 	
 	[bio setStringValue:[gamercard bio]];
 	[location setStringValue:[gamercard location]];

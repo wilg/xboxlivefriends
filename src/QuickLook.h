@@ -1,3 +1,4 @@
+/*
 @interface QLPreviewPanel : NSPanel
 + (id)sharedPreviewPanel;
 + (id)_previewPanel;
@@ -83,3 +84,4 @@
 - (void)setShowsiChatTheater:(BOOL)fp8;
 - (void)setShowsFullscreen:(BOOL)fp8;
 @end
+*/

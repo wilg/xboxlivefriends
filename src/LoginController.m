@@ -9,8 +9,10 @@
 #import "Xbox Live Friends.h"
 #import "LoginController.h"
 
+#define SIGN_IN_URL @"http://login.live.com/login.srf?wa=wsignin1.0&rpsnv=11&ct=1271871631&rver=5.5.4177.0&wp=MBI&wreply=https:%2F%2Flive.xbox.com%2Fxweb%2Flive%2Fpassport%2FsetCookies.ashx%3Frru%3DhttpZ3AZ2FZ2FwwwZ2ExboxZ2EcomZ2FenZ2DUSZ2FdefaultZ2EhtmZ3FlcZ3D1033Z26cultureZ3DenZ2DUS&lc=1033&cb=B001033httpZ3AZ2FZ2FwwwZ2ExboxZ2EcomZ2FenZ2DUSZ2FdefaultZ2EhtmZ3FlcZ3D1033Z26cultureZ3DenZ2DUS&id=66262"
 #define FRIENDS_PAGE @"http://live.xbox.com/en-US/profile/Friends.aspx"
 #define SHELLGAMERCARD @"http://live.xbox.com/ShellGamercardV2.ashx"
+#define SIGN_OUT_URL @"http://login.live.com/logout.srf?ct=1271868636&rver=5.5.4177.0&lc=1033&id=66262&ru=http:%2F%2Flive.xbox.com%2Fen-US%2Fdefault.aspx&lru=http%3a%2f%2fwww.xbox.com%2fen-US%2fdefault.htm%3fculture%3den-US"
 
 NSString* signInURL = @"http://live.xbox.com/en-US/profile/Friends.aspx";
 
@@ -55,7 +57,7 @@ NSString* signInURL = @"http://live.xbox.com/en-US/profile/Friends.aspx";
 - (void)checkConnectionAndLogin:(NSNotification *)notification
 {
 	NSLog(@"FriendsListConnectionError");
-	[self loadURL:[NSURL URLWithString:FRIENDS_PAGE]];
+	[self loadURL:[NSURL URLWithString:SIGN_IN_URL]];
 	//[self performSelectorOnMainThread:@selector(OpenSignIn:) withObject:nil waitUntilDone:NO];
 }
 
@@ -75,7 +77,7 @@ NSString* signInURL = @"http://live.xbox.com/en-US/profile/Friends.aspx";
 	
 	currentMode = @"signInFormSubmitted";
 	
-	[self loadURL:[NSURL URLWithString:signInURL]];
+	[self loadURL:[NSURL URLWithString:SIGN_IN_URL]];
 	//[self loginToPassportWithEmail:[email stringValue] password:[password stringValue]];
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"ChangeFriendsListMode" object:@"loading"];
 }

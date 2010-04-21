@@ -33,6 +33,7 @@ static BOOL loadThreaded = true;
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showFriendsList:) name:@"ShowFriendsList" object:nil];
 	//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(firstFriendsListLoad:) name:NSApplicationDidFinishLaunchingNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(firstFriendsListLoad:) name:@"InitialSignIn" object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addFriendFromNotification:) name:@"AddFriendFromNotification" object:nil];
 
 	return self;
 }
@@ -48,12 +49,10 @@ static BOOL loadThreaded = true;
 	[[myTag cell] setBackgroundStyle:NSBackgroundStyleRaised];
 	[[myMessage cell] setBackgroundStyle:NSBackgroundStyleRaised];
 
-
 	[friendsTable setDelegate:self];
 	[friendsTable setDataSource:self];
 	[friendsTable setDoubleAction: @selector(doubleAction:)];
 	[friendsTable setTarget: self];
-
 
 	FriendStatusCell *statusCell = [[FriendStatusCell alloc] init];
 	[statusCell setControlView:friendsTable];
@@ -287,6 +286,36 @@ static BOOL loadThreaded = true;
 	[myScore setStringValue:[myCard gamerscore]];
 	[myTile setImage:[myCard gamertileImage]];
 
+}
+
+- (void)addFriendFromNotification:(NSNotification *)notification
+{
+	if ([notification object]) {
+		//[self addFriendWithTag:[notification object]];
+		NSInvocationOperation* theOp = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(addFriendWithTag:) object:[notification object]];
+		[[[NSApp delegate] operationQueue] addOperation:theOp];
+	}
+}
+
+- (void)addFriendWithTag:(NSString *)theGamertag
+{	
+	[XBFriend friendWithTag:theGamertag];
+	
+	NSString *theURLBase = @"http://live.xbox.com/en-US/profile/FriendsMgmt.aspx?act=Add&gt=";
+	NSMutableString *mutableGamerTag = [theGamertag mutableCopy];
+	[mutableGamerTag replaceOccurrencesOfString:@" " withString:@"+" options:0 range:NSMakeRange(0, [mutableGamerTag length])];
+	NSString *theStringURL = [NSString stringWithFormat:@"%@%@", theURLBase, mutableGamerTag];
+	//[NSApp endSheet:addFriendSheet];
+	//querys xbox.com and gets a response
+	NSString *response = [NSString stringWithContentsOfURL:[NSURL URLWithString:theStringURL] encoding:NSUTF8StringEncoding error:nil];
+	NSRange errorRange = [response rangeOfString:@"The gamertag you entered does not exist on Xbox Live."];
+	if (errorRange.location != NSNotFound){
+		//gamertag doesn't exist
+		NSString *theError = [NSString stringWithFormat:@"The gamertag \"%@\" does not exist on Xbox Live.", theGamertag];
+		[self displaySimpleErrorMessage:@"Gamertag Doesn't Exist" withMessage:theError attachedTo:friendsListWindow];
+	}
+	[NSString stringWithContentsOfURL:[NSURL URLWithString:theStringURL] encoding:NSUTF8StringEncoding error:nil];
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"FriendsListNeedsRefresh" object:nil];
 }
 
 #pragma mark -
