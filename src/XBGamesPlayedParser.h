@@ -14,5 +14,6 @@
 
 + (NSArray *)fetchWithTag:(NSString *)tag;
 + (NSArray *)fetchWithURL:(NSURL *)URL;
++ (NSArray *)fetchForSelf;
 
 @end

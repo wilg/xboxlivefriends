@@ -57,7 +57,7 @@ NSString* signInURL = @"http://live.xbox.com/en-US/profile/Friends.aspx";
 - (void)checkConnectionAndLogin:(NSNotification *)notification
 {
 	NSLog(@"FriendsListConnectionError");
-	[self loadURL:[NSURL URLWithString:SIGN_IN_URL]];
+	[self loadURL:[NSURL URLWithString:FRIENDS_PAGE]];
 	//[self performSelectorOnMainThread:@selector(OpenSignIn:) withObject:nil waitUntilDone:NO];
 }
 
@@ -77,7 +77,7 @@ NSString* signInURL = @"http://live.xbox.com/en-US/profile/Friends.aspx";
 	
 	currentMode = @"signInFormSubmitted";
 	
-	[self loadURL:[NSURL URLWithString:SIGN_IN_URL]];
+	[self loadURL:[NSURL URLWithString:FRIENDS_PAGE]];
 	//[self loginToPassportWithEmail:[email stringValue] password:[password stringValue]];
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"ChangeFriendsListMode" object:@"loading"];
 }

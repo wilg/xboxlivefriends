@@ -21,6 +21,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="21"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -71,7 +72,7 @@
 				<string key="NSWindowContentMaxSize">{3.40282e+38, 3.40282e+38}</string>
 				<string key="NSWindowContentMinSize">{335, 463}</string>
 				<object class="NSView" key="NSWindowView" id="130445688">
-					<nil key="NSNextResponder"/>
+					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -661,8 +662,33 @@
 								<bytes key="NSRGB">MC43MDE5NjA4MDIxIDAuNzYwNzg0Mzg3NiAwLjgzMTM3MjYxODcAA</bytes>
 							</object>
 						</object>
+						<object class="NSButton" id="659936687">
+							<reference key="NSNextResponder" ref="130445688"/>
+							<int key="NSvFlags">289</int>
+							<string key="NSFrame">{{161, 9}, {154, 19}}</string>
+							<reference key="NSSuperview" ref="130445688"/>
+							<bool key="NSEnabled">YES</bool>
+							<object class="NSButtonCell" key="NSCell" id="602999751">
+								<int key="NSCellFlags">-1543373312</int>
+								<int key="NSCellFlags2">0</int>
+								<string key="NSContents">Gamertag</string>
+								<object class="NSFont" key="NSSupport" id="476385686">
+									<string key="NSName">LucidaGrande</string>
+									<double key="NSSize">13</double>
+									<int key="NSfFlags">16</int>
+								</object>
+								<reference key="NSControlView" ref="659936687"/>
+								<int key="NSButtonFlags">-2046541569</int>
+								<int key="NSButtonFlags2">164</int>
+								<string key="NSAlternateContents"/>
+								<string key="NSKeyEquivalent"/>
+								<int key="NSPeriodicDelay">400</int>
+								<int key="NSPeriodicInterval">75</int>
+							</object>
+						</object>
 					</object>
 					<string key="NSFrameSize">{335, 463}</string>
+					<reference key="NSSuperview"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
 				<string key="NSMinSize">{335, 485}</string>
@@ -3700,6 +3726,9 @@ xujItMqKzGTOOtAU0efTttV51y/Y4NqP3Dvd6d+f4VvjJOT55uLo3+pD63zsoe257sLvv/Co8YvyVfMY
 			<object class="NSCustomObject" id="1057793210">
 				<string key="NSClassName">XBGamerInfoController</string>
 			</object>
+			<object class="NSCustomObject" id="706701881">
+				<string key="NSClassName">XBAccountInfoController</string>
+			</object>
 			<object class="NSWindowTemplate" id="864095938">
 				<int key="NSWindowStyleMask">15</int>
 				<int key="NSWindowBacking">2</int>
@@ -4827,11 +4856,7 @@ AAAAAAAAA</bytes>
 								<int key="NSCellFlags">67239424</int>
 								<int key="NSCellFlags2">272629760</int>
 								<string key="NSContents">Xbox Live Friends asks for your Windows Live ID sign-in information for the explicit task of logging in to Xbox.com to access your Xbox Live friends list. </string>
-								<object class="NSFont" key="NSSupport" id="476385686">
-									<string key="NSName">LucidaGrande</string>
-									<double key="NSSize">13</double>
-									<int key="NSfFlags">16</int>
-								</object>
+								<reference key="NSSupport" ref="476385686"/>
 								<reference key="NSControlView" ref="62454802"/>
 								<reference key="NSBackgroundColor" ref="593754950"/>
 								<reference key="NSTextColor" ref="909073604"/>
@@ -6534,6 +6559,22 @@ AAAAAAAAA</bytes>
 					</object>
 					<int key="connectionID">3854</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">openAccountInfo:</string>
+						<reference key="source" ref="512903019"/>
+						<reference key="destination" ref="659936687"/>
+					</object>
+					<int key="connectionID">3874</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">myHiddenTag</string>
+						<reference key="source" ref="512903019"/>
+						<reference key="destination" ref="659936687"/>
+					</object>
+					<int key="connectionID">3876</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -6586,6 +6627,7 @@ AAAAAAAAA</bytes>
 							<reference ref="467722189"/>
 							<reference ref="442860821"/>
 							<reference ref="324617757"/>
+							<reference ref="659936687"/>
 						</object>
 						<reference key="parent" ref="81426992"/>
 					</object>
@@ -9355,6 +9397,25 @@ AAAAAAAAA</bytes>
 						<reference key="object" ref="615546257"/>
 						<reference key="parent" ref="196284771"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">3872</int>
+						<reference key="object" ref="659936687"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="602999751"/>
+						</object>
+						<reference key="parent" ref="130445688"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">3873</int>
+						<reference key="object" ref="602999751"/>
+						<reference key="parent" ref="659936687"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">3875</int>
+						<reference key="object" ref="706701881"/>
+						<reference key="parent" ref="0"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -9839,6 +9900,8 @@ AAAAAAAAA</bytes>
 					<string>3857.IBPluginDependency</string>
 					<string>3858.IBPluginDependency</string>
 					<string>3869.IBPluginDependency</string>
+					<string>3872.IBPluginDependency</string>
+					<string>3873.IBPluginDependency</string>
 					<string>405.IBPluginDependency</string>
 					<string>405.ImportedFromIB2</string>
 					<string>416.IBEditorWindowLastContentRect</string>
@@ -10096,9 +10159,9 @@ AAAAAAAAA</bytes>
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
-					<string>{{411, 393}, {335, 463}}</string>
+					<string>{{549, 109}, {335, 463}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{411, 393}, {335, 463}}</string>
+					<string>{{549, 109}, {335, 463}}</string>
 					<integer value="1"/>
 					<integer value="1"/>
 					<string>{{345, 496}, {332, 398}}</string>
@@ -10512,6 +10575,8 @@ AAAAAAAAA</bytes>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 					<string>{{579, 448}, {288, 189}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -10695,7 +10760,7 @@ AAAAAAAAA</bytes>
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">3870</int>
+			<int key="maxID">3878</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -10850,6 +10915,7 @@ AAAAAAAAA</bytes>
 							<string>denyFriendRequest:</string>
 							<string>highlightedGamerInfo:</string>
 							<string>normalGamerInfo:</string>
+							<string>openAccountInfo:</string>
 							<string>openURLDonate:</string>
 							<string>openURLEmailUs:</string>
 							<string>openURLMindquirk:</string>
@@ -10857,6 +10923,7 @@ AAAAAAAAA</bytes>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -10890,6 +10957,7 @@ AAAAAAAAA</bytes>
 							<string>friendsListWindow</string>
 							<string>friendsTable</string>
 							<string>myBead</string>
+							<string>myHiddenTag</string>
 							<string>myMessage</string>
 							<string>myScore</string>
 							<string>myTag</string>
@@ -10907,6 +10975,7 @@ AAAAAAAAA</bytes>
 							<string>NSWindow</string>
 							<string>NSTableView</string>
 							<string>NSImageView</string>
+							<string>NSButton</string>
 							<string>NSTextField</string>
 							<string>NSTextField</string>
 							<string>NSTextField</string>
@@ -11065,6 +11134,51 @@ AAAAAAAAA</bytes>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBUserSource</string>
 						<string key="minorKey"/>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">XBAccountInfoController</string>
+					<string key="superclassName">NSObject</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">closeErrorPanel:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="outlets">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>accountInfoWindow</string>
+							<string>currentProgress</string>
+							<string>errorPanel</string>
+							<string>gamerscore</string>
+							<string>gamertag</string>
+							<string>motto</string>
+							<string>mspoints</string>
+							<string>progressPanel</string>
+							<string>progressPanelIndicator</string>
+							<string>progressPanelText</string>
+							<string>spinner</string>
+							<string>tile</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>NSWindow</string>
+							<string>NSTextField</string>
+							<string>NSPanel</string>
+							<string>NSTextField</string>
+							<string>NSTextField</string>
+							<string>NSTextField</string>
+							<string>NSTextField</string>
+							<string>NSPanel</string>
+							<string>NSProgressIndicator</string>
+							<string>NSTextField</string>
+							<string>NSProgressIndicator</string>
+							<string>NSImageView</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">XBAccountInfoController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

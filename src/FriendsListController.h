@@ -29,6 +29,8 @@
 	IBOutlet NSImageView *myBead;
 	IBOutlet NSTextField *myScore;
 	
+	IBOutlet NSButton *myHiddenTag;
+	
 	//menu bar
 	IBOutlet NSMenuItem *deleteFriendMenu;
 	
@@ -74,6 +76,8 @@
 - (void)displayMyGamercard;
 
 - (void)displaySimpleErrorMessage:(NSString *)headline withMessage:(NSString *)message attachedTo:(NSWindow *)theWindow;
+
+- (IBAction)openAccountInfo:(id)sender;
 
 - (IBAction)contextualGamerInfo:(id)sender;
 - (IBAction)normalGamerInfo:(id)sender;

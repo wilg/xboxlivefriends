@@ -34,7 +34,7 @@ static BOOL loadThreaded = true;
 	//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(firstFriendsListLoad:) name:NSApplicationDidFinishLaunchingNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(firstFriendsListLoad:) name:@"InitialSignIn" object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addFriendFromNotification:) name:@"AddFriendFromNotification" object:nil];
-
+	
 	return self;
 }
 
@@ -48,7 +48,9 @@ static BOOL loadThreaded = true;
 
 	[[myTag cell] setBackgroundStyle:NSBackgroundStyleRaised];
 	[[myMessage cell] setBackgroundStyle:NSBackgroundStyleRaised];
-
+	
+	[[myHiddenTag cell] setBackgroundStyle:NSBackgroundStyleRaised];
+	
 	[friendsTable setDelegate:self];
 	[friendsTable setDataSource:self];
 	[friendsTable setDoubleAction: @selector(doubleAction:)];
@@ -285,6 +287,9 @@ static BOOL loadThreaded = true;
 	[myMessage setObjectValue:[myCard motto]];
 	[myScore setStringValue:[myCard gamerscore]];
 	[myTile setImage:[myCard gamertileImage]];
+	
+	[myHiddenTag setTitle:[myCard gamertag]];
+	[myHiddenTag setEnabled:YES];
 
 }
 
@@ -511,6 +516,13 @@ static BOOL loadThreaded = true;
 
 #pragma mark -
 #pragma mark Panel Methods
+
+- (IBAction)openAccountInfo:(id)sender
+{
+	NSLog(@"shit yeah secret button");
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"AIRequestLookup" object:nil];
+	//[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"AIRequestLookup" object:nil]];
+}
 
 - (IBAction)contextualGamerInfo:(id)sender{
 	if ([self contextSelectedFriend])

@@ -163,13 +163,29 @@
 		3BFD38300ABDB6EC007A68B5 /* XBGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFD382E0ABDB6EC007A68B5 /* XBGame.m */; };
 		3BFEA5D90E11BCA500B74A34 /* stars_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFEA5D70E11BCA500B74A34 /* stars_empty.png */; };
 		3BFEA5DA0E11BCA500B74A34 /* stars_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFEA5D80E11BCA500B74A34 /* stars_full.png */; };
+		55101D0A118078B400DF70E8 /* AccountInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55101D09118078B400DF70E8 /* AccountInfo.xib */; };
+		55101F1A1180912000DF70E8 /* AccountInfoParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 55101F191180912000DF70E8 /* AccountInfoParser.m */; };
 		5518D7B6117E052500FD550B /* GamerFriendsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5518D7B5117E052500FD550B /* GamerFriendsParser.m */; };
+		5521292D1180D760007E979C /* game_list_body.htm in Resources */ = {isa = PBXBuildFile; fileRef = 5521292C1180D760007E979C /* game_list_body.htm */; };
+		552129301180D7EC007E979C /* game_list_row.htm in Resources */ = {isa = PBXBuildFile; fileRef = 5521292E1180D7EC007E979C /* game_list_row.htm */; };
+		552129311180D7EC007E979C /* achievement_row_self.htm in Resources */ = {isa = PBXBuildFile; fileRef = 5521292F1180D7EC007E979C /* achievement_row_self.htm */; };
 		55395673117E56B7000F5530 /* error-bang.gif in Resources */ = {isa = PBXBuildFile; fileRef = 55395672117E56B7000F5530 /* error-bang.gif */; };
 		55791CAF117DEC3F009FECBB /* GIFriendsOfGamerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55791CAE117DEC3F009FECBB /* GIFriendsOfGamerController.m */; };
 		55910544117B4EAA0012E9E5 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55910543117B4EAA0012E9E5 /* QuickLook.framework */; };
+		55994DD4117F7BA9006706D6 /* XBAccountInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55994DD3117F7BA9006706D6 /* XBAccountInfoController.m */; };
+		55994DF7117F833B006706D6 /* MSpoints_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 55994DF6117F833B006706D6 /* MSpoints_01.png */; };
+		55994DFA117F857F006706D6 /* XBAccountInfoTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55994DF9117F857F006706D6 /* XBAccountInfoTableController.m */; };
+		55994DFD117F8631006706D6 /* AITabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55994DFC117F8631006706D6 /* AITabController.m */; };
+		55994E64117FB7B1006706D6 /* AIAchievementsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55994E63117FB7B1006706D6 /* AIAchievementsController.m */; };
+		55994E67117FB7E0006706D6 /* AIBreakdownChartController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55994E66117FB7E0006706D6 /* AIBreakdownChartController.m */; };
+		55994E6A117FB7FB006706D6 /* AIAccountDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55994E69117FB7FB006706D6 /* AIAccountDetailsController.m */; };
+		55994E6D117FB840006706D6 /* AIRecentlyPlayedController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55994E6C117FB840006706D6 /* AIRecentlyPlayedController.m */; };
+		55994E70117FB886006706D6 /* AIHaloServiceRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55994E6F117FB886006706D6 /* AIHaloServiceRecordController.m */; };
+		55994E73117FB89B006706D6 /* AIHaloScreenshotsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55994E72117FB89B006706D6 /* AIHaloScreenshotsController.m */; };
 		55C79A1A1178A5F0006CFA67 /* EMKeychainItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C79A191178A5F0006CFA67 /* EMKeychainItem.m */; };
 		55C79A351178A600006CFA67 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C79A341178A600006CFA67 /* Carbon.framework */; };
 		55C79A3A1178A615006CFA67 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C79A391178A615006CFA67 /* Security.framework */; };
+		55F170A91181F7A90027D69E /* RecentlyPlayedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F170A81181F7A90027D69E /* RecentlyPlayedParser.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -396,16 +412,43 @@
 		3BFD382E0ABDB6EC007A68B5 /* XBGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBGame.m; sourceTree = "<group>"; };
 		3BFEA5D70E11BCA500B74A34 /* stars_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stars_empty.png; sourceTree = "<group>"; };
 		3BFEA5D80E11BCA500B74A34 /* stars_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stars_full.png; sourceTree = "<group>"; };
+		55101F181180912000DF70E8 /* AccountInfoParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountInfoParser.h; sourceTree = "<group>"; };
+		55101F191180912000DF70E8 /* AccountInfoParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountInfoParser.m; sourceTree = "<group>"; };
 		5518D7B4117E052500FD550B /* GamerFriendsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamerFriendsParser.h; sourceTree = "<group>"; };
 		5518D7B5117E052500FD550B /* GamerFriendsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamerFriendsParser.m; sourceTree = "<group>"; };
+		5521292C1180D760007E979C /* game_list_body.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = game_list_body.htm; sourceTree = "<group>"; };
+		5521292E1180D7EC007E979C /* game_list_row.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = game_list_row.htm; sourceTree = "<group>"; };
+		5521292F1180D7EC007E979C /* achievement_row_self.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = achievement_row_self.htm; sourceTree = "<group>"; };
 		55395672117E56B7000F5530 /* error-bang.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "error-bang.gif"; sourceTree = "<group>"; };
 		55791CAD117DEC3F009FECBB /* GIFriendsOfGamerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIFriendsOfGamerController.h; sourceTree = "<group>"; };
 		55791CAE117DEC3F009FECBB /* GIFriendsOfGamerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GIFriendsOfGamerController.m; sourceTree = "<group>"; };
 		55910543117B4EAA0012E9E5 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
+		55994DCE117F7B57006706D6 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/AccountInfo.xib; sourceTree = "<group>"; };
+		55994DD2117F7BA9006706D6 /* XBAccountInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBAccountInfoController.h; sourceTree = "<group>"; };
+		55994DD3117F7BA9006706D6 /* XBAccountInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBAccountInfoController.m; sourceTree = "<group>"; };
+		55994DF6117F833B006706D6 /* MSpoints_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MSpoints_01.png; sourceTree = "<group>"; };
+		55994DF8117F857F006706D6 /* XBAccountInfoTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBAccountInfoTableController.h; sourceTree = "<group>"; };
+		55994DF9117F857F006706D6 /* XBAccountInfoTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBAccountInfoTableController.m; sourceTree = "<group>"; };
+		55994DFB117F8631006706D6 /* AITabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AITabController.h; sourceTree = "<group>"; };
+		55994DFC117F8631006706D6 /* AITabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AITabController.m; sourceTree = "<group>"; };
+		55994E62117FB7B1006706D6 /* AIAchievementsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIAchievementsController.h; sourceTree = "<group>"; };
+		55994E63117FB7B1006706D6 /* AIAchievementsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIAchievementsController.m; sourceTree = "<group>"; };
+		55994E65117FB7E0006706D6 /* AIBreakdownChartController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIBreakdownChartController.h; sourceTree = "<group>"; };
+		55994E66117FB7E0006706D6 /* AIBreakdownChartController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIBreakdownChartController.m; sourceTree = "<group>"; };
+		55994E68117FB7FB006706D6 /* AIAccountDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIAccountDetailsController.h; sourceTree = "<group>"; };
+		55994E69117FB7FB006706D6 /* AIAccountDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIAccountDetailsController.m; sourceTree = "<group>"; };
+		55994E6B117FB840006706D6 /* AIRecentlyPlayedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIRecentlyPlayedController.h; sourceTree = "<group>"; };
+		55994E6C117FB840006706D6 /* AIRecentlyPlayedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIRecentlyPlayedController.m; sourceTree = "<group>"; };
+		55994E6E117FB886006706D6 /* AIHaloServiceRecordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIHaloServiceRecordController.h; sourceTree = "<group>"; };
+		55994E6F117FB886006706D6 /* AIHaloServiceRecordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIHaloServiceRecordController.m; sourceTree = "<group>"; };
+		55994E71117FB89B006706D6 /* AIHaloScreenshotsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIHaloScreenshotsController.h; sourceTree = "<group>"; };
+		55994E72117FB89B006706D6 /* AIHaloScreenshotsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIHaloScreenshotsController.m; sourceTree = "<group>"; };
 		55C79A181178A5F0006CFA67 /* EMKeychainItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMKeychainItem.h; sourceTree = "<group>"; };
 		55C79A191178A5F0006CFA67 /* EMKeychainItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMKeychainItem.m; sourceTree = "<group>"; };
 		55C79A341178A600006CFA67 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		55C79A391178A615006CFA67 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		55F170A71181F7A90027D69E /* RecentlyPlayedParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentlyPlayedParser.h; sourceTree = "<group>"; };
+		55F170A81181F7A90027D69E /* RecentlyPlayedParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentlyPlayedParser.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Xbox Live Friends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Xbox Live Friends.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -494,6 +537,7 @@
 				3B8058480CF38FFA000E85D3 /* Friends List */,
 				3B00E5C70ABE1F5B00B48E3A /* Message Center */,
 				3BA3ADD80E0E244600ADE992 /* Inspector */,
+				55994DCD117F7AEF006706D6 /* Account Info */,
 				3BF81DAD0CD81BBA00D74991 /* Gamer Info */,
 				3BD65D6B0E1111F3004BE80A /* Multipurpose Views */,
 				3B463BC50A928CAE004E500D /* Multipurpose Images */,
@@ -782,6 +826,7 @@
 			children = (
 				3B6324DC0CE8C0C800418B0E /* XLF.xib */,
 				3B8313E60CEB9D4D00A5A358 /* GamerInfo.xib */,
+				55101D09118078B400DF70E8 /* AccountInfo.xib */,
 			);
 			name = "Nibs and Xibs";
 			sourceTree = "<group>";
@@ -894,6 +939,16 @@
 			name = "Reputation View";
 			sourceTree = "<group>";
 		};
+		5521291A1180D5EE007E979C /* HTML */ = {
+			isa = PBXGroup;
+			children = (
+				5521292C1180D760007E979C /* game_list_body.htm */,
+				5521292E1180D7EC007E979C /* game_list_row.htm */,
+				5521292F1180D7EC007E979C /* achievement_row_self.htm */,
+			);
+			name = HTML;
+			sourceTree = "<group>";
+		};
 		55791CA1117DE89B009FECBB /* Friends of Friend View */ = {
 			isa = PBXGroup;
 			children = (
@@ -903,6 +958,85 @@
 				5518D7B5117E052500FD550B /* GamerFriendsParser.m */,
 			);
 			name = "Friends of Friend View";
+			sourceTree = "<group>";
+		};
+		55994DCD117F7AEF006706D6 /* Account Info */ = {
+			isa = PBXGroup;
+			children = (
+				55994DF6117F833B006706D6 /* MSpoints_01.png */,
+				55994DD2117F7BA9006706D6 /* XBAccountInfoController.h */,
+				55994DD3117F7BA9006706D6 /* XBAccountInfoController.m */,
+				55994DF8117F857F006706D6 /* XBAccountInfoTableController.h */,
+				55994DF9117F857F006706D6 /* XBAccountInfoTableController.m */,
+				55994DFB117F8631006706D6 /* AITabController.h */,
+				55994DFC117F8631006706D6 /* AITabController.m */,
+				55101F181180912000DF70E8 /* AccountInfoParser.h */,
+				55101F191180912000DF70E8 /* AccountInfoParser.m */,
+				55994E5C117FB715006706D6 /* Achievements View */,
+				55994E5D117FB722006706D6 /* Breakdown View */,
+				55994E5E117FB72B006706D6 /* Details View */,
+				55994E5F117FB73C006706D6 /* Recently Played View */,
+				55994E60117FB748006706D6 /* Halo 3 Service Record View */,
+				55994E61117FB755006706D6 /* Halo 3 Screenshots View */,
+			);
+			name = "Account Info";
+			sourceTree = "<group>";
+		};
+		55994E5C117FB715006706D6 /* Achievements View */ = {
+			isa = PBXGroup;
+			children = (
+				55994E62117FB7B1006706D6 /* AIAchievementsController.h */,
+				55994E63117FB7B1006706D6 /* AIAchievementsController.m */,
+				5521291A1180D5EE007E979C /* HTML */,
+			);
+			name = "Achievements View";
+			sourceTree = "<group>";
+		};
+		55994E5D117FB722006706D6 /* Breakdown View */ = {
+			isa = PBXGroup;
+			children = (
+				55994E65117FB7E0006706D6 /* AIBreakdownChartController.h */,
+				55994E66117FB7E0006706D6 /* AIBreakdownChartController.m */,
+			);
+			name = "Breakdown View";
+			sourceTree = "<group>";
+		};
+		55994E5E117FB72B006706D6 /* Details View */ = {
+			isa = PBXGroup;
+			children = (
+				55994E68117FB7FB006706D6 /* AIAccountDetailsController.h */,
+				55994E69117FB7FB006706D6 /* AIAccountDetailsController.m */,
+			);
+			name = "Details View";
+			sourceTree = "<group>";
+		};
+		55994E5F117FB73C006706D6 /* Recently Played View */ = {
+			isa = PBXGroup;
+			children = (
+				55994E6B117FB840006706D6 /* AIRecentlyPlayedController.h */,
+				55994E6C117FB840006706D6 /* AIRecentlyPlayedController.m */,
+				55F170A71181F7A90027D69E /* RecentlyPlayedParser.h */,
+				55F170A81181F7A90027D69E /* RecentlyPlayedParser.m */,
+			);
+			name = "Recently Played View";
+			sourceTree = "<group>";
+		};
+		55994E60117FB748006706D6 /* Halo 3 Service Record View */ = {
+			isa = PBXGroup;
+			children = (
+				55994E6E117FB886006706D6 /* AIHaloServiceRecordController.h */,
+				55994E6F117FB886006706D6 /* AIHaloServiceRecordController.m */,
+			);
+			name = "Halo 3 Service Record View";
+			sourceTree = "<group>";
+		};
+		55994E61117FB755006706D6 /* Halo 3 Screenshots View */ = {
+			isa = PBXGroup;
+			children = (
+				55994E71117FB89B006706D6 /* AIHaloScreenshotsController.h */,
+				55994E72117FB89B006706D6 /* AIHaloScreenshotsController.m */,
+			);
+			name = "Halo 3 Screenshots View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1032,6 +1166,11 @@
 				3B7F282A0E11D1520021BBD3 /* greenbar.png in Resources */,
 				3B03DC600ED512030074491D /* no_avatar.png in Resources */,
 				55395673117E56B7000F5530 /* error-bang.gif in Resources */,
+				55101D0A118078B400DF70E8 /* AccountInfo.xib in Resources */,
+				55994DF7117F833B006706D6 /* MSpoints_01.png in Resources */,
+				5521292D1180D760007E979C /* game_list_body.htm in Resources */,
+				552129301180D7EC007E979C /* game_list_row.htm in Resources */,
+				552129311180D7EC007E979C /* achievement_row_self.htm in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1101,6 +1240,17 @@
 				55C79A1A1178A5F0006CFA67 /* EMKeychainItem.m in Sources */,
 				55791CAF117DEC3F009FECBB /* GIFriendsOfGamerController.m in Sources */,
 				5518D7B6117E052500FD550B /* GamerFriendsParser.m in Sources */,
+				55994DD4117F7BA9006706D6 /* XBAccountInfoController.m in Sources */,
+				55994DFA117F857F006706D6 /* XBAccountInfoTableController.m in Sources */,
+				55994DFD117F8631006706D6 /* AITabController.m in Sources */,
+				55994E64117FB7B1006706D6 /* AIAchievementsController.m in Sources */,
+				55994E67117FB7E0006706D6 /* AIBreakdownChartController.m in Sources */,
+				55994E6A117FB7FB006706D6 /* AIAccountDetailsController.m in Sources */,
+				55994E6D117FB840006706D6 /* AIRecentlyPlayedController.m in Sources */,
+				55994E70117FB886006706D6 /* AIHaloServiceRecordController.m in Sources */,
+				55994E73117FB89B006706D6 /* AIHaloScreenshotsController.m in Sources */,
+				55101F1A1180912000DF70E8 /* AccountInfoParser.m in Sources */,
+				55F170A91181F7A90027D69E /* RecentlyPlayedParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1129,6 +1279,14 @@
 				3B8313D10CEB9AFB00A5A358 /* English */,
 			);
 			name = GamerInfo.xib;
+			sourceTree = "<group>";
+		};
+		55101D09118078B400DF70E8 /* AccountInfo.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55994DCE117F7B57006706D6 /* English */,
+			);
+			name = AccountInfo.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

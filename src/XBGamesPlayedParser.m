@@ -9,6 +9,8 @@
 #import "Xbox Live Friends.h"
 #import "XBGamesPlayedParser.h"
 
+#define ACHI_SELF_URL @"http://live.xbox.com/en-US/profile/Achievements/ViewAchievementSummary.aspx"
+
 NSString* achievementURL = @"http://live.xbox.com/en-US/profile/Achievements/ViewAchievementSummary.aspx?compareTo=";
 
 @implementation XBGamesPlayedParser
@@ -60,5 +62,63 @@ NSString* achievementURL = @"http://live.xbox.com/en-US/profile/Achievements/Vie
 	return [[gamesArray copy] autorelease];
 }
 
++ (NSArray *)fetchForSelf
+{
+	NSString *editString = [NSString stringWithContentsOfURL:[NSURL URLWithString:ACHI_SELF_URL] encoding:NSUTF8StringEncoding error:nil];
+	NSArray *rows = [editString cropRowsMatching:@"<tbody" rowEnd:@"</tr>"];
+	
+	NSMutableArray *gamesArray = [NSMutableArray array];
+	
+	for (NSString *row in rows) {
+		
+		XBGame *thisGame = [XBGame game];
+		
+		/*
+		if (![row contains:@"XbcAchYouCell"]) {
+			return nil;
+			//thisGame.isJustMe = YES;
+		}
+		 */
+		
+		NSString *tempName = [row cropFrom:@"class=\"XbcAchievementsTitle\">" to:@"</strong>"];
+		tempName = [MQFunctions flattenHTML:tempName];
+		
+		NSURL *tempURL = [NSURL URLWithString:[row cropFrom:@"AchievementsGameIcon\" src=\"" to:@"\" alt=\""]];
+		
+		[thisGame setName:tempName];
+		[thisGame setTileURL:tempURL];
+		
+		NSString *yourScore = [row cropFrom:@"XbcAchGamerData\"><strong>" to:@" <img src"];
+		/*
+		if (thisGame.isJustMe) {
+			yourScore = [row cropFrom:@"XbcAchGamerData\"><strong>" to:@" <img src"];
+		}
+		else {
+			yourScore = [row cropFrom:@"XbcAchMeCell\"><strong>" to:@" <img src"];
+		}
+		 */
+		/*
+		if ([yourScore rangeOfString:@"No Gamerscore"].location != NSNotFound || yourScore == nil) {
+			yourScore = @"-1 of 1000";
+		}
+		 */
+		
+		[thisGame setYourScore:yourScore];
+		
+		/*
+		NSString *theirScore = [row cropFrom:@"XbcAchYouCell\"><strong>" to:@" <img src"];
+		if ([theirScore rangeOfString:@"No Gamerscore"].location != NSNotFound || theirScore == nil)
+			theirScore = @"-1 of 1000";
+		[thisGame setTheirScore:theirScore];
+		*/
+		
+		NSString *tempGameID = [row cropFrom:@"ViewAchievementDetails.aspx?tid=" to:@"\""];
+		[thisGame setGameID:tempGameID];
+		
+		[gamesArray addObject:thisGame];
+	}
+	
+	return [[gamesArray copy] autorelease];
+}
 
 @end

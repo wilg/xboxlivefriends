@@ -10,9 +10,11 @@
 
 
 @interface XBAchievementDetailsParser : NSObject {
+	
 }
 
 + (NSArray *)fetchWithGameID:(NSString *)gameID tag:(NSString *)tag;
 + (NSArray *)fetchWithURL:(NSURL *)URL;
++ (NSArray *)fetchForSelfWithGameID:(NSString *)gameID;
 
 @end

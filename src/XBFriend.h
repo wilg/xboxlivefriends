@@ -31,6 +31,7 @@ typedef enum {
 	NSString *tileURLString;
 	NSString *info;
 	NSString *realName;
+	NSString *zone;
 	float reputation;
 	int iconStyle;
 	BOOL shouldShowNotifications;
@@ -49,10 +50,14 @@ typedef enum {
 - (NSString *)tileURLString;
 - (NSString *)info;
 - (NSDictionary *)tableViewRecord;
+- (NSDictionary *)tableViewRecordWithZone;
 - (NSAttributedString *)dockMenuString;
 - (NSImage *)bead;
 - (NSImage *)tileImage;
 - (NSImage *)tileImageWithOfflineGrayedOut;
+
+- (NSString *)zone;
+- (void)setZone:(NSString *)theZone;
 
 - (NSString *)realName;
 + (XBNameDisplayStyle)preferredNameStyle;

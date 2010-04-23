@@ -30,6 +30,8 @@
 - (id)initWithURL:(NSURL *)theURL;
 
 - (void)fetchSelf;
+- (void)retrieveEditProfileDetails;
+
 - (void)fetchFriend:(XBFriend *)theFriend;
 - (void)fetchWithTag:(NSString *)escapedTag;
 - (void)fetchWithURL:(NSURL *)URL;

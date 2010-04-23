@@ -107,8 +107,12 @@
     [super dealloc]; 
 }
 
+#pragma mark -
+#pragma mark Account Methods
+
 - (void)fetchSelf
 {
+	//Create a new gamercard class for self, since self has access to much more information.
 	// We can find out if we are a gold member from the shellGamercard.
 	NSString *shellCard = [NSString stringWithContentsOfURL:[NSURL URLWithString:SHELLGAMERCARD] encoding:NSUTF8StringEncoding error:nil];
 	NSString *profileSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:PROFILE_URL] encoding:NSUTF8StringEncoding error:nil];
@@ -124,6 +128,14 @@
 	
 	motto = [profileSource cropFrom:@"<span id=\"ctl00_MainContent_myXboxAvatarCard_mottoLabel\">" to:@"</span>"];
 	
+	//find rep
+	NSString *repNumerator = [MQFunctions cropString:profileSource between:@"MyXbox/repstars" and:@"."];
+	rep = [repNumerator floatValue] / 20.0;
+	
+	//Get golden repstars
+	NSString *repStarsURL = [NSString stringWithFormat:@"http://live.xbox.com/xweb/lib/images/MyXbox/repstars%@.png", repNumerator];
+	repStars = [[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:repStarsURL]];
+	
 	/*
 	bio = [editProfileSource cropFrom:@"class=\"XbcPersonalProfile\">" to:@"</textarea>"];
 	location = [editProfileSource cropFrom:@"ctl00$MainContent$personalProfile$ctl01$txtLocation\" type=\"text\" value=\"" to:@"\""];
@@ -135,6 +147,19 @@
 	
 	// gamerzone can't be found anywhere anymore?
 }
+
+- (void)retrieveEditProfileDetails
+{
+	// Possibly change to return a BOOL if info was collected properly
+	NSString *editProfileSource = [NSString stringWithContentsOfURL:[NSURL URLWithString:EDIT_PROFILE_URL] encoding:NSUTF8StringEncoding error:nil];
+	
+	bio = [editProfileSource cropFrom:@"class=\"XbcPersonalProfile\">" to:@"</textarea>"];
+	location = [editProfileSource cropFrom:@"ctl00$MainContent$personalProfile$ctl01$txtLocation\" type=\"text\" value=\"" to:@"\""];
+	realName = [editProfileSource cropFrom:@"\"ctl00$MainContent$personalProfile$ctl01$txtName\" type=\"text\" value=\"" to:@"\""];
+}
+
+#pragma mark -
+#pragma mark Gamer Methods
 
 - (void)fetchFriend:(XBFriend *)theFriend
 {

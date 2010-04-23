@@ -72,6 +72,48 @@ NSString *halo2StatsURL = @"http://www.bungie.net/Stats/PlayerStats.aspx?player=
 	return record;
 }
 
+- (NSDictionary *)tableViewRecordWithZone {
+	
+	NSMutableDictionary *record = [NSMutableDictionary dictionary];
+	
+	NSString *myInfo = [self info];
+	
+	NSString *primaryTitle;
+	NSString *secondaryTitle;
+	
+	XBNameDisplayStyle displayStyle = [XBFriend preferredNameStyle];
+	
+	if ([self realName]){
+		if (displayStyle == XBRealNameDisplayStyle) {
+			primaryTitle = [self realName];
+			secondaryTitle = nil;
+		}
+		if (displayStyle == XBRealGamertagNameDisplayStyle) {
+			primaryTitle = [self realName];
+			secondaryTitle = [self gamertag];
+		}
+		if (displayStyle == XBGamertagRealNameDisplayStyle) {
+			primaryTitle = [self gamertag];
+			secondaryTitle = [self realName];
+		}
+		if (displayStyle == XBGamertagNameDisplayStyle) {
+			primaryTitle = [self gamertag];
+			secondaryTitle = nil;
+		}
+	}
+	else {
+		primaryTitle = [self gamertag];
+		secondaryTitle = nil;
+	}
+	
+	
+	[record setObject:[self bead] forKey:@"bead"];
+	[record setObject:[self zone] forKey:@"zone"];
+	[record setObject:[self tileImageWithOfflineGrayedOut] forKey:@"tile"];
+	[record setObject:[NSDictionary dictionaryWithObjectsAndKeys:[self realNameWithFormat:XBUnknownNameDisplayStyle], @"gamertag", myInfo,  @"textstatus", [self status], @"onlinestatus", primaryTitle, @"primaryTitle", secondaryTitle, @"secondaryTitle", nil] forKey:@"gt_and_status"];
+	return record;
+}
+
 - (NSAttributedString *)dockMenuString {
 //	return @"FUCKK";
 //	return [NSString stringWithFormat:@"%@ %@", self.gamertag, self.info];
@@ -185,6 +227,16 @@ NSString *halo2StatsURL = @"http://www.bungie.net/Stats/PlayerStats.aspx?player=
 - (NSString *)tileURLString
 {
 	return tileURLString;
+}
+
+- (NSString *)zone
+{
+	return zone;
+}
+
+- (void)setZone:(NSString *)theZone
+{
+	zone = theZone;
 }
 
 - (NSString *)realName {
